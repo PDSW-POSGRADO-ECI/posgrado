@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import proyecto.services.ExceptionServiciosReporte;
 
 /**
  *
@@ -22,25 +23,16 @@ public class ReporteRecursoTest {
     public ReporteRecursoTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
     @Before
     public void setUp() {
     }
     
+    @Test
+    public void CF1Test() throws ExceptionServiciosReporte{
+        assertTrue(true);     
+    }
     @After
     public void tearDown() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
