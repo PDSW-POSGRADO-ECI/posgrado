@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:04:15 -0500] "GET /faces/index.xhtml HTTP/1.1" 200 1060 http-bio-8080-exec-1 263
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:05:00 -0500] "GET /faces/index.xhtml HTTP/1.1" 200 1090 http-bio-8080-exec-2 8
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:08:00 -0500] "GET /faces/index.xhtml HTTP/1.1" 200 1293 http-bio-8080-exec-4 24
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:10:24 -0500] "GET /faces/index.xhtml HTTP/1.1" 200 1247 http-bio-8080-exec-6 21
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:11:31 -0500] "GET /faces/index.xhtml HTTP/1.1" 200 279 http-bio-8080-exec-8 22
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:11:31 -0500] "GET /faces/javax.faces.resource/theme.css?ln=primefaces-aristo HTTP/1.1" 200 27963 http-bio-8080-exec-9 126
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:11:47 -0500] "GET /faces/index.xhtml HTTP/1.1" 200 283 http-bio-8080-exec-10 21
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:11:47 -0500] "GET /faces/javax.faces.resource/theme.css?ln=primefaces-aristo HTTP/1.1" 304 - http-bio-8080-exec-10 25
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:12:02 -0500] "GET /faces/index.xhtml HTTP/1.1" 200 301 http-bio-8080-exec-10 21
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:12:02 -0500] "GET /faces/javax.faces.resource/theme.css?ln=primefaces-aristo HTTP/1.1" 304 - http-bio-8080-exec-10 4
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:12:14 -0500] "GET /faces/ReporteRecurso.xhtml HTTP/1.1" 200 459 http-bio-8080-exec-10 5
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:12:14 -0500] "GET /faces/javax.faces.resource/theme.css?ln=primefaces-aristo HTTP/1.1" 304 - http-bio-8080-exec-10 2
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:13:06 -0500] "GET /faces/ReporteRecurso.xhtml HTTP/1.1" 200 458 http-bio-8080-exec-10 22
+0:0:0:0:0:0:0:1 - - [09/Apr/2017:00:13:06 -0500] "GET /faces/javax.faces.resource/theme.css?ln=primefaces-aristo HTTP/1.1" 304 - http-bio-8080-exec-10 3

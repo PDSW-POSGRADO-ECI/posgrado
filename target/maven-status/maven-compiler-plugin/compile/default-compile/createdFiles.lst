@@ -1,0 +1,14 @@
+proyecto\dao\SalonDAO.class
+proyecto\dao\mybatis\mappers\RecursoMapper.class
+proyecto\dao\mybatis\mappers\SalonMapper.class
+proyecto\entities\Recurso.class
+proyecto\services\ExceptionServiciosReporte.class
+dao\mybatis\mybatisSalonDAO.class
+proyecto\dao\ExceptionPersistence.class
+proyecto\dao\mybatis\mybatisRecursoDAO.class
+proyecto\dao\RecursoDAO.class
+proyecto\entities\Salon.class
+proyecto\services\impl\ServiciosReporteStub.class
+proyecto\services\ServiciosReporte.class
+proyecto\managebeans\ReportesBean.class
+proyecto\services\impl\ServiciosReporteImpl.class
