@@ -1,7 +1,7 @@
-Host  		ec2-107-20-250-195.compute-1.amazonaws.com
-Database  	df24sjdfo0rtmu
-User  		kvpftasjgniefw
+Host  		ec2-23-21-246-11.compute-1.amazonaws.com
+Database  	dasd80qatocrac
+User  		tozmvdhrkkvroa
 Port		5432
-Password		ae55c2da89a8d49e1578941a4c82742e83fee0da735acc2ccd3756054e3d1411
+Password		ae7d0de6a793a4907667e66ad6535a43c84a5449c17df2a49b9ececf40736879
 
-URI   	postgres://kvpftasjgniefw:ae55c2da89a8d49e1578941a4c82742e83fee0da735acc2ccd3756054e3d1411@ec2-107-20-250-195.compute-1.amazonaws.com:5432/df24sjdfo0rtmu
+URI   	postgres://tozmvdhrkkvroa:ae7d0de6a793a4907667e66ad6535a43c84a5449c17df2a49b9ececf40736879@ec2-23-21-246-11.compute-1.amazonaws.com:5432/dasd80qatocrac
