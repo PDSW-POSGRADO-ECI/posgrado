@@ -1,0 +1,7 @@
+Host  		ec2-107-20-250-195.compute-1.amazonaws.com
+Database  	df24sjdfo0rtmu
+User  		kvpftasjgniefw
+Port		5432
+Password		ae55c2da89a8d49e1578941a4c82742e83fee0da735acc2ccd3756054e3d1411
+
+URI   	postgres://kvpftasjgniefw:ae55c2da89a8d49e1578941a4c82742e83fee0da735acc2ccd3756054e3d1411@ec2-107-20-250-195.compute-1.amazonaws.com:5432/df24sjdfo0rtmu
