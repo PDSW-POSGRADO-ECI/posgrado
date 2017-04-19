@@ -5,10 +5,18 @@
  */
 package proyecto.managebeans;
 
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 /**
  *
  * @author Laura RB
  */
-public class ReportesBean {
+
+@ManagedBean(name = "ReportesBean")
+@SessionScoped
+
+public class ReportesBean implements Serializable{
     
 }
