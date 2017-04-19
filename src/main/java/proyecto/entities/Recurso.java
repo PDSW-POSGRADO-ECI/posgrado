@@ -11,4 +11,51 @@ package proyecto.entities;
  */
 public class Recurso {
     
+    private int id;
+    private String nomRecurso;
+    private boolean disponible;
+    private Clase clase;
+            
+    public Recurso(){
+        nomRecurso="";
+        disponible=true;
+        clase=null;
+    }
+    
+    public Recurso(int id,String nombreRecurso,boolean disp,Clase idc){
+        this.id=id;
+        nomRecurso=nombreRecurso;
+        disponible=disp;
+        clase=idc;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNomRecurso() {
+        return nomRecurso;
+    }
+
+    public void setNomRecurso(String nomRecurso) {
+        this.nomRecurso = nomRecurso;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public Clase getClase_id() {
+        return clase;
+    }
+
+    
 }

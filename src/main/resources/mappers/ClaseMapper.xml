@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<mapper namespace="proyecto.dao.mybatis.mappers.ClaseMapper">
+    
+    <resultMap type='Clase' id='ClaseResult'>
+        
+        <id property='id' column='id'/>
+        <result property='recurso' column='recurso'/>
+        <result property='disponible' column='disponible'/> 
+        <collection property="clase" javaType="Recurso" columnPrefix='REC_' resultMap='proyecto.dao.mybatis.mappers.RecursoMapper'></collection>      
+        <association property="corte" javaType="Cohorte" columnPrefix='CO_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper'></association>      
+        <association property="materia" javaType="Materia" columnPrefix='MAT_' resultMap='proyecto.dao.mybatis.mappers.MateriaMapper'></association>      
+
+    </resultMap>
+    
+    <select parameterType="map" id="consultarClase" resultMap="ClaseResult">
+        SELECT
+        
+        cla.id,
+        cla.hora_inicio,
+        cla.hora_fin,
+        cla.cohorte_id,
+        cla.materia_sigla,
+        cla.fecha,
+        
+	rec.id as REC_id,
+        rec.recurso REC_recurso,
+        rec.disponible REC_disponible,
+        
+        co.id as CO_id,
+        co.fecha_inicio CO_fecha_inicio,
+        co.fecha_fin CO_fecha_fin,
+        
+	FROM recurso as rec 
+        join clase as cla on cla.id=rec.clase_id
+        join cohorte as co on cla.cohorte_id=co.id;
+        
+    </select>
+    
+    <select parameterType="map" id="registrarRecurso">
+        INSERT INTO recurso (id,recurso,descripcion,clase_id) VALUES(#{idrec},#{recurso},#{disp},#{clase_id});
+    </select>
+    
+</mapper>

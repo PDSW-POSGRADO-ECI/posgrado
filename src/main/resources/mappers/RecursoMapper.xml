@@ -6,6 +6,30 @@ and open the template in the editor.
 -->
 
 
-<root>
+<mapper namespace="proyecto.dao.mybatis.mappers.RecursoMapper">
+    <resultMap type='Recurso' id='RecursoResult'>
+        <id property='id' column='id'/>
+        <result property='recurso' column='recurso'/>
+        <result property='disponible' column='disponible'/> 
+        <association property="clase" javaType="Clase" columnPrefix='CLA_' resultMap='proyecto.dao.mybatis.mappers.ClaseMapper'></association>      
+    </resultMap>
     
-</root>
+    <select parameterType="map" id="consultarRecurso" resultMap="RecursoResult">
+        SELECT
+        
+	rec.id,
+        rec.recurso,
+        rec.disponible,
+        cla.fecha as CLA_fecha
+        
+	FROM recurso as rec 
+        join clase as cla on cla.id=rec.clase_id;
+        
+    </select>
+    
+    <select parameterType="map" id="registrarRecurso">
+        INSERT INTO recurso (id,recurso,descripcion,clase_id) VALUES(#{idrec},#{recurso},#{disp},#{clase_id});
+    </select>
+    
+</mapper>
+
