@@ -5,10 +5,15 @@
  */
 package proyecto.dao.mybatis.mappers;
 
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import proyecto.entities.Recurso;
+
 /**
  *
  * @author Laura RB
  */
 public interface RecursoMapper {
     
+    public List<Recurso> getRecursoXCohorte(@Param("c")int c);
 }

@@ -8,7 +8,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:form id="ReporteRecurso">
-        <h:body>idrfhrfekjidrrfhuirfehuirfehuirfehuirfehuirhuirfgerhurtgurtghirtgirtg</h:body>
+        <h:body>
+            <p:outputLabel for="advanced" value="Seleccione el periodo que desea consultar:" />
+            <p:selectOneListbox id="advanced" value="#{selectOneView.theme}" converter="themeConverter" var="t" filter="true" filterMatchMode="contains">
+                <f:selectItems value="#{selectOneView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
+
+                <p:column>
+                    <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
+                </p:column>
+
+                <p:column>
+                    <h:outputText value="#{t.displayName}" />
+                </p:column>
+            </p:selectOneListbox>
+
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+        </h:body>
     </h:form>
     
     

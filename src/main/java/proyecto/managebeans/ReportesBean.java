@@ -6,8 +6,13 @@
 package proyecto.managebeans;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import proyecto.entities.Recurso;
+import proyecto.services.ExceptionServiciosReporte;
+import proyecto.services.ServiciosReporte;
+import proyecto.services.ServiciosReporteFactory;
 
 /**
  *
@@ -18,5 +23,16 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 
 public class ReportesBean implements Serializable{
+    
+    
+    ServiciosReporte ss = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    
+    public ReportesBean(){
+        
+      
+    }
+    public void getRecursos() throws ExceptionServiciosReporte{
+        return ;
+    }
     
 }
