@@ -5,10 +5,15 @@
  */
 package proyecto.dao;
 
+import java.util.List;
+import proyecto.entities.Materia;
+
 /**
  *
- * @author Laura RB
+ * @author Daniel Rodriguez
  */
 public interface MateriaDAO {
+    
+    public List<Materia> loadMaterias() throws ExceptionPersistence;
     
 }

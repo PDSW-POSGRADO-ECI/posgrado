@@ -10,7 +10,7 @@ and open the template in the editor.
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proyecto.dao.mybatis.mappers.ProfesorMpper">
     
-    <select parameterType="map" id="consultarProfesor" resultMap="ProfesorResult">
+    <select parameterType="map" id="consultarProfesores" resultMap="ProfesorResult">
         SELECT
         
         pro.documento,

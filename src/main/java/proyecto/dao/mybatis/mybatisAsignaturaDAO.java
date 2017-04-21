@@ -5,10 +5,31 @@
  */
 package proyecto.dao.mybatis;
 
+import com.google.inject.Inject;
+import java.util.List;
+import proyecto.dao.AsignaturaDAO;
+import proyecto.dao.ExceptionPersistence;
+import proyecto.dao.mybatis.mappers.AsignaturaMapper;
+import proyecto.entities.Asignatura;
+
 /**
  *
- * @author Laura RB
+ * @author Daniel Rodriguez
  */
-public class mybatisAsignaturaDAO {
+public class mybatisAsignaturaDAO implements AsignaturaDAO{
+    
+    @Inject private AsignaturaMapper asignaturaMapper;
+
+    @Override
+    public List<Asignatura> loadAsignaturas() throws ExceptionPersistence {
+        List<Asignatura> asig=null;
+        try{
+            asig=asignaturaMapper.consultarAsignaturas();
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new ExceptionPersistence("Error al cargar las asignaturas "+asig.toString(),e);
+        } 
+        return asig;
+    }
     
 }

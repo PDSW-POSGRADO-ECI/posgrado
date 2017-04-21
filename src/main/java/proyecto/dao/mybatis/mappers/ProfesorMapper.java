@@ -5,10 +5,15 @@
  */
 package proyecto.dao.mybatis.mappers;
 
+import java.util.List;
+import proyecto.entities.Profesor;
+
 /**
  *
- * @author Laura RB
+ * @author Daniel Rodriguez
  */
-public interface PorfesorMapper {
+public interface ProfesorMapper {
+    
+    public List<Profesor> consultarProfesores();
     
 }

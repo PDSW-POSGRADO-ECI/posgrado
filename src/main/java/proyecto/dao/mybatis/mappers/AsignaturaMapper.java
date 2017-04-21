@@ -5,10 +5,15 @@
  */
 package proyecto.dao.mybatis.mappers;
 
+import java.util.List;
+import proyecto.entities.Asignatura;
+
 /**
  *
- * @author Laura RB
+ * @author Daniel Rodriguez
  */
 public interface AsignaturaMapper {
+    
+    public List<Asignatura> consultarAsignaturas();
     
 }

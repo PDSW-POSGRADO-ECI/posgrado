@@ -11,16 +11,16 @@ import java.io.Serializable;
  *
  * @author Daniel Rodriguez
  */
-public class Asignatura implements Serializable {
+public class Posgrado implements Serializable{
     
-    private int id;
+    private int id; 
     private String nombre;
-    private Posgrado Posgrado_id;
+    private int creditos;
 
-    public Asignatura(int id, String nombre, Posgrado Posgrado_id) {
+    public Posgrado(int id, String nombre, int creditos) {
         this.id = id;
         this.nombre = nombre;
-        this.Posgrado_id = Posgrado_id;
+        this.creditos = creditos;
     }
 
     public int getId() {
@@ -39,14 +39,16 @@ public class Asignatura implements Serializable {
         this.nombre = nombre;
     }
 
-    public Posgrado getPosgrado_id() {
-        return Posgrado_id;
+    public int getCreditos() {
+        return creditos;
     }
 
-    public void setPosgrado_id(Posgrado Posgrado_id) {
-        this.Posgrado_id = Posgrado_id;
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
     }
     
+    
+
     
     
 }

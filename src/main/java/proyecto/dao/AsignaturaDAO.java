@@ -5,10 +5,15 @@
  */
 package proyecto.dao;
 
+import java.util.List;
+import proyecto.entities.Asignatura;
+
 /**
  *
  * @author Laura RB
  */
 public interface AsignaturaDAO {
+    
+    public List<Asignatura> loadAsignaturas() throws ExceptionPersistence;
     
 }

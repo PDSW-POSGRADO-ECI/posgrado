@@ -5,10 +5,31 @@
  */
 package proyecto.dao.mybatis;
 
+import com.google.inject.Inject;
+import java.util.List;
+import proyecto.dao.ExceptionPersistence;
+import proyecto.dao.ProfesorDAO;
+import proyecto.dao.mybatis.mappers.ProfesorMapper;
+import proyecto.entities.Profesor;
+
 /**
  *
  * @author Laura RB
  */
-public class mybatisProfesorDAO {
+public class mybatisProfesorDAO implements ProfesorDAO{
+    
+    @Inject private ProfesorMapper profesorMapper;
+
+    @Override
+    public List<Profesor> loadProfesores() throws ExceptionPersistence {
+        List<Profesor> pro=null;
+        try{
+            pro=profesorMapper.consultarProfesores();
+        }
+         catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new ExceptionPersistence("Error al cargar profesores "+pro.toString(),e);
+        }  
+        return pro;
+    }
     
 }

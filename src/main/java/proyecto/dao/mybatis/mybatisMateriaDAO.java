@@ -5,10 +5,32 @@
  */
 package proyecto.dao.mybatis;
 
+import com.google.inject.Inject;
+import java.util.List;
+import proyecto.dao.ExceptionPersistence;
+import proyecto.dao.MateriaDAO;
+import proyecto.dao.mybatis.mappers.MateriaMapper;
+import proyecto.entities.Materia;
+
 /**
  *
  * @author Laura RB
  */
-public class mybatisMateriaDAO {
+public class mybatisMateriaDAO implements MateriaDAO{
+
+    @Inject private MateriaMapper materiaMapper;
+    
+    @Override
+    public List<Materia> loadMaterias() throws ExceptionPersistence {
+        List<Materia> mat=null;
+        try{
+            mat=materiaMapper.ConsultarMaterias();
+        }
+         catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new ExceptionPersistence("Error al cargar materias "+mat.toString(),e);
+        }
+        
+        return mat;
+    }
     
 }

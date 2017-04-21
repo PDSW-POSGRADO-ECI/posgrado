@@ -5,10 +5,15 @@
  */
 package proyecto.dao;
 
+import java.util.List;
+import proyecto.entities.Profesor;
+
 /**
  *
- * @author Laura RB
+ * @author Daniel Rodriguez
  */
 public interface ProfesorDAO {
+    
+    List<Profesor> loadProfesores() throws ExceptionPersistence;
     
 }

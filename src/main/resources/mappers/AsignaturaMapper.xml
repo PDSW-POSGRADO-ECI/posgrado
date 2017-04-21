@@ -10,7 +10,7 @@ and open the template in the editor.
 
 <mapper namespace="proyecto.dao.mybatis.mappers.AsignaturaMapper">
     
-    <select parameterType="map" id="consultarAsignatura" resultMap="AsignaturaResult">
+    <select parameterType="map" id="consultarAsignaturas" resultMap="AsignaturaResult">
         SELECT
         
         asi.id,
