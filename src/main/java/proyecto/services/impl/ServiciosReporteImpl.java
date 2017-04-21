@@ -32,7 +32,7 @@ public class ServiciosReporteImpl implements ServiciosReporte{
     
 
     @Override
-    public List<Recurso> consultarRecursosXperiodo(char a) throws ExceptionServiciosReporte{
+    public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte{
         List<Recurso> sp = null;
         try {
             try {

@@ -2,7 +2,6 @@ package proyecto.dao.mybatis;
 
 import com.google.inject.Inject;
 import proyecto.dao.SalonDAO;
-import proyecto.dao.mybatis.mappers.RecursoMapper;
 import proyecto.dao.mybatis.mappers.SalonMapper;
 
 /*

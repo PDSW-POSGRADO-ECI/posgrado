@@ -37,9 +37,9 @@
             <version>5.1.6</version>
         </dependency-->
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.1-901.jdbc4</version>
+            <version>42.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -151,6 +151,40 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                <version>1.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.184</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <driver>org.h2.Driver</driver>
+                    <url>jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL</url>
+                    <username>anonymous</username>
+                    <password/>
+                    <autocommit>false</autocommit>
+                    <skip>${maven.test.skip}</skip>
+                </configuration>
+                <executions>
+                   <execution>
+                        <id>create-db</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <srcFiles>
+                                <!--srcFile>tables.sql</srcFile-->
+                            </srcFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.1</version>
@@ -170,12 +204,12 @@
                                     <version>8.0.30.2</version>
                                     <destFileName>webapp-runner.jar</destFileName>
                                 </artifactItem>
-                                <!--artifactItem>
+                                <artifactItem>
                                     <groupId>javax</groupId>
                                     <artifactId>javaee-endorsed-api</artifactId>
                                     <version>7.0</version>
                                     <type>jar</type>
-                                </artifactItem-->
+                                </artifactItem>
                             </artifactItems>
                         </configuration>
                     </execution>

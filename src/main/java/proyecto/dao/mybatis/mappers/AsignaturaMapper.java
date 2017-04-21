@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.dao;
-
-import java.util.List;
-import proyecto.entities.Recurso;
+package proyecto.dao.mybatis.mappers;
 
 /**
  *
  * @author Laura RB
  */
-public interface RecursoDAO {
-    public List<Recurso> loadRecursoXperiodo(String per)throws ExceptionPersistence;
+public interface AsignaturaMapper {
+    
 }

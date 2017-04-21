@@ -9,18 +9,24 @@
     </h:head>
     <h:form id="ReporteRecurso">
         <h:body>
-            <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                <p:outputLabel for="basic" value="Seleccione el periodo que desea consultar:" />
-                <p:selectOneListbox id="basic" value="#{ReportesBean.periodo}" >
-                    <f:selectItems value="#{ReportesBean.cohorte}" var="per"/>
+            <h:panelGrid columns="1"  cellpadding="5" columnClasses="label, value">
+                <!--p:outputLabel for="basic" value="Seleccione el periodo que desea consultar:" />
+                <p:selectOneListbox id="basic" value="{ReportesBean.periodo}" >
+                    <f:selectItems value="{ReportesBean.cohorte}" var="per"/>
                      <p:column>
-                         <h:outputText styleClass="ui-theme ui-theme-#{per.periodo}" />
+                         <h:outputText styleClass="ui-theme ui-theme-{per.periodo}" />
                      </p:column>
-                </p:selectOneListbox>
+                </p:selectOneListbox-->
+                <p:dataTable id="TablaItems" var="corte"  value="#{ReportesBean.cohorte}">
+                     
+                      <p:column headerText="Periodo">
+                          <h:outputText value="#{corte.id}"/>
+                      </p:column>
+                </p:dataTable>
 
              </h:panelGrid>
 
-            <p:commandButton value="Submit" update="display" actionListener="#{ReportesBean.recursosXperiodo}" oncomplete="" icon="ui-icon-check" />
+            <p:commandButton value="Generar Reporte" update="Periodos" actionListener="#{ReportesBean.recursosXperiodo}" icon="ui-icon-check" />
         </h:body>
     </h:form>
     

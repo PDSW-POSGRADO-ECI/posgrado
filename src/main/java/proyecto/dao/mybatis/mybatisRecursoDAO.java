@@ -20,7 +20,7 @@ public class mybatisRecursoDAO implements RecursoDAO {
     
     @Inject private RecursoMapper recursoMapper;
     
-    public List<Recurso> loadRecursoXperiodo(char per) throws ExceptionPersistence {
+    public List<Recurso> loadRecursoXperiodo(String per) throws ExceptionPersistence {
         List<Recurso> rec=null;
         try{
             rec=recursoMapper.consultarRecursoDePeriodo(per);

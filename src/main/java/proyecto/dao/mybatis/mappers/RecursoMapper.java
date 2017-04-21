@@ -17,6 +17,6 @@ import proyecto.entities.Recurso;
  */
 public interface RecursoMapper {
 
-    public List<Recurso> consultarRecursoDePeriodo(@Param("periodo") char per );
+    public List<Recurso> consultarRecursoDePeriodo(@Param("periodo") String per );
 
 }

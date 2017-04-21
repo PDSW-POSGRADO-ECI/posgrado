@@ -27,10 +27,10 @@ public class ReportesBean implements Serializable{
     
     
     ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
-    private char period;
+    private String period;
     
     public ReportesBean(){
-        period=' ';
+        period="";
     }
     
     public List<Recurso> getRecursosXperiodo() throws ExceptionServiciosReporte{
@@ -41,11 +41,11 @@ public class ReportesBean implements Serializable{
         return report.obtenerPeriodos();
     }
 
-    public char getPeriodo() {
+    public String getPeriodo() {
         return period;
     }
 
-    public void setPeriodo(char periodo) {
+    public void setPeriodo(String periodo) {
         this.period = periodo;
     }
     
