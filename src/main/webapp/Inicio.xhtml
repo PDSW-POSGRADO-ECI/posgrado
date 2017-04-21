@@ -5,17 +5,31 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Inicio</title>
+        <style>
+            .tadiwa{
+                background-image:url("/resources/escuela1.JPG");
+            }
+            
+        </style>
     </h:head>
-    <h:form id="Inicio">
-        <p:panel id="panelReportes" header="Reportes">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="repRecurso" value="Reporte de recursos:" />
-                <p:commandButton  id="repRecurso" value="Generar Reporte" type="submit"  action="ReporteRecurso"/> 
-
-                <p:outputLabel for="repGeneral" value="Reporte general:" />
-                <p:commandButton id="repGeneral" value="Generar Reporte" action="ReporteSemestral"/> 
-            </h:panelGrid>
-        </p:panel>
-    </h:form>
     
+    <h:body styleClass="tadiwa">
+        <h:form id="Reporte">
+        <p:panel id="panelReportes" header="Inicio sesión" style="position:absolute ; top: 6%; left: 82%">
+            <h:panelGrid columns="1" cellpadding="5" >
+                <p:row>
+                <p:inputText  id="userName" placeholder="Nombre de Usuario"/> 
+                </p:row>
+                <p:row>
+                <p:inputText  id="passWord" placeholder="Contraseña"/> 
+                </p:row>
+            
+                
+               
+            </h:panelGrid>
+            <p:commandButton id="Iniciar" value="Iniciar" action="Reporte"/> 
+        </p:panel>
+       </h:form>
+   </h:body>
 </html>
+

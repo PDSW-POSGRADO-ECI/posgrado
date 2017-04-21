@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        
+        <title>Inicio</title>
+        <style>
+            .tadiwa{
+                background-image:url("/resources/escuela.jpg");
+            }
+            
+        </style>
+        
+    </h:head>
+    
+    <h:body styleClass="tadiwa">
+        <h:form id="ReportesS">
+            
+            <p:panel id="panelReportes" header="Reportes" style="position:absolute ; top: 6%; left: 75%">
+                <h:panelGrid columns="1" cellpadding="5" >
+                    
+                    <p:row>
+                    <p:outputLabel for="repRecurso" value="Reporte Recursos: " />
+                    <p:commandButton  id="repRecurso" value="Generar Reporte" type="submit"  action="ReporteRecurso"/> 
+                    </p:row>
+                    <p:row>
+                        <p:outputLabel for="repGeneral" value="Reporte general:   " />
+                        <p:commandButton id="repGeneral" value="Generar Reporte" action="ReporteSemestral"/> 
+                    </p:row>
+                    
+                </h:panelGrid>
+            </p:panel>
+            
+        </h:form>
+   </h:body>
+</html>
