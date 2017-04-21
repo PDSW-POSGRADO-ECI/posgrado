@@ -8,20 +8,22 @@ package proyecto.dao.mybatis;
 import com.google.inject.Inject;
 import java.util.List;
 import org.apache.ibatis.exceptions.PersistenceException;
-import proyecto.dao.ExceptionPersistence;
+import proyecto.dao.CohorteDAO;
 import proyecto.dao.mybatis.mappers.CohorteMapper;
+import proyecto.entities.Cohorte;
 
 /**
  *
  * @author Laura RB
  */
-public class mybatisCohorteDAO implements CohorteMapper{
+public class mybatisCohorteDAO implements CohorteDAO{
+    
     @Inject private CohorteMapper corteMapper;
 
     
     @Override
-    public List<Character> consultarPeriodos() {
-        List<Character> per=null;
+    public List<Cohorte> loadPeriodos() {
+        List<Cohorte> per=null;
         try{
             per=corteMapper.consultarPeriodos();
         }

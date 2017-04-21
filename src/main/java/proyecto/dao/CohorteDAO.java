@@ -6,11 +6,12 @@
 package proyecto.dao;
 
 import java.util.List;
+import proyecto.entities.Cohorte;
 
 /**
  *
  * @author Laura RB
  */
-public interface Cohorte {
-    public List<Character> loadPeriodo() throws ExceptionPersistence;
+public interface CohorteDAO {
+    public List<Cohorte> loadPeriodos() throws ExceptionPersistence;
 }

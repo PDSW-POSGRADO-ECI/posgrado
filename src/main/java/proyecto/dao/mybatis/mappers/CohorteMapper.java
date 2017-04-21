@@ -6,11 +6,12 @@
 package proyecto.dao.mybatis.mappers;
 
 import java.util.List;
+import proyecto.entities.Cohorte;
 
 /**
  *
  * @author Laura RB
  */
 public interface CohorteMapper {
-    public List<Character> consultarPeriodos();
+    public List<Cohorte> consultarPeriodos();
 }

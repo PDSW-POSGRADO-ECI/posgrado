@@ -5,13 +5,18 @@
  */
 package proyecto.dao.mybatis.mappers;
 
-import proyecto.entities.Recurso;
-import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import proyecto.entities.Recurso;
+
+
 /**
  *
  * @author Laura RB
  */
 public interface RecursoMapper {
+
     public List<Recurso> consultarRecursoDePeriodo(@Param("periodo") char per );
+
 }

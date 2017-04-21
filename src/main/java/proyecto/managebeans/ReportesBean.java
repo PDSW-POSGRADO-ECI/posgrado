@@ -6,8 +6,14 @@
 package proyecto.managebeans;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import proyecto.entities.Cohorte;
+import proyecto.entities.Recurso;
+import proyecto.services.ExceptionServiciosReporte;
+import proyecto.services.ServiciosReporte;
+import proyecto.services.ServiciosReporteFactory;
 
 /**
  *
@@ -18,5 +24,32 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 
 public class ReportesBean implements Serializable{
+    
+    
+    ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    private char period;
+    
+    public ReportesBean(){
+        period=' ';
+    }
+    
+    public List<Recurso> getRecursosXperiodo() throws ExceptionServiciosReporte{
+        return report.consultarRecursosXperiodo(period);
+    }
+    
+    public List<Cohorte> getCohorte() throws ExceptionServiciosReporte{
+        return report.obtenerPeriodos();
+    }
+
+    public char getPeriodo() {
+        return period;
+    }
+
+    public void setPeriodo(char periodo) {
+        this.period = periodo;
+    }
+    
+    
+    
     
 }

@@ -16,7 +16,11 @@ and open the template in the editor.
     
     <select parameterType="map" id="consultarPeriodos" resultMap="CohorteResult">
         SELECT 
+            co.id
+            co.fecha_inicio
+            co.fecha_fin
             co.periodo
+        
         FROM cohorte as co
         GROUP BY co.periodo;
     </select>
