@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<mapper namespace="proyecto.dao.mybatis.mappers.CohorteMapper"> 
+    <resultMap type='Cohorte' id='CohorteResult'>
+        <id property='id' column='id'/>
+        <result property='fecha_inicio' column='fecha_inicio'/>
+        <result property='fecha_fin' column='fecha_fin'/> 
+        <result property='periodo' column='periodo'/> 
+    </resultMap>
+    
+    <select parameterType="map" id="consultarPeriodos" resultMap="CohorteResult">
+        SELECT 
+            co.periodo
+        FROM cohorte as co
+        GROUP BY co.periodo;
+    </select>
+</mapper>
+

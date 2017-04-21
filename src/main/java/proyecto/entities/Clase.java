@@ -5,19 +5,20 @@
  */
 package proyecto.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Laura RB
  */
-public class Clase extends Exception {
+public class Clase implements Serializable{
 
     private int id;
     private Date hora_inicio;
     private Date hora_fin;
-    private Cohorte cohorte;
-    private Materia materia;
+    private Cohorte materia_cohorte_sigla;
+    private Materia materia_cohorte_id;
     private Date fecha;
     
             
@@ -28,8 +29,8 @@ public class Clase extends Exception {
         this.id=id;
         hora_inicio=inicio;
         hora_fin=fin;
-        cohorte=corte;
-        materia=mat;
+        materia_cohorte_sigla=corte;
+        materia_cohorte_id=mat;
         this.fecha=fecha;
     
     }
@@ -58,22 +59,23 @@ public class Clase extends Exception {
         this.hora_fin = hora_fin;
     }
 
-    public Cohorte getCohorte() {
-        return cohorte;
+    public Cohorte getMateria_cohorte_sigla() {
+        return materia_cohorte_sigla;
     }
 
-    public void setCohorte(Cohorte cohorte) {
-        this.cohorte = cohorte;
+    public void setMateria_cohorte_sigla(Cohorte materia_cohorte_sigla) {
+        this.materia_cohorte_sigla = materia_cohorte_sigla;
     }
 
-    public Materia getMateria() {
-        return materia;
+    public Materia getMateria_cohorte_id() {
+        return materia_cohorte_id;
     }
 
-    public void setMateria(Materia materia) {
-        this.materia = materia;
+    public void setMateria_cohorte_id(Materia materia_cohorte_id) {
+        this.materia_cohorte_id = materia_cohorte_id;
     }
 
+   
     public Date getFecha() {
         return fecha;
     }
@@ -82,6 +84,9 @@ public class Clase extends Exception {
         this.fecha = fecha;
     }
     
-    
+     @Override
+    public String toString() {
+        return "Clase{" + "id=" + id + ", fecha=" + fecha + ", Hora_inicio=" + hora_inicio +'}';
+    }
 
 }

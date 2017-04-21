@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.entities;
+package proyecto.dao.mybatis.mappers;
 
-import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author Laura RB
  */
-public class Salon implements Serializable{
-    
+public interface CohorteMapper {
+    public List<Character> consultarPeriodos();
 }

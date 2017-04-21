@@ -5,11 +5,14 @@
  */
 package proyecto.entities;
 
+import java.io.Serializable;
+import org.primefaces.expression.SearchExpressionResolver;
+
 /**
  *
  * @author Laura RB
  */
-public class Materia extends Exception {
+public class Materia implements Serializable{
 
     /**
      * Creates a new instance of <code>Materia</code> without detail message.

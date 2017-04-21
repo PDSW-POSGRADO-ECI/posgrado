@@ -5,26 +5,16 @@
  */
 package proyecto.dao.mybatis;
 
+import com.google.inject.Inject;
+import proyecto.dao.ClaseDAO;
+import proyecto.dao.mybatis.mappers.ClaseMapper;
+import proyecto.dao.mybatis.mappers.CohorteMapper;
+
 /**
  *
  * @author Laura RB
  */
-public class mybatisClaseDAO extends Exception {
+public class mybatisClaseDAO implements ClaseDAO{
 
-    /**
-     * Creates a new instance of <code>mybatisClaseDAO</code> without detail
-     * message.
-     */
-    public mybatisClaseDAO() {
-    }
-
-    /**
-     * Constructs an instance of <code>mybatisClaseDAO</code> with the specified
-     * detail message.
-     *
-     * @param msg the detail message.
-     */
-    public mybatisClaseDAO(String msg) {
-        super(msg);
-    }
+    @Inject private ClaseMapper claseMapper;
 }

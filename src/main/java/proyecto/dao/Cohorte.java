@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.entities;
+package proyecto.dao;
 
-import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author Laura RB
  */
-public class Salon implements Serializable{
-    
+public interface Cohorte {
+    public List<Character> loadPeriodo() throws ExceptionPersistence;
 }

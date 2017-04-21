@@ -9,12 +9,12 @@ and open the template in the editor.
 <mapper namespace="proyecto.dao.mybatis.mappers.RecursoMapper">
     <resultMap type='Recurso' id='RecursoResult'>
         <id property='id' column='id'/>
-        <result property='recurso' column='recurso'/>
+        <result property='nomRecurso' column='recurso'/>
         <result property='disponible' column='disponible'/> 
         <association property="clase" javaType="Clase" columnPrefix='CLA_' resultMap='proyecto.dao.mybatis.mappers.ClaseMapper'></association>      
     </resultMap>
     
-    <select parameterType="map" id="consultarRecurso" resultMap="RecursoResult">
+    <select parameterType="map" id="consultarRecursoDePeriodo" resultMap="RecursoResult">
         SELECT
         
 	rec.id,
@@ -23,7 +23,10 @@ and open the template in the editor.
         cla.fecha as CLA_fecha
         
 	FROM recurso as rec 
-        join clase as cla on cla.id=rec.clase_id;
+        join clase as cla on cla.id=rec.clase_id
+        join cohorte as cor on cla.materia_cohorte_cohorte_id=cor.id
+        
+        WHERE {#periodo}=cor.periodo;
         
     </select>
     

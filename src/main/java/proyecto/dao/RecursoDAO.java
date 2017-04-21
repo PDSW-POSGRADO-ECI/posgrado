@@ -5,10 +5,13 @@
  */
 package proyecto.dao;
 
+import java.util.List;
+import proyecto.entities.Recurso;
+
 /**
  *
  * @author Laura RB
  */
 public interface RecursoDAO {
-    
+    public List<Recurso> loadRecursoXperiodo(char per)throws ExceptionPersistence;
 }

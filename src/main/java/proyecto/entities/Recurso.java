@@ -5,11 +5,13 @@
  */
 package proyecto.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Laura RB
  */
-public class Recurso {
+public class Recurso implements Serializable{
     
     private int id;
     private String nomRecurso;
@@ -57,5 +59,8 @@ public class Recurso {
         return clase;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Recurso{" + "id=" + id + ", nombre=" + nomRecurso + '}';
+    }
 }

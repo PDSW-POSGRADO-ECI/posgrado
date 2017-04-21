@@ -1,4 +1,9 @@
-package dao.mybatis;
+package proyecto.dao.mybatis;
+
+import com.google.inject.Inject;
+import proyecto.dao.SalonDAO;
+import proyecto.dao.mybatis.mappers.RecursoMapper;
+import proyecto.dao.mybatis.mappers.SalonMapper;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,6 +15,7 @@ package dao.mybatis;
  *
  * @author Laura RB
  */
-public class mybatisSalonDAO {
-    
+public class mybatisSalonDAO implements SalonDAO{
+        @Inject private SalonMapper salonMapper;
+
 }
