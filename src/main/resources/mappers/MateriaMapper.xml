@@ -10,4 +10,12 @@ and open the template in the editor.
 
 <mapper namespace="proyecto.dao.mybatis.mappers.MateriaMapper">
     
+    <select parameterType="map" id="" resultMap="MateriaResult">
+        
+    </select>
+    
+    <resultMap type="Materia" id="MateriaResult">
+        
+    </resultMap>
+    
 </mapper>

@@ -9,12 +9,6 @@ and open the template in the editor.
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="proyecto.dao.mybatis.mappers.RecursoMapper">
-    <resultMap type='Recurso' id='RecursoResult'>
-        <id property='id' column='id'/>
-        <result property='nomRecurso' column='recurso'/>
-        <result property='disponible' column='disponible'/> 
-        <association property="clase" javaType="Clase" columnPrefix='CLA_' resultMap='proyecto.dao.mybatis.mappers.ClaseMapper'></association>      
-    </resultMap>
     
     <select parameterType="map" id="consultarRecursoDePeriodo" resultMap="RecursoResult">
         SELECT
@@ -35,6 +29,13 @@ and open the template in the editor.
     <select parameterType="map" id="registrarRecurso">
         INSERT INTO recurso (id,recurso,descripcion,clase_id) VALUES(#{idrec},#{recurso},#{disp},#{clase_id});
     </select>
+    
+    <resultMap type='Recurso' id='RecursoResult'>
+        <id property='id' column='id'/>
+        <result property='nomRecurso' column='recurso'/>
+        <result property='disponible' column='disponible'/> 
+        <association property="clase" javaType="Clase" columnPrefix='CLA_' resultMap='ClaseResult'></association>      
+    </resultMap>
     
 </mapper>
 

@@ -11,18 +11,7 @@ and open the template in the editor.
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="proyecto.dao.mybatis.mappers.ClaseMapper">
-    
-    <resultMap type='Clase' id='ClaseResult'>
-        
-        <id property='id' column='id'/>
-        <result property='recurso' column='recurso'/>
-        <result property='disponible' column='disponible'/> 
-        <collection property="clase" javaType="Recurso" columnPrefix='REC_' resultMap='proyecto.dao.mybatis.mappers.RecursoMapper'></collection>      
-        <association property="corte" javaType="Cohorte" columnPrefix='CO_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper'></association>      
-        <association property="materia" javaType="Materia" columnPrefix='MAT_' resultMap='proyecto.dao.mybatis.mappers.MateriaMapper'></association>      
-
-    </resultMap>
-    
+   
     <select parameterType="map" id="consultarClase" resultMap="ClaseResult">
         SELECT
         
@@ -51,12 +40,18 @@ and open the template in the editor.
         INSERT INTO recurso (id,recurso,descripcion,clase_id) VALUES(#{idrec},#{recurso},#{disp},#{clase_id});
     </select>
     
-    <select parameterType="map" id="consultarRegistroSemestral" resultMap="ClaseResult2">
+   
+    
+    
+    <resultMap type='Clase' id='ClaseResult'>
         
-        SELECT co.id,asig.nombre, mat.nombre,mat.creditos,profesor.nombre,ho.fecha,ho.hora_inicio
-        FROM asignatura as asig JOIN  materia as mat ON asig.id=mat.asignatura_id JOIN materiaCohorte as matco on matco.materia_sigla=mat.sigla JOIN cohorte as co on matco.cohorte_id=co.id,profesor, horario as ho
-        WHERE matco.profesor_documento=profesor.documento  order by co.id;
-        
-    </select>
+        <id property='id' column='id'/>
+        <result property='recurso' column='recurso'/>
+        <result property='disponible' column='disponible'/>       
+        <association property="corte" javaType="Cohorte" columnPrefix='CO_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper.CohorteResult'></association>      
+        <association property="materia" javaType="Materia" columnPrefix='MAT_' resultMap='proyecto.dao.mybatis.mappers.MateriaMapper.MateriaResult'></association>      
+
+    </resultMap>
+    
     
 </mapper>

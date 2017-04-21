@@ -10,4 +10,34 @@ and open the template in the editor.
 
 <mapper namespace="proyecto.dao.mybatis.mappers.AsignaturaMapper">
     
+    <select parameterType="map" id="consultarAsignatura" resultMap="AsignaturaResult">
+        SELECT
+        
+        asi.id,
+        asi.nombre,
+        pos.id as POS_id,
+        pos.nombre as POS_nombre,
+        pos.creditos as POS_creditos
+        
+	FROM Asignatura as asi
+        join Posgrado as pos on asi.Posgrado_id=pos.id;
+        
+        
+    </select>
+    
+    <resultMap type="Asignatura" id="AsignaturaResult">
+        <id property='id' column='id'/>
+        <result property='nombre' column='nombre'/>
+        <association property="posgrado" javaType="Posgrado" columnPrefix="POS_" resultMap="PosgradoResult"></association>
+    </resultMap>
+    
+    <resultMap type="Posgrado" id="PosgradoResult">
+        <id property='id' column='id'/>
+        <result property='nombre' column='nombre'/>
+        <result property='creditos' column='creditos'/>
+        
+    </resultMap>
+    
+    
+    
 </mapper>
