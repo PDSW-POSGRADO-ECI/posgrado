@@ -9,22 +9,21 @@
     </h:head>
     <h:form id="ReporteRecurso">
         <h:body>
-            <p:outputLabel for="advanced" value="Seleccione el periodo que desea consultar:" />
-            <p:selectOneListbox id="advanced" value="#{selectOneView.theme}" converter="themeConverter" var="t" filter="true" filterMatchMode="contains">
-                <f:selectItems value="#{selectOneView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
+            <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                <p:outputLabel for="basic" value="Seleccione el periodo que desea consultar:" />
+                <p:selectOneListbox id="basic" value="#{ReportesBean.periodo}">
+                     <f:selectItems value="#{selectOneView.themes}" var="theme"/>
+                     <p:column>
+                         <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
+                     </p:column>
+                </p:selectOneListbox>
 
-                <p:column>
-                    <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
-                </p:column>
+             </h:panelGrid>
 
-                <p:column>
-                    <h:outputText value="#{t.displayName}" />
-                </p:column>
-            </p:selectOneListbox>
-
-            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+            <p:commandButton value="Submit" update="display" oncomplete="" icon="ui-icon-check" />
         </h:body>
     </h:form>
     
     
 </html>
+

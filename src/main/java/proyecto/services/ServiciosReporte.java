@@ -5,10 +5,17 @@
  */
 package proyecto.services;
 
+import java.util.List;
+import proyecto.entities.Recurso;
+
 /**
  *
  * @author Laura RB
  */
 public interface ServiciosReporte {
+    
+    public List<Recurso> recursosXcohorte(int a) throws ExceptionServiciosReporte;
+    
+    public List<String> obtenerPeriodos() throws ExceptionServiciosReporte;
     
 }

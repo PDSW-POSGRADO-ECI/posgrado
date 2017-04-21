@@ -25,14 +25,19 @@ import proyecto.services.ServiciosReporteFactory;
 public class ReportesBean implements Serializable{
     
     
-    ServiciosReporte ss = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    int periodo;
     
     public ReportesBean(){
-        
-      
+        periodo=0;
     }
-    public void getRecursos() throws ExceptionServiciosReporte{
-        return ;
+    
+    public List<Recurso> getRecursos() throws ExceptionServiciosReporte{
+        return report.recursosXcohorte(periodo);
+    }
+    
+    public List<String> getPeriodo() throws ExceptionServiciosReporte{
+        return null;
     }
     
 }
