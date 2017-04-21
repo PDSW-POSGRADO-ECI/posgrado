@@ -10,12 +10,29 @@ and open the template in the editor.
 
 <mapper namespace="proyecto.dao.mybatis.mappers.MateriaMapper">
     
-    <select parameterType="map" id="" resultMap="MateriaResult">
+    <select parameterType="map" id="ConsultarMateria" resultMap="MateriaResult">
+        
+        SELECT
+        
+        mat.sigla,
+        mat.nombre,
+        mat.creditos,
+        mat.descripcion
+        asi.id as ASI_id,
+        asi.nombre as ASI_nombre,
+        
+        
+	FROM Materia as mat
+        join Asignatura as asi on mat.Asignatura_id=asi.id;
         
     </select>
     
     <resultMap type="Materia" id="MateriaResult">
-        
+        <id property='sigla' column='sigla'/>
+        <result property='nombre' column='nombre'/>
+        <result property='creditos' column='creditos'/>
+        <result property='descripcion' column='descripcion'/>
+        <association property="asignatura" javaType="Asignatura" columnPrefix='ASI_' resultMap='proyecto.dao.mybatis.mappers.AsignaturaMapper.AsignaturaResult' ></association> 
     </resultMap>
     
 </mapper>

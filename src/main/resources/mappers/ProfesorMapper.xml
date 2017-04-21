@@ -10,4 +10,27 @@ and open the template in the editor.
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proyecto.dao.mybatis.mappers.ProfesorMpper">
     
+    <select parameterType="map" id="consultarProfesor" resultMap="ProfesorResult">
+        SELECT
+        
+        pro.documento,
+        pro.nombre,
+        pro.correo,
+        pro.telefono,
+        pro.tipo_documento
+        
+	FROM Profesor as pro;
+        
+        
+    </select>
+    
+    <resultMap type="Posgrado" id="ProfesorResult">
+        <id property='documento' column='documento'/>
+        <result property='nombre' column='nombre'/>
+        <result property='correo' column='correo'/>
+        <result property='telefono' column='telefono'/>
+        <result property='tipo_documento' column='tipo_documento'/>
+        
+    </resultMap>
+    
 </mapper>
