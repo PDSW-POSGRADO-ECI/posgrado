@@ -10,12 +10,6 @@ and open the template in the editor.
 
 <mapper namespace="proyecto.dao.mybatis.mappers.ClaseMapper">
     
-    <select parameterType="map" id="consultarRegistroSemestral" resultMap="ClaseResult">
-        
-        SELECT co.id,asig.nombre, mat.nombre,mat.creditos,profesor.nombre,ho.fecha,ho.hora_inicio
-        FROM asignatura as asig JOIN  materia as mat ON asig.id=mat.asignatura_id JOIN materiaCohorte as matco on matco.materia_sigla=mat.sigla JOIN cohorte as co on matco.cohorte_id=co.id,profesor, horario as ho
-        WHERE matco.profesor_documento=profesor.documento  order by co.id;
-        
-    </select>
+  
       
 </mapper>
