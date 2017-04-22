@@ -6,6 +6,7 @@
 package proyecto.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,11 +17,17 @@ public class Asignatura implements Serializable {
     private int id;
     private String nombre;
     private Posgrado Posgrado_id;
-
-    public Asignatura(int id, String nombre, Posgrado Posgrado_id) {
+    private ArrayList<Materia> materias;
+    
+    public Asignatura(){
+        this.materias = new ArrayList<>();
+    }
+    
+    public Asignatura(int id, String nombre, Posgrado Posgrado_id, ArrayList<Materia> mat) {
         this.id = id;
         this.nombre = nombre;
         this.Posgrado_id = Posgrado_id;
+        materias=mat;
     }
 
     public int getId() {

@@ -23,13 +23,22 @@ public class Recurso implements Serializable{
         disponible=true;
         clase=null;
     }
-    
     public Recurso(int id,String nombreRecurso,boolean disp,Clase idc){
         this.id=id;
         nomRecurso=nombreRecurso;
         disponible=disp;
         clase=idc;
     }
+    
+    public Clase getClase() {
+        return clase;
+    }
+
+    public void setClase(Clase clase) {
+        this.clase = clase;
+    }
+    
+    
 
     public int getId() {
         return id;

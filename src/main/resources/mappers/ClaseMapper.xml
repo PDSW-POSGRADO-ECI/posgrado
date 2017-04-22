@@ -18,30 +18,26 @@ and open the template in the editor.
         cla.id,
         cla.hora_inicio,
         cla.hora_fin,
-        cla.cohorte_id,
-        cla.materia_sigla,
         cla.fecha,
-        
-	rec.id as REC_id,
-        rec.recurso REC_recurso,
-        rec.disponible REC_disponible,
         
         co.id as CO_id,
         co.fecha_inicio CO_fecha_inicio,
         co.fecha_fin CO_fecha_fin,
         
-	FROM recurso as rec 
-        join clase as cla on cla.id=rec.clase_id
-        join cohorte as co on cla.cohorte_id=co.id;
+        mat.nombre as MAT_nombre,
+        
+	FROM clase as cla 
+        join materiacohorte as matco on 
+        matco.materia_sigla=cla.materia_cohorte_materia_sigla 
+        and matco.cohorte_id=cla.materia_cohorte_cohorte_id
+        join materia as mat on mat.sigla=matco.sigla 
+        join cohorte as co on co.id=matco.cohorte_id
+        
+        WHERE 
+        
+       
         
     </select>
-    
-    <select parameterType="map" id="registrarRecurso">
-        INSERT INTO recurso (id,recurso,descripcion,clase_id) VALUES(#{idrec},#{recurso},#{disp},#{clase_id});
-    </select>
-    
-   
-    
     
     <resultMap type='Clase' id='ClaseResult'>
         

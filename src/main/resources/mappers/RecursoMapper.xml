@@ -22,7 +22,7 @@ and open the template in the editor.
         join clase as cla on cla.id=rec.clase_id
         join cohorte as cor on cla.materia_cohorte_cohorte_id=cor.id
         
-        WHERE {char(#periodo)}=cor.periodo;
+        WHERE {#periodo}=cor.periodo;
         
     </select>
     
@@ -34,7 +34,7 @@ and open the template in the editor.
         <id property='id' column='id'/>
         <result property='nomRecurso' column='recurso'/>
         <result property='disponible' column='disponible'/> 
-        <association property="clase" javaType="Clase" columnPrefix='CLA_' resultMap='ClaseResult'></association>      
+        <association property="clase" javaType="Clase" columnPrefix='CLA_' resultMap='proyecto.dao.mybatis.mappers.ClaseMapper.ClaseResult'></association>      
     </resultMap>
     
 </mapper>

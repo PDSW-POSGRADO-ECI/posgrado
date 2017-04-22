@@ -25,10 +25,10 @@ and open the template in the editor.
      <select parameterType="map" id="consultarCohorte" resultMap="CohorteResult">
         
         SELECT
-        co.id as CO_id,
-        co.fecha_inicio as CO_fecha_inicio,
-        co.fecha_fin as CO_fecha_fin
-        FROM Cohorte ;
+        co.id,
+        co.fecha_inicio,
+        co.fecha_fin
+        FROM Cohorte as co;
         
         
     </select>

@@ -20,6 +20,7 @@ public class mybatisRecursoDAO implements RecursoDAO {
     
     @Inject private RecursoMapper recursoMapper;
     
+    @Override
     public List<Recurso> loadRecursoXperiodo(String per) throws ExceptionPersistence {
         List<Recurso> rec=null;
         try{

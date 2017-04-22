@@ -12,5 +12,6 @@ import java.io.Serializable;
  * @author Laura RB
  */
 public class Salon implements Serializable{
-    
+    public Salon(){
+    }
 }

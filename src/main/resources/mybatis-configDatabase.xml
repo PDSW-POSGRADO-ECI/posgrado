@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!--<settings>
+    <settings>
         <setting name="logImpl" value="LOG4J"/>        
-    </settings>-->
+    </settings>
     
     <typeAliases>
         <typeAlias type='proyecto.entities.Recurso' alias='Recurso'/>
@@ -22,8 +22,7 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver" />
-                <property name="url" value="jdbc:postgres://tozmvdhrkkvroa:ae7d0de6a793a4907667e66ad6535a43c84a5449c17df2a49b9ececf40736879@ec2-23-21-246-11.compute-1.amazonaws.com:5432/dasd80qatocrac
-                          ?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/> 
+                <property name="url" value="jdbc:postgres://tozmvdhrkkvroa:ae7d0de6a793a4907667e66ad6535a43c84a5449c17df2a49b9ececf40736879@ec2-23-21-246-11.compute-1.amazonaws.com:5432/dasd80qatocrac"/> 
                 <property name="username" value="tozmvdhrkkvroa" />
                 <property name="password" value="ae7d0de6a793a4907667e66ad6535a43c84a5449c17df2a49b9ececf40736879" />
             </dataSource>
@@ -36,8 +35,8 @@
         <mapper resource="mappers/CohorteMapper.xml"></mapper>  
         <mapper resource="mappers/ClaseMapper.xml"></mapper> 
         <mapper resource="mappers/ProfesorMapper.xml"></mapper>
-        <mapper resource="mappers.MateriaMapper.xml"></mapper>  
-        <mapper resource="mappers.AsignaturaMapper.xml"></mapper>    
+        <mapper resource="mappers/MateriaMapper.xml"></mapper>  
+        <mapper resource="mappers/AsignaturaMapper.xml"></mapper>    
     </mappers>
         
         

@@ -6,6 +6,7 @@
 package proyecto.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,12 +19,24 @@ public class Cohorte implements Serializable{
     private Date fecha_inicio;
     private Date fecha_fin;
     private char periodo;
+    private ArrayList<Materia> materias;
+    private ArrayList<Clase> clases;
+    private ArrayList<Profesor> profes;
     
-    public Cohorte(int id, Date inicio,Date fin, char per) {
+    public Cohorte(){
+        this.profes = new ArrayList<>();
+        this.clases = new ArrayList<>();
+        this.materias = new ArrayList<>();
+    }
+    
+    public Cohorte(int id, Date inicio,Date fin, char per,ArrayList<Materia> mat,ArrayList<Profesor> pro,ArrayList<Clase> cla) {
         this.id=id;
         fecha_inicio=inicio;
         fecha_fin=fin;
         periodo=per;
+        materias=mat;
+        clases=cla;
+        profes=pro;
         
     }
 
@@ -57,6 +70,30 @@ public class Cohorte implements Serializable{
 
     public void setPeriodo(char periodo) {
         this.periodo = periodo;
+    }
+
+    public ArrayList<Materia> getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(ArrayList<Materia> materias) {
+        this.materias = materias;
+    }
+
+    public ArrayList<Clase> getClases() {
+        return clases;
+    }
+
+    public void setClases(ArrayList<Clase> clases) {
+        this.clases = clases;
+    }
+
+    public ArrayList<Profesor> getProfes() {
+        return profes;
+    }
+
+    public void setProfes(ArrayList<Profesor> profes) {
+        this.profes = profes;
     }
     
     

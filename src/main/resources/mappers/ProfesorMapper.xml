@@ -8,7 +8,8 @@ and open the template in the editor.
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="proyecto.dao.mybatis.mappers.ProfesorMpper">
+  
+<mapper namespace="proyecto.dao.mybatis.mappers.ProfesorMapper">
     
     <select parameterType="map" id="consultarProfesores" resultMap="ProfesorResult">
         SELECT
@@ -20,11 +21,9 @@ and open the template in the editor.
         pro.tipo_documento
         
 	FROM Profesor as pro;
-        
-        
     </select>
     
-    <resultMap type="Posgrado" id="ProfesorResult">
+    <resultMap type="Pofesor" id="ProfesorResult">
         <id property='documento' column='documento'/>
         <result property='nombre' column='nombre'/>
         <result property='correo' column='correo'/>

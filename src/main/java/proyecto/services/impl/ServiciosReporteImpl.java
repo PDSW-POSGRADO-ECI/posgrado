@@ -24,12 +24,11 @@ import proyecto.services.ServiciosReporte;
  */
 public class ServiciosReporteImpl implements ServiciosReporte{
     
-    @Inject
-    private RecursoDAO recurso;
-    private CohorteDAO corte;
+    
     public ServiciosReporteImpl(){}
     
-    
+    @Inject private RecursoDAO recurso;
+    @Inject private CohorteDAO corte;
 
     @Override
     public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte{

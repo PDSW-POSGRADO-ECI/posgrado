@@ -6,6 +6,7 @@
 
 package proyecto.services;
 
+import com.google.inject.Guice;
 import static com.google.inject.Guice.createInjector;
 import com.google.inject.Injector;
 import org.mybatis.guice.XMLMyBatisModule;
@@ -26,22 +27,22 @@ import proyecto.services.impl.ServiciosReporteImpl;
  */
 public class ServiciosReporteFactory {
     
-    private static ServiciosReporteFactory instance = new ServiciosReporteFactory();
+    private static final ServiciosReporteFactory instance = new ServiciosReporteFactory();
     
     private static Injector injector;
     private static Injector testingInjector;
     
     private ServiciosReporteFactory(){
-        injector = createInjector(new XMLMyBatisModule() {
+        injector = Guice.createInjector(new XMLMyBatisModule() {
 
                     @Override
                     protected void initialize() {
-                        install(JdbcHelper.MySQL);                        
+                        install(JdbcHelper.PostgreSQL);                        
                         setClassPathResource("mybatis-configDatabase.xml");                        
                         bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
                         bind(RecursoDAO.class).to(mybatisRecursoDAO.class);
                         bind(CohorteDAO.class).to(mybatisCohorteDAO.class);
-                        //bind(ClaseDAO.class).to(mybatisClaseDAO.class);
+                        bind(ClaseDAO.class).to(mybatisClaseDAO.class);
                         //bind(SalonDAO.class).to(mybatisSalonDAO.class);
 
                         
@@ -50,7 +51,7 @@ public class ServiciosReporteFactory {
                 }
                 
         );
-        /*testingInjector = createInjector(new XMLMyBatisModule() {
+        testingInjector = Guice.createInjector(new XMLMyBatisModule() {
 
                     @Override
                     protected void initialize() {
@@ -68,7 +69,7 @@ public class ServiciosReporteFactory {
                 }
                 
         );
-        */
+        
     }
     public ServiciosReporte getServiciosReporteForTesting(){
         return testingInjector.getInstance(ServiciosReporte.class);   

@@ -6,6 +6,7 @@
 package proyecto.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -20,18 +21,22 @@ public class Clase implements Serializable{
     private Cohorte materia_cohorte_sigla;
     private Materia materia_cohorte_id;
     private Date fecha;
-    
+    private ArrayList<Recurso> recursos;
+    private Salon salon;
             
     public Clase(){
+        this.recursos = new ArrayList<>();
     }
     
-    public Clase(int id,Date inicio,Date fin,Cohorte corte,Materia mat,Date fecha){
+    public Clase(int id,Date inicio,Date fin,Cohorte corte,Materia mat,Date fecha,Salon sal,ArrayList<Recurso> r){
         this.id=id;
         hora_inicio=inicio;
         hora_fin=fin;
         materia_cohorte_sigla=corte;
         materia_cohorte_id=mat;
         this.fecha=fecha;
+        salon=sal;
+        recursos=r;
     
     }
 
@@ -82,6 +87,22 @@ public class Clase implements Serializable{
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public ArrayList<Recurso> getRecursos() {
+        return recursos;
+    }
+
+    public void setRecursos(ArrayList<Recurso> recursos) {
+        this.recursos = recursos;
+    }
+
+    public Salon getSalon() {
+        return salon;
+    }
+
+    public void setSalon(Salon salon) {
+        this.salon = salon;
     }
     
      @Override

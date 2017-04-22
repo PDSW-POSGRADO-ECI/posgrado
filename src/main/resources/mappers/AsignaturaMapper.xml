@@ -35,7 +35,6 @@ and open the template in the editor.
         <id property='id' column='id'/>
         <result property='nombre' column='nombre'/>
         <result property='creditos' column='creditos'/>
-        
     </resultMap>
     
     
