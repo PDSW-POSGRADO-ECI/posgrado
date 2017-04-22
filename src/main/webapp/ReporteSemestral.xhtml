@@ -3,12 +3,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui" 
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <h:head>
         <title>Reporte Semestral</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:form id="ReporteSemestral">
+   
         <h:body>
+            <h:form id="ReporteSemestral">
             <p:panelGrid style="margin-top:20px">
             <f:facet name="header">
                 <p:row>
@@ -133,6 +134,12 @@
                 </p:row>  
                 
             </p:panelGrid>
-        </h:body>
-    </h:form>
+                
+            <br>
+            <p:commandButton value="Regresar" action="Reporte"/>
+            </br>
+            
+            </h:form>
+        </h:body>    
+    
 </html>
