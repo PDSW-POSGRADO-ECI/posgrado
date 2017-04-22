@@ -7,18 +7,21 @@
 package proyecto.services;
 
 import com.google.inject.Guice;
-import static com.google.inject.Guice.createInjector;
 import com.google.inject.Injector;
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
+import proyecto.dao.AsignaturaDAO;
 import proyecto.dao.ClaseDAO;
 import proyecto.dao.CohorteDAO;
+import proyecto.dao.MateriaDAO;
+import proyecto.dao.ProfesorDAO;
 import proyecto.dao.RecursoDAO;
-import proyecto.dao.SalonDAO;
+import proyecto.dao.mybatis.mybatisAsignaturaDAO;
 import proyecto.dao.mybatis.mybatisClaseDAO;
 import proyecto.dao.mybatis.mybatisCohorteDAO;
+import proyecto.dao.mybatis.mybatisMateriaDAO;
+import proyecto.dao.mybatis.mybatisProfesorDAO;
 import proyecto.dao.mybatis.mybatisRecursoDAO;
-import proyecto.dao.mybatis.mybatisSalonDAO;
 import proyecto.services.impl.ServiciosReporteImpl;
 
 /**
@@ -43,7 +46,9 @@ public class ServiciosReporteFactory {
                         bind(RecursoDAO.class).to(mybatisRecursoDAO.class);
                         bind(CohorteDAO.class).to(mybatisCohorteDAO.class);
                         bind(ClaseDAO.class).to(mybatisClaseDAO.class);
-                        //bind(SalonDAO.class).to(mybatisSalonDAO.class);
+                        bind(MateriaDAO.class).to(mybatisMateriaDAO.class);
+                        bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
+                        bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
 
                         
                     }
@@ -57,11 +62,10 @@ public class ServiciosReporteFactory {
                     protected void initialize() {
                         install(JdbcHelper.PostgreSQL);                        
                         setClassPathResource("h2-mybatis-config.xml");                        
-                        bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
+                        /*bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
                         bind(RecursoDAO.class).to(mybatisRecursoDAO.class);
                         bind(CohorteDAO.class).to(mybatisCohorteDAO.class);
-                        bind(ClaseDAO.class).to(mybatisClaseDAO.class);
-                        bind(SalonDAO.class).to(mybatisSalonDAO.class);
+                        bind(ClaseDAO.class).to(mybatisClaseDAO.class);*/
 
                         
                     }

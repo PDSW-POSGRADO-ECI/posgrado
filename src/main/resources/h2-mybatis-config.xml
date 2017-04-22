@@ -14,7 +14,7 @@ and open the template in the editor.
     
     <typeAliases>
         <typeAlias type='proyecto.entities.Recurso' alias='Recurso'/>
-        <typeAlias type='proyecto.entities.Salon' alias='Salon'/>
+        <typeAlias type='proyecto.entities.Posgrado' alias='Posgrado'/>
         <typeAlias type='proyecto.entities.Clase' alias='Clase'/>
         <typeAlias type='proyecto.entities.Materia' alias='Materia'/>
         <typeAlias type='proyecto.entities.Cohorte' alias='Cohorte'/>
@@ -37,7 +37,6 @@ and open the template in the editor.
         
     <mappers>
         <mapper resource="mappers/RecursoMapper.xml"></mapper>
-        <mapper resource="mappers/SalonMapper.xml"></mapper>  
         <mapper resource="mappers/CohorteMapper.xml"></mapper>  
         <mapper resource="mappers/ClaseMapper.xml"></mapper> 
         <mapper resource="mappers/ProfesorMapper.xml"></mapper>

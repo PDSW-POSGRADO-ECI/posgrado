@@ -17,16 +17,16 @@ public class Posgrado implements Serializable{
     private int id; 
     private String nombre;
     private int creditos;
-    private ArrayList<Asignatura> asig;
+    
     
     public Posgrado(){
-        this.asig = new ArrayList<>();
+        //this.asig = new ArrayList<>();
     }
-    public Posgrado(int id, String nombre, int creditos, ArrayList<Asignatura> as) {
+    public Posgrado(int id, String nombre, int creditos) {
         this.id = id;
         this.nombre = nombre;
         this.creditos = creditos;
-        asig=as;
+        //asig=as;
     }
 
     public int getId() {
@@ -52,16 +52,6 @@ public class Posgrado implements Serializable{
     public void setCreditos(int creditos) {
         this.creditos = creditos;
     }
-
-    public ArrayList<Asignatura> getAsig() {
-        return asig;
-    }
-
-    public void setAsig(ArrayList<Asignatura> asig) {
-        this.asig = asig;
-    }
-    
-    
 
     
     

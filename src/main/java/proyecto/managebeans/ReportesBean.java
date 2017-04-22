@@ -10,6 +10,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import proyecto.entities.Cohorte;
+import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
 import proyecto.services.ServiciosReporte;
@@ -30,16 +31,25 @@ public class ReportesBean implements Serializable{
     private String period;
     
     public ReportesBean(){
-        period="";
+        period=null;
     }
     
     public List<Recurso> getRecursosXperiodo() throws ExceptionServiciosReporte{
         return report.consultarRecursosXperiodo(period);
     }
     
-    public List<Cohorte> getCohorte() throws ExceptionServiciosReporte{
+    public List<Cohorte> getPeriodos() throws ExceptionServiciosReporte{
         return report.obtenerPeriodos();
     }
+    
+    public List<Profesor> getProfesores() throws ExceptionServiciosReporte{
+        List<Profesor> a=report.colsultarProfesor();
+        System.out.println(a.toString());
+        return a;
+    }
+    
+     
+    
 
     public String getPeriodo() {
         return period;

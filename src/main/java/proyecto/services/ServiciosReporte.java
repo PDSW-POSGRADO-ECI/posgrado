@@ -7,6 +7,7 @@ package proyecto.services;
 
 import java.util.List;
 import proyecto.entities.Cohorte;
+import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 
 /**
@@ -18,5 +19,7 @@ public interface ServiciosReporte {
     public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte;
     
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte;
+
+    public List<Profesor> colsultarProfesor();
     
 }

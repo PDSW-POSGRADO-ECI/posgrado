@@ -32,5 +32,17 @@ public class mybatisRecursoDAO implements RecursoDAO {
         
         return rec;
     }
+
+    @Override
+    public List<Recurso> loadRecursos() throws ExceptionPersistence {
+        List<Recurso> rec=null;
+        try{
+            rec=recursoMapper.consultarRecursos();
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new ExceptionPersistence("Error al cargar Recurso "+rec.toString(),e);
+        }        
+        
+        return rec;    }
     
 }

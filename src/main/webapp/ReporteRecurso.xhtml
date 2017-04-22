@@ -5,28 +5,34 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Reporte de recursos</title>
+        <style>
+            .tadiwa{
+                background-image:url("/resources/escuela.jpg");
+            }
+            
+        </style>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:form id="ReporteRecurso">
         <h:body>
-            <h:panelGrid columns="1"  cellpadding="5" columnClasses="label, value">
-                <!--p:outputLabel for="basic" value="Seleccione el periodo que desea consultar:" />
+            <!--h:panelGrid columns="1"  cellpadding="5" columnClasses="label, value">
+                <p:outputLabel for="basic" value="Seleccione el periodo que desea consultar:" />
                 <p:selectOneListbox id="basic" value="{ReportesBean.periodo}" >
                     <f:selectItems value="{ReportesBean.cohorte}" var="per"/>
                      <p:column>
                          <h:outputText styleClass="ui-theme ui-theme-{per.periodo}" />
                      </p:column>
-                </p:selectOneListbox-->
-                <p:dataTable id="TablaItems" var="corte"  value="#{ReportesBean.cohorte}">
+                </p:selectOneListbox>
+                
+             </h:panelGrid-->
+            <p:dataTable id="TablaItems" var="per"  value="#{ReportesBean.periodos}">
                      
                       <p:column headerText="Periodo">
-                          <h:outputText value="#{corte.id}"/>
+                          <h:outputText value="#{per.periodo}"/>
                       </p:column>
-                </p:dataTable>
-
-             </h:panelGrid>
-
-            <p:commandButton value="Generar Reporte" update="Periodos" actionListener="#{ReportesBean.recursosXperiodo}" icon="ui-icon-check" />
+             </p:dataTable>
+            <p:commandButton value="Cerrar Sesión" action="Reporte"/>
+            <p:commandButton value="Generar Reporte" icon="ui-icon-check" />
         </h:body>
     </h:form>
     

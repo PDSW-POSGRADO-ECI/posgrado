@@ -5,10 +5,16 @@
  */
 package proyecto.dao.mybatis.mappers;
 
+import java.util.List;
+import proyecto.entities.Clase;
+
 /**
  *
  * @author Laura RB
  */
 public interface ClaseMapper {
+    public List<Clase> consultarClase();
+
     
+
 }

@@ -14,4 +14,5 @@ import proyecto.entities.Recurso;
  */
 public interface RecursoDAO {
     public List<Recurso> loadRecursoXperiodo(String per)throws ExceptionPersistence;
+    public List<Recurso> loadRecursos()throws ExceptionPersistence;
 }

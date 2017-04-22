@@ -5,10 +5,13 @@
  */
 package proyecto.dao;
 
+import java.util.List;
+import proyecto.entities.Clase;
+
 /**
  *
  * @author Laura RB
  */
 public interface ClaseDAO {
-    
+    public List<Clase> loadClase() throws ExceptionPersistence;
 }

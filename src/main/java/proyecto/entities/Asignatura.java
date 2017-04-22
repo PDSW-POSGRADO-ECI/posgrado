@@ -16,18 +16,18 @@ public class Asignatura implements Serializable {
     
     private int id;
     private String nombre;
-    private Posgrado Posgrado_id;
-    private ArrayList<Materia> materias;
+    private Posgrado posgrado_id;
     
     public Asignatura(){
-        this.materias = new ArrayList<>();
+        //this.materias = new ArrayList<>();
+        posgrado_id=null;
     }
     
-    public Asignatura(int id, String nombre, Posgrado Posgrado_id, ArrayList<Materia> mat) {
+    public Asignatura(int id, String nombre, Posgrado Posgrado_id) {
         this.id = id;
         this.nombre = nombre;
-        this.Posgrado_id = Posgrado_id;
-        materias=mat;
+        this.posgrado_id = Posgrado_id;
+        //materias=mat;
     }
 
     public int getId() {
@@ -47,11 +47,11 @@ public class Asignatura implements Serializable {
     }
 
     public Posgrado getPosgrado_id() {
-        return Posgrado_id;
+        return posgrado_id;
     }
 
     public void setPosgrado_id(Posgrado Posgrado_id) {
-        this.Posgrado_id = Posgrado_id;
+        this.posgrado_id = Posgrado_id;
     }
     
     

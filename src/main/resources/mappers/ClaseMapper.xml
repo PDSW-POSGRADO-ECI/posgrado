@@ -33,10 +33,6 @@ and open the template in the editor.
         join materia as mat on mat.sigla=matco.sigla 
         join cohorte as co on co.id=matco.cohorte_id
         
-        WHERE 
-        
-       
-        
     </select>
     
     <resultMap type='Clase' id='ClaseResult'>
@@ -44,8 +40,8 @@ and open the template in the editor.
         <id property='id' column='id'/>
         <result property='recurso' column='recurso'/>
         <result property='disponible' column='disponible'/>       
-        <association property="corte" javaType="Cohorte" columnPrefix='CO_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper.CohorteResult'></association>      
-        <association property="materia" javaType="Materia" columnPrefix='MAT_' resultMap='proyecto.dao.mybatis.mappers.MateriaMapper.MateriaResult'></association>      
+        <association property="materia_cohorte_id" javaType="Cohorte" columnPrefix='CO_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper.CohorteResult'></association>      
+        <association property="materia_cohorte_sigla" javaType="Materia" columnPrefix='MAT_' resultMap='proyecto.dao.mybatis.mappers.MateriaMapper.MateriaResult'></association>      
 
     </resultMap>
     

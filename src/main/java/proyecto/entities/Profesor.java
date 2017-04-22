@@ -19,21 +19,21 @@ public class Profesor implements Serializable{
     private String correo;
     private int telefono;
     private String tipo_documento;
-    private ArrayList<Materia> materias;
-    private ArrayList<Cohorte> cortes;
+    //private ArrayList<Materia> materias;
+    //private ArrayList<Cohorte> cortes;
     
     public Profesor(){
-        this.materias = new ArrayList<>();
-        this.cortes = new ArrayList<>();
+        //this.materias = new ArrayList<>();
+        //this.cortes = new ArrayList<>();
     }
-    public Profesor(ArrayList<Cohorte> cor,ArrayList<Materia> mat,int documento, String nombre, String correo, int telefono, String tipo_documento) {
+    public Profesor(int documento, String nombre, String correo, int telefono, String tipo_documento) {
         this.documento = documento;
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
         this.tipo_documento = tipo_documento;
-        cortes=cor;
-        materias=mat;
+        //cortes=cor;
+        //materias=mat;
     }
 
     public int getDocumento() {
@@ -76,23 +76,6 @@ public class Profesor implements Serializable{
         this.tipo_documento = tipo_documento;
     }
 
-    public ArrayList<Materia> getMaterias() {
-        return materias;
-    }
-
-    public void setMaterias(ArrayList<Materia> materias) {
-        this.materias = materias;
-    }
-
-    public ArrayList<Cohorte> getCortes() {
-        return cortes;
-    }
-
-    public void setCortes(ArrayList<Cohorte> cortes) {
-        this.cortes = cortes;
-    }
-    
-    
     
     
     

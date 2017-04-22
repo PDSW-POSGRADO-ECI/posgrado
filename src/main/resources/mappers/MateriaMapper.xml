@@ -18,12 +18,16 @@ and open the template in the editor.
         mat.nombre,
         mat.creditos,
         mat.descripcion
+        
         asi.id as ASI_id,
         asi.nombre as ASI_nombre,
         
+        pos.id as ASI_POS_id,
+        pos.nombre as ASI_POS_id,
+        pos.creditos as ASI_POS_id,
         
-	FROM Materia as mat
-        join Asignatura as asi on mat.Asignatura_id=asi.id;
+	FROM materia as mat
+        join asignatura as asi on mat.asignatura_id=asi.id;
         
     </select>
     
@@ -32,7 +36,7 @@ and open the template in the editor.
         <result property='nombre' column='nombre'/>
         <result property='creditos' column='creditos'/>
         <result property='descripcion' column='descripcion'/>
-        <association property="asignatura" javaType="Asignatura" columnPrefix='ASI_' resultMap='proyecto.dao.mybatis.mappers.AsignaturaMapper.AsignaturaResult' ></association> 
+        <association property="asignatura_id" javaType="Asignatura" columnPrefix='ASI_' resultMap='proyecto.dao.mybatis.mappers.AsignaturaMapper.AsignaturaResult' ></association> 
     </resultMap>
     
 </mapper>

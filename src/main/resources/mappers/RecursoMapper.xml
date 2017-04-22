@@ -16,13 +16,34 @@ and open the template in the editor.
 	rec.id,
         rec.recurso,
         rec.disponible,
-        cla.fecha as CLA_fecha
+        
+        cla.fecha as CLA_fecha,
+        cla.hora_inicio as CLA_hora_inicio,
+        cla.hora_fin as as CLA_hora_fin
         
 	FROM recurso as rec 
         join clase as cla on cla.id=rec.clase_id
-        join cohorte as cor on cla.materia_cohorte_cohorte_id=cor.id
+        join cohorte as co on cla.materia_cohorte_cohorte_id=co.id
         
         WHERE {#periodo}=cor.periodo;
+        
+    </select>
+    
+    <select parameterType="map" id="consultarRecursos" resultMap="RecursoResult">
+        SELECT
+        
+	rec.id,
+        rec.recurso,
+        rec.disponible,
+        
+        cla.fecha as CLA_fecha,
+        cla.hora_inicio as CLA_hora_inicio,
+        cla.hora_fin as as CLA_hora_fin
+        
+	FROM recurso as rec 
+        join clase as cla on cla.id=rec.clase_id
+        join cohorte as co on cla.materia_cohorte_cohorte_id=co.id
+        
         
     </select>
     
@@ -34,7 +55,7 @@ and open the template in the editor.
         <id property='id' column='id'/>
         <result property='nomRecurso' column='recurso'/>
         <result property='disponible' column='disponible'/> 
-        <association property="clase" javaType="Clase" columnPrefix='CLA_' resultMap='proyecto.dao.mybatis.mappers.ClaseMapper.ClaseResult'></association>      
+        <association property="clase_id" javaType="Clase" columnPrefix='CLA_' resultMap='proyecto.dao.mybatis.mappers.ClaseMapper.ClaseResult'></association>      
     </resultMap>
     
 </mapper>

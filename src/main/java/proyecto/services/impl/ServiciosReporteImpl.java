@@ -10,10 +10,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.ibatis.exceptions.PersistenceException;
+import proyecto.dao.ClaseDAO;
 import proyecto.dao.CohorteDAO;
 import proyecto.dao.ExceptionPersistence;
+import proyecto.dao.MateriaDAO;
+import proyecto.dao.ProfesorDAO;
 import proyecto.dao.RecursoDAO;
 import proyecto.entities.Cohorte;
+import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
 import proyecto.services.ServiciosReporte;
@@ -28,7 +32,10 @@ public class ServiciosReporteImpl implements ServiciosReporte{
     public ServiciosReporteImpl(){}
     
     @Inject private RecursoDAO recurso;
+    @Inject private ProfesorDAO profesor;
     @Inject private CohorteDAO corte;
+    @Inject private ClaseDAO clase;
+    @Inject private MateriaDAO materia;
 
     @Override
     public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte{
@@ -50,6 +57,18 @@ public class ServiciosReporteImpl implements ServiciosReporte{
         List<Cohorte> sp = null;
         try {
                 sp=corte.loadPeriodos();
+            } 
+        catch (ExceptionPersistence ex) {
+                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return sp;
+    }
+    
+    @Override
+    public List<Profesor> colsultarProfesor() {
+         List<Profesor> sp = null;
+        try {
+                sp=profesor.loadProfesores();
             } 
         catch (ExceptionPersistence ex) {
                 Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);

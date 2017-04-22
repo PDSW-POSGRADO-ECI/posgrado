@@ -20,10 +20,10 @@ and open the template in the editor.
         pro.telefono,
         pro.tipo_documento
         
-	FROM Profesor as pro;
+	FROM profesor as pro;
     </select>
     
-    <resultMap type="Pofesor" id="ProfesorResult">
+    <resultMap type="Profesor" id="ProfesorResult">
         <id property='documento' column='documento'/>
         <result property='nombre' column='nombre'/>
         <result property='correo' column='correo'/>

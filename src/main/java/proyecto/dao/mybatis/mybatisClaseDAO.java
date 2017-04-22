@@ -6,9 +6,14 @@
 package proyecto.dao.mybatis;
 
 import com.google.inject.Inject;
+import java.util.List;
+import org.apache.ibatis.exceptions.PersistenceException;
 import proyecto.dao.ClaseDAO;
+import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.mybatis.mappers.ClaseMapper;
 import proyecto.dao.mybatis.mappers.CohorteMapper;
+import proyecto.entities.Clase;
+import proyecto.entities.Cohorte;
 
 /**
  *
@@ -17,4 +22,18 @@ import proyecto.dao.mybatis.mappers.CohorteMapper;
 public class mybatisClaseDAO implements ClaseDAO{
 
     @Inject private ClaseMapper claseMapper;
+    
+  
+    @Override
+    public List<Clase> loadClase() throws ExceptionPersistence {
+        List<Clase> per=null;
+        try{
+            per=claseMapper.consultarClase();
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Error al cargar Periodo ",e);
+        }        
+        
+        return per;
+    }
 }
