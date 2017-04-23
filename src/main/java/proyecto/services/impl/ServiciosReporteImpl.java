@@ -63,6 +63,17 @@ public class ServiciosReporteImpl implements ServiciosReporte{
             }
         return sp;
     }
+    @Override
+    public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte {
+        List<Cohorte> sp = null;
+        try {
+                sp=corte.loadPeriodo(a);
+            } 
+        catch (ExceptionPersistence ex) {
+                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return sp;
+    }
     
     @Override
     public List<Profesor> colsultarProfesor() {

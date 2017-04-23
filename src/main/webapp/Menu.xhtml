@@ -14,7 +14,7 @@
             .ui-button-text{
                 font-size:15px;
              }
-             .smallButton .ui-button-text {
+             <!--.smallButton .ui-button-text {
                 font-size:12px;
              }
              .outerpanelgrid>tbody>tr{
@@ -22,29 +22,25 @@
             }
             .outerpanelgrid>tbody>tr>td{
                 border: none !important;
-            }
+            }-->
         </style>
         
     </h:head>
     
     <h:body>       
         <h:form id="Menu">
-            
-            <p:toolbar>
-                
-                <f:facet name="left">          
+            <p:toolbar >
+                <f:facet name="left" >          
                     <span class="ui-separator">
                         <span class="ui-icon ui-icon-grip-dotted-vertical" />
                     </span>
                 </f:facet>  
-                
                 <f:facet name="right">
                     <p:commandButton value="Cerrar Sesión" action="Inicio"  styleClass="smallButton" icon="ui-icon-extlink"/>
                 </f:facet> 
-                
             </p:toolbar>        
            
-            <p:panelGrid style="position:absolute ; top: 40%; left: 73%" styleClass="outerpanelgrid">
+            <p:panelGrid  id="Menu"  style="position:absolute ; top: 30%; left: 30%" styleClass="outerpanelgrid">
                 
                     <f:facet name="header">
                         <p:row>
@@ -54,10 +50,10 @@
                 
                     <p:row>
                         <p:column colspan="2">
-                            <p:outputLabel for="repRecurso" value="Reporte Recursos:" />
+                            <p:outputLabel for="repRecurso" value="Reporte de Recursos:" />
                         </p:column>
                         <p:column colspan="2">
-                            <p:commandButton  id="repRecurso" value="Generar Reporte" type="submit"  action="ReporteRecurso"/> 
+                            <p:commandButton  id="repRecurso" update="Menu" value="Generar Reporte" type="submit"  action="ReporteRecurso"/> 
                         </p:column>
                     </p:row>
                     
@@ -66,11 +62,11 @@
                             <p:outputLabel for="repGeneral" value="Reporte General:   " />
                         </p:column>
                         <p:column>
-                            <p:commandButton id="repGeneral" value="Generar Reporte" action="ReporteSemestral"/> 
+                            <p:commandButton id="repGeneral" update="Menu" value="Generar Reporte" action="ReporteSemestral"/> 
                         </p:column>
                     </p:row>
                     
-                </p:panelGrid>
+            </p:panelGrid>
             
         </h:form>
    </h:body>

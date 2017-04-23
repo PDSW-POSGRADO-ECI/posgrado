@@ -6,6 +6,7 @@
 package proyecto.dao.mybatis.mappers;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 import proyecto.entities.Cohorte;
 
 /**
@@ -14,4 +15,5 @@ import proyecto.entities.Cohorte;
  */
 public interface CohorteMapper {
     public List<Cohorte> consultarPeriodos();
+    public List<Cohorte> consultarPeriodo(@Param("periodo") String per);
 }

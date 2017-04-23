@@ -24,19 +24,18 @@ and open the template in the editor.
         co.fecha_inicio CO_fecha_inicio,
         co.fecha_fin CO_fecha_fin,
         
-        mat.nombre as MAT_nombre,
+        mat.nombre as MAT_nombre
         
 	FROM clase as cla 
         join materiacohorte as matco on 
         matco.materia_sigla=cla.materia_cohorte_materia_sigla 
         and matco.cohorte_id=cla.materia_cohorte_cohorte_id
         join materia as mat on mat.sigla=matco.sigla 
-        join cohorte as co on co.id=matco.cohorte_id
+        join cohorte as co on co.id=matco.cohorte_id;
         
     </select>
     
     <resultMap type='Clase' id='ClaseResult'>
-        
         <id property='id' column='id'/>
         <result property='hora_inicio' column='hora_inicio'/>
         <result property='hora_fin' column='hora_fin'/>   

@@ -33,5 +33,18 @@ public class mybatisCohorteDAO implements CohorteDAO{
         
         return per;
     }
+    
+    @Override
+    public List<Cohorte> loadPeriodo(String p ) {
+        List<Cohorte> per=null;
+        try{
+            per=corteMapper.consultarPeriodo(p);
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Error al cargar Periodo ",e);
+        }        
+        
+        return per;
+    }
    
 }

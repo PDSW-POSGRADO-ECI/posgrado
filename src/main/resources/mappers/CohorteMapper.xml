@@ -18,14 +18,14 @@ and open the template in the editor.
         GROUP BY co.periodo;
     </select>
     
-     <select parameterType="map" id="consultarCohorte" resultMap="CohorteResult">
+     <select parameterType="map" id="consultarPeriodo" resultMap="CohorteResult">
         
         SELECT
             co.id,
             co.fecha_inicio,
-            co.fecha_fin
-            co.periodo;
-        FROM Cohorte as co;
+            co.fecha_fin,
+            co.periodo
+        FROM Cohorte as co WHERE co.periodo=#{periodo};
         
         
     </select>

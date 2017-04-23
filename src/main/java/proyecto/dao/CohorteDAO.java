@@ -14,4 +14,5 @@ import proyecto.entities.Cohorte;
  */
 public interface CohorteDAO {
     public List<Cohorte> loadPeriodos() throws ExceptionPersistence;
+    public List<Cohorte> loadPeriodo(String p) throws ExceptionPersistence;
 }

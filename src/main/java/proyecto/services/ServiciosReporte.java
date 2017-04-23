@@ -19,6 +19,7 @@ public interface ServiciosReporte {
     public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte;
     
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte;
+    public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte;
 
     public List<Profesor> colsultarProfesor();
     

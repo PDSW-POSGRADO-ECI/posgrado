@@ -17,13 +17,13 @@ and open the template in the editor.
         rec.recurso,
         rec.disponible,
         
-        cla.fecha as CLA_fecha,
-        cla.hora_inicio as CLA_hora_inicio,
-        cla.hora_fin as as CLA_hora_fin
+        cla.id as CLA_id,
+        cla.fecha as CLA_fecha
         
 	FROM recurso as rec 
         join clase as cla on cla.id=rec.clase_id
-        join cohorte as co on cla.materia_cohorte_cohorte_id=co.id on {#periodo}=cor.periodo;
+        join cohorte as co on cla.materia_cohorte_cohorte_id=co.id 
+        WHERE co.periodo=#{periodo};
         
     </select>
     
@@ -36,7 +36,7 @@ and open the template in the editor.
         
         cla.fecha as CLA_fecha,
         cla.hora_inicio as CLA_hora_inicio,
-        cla.hora_fin as as CLA_hora_fin
+        cla.hora_fin as  CLA_hora_fin
         
 	FROM recurso as rec 
         join clase as cla on cla.id=rec.clase_id

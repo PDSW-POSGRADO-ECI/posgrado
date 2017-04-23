@@ -24,7 +24,7 @@ and open the template in the editor.
         
         pos.id as ASI_POS_id,
         pos.nombre as ASI_POS_id,
-        pos.creditos as ASI_POS_id,
+        pos.creditos as ASI_POS_id
         
 	FROM materia as mat
         join asignatura as asi on mat.asignatura_id=asi.id;

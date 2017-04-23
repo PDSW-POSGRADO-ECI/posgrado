@@ -6,6 +6,7 @@
 package proyecto.managebeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -28,18 +29,28 @@ public class ReportesBean implements Serializable{
     
     
     ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
-    private String period;
+    private String periodo;
     
     public ReportesBean(){
-        period=null;
+        periodo="";
     }
     
-    public List<Recurso> getRecursosXperiodo() throws ExceptionServiciosReporte{
-        return report.consultarRecursosXperiodo(period);
+    public List<String> getRecursosXperiodo() throws ExceptionServiciosReporte{ 
+        List<String> fechas=new ArrayList<>();
+        List<Recurso> rec=report.consultarRecursosXperiodo(periodo);
+        for (int i=0;i<rec.size();i++){
+            fechas.add(rec.get(i).getClase_id().getFecha().toString());
+        }
+        return fechas;
     }
     
-    public List<Cohorte> getPeriodos() throws ExceptionServiciosReporte{
-        return report.obtenerPeriodos();
+    public List<String> getPeriodos() throws ExceptionServiciosReporte{
+        List<Cohorte> corte=report.obtenerPeriodos();
+        List<String> per=new ArrayList<>();
+        for (int i=0;i<corte.size();i++){
+            per.add(corte.get(i).getPeriodo());
+        }
+        return per;
     }
     
     public List<Profesor> getProfesores() throws ExceptionServiciosReporte{
@@ -52,11 +63,11 @@ public class ReportesBean implements Serializable{
     
 
     public String getPeriodo() {
-        return period;
+        return periodo;
     }
 
     public void setPeriodo(String periodo) {
-        this.period = periodo;
+        this.periodo = periodo;
     }
     
     
