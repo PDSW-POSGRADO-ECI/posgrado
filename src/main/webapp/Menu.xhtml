@@ -6,35 +6,71 @@
     
     <h:head>
         
-        <title>Inicio</title>
+        <title>Menú</title>
         <style>
             .tadiwa{
                 background-image:url("/resources/escuela.jpg");
             }
-            
+            .ui-button-text{
+                font-size:15px;
+             }
+             .smallButton .ui-button-text {
+                font-size:12px;
+             }
+             .outerpanelgrid>tbody>tr{
+                border: none !important;
+            }
+            .outerpanelgrid>tbody>tr>td{
+                border: none !important;
+            }
         </style>
         
     </h:head>
     
-    <h:body styleClass="tadiwa">
-        <h:form id="ReportesS">
+    <h:body>       
+        <h:form id="Menu">
             
-            <p:commandButton value="Cerrar Sesión" action="Inicio"/>
-                        
-            <p:panel id="panelReportes" header="Reportes" style="position:absolute ; top: 6%; left: 73%">
-                <h:panelGrid columns="1" cellpadding="5" >
+            <p:toolbar>
+                
+                <f:facet name="left">          
+                    <span class="ui-separator">
+                        <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                    </span>
+                </f:facet>  
+                
+                <f:facet name="right">
+                    <p:commandButton value="Cerrar Sesión" action="Inicio"  styleClass="smallButton" icon="ui-icon-extlink"/>
+                </f:facet> 
+                
+            </p:toolbar>        
+           
+            <p:panelGrid style="position:absolute ; top: 40%; left: 73%" styleClass="outerpanelgrid">
+                
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column colspan="6"> Reportes</p:column>
+                        </p:row>
+                    </f:facet>
+                
+                    <p:row>
+                        <p:column colspan="2">
+                            <p:outputLabel for="repRecurso" value="Reporte Recursos:" />
+                        </p:column>
+                        <p:column colspan="2">
+                            <p:commandButton  id="repRecurso" value="Generar Reporte" type="submit"  action="ReporteRecurso"/> 
+                        </p:column>
+                    </p:row>
                     
                     <p:row>
-                    <p:outputLabel for="repRecurso" value="Reporte Recursos: " />
-                    <p:commandButton  id="repRecurso" value="Generar Reporte" type="submit"  action="Periodo"/> 
-                    </p:row>
-                    <p:row>
-                        <p:outputLabel for="repGeneral" value="Reporte general:   " />
-                        <p:commandButton id="repGeneral" value="Generar Reporte" action="ReporteSemestral"/> 
+                        <p:column colspan="2">
+                            <p:outputLabel for="repGeneral" value="Reporte General:   " />
+                        </p:column>
+                        <p:column>
+                            <p:commandButton id="repGeneral" value="Generar Reporte" action="ReporteSemestral"/> 
+                        </p:column>
                     </p:row>
                     
-                </h:panelGrid>
-            </p:panel>
+                </p:panelGrid>
             
         </h:form>
    </h:body>

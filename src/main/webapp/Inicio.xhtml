@@ -9,24 +9,27 @@
         <title>Inicio de Sesion</title>
         <style>
             .tadiwa{
-                background-image:url("/resources/escuela.jpg");
+                background-image:url("/resources/escuela3.jpg");
             }
             
-           
         </style>
     </h:head>
     
     <h:body styleClass="tadiwa">
+        
+        
         <h:form id="login">
-            <center><p:graphicImage value="url(resources/logo.jpg)"/></center>
-            <p:growl id="msg" showDetail="true" life="3000" />
+     
+                
+                
+            
             <p:panel header="Inicio de Sesión" style="height:240px;width:380px;position:absolute ; top: 50%; left: 50%;margin-top:-150px;margin-left:-180px;">
                 <p:spacer></p:spacer>
                 
                 <h:panelGrid  id="loginPanel"  columns="2"  cellpadding="1" cellspacing="1" style="">
                     
                     <h:outputText value="Usuario: "  />
-                    <p:inputText  id="userName" value="no"/> 
+                    <p:inputText  id="userName"/> 
                     <p:spacer></p:spacer>
                     <p:message for="userName" ></p:message>
                     <h:outputText value="Contraseña: " />
@@ -38,6 +41,7 @@
                 </h:panelGrid>
                 
             </p:panel>
+           
        </h:form>
    </h:body>
 </html>
