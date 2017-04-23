@@ -115,8 +115,8 @@ ALTER TABLE rol ADD CONSTRAINT rol_pk PRIMARY KEY (rol);
 ALTER TABLE usr ADD CONSTRAINT usr_pk PRIMARY KEY (usuario);
 
 -- unique keys
-ALTER TABLE Clase ADD CONSTRAINT uk_clase UNIQUE (id) NOT DEFERRABLE  INITIALLY IMMEDIATE;
-ALTER TABLE Profesor ADD CONSTRAINT Profesor_ak_1 UNIQUE (nombre) NOT DEFERRABLE  INITIALLY IMMEDIATE;
+ALTER TABLE Clase ADD CONSTRAINT uk_clase UNIQUE (id) ;
+ALTER TABLE Profesor ADD CONSTRAINT Profesor_ak_1 UNIQUE (nombre) ;
 
 -- foreign keys
 -- Reference: Asignatura_Posgrado (table: Asignatura)
@@ -124,88 +124,66 @@ ALTER TABLE Profesor ADD CONSTRAINT Profesor_ak_1 UNIQUE (nombre) NOT DEFERRABLE
 ALTER TABLE Asignatura ADD CONSTRAINT Asignatura_Posgrado
     FOREIGN KEY (Posgrado_id)
     REFERENCES Posgrado (id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: Clase_Materia_cohorte (table: Clase)
 ALTER TABLE Clase ADD CONSTRAINT Clase_Materia_cohorte
     FOREIGN KEY (Materia_cohorte_Materia_sigla, Materia_cohorte_Cohorte_id)
     REFERENCES MateriaCohorte (Materia_sigla, Cohorte_id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: Horario_Profesor (table: Horario)
 ALTER TABLE Horario ADD CONSTRAINT Horario_Profesor
     FOREIGN KEY (Profesor_documento)
     REFERENCES Profesor (documento)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: Materia_Asignatura (table: Materia)
 ALTER TABLE Materia ADD CONSTRAINT Materia_Asignatura
     FOREIGN KEY (Asignatura_id)
-    REFERENCES Asignatura (id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+    REFERENCES Asignatura (id) 
 ;
 
 -- Reference: Materia_cohorte_Cohorte (table: MateriaCohorte)
 ALTER TABLE MateriaCohorte ADD CONSTRAINT Materia_cohorte_Cohorte
     FOREIGN KEY (Cohorte_id)
-    REFERENCES Cohorte (id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+    REFERENCES Cohorte (id) 
 ;
 
 -- Reference: Materia_cohorte_Materia (table: MateriaCohorte)
 ALTER TABLE MateriaCohorte ADD CONSTRAINT Materia_cohorte_Materia
     FOREIGN KEY (Materia_sigla)
-    REFERENCES Materia (sigla)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+    REFERENCES Materia (sigla) 
 ;
 
 -- Reference: Materia_cohorte_Profesor (table: MateriaCohorte)
 ALTER TABLE MateriaCohorte ADD CONSTRAINT Materia_cohorte_Profesor
     FOREIGN KEY (Profesor_documento)
     REFERENCES Profesor (documento)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: Recurso_Clase (table: Recurso)
 ALTER TABLE Recurso ADD CONSTRAINT Recurso_Clase
     FOREIGN KEY (Clase_id)
     REFERENCES Clase (id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: Salon_Clase (table: Salon)
 ALTER TABLE Salon ADD CONSTRAINT Salon_Clase
     FOREIGN KEY (Clase_id)
     REFERENCES Clase (id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: Table_16_Materia (table: MateriaPerrequisito)
 ALTER TABLE MateriaPerrequisito ADD CONSTRAINT Table_16_Materia
     FOREIGN KEY (Materia_sigla)
     REFERENCES Materia (sigla)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: rol_usr (table: rol)
 ALTER TABLE rol ADD CONSTRAINT rol_usr
     FOREIGN KEY (usr_usuario)
     REFERENCES usr (usuario)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- End of file.

@@ -32,8 +32,7 @@ public class ReporteRecursoTest {
     @After 
     public void clearDB() throws SQLException, Exception{
         Connection conbd= DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL","anonymous","");
-        Statement stmt = (Statement) conbd.createStatement();
-        stmt.execute();
+        
     }
     /**
      * Seleccion de peridodo academico para generar el reporte de recursos para 
