@@ -1,39 +1,27 @@
-package tests;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package tests;
 
-import java.beans.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import org.junit.After;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import proyecto.services.ExceptionServiciosReporte;
-import java.sql.SQLException;
 
 /**
  *
  * @author Laura RB
  */
-public class ReporteRecursoTest {
-    
-    public ReporteRecursoTest() {
+public class ReporteGeneralTest {
+
+    public ReporteGeneralTest() {
     }
     
-
     @Before
     public void setUp() {
-    }
-    @After 
-    public void clearDB() throws SQLException, Exception{
-        Connection conbd= DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL","anonymous","");
-        Statement stmt = (Statement) conbd.createStatement();
-        stmt.execute();
     }
     /**
      * Seleccion de peridodo academico para generar el reporte de recursos para 
@@ -59,7 +47,6 @@ public class ReporteRecursoTest {
         assertTrue(true);     
     }
     
-        
     @After
     public void tearDown() {
     }

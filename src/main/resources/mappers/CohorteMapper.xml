@@ -11,20 +11,20 @@ and open the template in the editor.
 <mapper namespace="proyecto.dao.mybatis.mappers.CohorteMapper"> 
   
     
-    <select parameterType="map" id="consultarCo" resultMap="CohorteResult">
+    <select parameterType="map" id="consultarPeriodos" resultMap="CohorteResult">
         SELECT 
             co.periodo
-        
         FROM cohorte as co
         GROUP BY co.periodo;
     </select>
     
-     <select parameterType="map" id="consultarPeriodos" resultMap="CohorteResult">
+     <select parameterType="map" id="consultarCohorte" resultMap="CohorteResult">
         
         SELECT
             co.id,
             co.fecha_inicio,
             co.fecha_fin
+            co.periodo;
         FROM Cohorte as co;
         
         

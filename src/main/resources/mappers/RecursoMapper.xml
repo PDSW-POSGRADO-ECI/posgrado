@@ -23,9 +23,7 @@ and open the template in the editor.
         
 	FROM recurso as rec 
         join clase as cla on cla.id=rec.clase_id
-        join cohorte as co on cla.materia_cohorte_cohorte_id=co.id
-        
-        WHERE {#periodo}=cor.periodo;
+        join cohorte as co on cla.materia_cohorte_cohorte_id=co.id on {#periodo}=cor.periodo;
         
     </select>
     
