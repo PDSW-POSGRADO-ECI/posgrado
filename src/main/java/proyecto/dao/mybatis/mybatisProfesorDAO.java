@@ -31,5 +31,17 @@ public class mybatisProfesorDAO implements ProfesorDAO{
         }  
         return pro;
     }
+
+    @Override
+    public List<Profesor> loadProfesorXmateriacorte(String siglamat,int idcort) throws ExceptionPersistence {
+        List<Profesor> pro=null;
+        try{
+            pro=profesorMapper.consultarProfesorXmateriacohorte(siglamat, idcort);
+        }
+         catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new ExceptionPersistence("Error al cargar profesor por corte y materia"+pro.toString(),e);
+        }  
+        return pro;
+    }
     
 }

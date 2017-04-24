@@ -6,6 +6,7 @@
 package proyecto.dao.mybatis.mappers;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 import proyecto.entities.Profesor;
 
 /**
@@ -15,5 +16,6 @@ import proyecto.entities.Profesor;
 public interface ProfesorMapper {
     
     public List<Profesor> consultarProfesores();
+    public List<Profesor> consultarProfesorXmateriacohorte(@Param("mat") String m,@Param("idco") int c);
     
 }

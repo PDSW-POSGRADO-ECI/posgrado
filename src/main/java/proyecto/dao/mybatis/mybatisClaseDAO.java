@@ -31,7 +31,7 @@ public class mybatisClaseDAO implements ClaseDAO{
             per=claseMapper.consultarClase();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al cargar Periodo ",e);
+            throw new PersistenceException("Error al cargar Clase ",e);
         }        
         
         return per;

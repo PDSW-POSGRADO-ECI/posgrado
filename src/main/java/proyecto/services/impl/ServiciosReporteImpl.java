@@ -16,6 +16,7 @@ import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.MateriaDAO;
 import proyecto.dao.ProfesorDAO;
 import proyecto.dao.RecursoDAO;
+import proyecto.entities.Clase;
 import proyecto.entities.Cohorte;
 import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
@@ -59,7 +60,7 @@ public class ServiciosReporteImpl implements ServiciosReporte{
                 sp=corte.loadPeriodos();
             } 
         catch (ExceptionPersistence ex) {
-                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+                throw new ExceptionServiciosReporte("Error al obtener Periodos ",ex);
             }
         return sp;
     }
@@ -70,19 +71,38 @@ public class ServiciosReporteImpl implements ServiciosReporte{
                 sp=corte.loadPeriodo(a);
             } 
         catch (ExceptionPersistence ex) {
-                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+                throw new ExceptionServiciosReporte("Error al cargar Periodo ",ex);
             }
         return sp;
     }
     
     @Override
-    public List<Profesor> colsultarProfesor() {
+    public List<Profesor> colsultarProfesor() throws ExceptionServiciosReporte {
          List<Profesor> sp = null;
         try {
                 sp=profesor.loadProfesores();
             } 
         catch (ExceptionPersistence ex) {
-                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+                throw new ExceptionServiciosReporte("Error al cargar Periodo ",ex);
+            }
+        return sp;
+    }
+
+    @Override
+    public List<Clase> colsultarClaseXperiodo(String a) throws ExceptionServiciosReporte {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
+    @Override
+    public List<Profesor> colsultarProfesorXmateria_corte(String siglamat, int idcorte) throws ExceptionServiciosReporte {
+       List<Profesor> sp = null;
+        try {
+                sp=profesor.loadProfesorXmateriacorte(siglamat, idcorte);
+            } 
+        catch (ExceptionPersistence ex) {
+                throw new ExceptionServiciosReporte("Error al cargar Profesor por materia y corte ",ex);
             }
         return sp;
     }

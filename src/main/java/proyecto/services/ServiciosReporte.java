@@ -6,6 +6,7 @@
 package proyecto.services;
 
 import java.util.List;
+import proyecto.entities.Clase;
 import proyecto.entities.Cohorte;
 import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
@@ -21,6 +22,8 @@ public interface ServiciosReporte {
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte;
     public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte;
 
-    public List<Profesor> colsultarProfesor();
+    public List<Profesor> colsultarProfesor() throws ExceptionServiciosReporte;
+    public List<Clase> colsultarClaseXperiodo(String a) throws ExceptionServiciosReporte;
+    public List<Profesor> colsultarProfesorXmateria_corte(String siglamat, int idcorte) throws ExceptionServiciosReporte;
     
 }
