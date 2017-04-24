@@ -18,6 +18,7 @@ import proyecto.dao.ProfesorDAO;
 import proyecto.dao.RecursoDAO;
 import proyecto.entities.Clase;
 import proyecto.entities.Cohorte;
+import proyecto.entities.Materia;
 import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
@@ -27,65 +28,59 @@ import proyecto.services.ServiciosReporte;
  *
  * @author Laura RB
  */
-public class ServiciosReporteImpl implements ServiciosReporte{
-    
-    
-    public ServiciosReporteImpl(){}
-    
-    @Inject private RecursoDAO recurso;
-    @Inject private ProfesorDAO profesor;
-    @Inject private CohorteDAO corte;
-    @Inject private ClaseDAO clase;
-    @Inject private MateriaDAO materia;
+public class ServiciosReporteImpl implements ServiciosReporte {
+
+    public ServiciosReporteImpl() {
+    }
+
+    @Inject
+    private RecursoDAO recurso;
+    @Inject
+    private ProfesorDAO profesor;
+    @Inject
+    private CohorteDAO corte;
+    @Inject
+    private ClaseDAO clase;
+    @Inject
+    private MateriaDAO materia;
 
     @Override
-    public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte{
-        List<Recurso> sp = null;
+    public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte {
         try {
-            try {
-                sp=recurso.loadRecursoXperiodo(a);
-            } catch (ExceptionPersistence ex) {
-                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        } catch (PersistenceException ex) {
-        } 
-        return sp; 
+            return recurso.loadRecursoXperiodo(a);
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al obtener Recurso por Perido "+ a,ex);
+        }
     }
 
     @Override
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte {
-        List<Cohorte> sp = null;
         try {
-                sp=corte.loadPeriodos();
+                return corte.loadPeriodos();
             } 
         catch (ExceptionPersistence ex) {
                 throw new ExceptionServiciosReporte("Error al obtener Periodos ",ex);
             }
-        return sp;
     }
+
     @Override
     public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte {
-        List<Cohorte> sp = null;
         try {
-                sp=corte.loadPeriodo(a);
+                return corte.loadPeriodo(a);
             } 
         catch (ExceptionPersistence ex) {
                 throw new ExceptionServiciosReporte("Error al cargar Periodo ",ex);
             }
-        return sp;
+            
     }
-    
     @Override
     public List<Profesor> colsultarProfesor() throws ExceptionServiciosReporte {
-         List<Profesor> sp = null;
         try {
-                sp=profesor.loadProfesores();
+                return profesor.loadProfesores();
             } 
         catch (ExceptionPersistence ex) {
-                throw new ExceptionServiciosReporte("Error al cargar Periodo ",ex);
+                throw new ExceptionServiciosReporte("Error al cargar Profesor ",ex);
             }
-        return sp;
     }
 
     @Override
@@ -97,14 +92,20 @@ public class ServiciosReporteImpl implements ServiciosReporte{
 
     @Override
     public List<Profesor> colsultarProfesorXmateria_corte(String siglamat, int idcorte) throws ExceptionServiciosReporte {
-       List<Profesor> sp = null;
         try {
-                sp=profesor.loadProfesorXmateriacorte(siglamat, idcorte);
+                return profesor.loadProfesorXmateriacorte(siglamat, idcorte);
             } 
         catch (ExceptionPersistence ex) {
-                throw new ExceptionServiciosReporte("Error al cargar Profesor por materia y corte ",ex);
+                throw new ExceptionServiciosReporte("Error al cargar Profesor por materia"+siglamat+" y corte "+ idcorte,ex);
             }
-        return sp;
     }
-   
+    @Override
+    public List<Materia> consultarMaterias() throws ExceptionServiciosReporte {
+        try {
+            return materia.loadMaterias();
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar materia ",ex);
+        }
+        
+    }
 }

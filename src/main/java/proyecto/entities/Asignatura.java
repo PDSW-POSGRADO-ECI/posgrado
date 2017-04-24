@@ -53,7 +53,4 @@ public class Asignatura implements Serializable {
     public void setPosgrado_id(Posgrado Posgrado_id) {
         this.posgrado_id = Posgrado_id;
     }
-    
-    
-    
 }
