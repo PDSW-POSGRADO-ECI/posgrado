@@ -13,16 +13,16 @@
 
             <p:dataTable var="mat" value="#{ReportesBean.materias}">
                 <p:column headerText="Cohorte">
-                    <h:outputText value="#{mat.sigla}" />
+                    <h:outputText value="#{mat.asignatura_id.posgrado_id.nombre}"/>
                 </p:column>
                 <p:column headerText="Asignatura">
-                    <h:outputText value="#{mat.asignatura_id}" />
+                    <h:outputText value="#{mat.asignatura_id.nombre}" />
                 </p:column>
                 <p:column headerText="Materia">
                     <h:outputText value="#{mat.nombre}" />
                 </p:column>
                 <p:column headerText="Profesor">
-                    <h:outputText value="#{mat.descripcion}" />
+                    <h:outputText value="#{ReportesBean.profesor(mat.asignatura_id.posgrado_id.nombre, mat.sigla)}" />
                 </p:column>
                 <p:column headerText="Horas">
                     <h:outputText value="#{mat.creditos}" />
