@@ -38,5 +38,4 @@ public class mybatisProfesorDAO implements ProfesorDAO {
             throw new ExceptionPersistence("Error al cargar al profesor de la materia " + materia + " en el cohorte " + cohorte + ".", e);
         }
     }
-
 }

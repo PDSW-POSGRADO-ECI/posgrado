@@ -62,11 +62,13 @@ public class ServiciosReporteFactory {
                     protected void initialize() {
                         install(JdbcHelper.PostgreSQL);                        
                         setClassPathResource("h2-mybatis-config.xml");                        
-                        /*bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
+                        bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
                         bind(RecursoDAO.class).to(mybatisRecursoDAO.class);
                         bind(CohorteDAO.class).to(mybatisCohorteDAO.class);
-                        bind(ClaseDAO.class).to(mybatisClaseDAO.class);*/
-
+                        bind(ClaseDAO.class).to(mybatisClaseDAO.class);
+                        bind(MateriaDAO.class).to(mybatisMateriaDAO.class);
+                        bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
+                        bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
                         
                     }
 
