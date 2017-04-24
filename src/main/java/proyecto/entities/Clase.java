@@ -18,8 +18,8 @@ public class Clase implements Serializable{
     private int id;
     private Time hora_inicio;
     private Time hora_fin;
-    private Cohorte materia_cohorte_sigla;
-    private Materia materia_cohorte_id;
+    private Cohorte materia_cohorte_id;
+    private Materia materia_cohorte_sigla;
     private Date fecha;
     
     public Clase(){
@@ -31,8 +31,8 @@ public class Clase implements Serializable{
         this.id=id;
         hora_inicio=inicio;
         hora_fin=fin;
-        materia_cohorte_sigla=corte;
-        materia_cohorte_id=mat;
+        materia_cohorte_sigla=mat;
+        materia_cohorte_id=corte;
         this.fecha=fecha;
         //salon=sal;
         //recursos=r;
@@ -63,21 +63,23 @@ public class Clase implements Serializable{
         this.hora_fin = hora_fin;
     }
 
-    public Cohorte getMateria_cohorte_sigla() {
-        return materia_cohorte_sigla;
-    }
-
-    public void setMateria_cohorte_sigla(Cohorte materia_cohorte_sigla) {
-        this.materia_cohorte_sigla = materia_cohorte_sigla;
-    }
-
-    public Materia getMateria_cohorte_id() {
+    public Cohorte getMateria_cohorte_id() {
         return materia_cohorte_id;
     }
 
-    public void setMateria_cohorte_id(Materia materia_cohorte_id) {
+    public void setMateria_cohorte_id(Cohorte materia_cohorte_id) {
         this.materia_cohorte_id = materia_cohorte_id;
     }
+
+    public Materia getMateria_cohorte_sigla() {
+        return materia_cohorte_sigla;
+    }
+
+    public void setMateria_cohorte_sigla(Materia materia_cohorte_sigla) {
+        this.materia_cohorte_sigla = materia_cohorte_sigla;
+    }
+
+    
 
    
     public Date getFecha() {
