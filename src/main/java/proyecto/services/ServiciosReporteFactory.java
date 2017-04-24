@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package proyecto.services;
 
 import com.google.inject.Guice;
@@ -29,60 +28,58 @@ import proyecto.services.impl.ServiciosReporteImpl;
  * @author OscarAlba
  */
 public class ServiciosReporteFactory {
-    
-    private static final ServiciosReporteFactory instance = new ServiciosReporteFactory();
-    
+
+    private static ServiciosReporteFactory instance;
+
     private static Injector injector;
     private static Injector testingInjector;
-    
-    private ServiciosReporteFactory(){
+
+    private ServiciosReporteFactory() {
         injector = Guice.createInjector(new XMLMyBatisModule() {
 
-                    @Override
-                    protected void initialize() {
-                        install(JdbcHelper.PostgreSQL);                        
-                        setClassPathResource("mybatis-configDatabase.xml");                        
-                        bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
-                        bind(RecursoDAO.class).to(mybatisRecursoDAO.class);
-                        bind(CohorteDAO.class).to(mybatisCohorteDAO.class);
-                        bind(ClaseDAO.class).to(mybatisClaseDAO.class);
-                        bind(MateriaDAO.class).to(mybatisMateriaDAO.class);
-                        bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
-                        bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
+            @Override
+            protected void initialize() {
+                install(JdbcHelper.PostgreSQL);
+                setClassPathResource("mybatis-configDatabase.xml");
+                bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
+                bind(RecursoDAO.class).to(mybatisRecursoDAO.class);
+                bind(CohorteDAO.class).to(mybatisCohorteDAO.class);
+                bind(ClaseDAO.class).to(mybatisClaseDAO.class);
+                bind(MateriaDAO.class).to(mybatisMateriaDAO.class);
+                bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
+                bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
 
-                        
-                    }
+            }
 
-                }
-                
+        }
         );
         testingInjector = Guice.createInjector(new XMLMyBatisModule() {
 
-                    @Override
-                    protected void initialize() {
-                        install(JdbcHelper.PostgreSQL);                        
-                        setClassPathResource("h2-mybatis-config.xml");                        
-                        bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
-                        bind(RecursoDAO.class).to(mybatisRecursoDAO.class);
-                        bind(CohorteDAO.class).to(mybatisCohorteDAO.class);
-                        bind(ClaseDAO.class).to(mybatisClaseDAO.class);
-                        bind(MateriaDAO.class).to(mybatisMateriaDAO.class);
-                        bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
-                        bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
-                        
-                    }
+            @Override
+            protected void initialize() {
+                install(JdbcHelper.PostgreSQL);
+                setClassPathResource("h2-mybatis-config.xml");
+                bind(ServiciosReporte.class).to(ServiciosReporteImpl.class);
+                bind(RecursoDAO.class).to(mybatisRecursoDAO.class);
+                bind(CohorteDAO.class).to(mybatisCohorteDAO.class);
+                bind(ClaseDAO.class).to(mybatisClaseDAO.class);
+                bind(MateriaDAO.class).to(mybatisMateriaDAO.class);
+                bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
+                bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
 
-                }
-                
+            }
+
+        }
         );
-        
-    }
-    public ServiciosReporte getServiciosReporteForTesting(){
-        return testingInjector.getInstance(ServiciosReporte.class);   
+
     }
 
-    public ServiciosReporte getServiciosReporte(){
-        return injector.getInstance(ServiciosReporte.class);   
+    public ServiciosReporte getServiciosReporteForTesting() {
+        return testingInjector.getInstance(ServiciosReporte.class);
+    }
+
+    public ServiciosReporte getServiciosReporte() {
+        return injector.getInstance(ServiciosReporte.class);
     }
 
     public static Injector getInjector() {
@@ -100,16 +97,13 @@ public class ServiciosReporteFactory {
     public static void setTestingInjector(Injector testingInjector) {
         ServiciosReporteFactory.testingInjector = testingInjector;
     }
-    
-    
-    
-    public static ServiciosReporteFactory getInstance(){
-        return instance;
+
+    public static ServiciosReporteFactory getInstance() {
+        return instance == null ? new ServiciosReporteFactory() : instance;
     }
-    
-    
-    public static void main(String a[]) throws ExceptionServiciosReporte{
-       
+
+    public static void main(String a[]) throws ExceptionServiciosReporte {
+
     }
-    
+
 }

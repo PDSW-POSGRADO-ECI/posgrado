@@ -22,7 +22,7 @@
                     <h:outputText value="#{mat.nombre}" />
                 </p:column>
                 <p:column headerText="Profesor">
-                    <h:outputText value="#{ReportesBean.profesor(mat.asignatura_id.posgrado_id.nombre, mat.sigla)}" />
+                    <h:outputText value="#{ReportesBean.getProfesor(mat.asignatura_id.posgrado_id.nombre, mat.sigla)}" />
                 </p:column>
                 <p:column headerText="Horas">
                     <h:outputText value="#{mat.creditos}" />
