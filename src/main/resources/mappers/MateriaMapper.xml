@@ -16,7 +16,7 @@ and open the template in the editor.
         mat.sigla,
         mat.nombre,
         mat.creditos,
-        mat.descripcion
+        mat.descripcion,
         
         asi.id as ASI_id,
         asi.nombre as ASI_nombre,
@@ -26,7 +26,8 @@ and open the template in the editor.
         pos.creditos as ASI_POS_id
         
 	FROM materia as mat
-        join asignatura as asi on mat.asignatura_id=asi.id;
+        join asignatura as asi on mat.Asignatura_id=asi.id
+        join posgrado as pos on asi.posgrado_id=pos.id;
         
     </select>
     
