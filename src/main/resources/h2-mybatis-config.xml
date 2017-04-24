@@ -9,7 +9,7 @@ and open the template in the editor.
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
-        <setting name="logImpl" value="LOG4J"/>        
+        <setting name="logImpl" value="log4j"/>        
     </settings>
     
     <typeAliases>
