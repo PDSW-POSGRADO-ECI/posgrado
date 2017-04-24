@@ -44,10 +44,21 @@ and open the template in the editor.
         cla.fecha,
         
         co.id as CO_id,
-        co.fecha_inicio CO_fecha_inicio,
-        co.fecha_fin CO_fecha_fin,
+        co.fecha_inicio as CO_fecha_inicio,
+        co.fecha_fin as CO_fecha_fin,
+        co.periodo as CO_periodo,
         
-        mat.nombre as MAT_nombre
+        mat.sigla as MAT_sigla,
+        mat.nombre as MAT_nombre,
+        mat.creditos as MAT_creditos,
+        mat.descripcion as MAT_descripcion,
+        
+        asi.id as MAT_ASI_id,
+        asi.nombre as MAT_ASI_nombre,
+        
+        pos.id as MAT_ASI_POS_id,
+        pos.nombre as MAT_ASI_POS_id,
+        pos.creditos as MAT_ASI_POS_id
         
 	FROM clase as cla 
         join materiacohorte as matco on 
@@ -55,6 +66,8 @@ and open the template in the editor.
         and matco.cohorte_id=cla.materia_cohorte_cohorte_id
         join materia as mat on mat.sigla=matco.materia_sigla
         join cohorte as co on co.id=matco.cohorte_id
+        join Asignatura as asi on mat.Asignatura_id = asi.id
+        join Posgrado as pos on asi.Posgrado_id = pos.id 
         
         WHERE co.periodo = #{periodo}
         

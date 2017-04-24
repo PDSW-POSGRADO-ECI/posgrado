@@ -66,8 +66,8 @@ public class ReportesBean implements Serializable {
         return report.obtenerPeriodo(periodo);
     }
 
-    public Profesor getProfesor(int cohorte, String materia) throws ExceptionServiciosReporte {
-        return report.consultarProfesor(cohorte, materia);
+    public String getProfesor(Clase clase) throws ExceptionServiciosReporte {
+        return report.consultarProfesor(clase.getMateria_cohorte_id().getId(), clase.getMateria_cohorte_sigla().getSigla()).getNombre();
     }
 
     public String getPeriodo() {
@@ -77,23 +77,23 @@ public class ReportesBean implements Serializable {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
-    
-    public List<Clase> getClases() throws ExceptionServiciosReporte{
+
+    public List<Clase> getClases() throws ExceptionServiciosReporte {
         return report.colsultarClaseXperiodo(periodo);
     }
-    
-    public List<Date> getFechas() throws ExceptionServiciosReporte{
+
+    public List<Date> getFechas() throws ExceptionServiciosReporte {
         List<Date> result = new ArrayList<>();
         HashSet<String> temp = new HashSet<>();
-        for(Clase c: getClases()){
-            if(!temp.contains(c.getFecha().toString())){
+        for (Clase c : getClases()) {
+            if (!temp.contains(c.getFecha().toString())) {
                 result.add(c.getFecha());
                 temp.add(c.getFecha().toString());
             }
         }
         return result;
     }
-    
+
     public List<String> completeText(String query) throws ExceptionServiciosReporte {
         return getPeriodos();
     }
