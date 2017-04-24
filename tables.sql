@@ -12,8 +12,8 @@ CREATE TABLE Asignatura (
 -- Table: Clase
 CREATE TABLE Clase (
     id int  NOT NULL,
-    hora_inicio int  NOT NULL,
-    hora_fin int  NOT NULL,
+    hora_inicio time  NOT NULL,
+    hora_fin time  NOT NULL,
     fecha date  NOT NULL,
     Materia_cohorte_Materia_sigla varchar(5)  NOT NULL,
     Materia_cohorte_Cohorte_id int  NOT NULL
@@ -30,8 +30,8 @@ CREATE TABLE Cohorte (
 -- Table: Horario
 CREATE TABLE Horario (
     id int  NOT NULL,
-    hora_inicio int  NOT NULL,
-    hora_fin int  NOT NULL,
+    hora_inicio time  NOT NULL,
+    hora_fin time  NOT NULL,
     fecha date  NOT NULL,
     Profesor_documento int  NOT NULL
 );
@@ -79,7 +79,8 @@ CREATE TABLE Recurso (
     id int  NOT NULL,
     recurso varchar(100)  NOT NULL,
     disponible boolean  NOT NULL,
-    Clase_id int  NOT NULL
+    Clase_id int  NOT NULL,
+	cantidad int  NOT NULL
 );
 
 -- Table: Salon

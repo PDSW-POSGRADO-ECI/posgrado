@@ -6,7 +6,7 @@
 package proyecto.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -16,8 +16,8 @@ import java.util.Date;
 public class Clase implements Serializable{
 
     private int id;
-    private Date hora_inicio;
-    private Date hora_fin;
+    private Time hora_inicio;
+    private Time hora_fin;
     private Cohorte materia_cohorte_sigla;
     private Materia materia_cohorte_id;
     private Date fecha;
@@ -27,7 +27,7 @@ public class Clase implements Serializable{
         
     }
     
-    public Clase(int id,Date inicio,Date fin,Cohorte corte,Materia mat,Date fecha){
+    public Clase(int id,Time inicio,Time fin,Cohorte corte,Materia mat,Date fecha){
         this.id=id;
         hora_inicio=inicio;
         hora_fin=fin;
@@ -51,7 +51,7 @@ public class Clase implements Serializable{
         return hora_inicio;
     }
 
-    public void setHora_inicio(Date hora_inicio) {
+    public void setHora_inicio(Time hora_inicio) {
         this.hora_inicio = hora_inicio;
     }
 
@@ -59,7 +59,7 @@ public class Clase implements Serializable{
         return hora_fin;
     }
 
-    public void setHora_fin(Date hora_fin) {
+    public void setHora_fin(Time hora_fin) {
         this.hora_fin = hora_fin;
     }
 

@@ -53,6 +53,7 @@ and open the template in the editor.
         <id property='id' column='id'/>
         <result property='nomRecurso' column='recurso'/>
         <result property='disponible' column='disponible'/> 
+        <result property='cantidad' column='cantidad'/>
         <association property="clase_id" javaType="Clase" columnPrefix='CLA_' resultMap='proyecto.dao.mybatis.mappers.ClaseMapper.ClaseResult'></association>      
     </resultMap>
     
