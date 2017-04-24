@@ -55,13 +55,17 @@ public class ReportesBean implements Serializable{
     }
     
     public List<Profesor> getProfesores() throws ExceptionServiciosReporte{
-        List<Profesor> a=report.colsultarProfesor();
+        List<Profesor> a=report.colsultarProfesores();
         System.out.println(a.toString());
         return a;
     }
     
     public List<Materia> getMaterias() throws ExceptionServiciosReporte{
         return report.consultarMaterias();
+    }
+    
+    public Profesor getProfesor(int cohorte, String materia) throws ExceptionServiciosReporte{
+        return report.consultarProfesor(cohorte, materia);
     }
 
     public String getPeriodo() {
@@ -70,5 +74,5 @@ public class ReportesBean implements Serializable{
 
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
-    }    
+    }
 }

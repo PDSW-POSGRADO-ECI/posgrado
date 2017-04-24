@@ -16,20 +16,27 @@ import proyecto.entities.Profesor;
  *
  * @author Laura RB
  */
-public class mybatisProfesorDAO implements ProfesorDAO{
-    
-    @Inject private ProfesorMapper profesorMapper;
+public class mybatisProfesorDAO implements ProfesorDAO {
+
+    @Inject
+    private ProfesorMapper profesorMapper;
 
     @Override
     public List<Profesor> loadProfesores() throws ExceptionPersistence {
-        List<Profesor> pro=null;
-        try{
-            pro=profesorMapper.consultarProfesores();
+        try {
+            return profesorMapper.consultarProfesores();
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar profesores", e);
         }
-         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar profesores "+pro.toString(),e);
-        }  
-        return pro;
     }
-    
+
+    @Override
+    public Profesor loadProfesor(int cohorte, String materia) throws ExceptionPersistence {
+        try {
+            return profesorMapper.consultarProfesor(cohorte, materia);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar al profesor de la materia " + materia + " en el cohorte " + cohorte + ".", e);
+        }
+    }
+
 }

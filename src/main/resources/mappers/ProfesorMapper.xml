@@ -23,6 +23,22 @@ and open the template in the editor.
 	FROM profesor as pro;
     </select>
     
+    <select parameterType="map" id="consultarProfesor" resultMap="ProfesorResult">
+        SELECT
+        
+        pro.documento,
+        pro.nombre,
+        pro.correo,
+        pro.telefono,
+        pro.tipo_documento
+        
+	FROM profesor as pro join MateriaCohorte as matc
+        on pro.documento = matc.Profesor_documento
+        
+        WHERE matc.Cohorte_id = #{cohorte} AND
+        matc.Materia_sigla LIKE #{materia};
+    </select>
+    
     <resultMap type="Profesor" id="ProfesorResult">
         <id property='documento' column='documento'/>
         <result property='nombre' column='nombre'/>

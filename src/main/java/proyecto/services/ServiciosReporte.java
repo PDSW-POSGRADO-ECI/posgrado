@@ -22,8 +22,8 @@ public interface ServiciosReporte {
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte;
     public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte;
 
-    public List<Profesor> colsultarProfesor() throws ExceptionServiciosReporte;
+    public List<Profesor> colsultarProfesores() throws ExceptionServiciosReporte;
+    public Profesor consultarProfesor(int cohorte, String materia) throws ExceptionServiciosReporte;
     
     public List<Materia> consultarMaterias() throws ExceptionServiciosReporte;
-    
 }

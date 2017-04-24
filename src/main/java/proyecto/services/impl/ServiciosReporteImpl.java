@@ -9,7 +9,6 @@ import com.google.inject.Inject;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.ibatis.exceptions.PersistenceException;
 import proyecto.dao.ClaseDAO;
 import proyecto.dao.CohorteDAO;
 import proyecto.dao.ExceptionPersistence;
@@ -74,7 +73,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     @Override
-    public List<Profesor> colsultarProfesor() throws ExceptionServiciosReporte {
+    public List<Profesor> colsultarProfesores() throws ExceptionServiciosReporte {
         try {
             return profesor.loadProfesores();
         } catch (ExceptionPersistence ex) {
@@ -88,6 +87,16 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         try {
             return materia.loadMaterias();
         } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte();
+        }
+    }
+
+    @Override
+    public Profesor consultarProfesor(int cohorte, String materia) throws ExceptionServiciosReporte {
+        try {
+            return profesor.loadProfesor(cohorte, materia);
+        } catch (ExceptionPersistence ex){
             Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExceptionServiciosReporte();
         }

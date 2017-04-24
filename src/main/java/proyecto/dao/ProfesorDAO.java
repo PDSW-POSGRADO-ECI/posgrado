@@ -15,5 +15,6 @@ import proyecto.entities.Profesor;
 public interface ProfesorDAO {
     
     public List<Profesor> loadProfesores() throws ExceptionPersistence;
-    
+
+    public Profesor loadProfesor(int cohorte, String materia) throws ExceptionPersistence;
 }

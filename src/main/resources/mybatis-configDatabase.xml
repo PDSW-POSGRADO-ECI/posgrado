@@ -36,7 +36,4 @@
         <mapper resource="mappers/ProfesorMapper.xml"></mapper>
         <mapper resource="mappers/MateriaMapper.xml"></mapper>  
         <mapper resource="mappers/AsignaturaMapper.xml"></mapper>    
-    </mappers>
-        
-        
 </configuration>
