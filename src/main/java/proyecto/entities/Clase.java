@@ -34,8 +34,7 @@ public class Clase implements Serializable{
         materia_cohorte_sigla=corte;
         materia_cohorte_id=mat;
         this.fecha=fecha;
-        //salon=sal;
-        //recursos=r;
+
     
     }
 
@@ -47,7 +46,7 @@ public class Clase implements Serializable{
         this.id = id;
     }
 
-    public Date getHora_inicio() {
+    public Time getHora_inicio() {
         return hora_inicio;
     }
 
@@ -55,7 +54,7 @@ public class Clase implements Serializable{
         this.hora_inicio = hora_inicio;
     }
 
-    public Date getHora_fin() {
+    public Time getHora_fin() {
         return hora_fin;
     }
 
@@ -79,7 +78,6 @@ public class Clase implements Serializable{
         this.materia_cohorte_id = materia_cohorte_id;
     }
 
-   
     public Date getFecha() {
         return fecha;
     }
@@ -87,6 +85,8 @@ public class Clase implements Serializable{
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
+   
 
 
     

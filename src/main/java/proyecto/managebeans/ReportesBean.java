@@ -39,15 +39,13 @@ public class ReportesBean implements Serializable{
     }
     
     public void RecursosXperiodo() throws ExceptionServiciosReporte{ 
-        //List<String> fechas=new ArrayList<>();
+     
         rec=report.consultarRecursosXperiodo(periodo);
-        /*for (int i=0;i<rec.size();i++){
-            fechas.add(rec.get(i).getClase_id().getFecha().toString());
-        }*/
+        
     }
 
     public List<Recurso> getRec() {
-        return rec;
+        return rec ;
     }
     
     public List<String> getPeriodos() throws ExceptionServiciosReporte{
