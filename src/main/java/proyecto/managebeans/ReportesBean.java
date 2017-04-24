@@ -61,7 +61,7 @@ public class ReportesBean implements Serializable{
     
     public List<Profesor> getProfesores() throws ExceptionServiciosReporte{
         List<Profesor> a=report.colsultarProfesor();
-        System.out.println(a.toString());
+        //System.out.println(a.toString());
         return a;
     }
     

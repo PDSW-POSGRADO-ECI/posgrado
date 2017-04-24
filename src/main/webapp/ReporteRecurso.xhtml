@@ -10,10 +10,27 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Reporte de Recursos</title>
+        <style>
+            .tadiwa{
+                background-image:url("/resources/escuela3.jpg");
+            }
+            .ui-button-text{
+                font-size:15px;
+             }
+             <!--.smallButton .ui-button-text {
+                font-size:12px;
+             }
+             .outerpanelgrid>tbody>tr{
+                border: none !important;
+            }
+            .outerpanelgrid>tbody>tr>td{
+                border: none !important;
+            }-->
+        </style>
     </h:head>
     <h:body>
         <h:form id="Reporte">
-            <p:commandButton action="Menu" value="Volver al Menu"/>
+            <p:commandButton style="position:absolute ; top: 1%; left: 1%" action="Menu" value="Volver al Menu"/>
             <br>
                 
             </br>
@@ -29,11 +46,14 @@ and open the template in the editor.
 
             <p:commandButton update="Reporte" value="Generar Reporte" actionListener="#{ReportesBean.RecursosXperiodo}" />
 
-            <p:dataTable id="TablaRecursos" var="rec"  value="#{ReportesBean.rec}">
+            <p:dataTable style="position:absolute ; top: 20%; left: 15%; right:15%" id="TablaRecursos" var="rec"  value="#{ReportesBean.rec}">
                 <p:column headerText="Nombre Recurso">
                     <h:outputText value="#{rec.nomRecurso}"/>
                 </p:column>
                 <p:column headerText="Fecha">
+                    <h:outputText value="#{rec.clase_id}"/>
+                </p:column>
+                <p:column headerText="Hora">
                     <h:outputText value="#{rec.clase_id}"/>
                 </p:column>
             </p:dataTable>
