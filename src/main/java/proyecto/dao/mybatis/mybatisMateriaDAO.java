@@ -16,21 +16,18 @@ import proyecto.entities.Materia;
  *
  * @author Laura RB
  */
-public class mybatisMateriaDAO implements MateriaDAO{
+public class mybatisMateriaDAO implements MateriaDAO {
 
-    @Inject private MateriaMapper materiaMapper;
-    
+    @Inject
+    private MateriaMapper materiaMapper;
+
     @Override
     public List<Materia> loadMaterias() throws ExceptionPersistence {
-        List<Materia> mat=null;
-        try{
-            mat=materiaMapper.ConsultarMaterias();
+        try {
+            return materiaMapper.ConsultarMaterias();
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar las materias.", e);
         }
-         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar materias "+mat.toString(),e);
-        }
-        
-        return mat;
     }
-    
+
 }

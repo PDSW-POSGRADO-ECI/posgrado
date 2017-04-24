@@ -23,7 +23,6 @@ and open the template in the editor.
 	FROM asignatura as asi
         join posgrado as pos on asi.posgrado_id=pos.id;
         
-        
     </select>
     
     <resultMap type="Asignatura" id="AsignaturaResult">
@@ -37,7 +36,4 @@ and open the template in the editor.
         <result property='nombre'  column='nombre'/>
         <result property='creditos'  column='creditos'/>
     </resultMap>
-    
-    
-    
 </mapper>

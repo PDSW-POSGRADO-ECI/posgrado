@@ -11,6 +11,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import proyecto.entities.Cohorte;
+import proyecto.entities.Materia;
 import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
@@ -59,8 +60,9 @@ public class ReportesBean implements Serializable{
         return a;
     }
     
-     
-    
+    public List<Materia> getMaterias() throws ExceptionServiciosReporte{
+        return report.consultarMaterias();
+    }
 
     public String getPeriodo() {
         return periodo;
@@ -68,9 +70,5 @@ public class ReportesBean implements Serializable{
 
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
-    }
-    
-    
-    
-    
+    }    
 }

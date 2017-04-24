@@ -9,7 +9,6 @@ and open the template in the editor.
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="proyecto.dao.mybatis.mappers.MateriaMapper">
-    
     <select parameterType="map" id="ConsultarMaterias" resultMap="MateriaResult">
         
         SELECT
@@ -37,6 +36,5 @@ and open the template in the editor.
         <result property='creditos' column='creditos'/>
         <result property='descripcion' column='descripcion'/>
         <association property="asignatura_id" javaType="Asignatura" columnPrefix='ASI_' resultMap='proyecto.dao.mybatis.mappers.AsignaturaMapper.AsignaturaResult' ></association> 
-    </resultMap>
-    
+    </resultMap>  
 </mapper>

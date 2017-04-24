@@ -17,6 +17,7 @@ import proyecto.dao.MateriaDAO;
 import proyecto.dao.ProfesorDAO;
 import proyecto.dao.RecursoDAO;
 import proyecto.entities.Cohorte;
+import proyecto.entities.Materia;
 import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
@@ -26,65 +27,69 @@ import proyecto.services.ServiciosReporte;
  *
  * @author Laura RB
  */
-public class ServiciosReporteImpl implements ServiciosReporte{
-    
-    
-    public ServiciosReporteImpl(){}
-    
-    @Inject private RecursoDAO recurso;
-    @Inject private ProfesorDAO profesor;
-    @Inject private CohorteDAO corte;
-    @Inject private ClaseDAO clase;
-    @Inject private MateriaDAO materia;
+public class ServiciosReporteImpl implements ServiciosReporte {
+
+    public ServiciosReporteImpl() {
+    }
+
+    @Inject
+    private RecursoDAO recurso;
+    @Inject
+    private ProfesorDAO profesor;
+    @Inject
+    private CohorteDAO corte;
+    @Inject
+    private ClaseDAO clase;
+    @Inject
+    private MateriaDAO materia;
 
     @Override
-    public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte{
-        List<Recurso> sp = null;
+    public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte {
         try {
-            try {
-                sp=recurso.loadRecursoXperiodo(a);
-            } catch (ExceptionPersistence ex) {
-                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        } catch (PersistenceException ex) {
-        } 
-        return sp; 
+            return recurso.loadRecursoXperiodo(a);
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte();
+        }
     }
 
     @Override
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte {
-        List<Cohorte> sp = null;
         try {
-                sp=corte.loadPeriodos();
-            } 
-        catch (ExceptionPersistence ex) {
-                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        return sp;
+            return corte.loadPeriodos();
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte();
+        }
     }
+
     @Override
     public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte {
-        List<Cohorte> sp = null;
         try {
-                sp=corte.loadPeriodo(a);
-            } 
-        catch (ExceptionPersistence ex) {
-                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        return sp;
+            return corte.loadPeriodo(a);
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte();
+        }
     }
-    
+
     @Override
-    public List<Profesor> colsultarProfesor() {
-         List<Profesor> sp = null;
+    public List<Profesor> colsultarProfesor() throws ExceptionServiciosReporte {
         try {
-                sp=profesor.loadProfesores();
-            } 
-        catch (ExceptionPersistence ex) {
-                Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        return sp;
+            return profesor.loadProfesores();
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte();
+        }
     }
-   
+
+    @Override
+    public List<Materia> consultarMaterias() throws ExceptionServiciosReporte {
+        try {
+            return materia.loadMaterias();
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte();
+        }
+    }
 }
