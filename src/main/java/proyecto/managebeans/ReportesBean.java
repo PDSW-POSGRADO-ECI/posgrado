@@ -31,18 +31,23 @@ public class ReportesBean implements Serializable{
     
     ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
     private String periodo;
+    private List<Recurso> rec;
     
     public ReportesBean(){
         periodo="";
+        rec = new ArrayList<>();
     }
     
-    public List<String> getRecursosXperiodo() throws ExceptionServiciosReporte{ 
-        List<String> fechas=new ArrayList<>();
-        List<Recurso> rec=report.consultarRecursosXperiodo(periodo);
-        for (int i=0;i<rec.size();i++){
+    public void RecursosXperiodo() throws ExceptionServiciosReporte{ 
+        //List<String> fechas=new ArrayList<>();
+        rec=report.consultarRecursosXperiodo(periodo);
+        /*for (int i=0;i<rec.size();i++){
             fechas.add(rec.get(i).getClase_id().getFecha().toString());
-        }
-        return fechas;
+        }*/
+    }
+
+    public List<Recurso> getRec() {
+        return rec;
     }
     
     public List<String> getPeriodos() throws ExceptionServiciosReporte{

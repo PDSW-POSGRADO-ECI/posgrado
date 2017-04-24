@@ -11,26 +11,33 @@ and open the template in the editor.
     <h:head>
         <title>Reporte de Recursos</title>
     </h:head>
-    <h:form id="ReporteRecurso" >
-        <h:body>
-            <p:panel id="Periodos" header="Periodos" >
-                <p:dataTable id="TablePeriodos" var="per" value="#{ReportesBean.periodos}" selectionMode="single"  rowKey="#{ReportesBean.periodo}" >
-                    <p:column headerText="Periodos: ">
+    <h:body>
+        <h:form id="Reporte">
+            <p:commandButton action="Menu" value="Volver al Menu"/>
+            <br>
+                
+            </br>
+
+            <p:outputLabel for="basic" value="Periodos Cursados:" />
+            <p:selectOneListbox id="basic" value="#{ReportesBean.periodo}">
+                <f:selectItems value="#{ReportesBean.periodos}" var="per">
+                    <p:column>
                         <h:outputText value="#{per}" />
                     </p:column>
-                </p:dataTable>
-                <p:commandButton value="Volver al Menu" action="Menu"/>
-                <p:dataTable id="TablaRecursos" var="rec"  value="#{ReportesBean.recursosXperiodo}">
-                    <p:column headerText="Nombre Recurso">
-                        <h:outputText value="#{rec.nomRecurso}"/>
-                    </p:column>
-                    <p:column headerText="Fecha">
-                        <h:outputText value="#{rec.clase_id}"/>
-                    </p:column>
-                </p:dataTable>
-                <p:commandButton value="Volver al Menu" action="Menu"/>
-            </p:panel>
-               
-        </h:body>
-    </h:form>
+                </f:selectItems>
+            </p:selectOneListbox>
+
+            <p:commandButton update="Reporte" value="Generar Reporte" actionListener="#{ReportesBean.RecursosXperiodo}" />
+
+            <p:dataTable id="TablaRecursos" var="rec"  value="#{ReportesBean.rec}">
+                <p:column headerText="Nombre Recurso">
+                    <h:outputText value="#{rec.nomRecurso}"/>
+                </p:column>
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{rec.clase_id}"/>
+                </p:column>
+            </p:dataTable>
+            </h:form>
+    </h:body>
+
 </html>
