@@ -26,25 +26,29 @@
     </h:head>
     <h:body>
         <h:form id="ReporteSemestral">
+
+            <p:outputLabel value="Seleccione el Periodo:" for="dd" />
+            <p:autoComplete id="dd" dropdown="true" value="#{ReportesBean.periodos}" completeMethod="#{ReportesBean.completeText}" />
+
             <p:commandButton style="position:absolute ; top: 1%; left: 1%" action="Menu" value="Volver al Menu"/>
             <br>
 
             </br>
-            <p:dataTable style="position:absolute ; top: 20%; left: 5%; right:5%" var="mat" value="#{ReportesBean.materias}">
+            <p:dataTable style="position:absolute ; top: 20%; left: 5%; right:5%" var="cla" value="#{ReportesBean.clases}">
                 <p:column headerText="Cohorte">
-                    <h:outputText value="#{mat.cohorte.id}"/>
+                    <h:outputText value="#{cla.materia_cohorte_id.id}"/>
                 </p:column>
                 <p:column headerText="Asignatura">
-                    <h:outputText value="#{mat.asignatura_id.nombre}" />
+                    <h:outputText value="#{cla.materia_cohorte_sigla.asignatura_id.nombre}" />
                 </p:column>
                 <p:column headerText="Materia">
-                    <h:outputText value="#{mat.nombre}" />
+                    <h:outputText value="#{cla.materia_cohorte_sigla.nombre}" />
                 </p:column>
                 <p:column headerText="Profesor">
-                    <h:outputText value="#{mat.profesor.nombre}" />
+                    <h:outputText value="#{ReportesBean.getProfesor(cla.materia_cohorte_id.id, cla.materia_cohorte_sigla)}" />
                 </p:column>
                 <p:column headerText="Horas">
-                    <h:outputText value="#{mat.creditos}" />
+                    <h:outputText value="#{cla.materia_cohorte_sigla.creditos}" />
                 </p:column>
             </p:dataTable>
         </h:form>

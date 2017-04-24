@@ -6,6 +6,7 @@
 package proyecto.dao.mybatis.mappers;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 import proyecto.entities.Clase;
 
 /**
@@ -14,4 +15,6 @@ import proyecto.entities.Clase;
  */
 public interface ClaseMapper {
     public List<Clase> consultarClase();
+    
+    public List<Clase> consultarClaseXperiodo(@Param("periodo") String periodo);
 }

@@ -46,5 +46,4 @@ public class mybatisCohorteDAO implements CohorteDAO{
         
         return per;
     }
-   
 }

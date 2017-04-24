@@ -24,7 +24,6 @@ public class Clase implements Serializable{
     
     public Clase(){
         //this.recursos = new ArrayList<>();
-        
     }
     
     public Clase(int id,Time inicio,Time fin,Cohorte corte,Materia mat,Date fecha){
@@ -85,14 +84,8 @@ public class Clase implements Serializable{
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
-   
-
-
-    
      @Override
     public String toString() {
         return "Clase{" + "id=" + id + ", fecha=" + fecha + ", Hora_inicio=" + hora_inicio +'}';
     }
-
 }

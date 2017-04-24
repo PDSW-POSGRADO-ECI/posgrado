@@ -19,21 +19,29 @@ import proyecto.entities.Cohorte;
  *
  * @author Laura RB
  */
-public class mybatisClaseDAO implements ClaseDAO{
+public class mybatisClaseDAO implements ClaseDAO {
 
-    @Inject private ClaseMapper claseMapper;
-    
-  
+    @Inject
+    private ClaseMapper claseMapper;
+
     @Override
     public List<Clase> loadClase() throws ExceptionPersistence {
-        List<Clase> per=null;
-        try{
-            per=claseMapper.consultarClase();
+        List<Clase> per = null;
+        try {
+            per = claseMapper.consultarClase();
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al cargar Clase ", e);
         }
-        catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al cargar Clase ",e);
-        }        
-        
+
         return per;
+    }
+
+    @Override
+    public List<Clase> loadClaseXperiodo(String periodo) throws ExceptionPersistence {
+        try {
+            return claseMapper.consultarClaseXperiodo(periodo);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al cargar Clase por periodo (" + periodo + ")", e);
+        }
     }
 }

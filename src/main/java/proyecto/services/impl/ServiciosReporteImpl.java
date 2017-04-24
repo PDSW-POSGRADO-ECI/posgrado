@@ -51,7 +51,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
             throw new ExceptionServiciosReporte("Error al obtener Recurso por Perido " + a, ex);
         }
     }
-
+    
     @Override
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte {
         try {
@@ -81,7 +81,11 @@ public class ServiciosReporteImpl implements ServiciosReporte {
 
     @Override
     public List<Clase> colsultarClaseXperiodo(String a) throws ExceptionServiciosReporte {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            return clase.loadClaseXperiodo(a);
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte ("Error al cargar las clases del periodo "+ a, ex);
+        }
     }
 
     @Override

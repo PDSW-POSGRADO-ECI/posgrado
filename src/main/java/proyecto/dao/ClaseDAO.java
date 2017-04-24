@@ -14,4 +14,6 @@ import proyecto.entities.Clase;
  */
 public interface ClaseDAO {
     public List<Clase> loadClase() throws ExceptionPersistence;
+    
+    public List<Clase> loadClaseXperiodo(String periodo) throws ExceptionPersistence;
 }

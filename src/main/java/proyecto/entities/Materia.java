@@ -77,25 +77,4 @@ public class Materia implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    private Cohorte cohorte;
-    private Profesor profesor;
-
-    public Cohorte getCohorte() {
-        return cohorte;
-    }
-
-    public void setCohorte(Cohorte cohorte) {
-        this.cohorte = cohorte;
-    }
-
-    public Profesor getProfesor() {
-        return profesor;
-    }
-
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
-    }
-
-    
 }

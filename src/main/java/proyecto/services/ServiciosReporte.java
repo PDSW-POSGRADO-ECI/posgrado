@@ -17,15 +17,18 @@ import proyecto.entities.Recurso;
  * @author Laura RB
  */
 public interface ServiciosReporte {
-    
+
     public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte;
-    
+
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte;
+
     public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte;
 
     public List<Profesor> colsultarProfesores() throws ExceptionServiciosReporte;
+
     public Profesor consultarProfesor(int cohorte, String materia) throws ExceptionServiciosReporte;
+
     public List<Clase> colsultarClaseXperiodo(String a) throws ExceptionServiciosReporte;
-    
+
     public List<Materia> consultarMaterias() throws ExceptionServiciosReporte;
 }
