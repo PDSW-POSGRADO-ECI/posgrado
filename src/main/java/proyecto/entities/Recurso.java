@@ -30,12 +30,6 @@ public class Recurso implements Serializable{
         clase_id=idc;
         cantidad=cant;
     }
-    
-    public void setClase_id(Clase clase) {
-        this.clase_id = clase;
-    }
-    
-    
 
     public int getId() {
         return id;
@@ -65,6 +59,10 @@ public class Recurso implements Serializable{
         return clase_id;
     }
 
+    public void setClase_id(Clase clase_id) {
+        this.clase_id = clase_id;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -72,6 +70,10 @@ public class Recurso implements Serializable{
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    
+    
+   
     
     @Override
     public String toString() {

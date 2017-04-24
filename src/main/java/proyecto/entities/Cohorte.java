@@ -64,6 +64,8 @@ public class Cohorte implements Serializable{
         this.periodo = periodo;
     }
 
+   
+
     
     @Override
     public String toString() {

@@ -15,7 +15,8 @@ and open the template in the editor.
         SELECT 
             co.periodo
         FROM cohorte as co
-        GROUP BY co.periodo;
+        GROUP BY co.periodo
+        ORDER BY co.periodo;
     </select>
     
     <select parameterType="map" id="consultarPeriodo" resultMap="CohorteResult">

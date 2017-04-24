@@ -48,38 +48,35 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         try {
             return recurso.loadRecursoXperiodo(a);
         } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al obtener Recurso por Perido "+ a,ex);
+            throw new ExceptionServiciosReporte("Error al obtener Recurso por Perido " + a, ex);
         }
     }
 
     @Override
     public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte {
         try {
-                return corte.loadPeriodos();
-            } 
-        catch (ExceptionPersistence ex) {
-                throw new ExceptionServiciosReporte("Error al obtener Periodos ",ex);
-            }
+            return corte.loadPeriodos();
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al obtener Periodos ", ex);
+        }
     }
 
     @Override
     public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte {
         try {
-                return corte.loadPeriodo(a);
-            } 
-        catch (ExceptionPersistence ex) {
-                throw new ExceptionServiciosReporte("Error al cargar Periodo ",ex);
-            }
+            return corte.loadPeriodo(a);
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar Periodo ", ex);
+        }
     }
-    
+
     @Override
     public List<Profesor> colsultarProfesores() throws ExceptionServiciosReporte {
         try {
-                return profesor.loadProfesores();
-            } 
-        catch (ExceptionPersistence ex) {
-                throw new ExceptionServiciosReporte("Error al cargar Profesor ",ex);
-            }
+            return profesor.loadProfesores();
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar Profesor ", ex);
+        }
     }
 
     @Override
@@ -92,16 +89,15 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         try {
             return materia.loadMaterias();
         } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar materia ",ex);
+            throw new ExceptionServiciosReporte("Error al cargar materia ", ex);
         }
-        
     }
 
     @Override
     public Profesor consultarProfesor(int cohorte, String materia) throws ExceptionServiciosReporte {
         try {
             return profesor.loadProfesor(cohorte, materia);
-        } catch (ExceptionPersistence ex){
+        } catch (ExceptionPersistence ex) {
             Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExceptionServiciosReporte();
         }

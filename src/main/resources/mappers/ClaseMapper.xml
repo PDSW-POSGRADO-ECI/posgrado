@@ -30,7 +30,7 @@ and open the template in the editor.
         join materiacohorte as matco on 
         matco.materia_sigla=cla.materia_cohorte_materia_sigla 
         and matco.cohorte_id=cla.materia_cohorte_cohorte_id
-        join materia as mat on mat.sigla=matco.sigla 
+        join materia as mat on mat.sigla=matco.materia_sigla
         join cohorte as co on co.id=matco.cohorte_id;
         
     </select>
