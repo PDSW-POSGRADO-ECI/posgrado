@@ -10,7 +10,7 @@ import proyecto.entities.Asignatura;
 
 /**
  *
- * @author Laura RB
+ * @author Daniel Rodriguez
  */
 public interface AsignaturaDAO {
     
