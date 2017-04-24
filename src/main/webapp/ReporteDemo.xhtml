@@ -5,15 +5,34 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title>Reporte Semestral</title>
+        <title>Reporte Semestral (Todos los periodos)</title>
+        <style>
+            .tadiwa{
+                background-image:url("/resources/escuela3.jpg");
+            }
+            .ui-button-text{
+                font-size:15px;
+            }
+            .smallButton .ui-button-text {
+                font-size:12px;
+            }
+            .outerpanelgrid>tbody>tr{
+                border: none !important;
+            }
+            .outerpanelgrid>tbody>tr>td{
+                border: none !important;
+            }
+        </style>
     </h:head>
-
     <h:body>
         <h:form id="ReporteSemestral">
+            <p:commandButton style="position:absolute ; top: 1%; left: 1%" action="Menu" value="Volver al Menu"/>
+            <br>
 
-            <p:dataTable var="mat" value="#{ReportesBean.materias}">
+            </br>
+            <p:dataTable style="position:absolute ; top: 20%; left: 5%; right:5%" var="mat" value="#{ReportesBean.materias}">
                 <p:column headerText="Cohorte">
-                    <h:outputText value="#{mat.asignatura_id.posgrado_id.nombre}"/>
+                    <h:outputText value="#{mat.cohorte.id}"/>
                 </p:column>
                 <p:column headerText="Asignatura">
                     <h:outputText value="#{mat.asignatura_id.nombre}" />
@@ -22,17 +41,12 @@
                     <h:outputText value="#{mat.nombre}" />
                 </p:column>
                 <p:column headerText="Profesor">
-                    <h:outputText value="#{ReportesBean.getProfesor(mat.asignatura_id.posgrado_id.nombre, mat.sigla)}" />
+                    <h:outputText value="#{mat.profesor.nombre}" />
                 </p:column>
                 <p:column headerText="Horas">
                     <h:outputText value="#{mat.creditos}" />
                 </p:column>
             </p:dataTable>
-
-            <br>
-            <p:commandButton value="Regresar" action="Menu"/>
-            </br>
-
         </h:form>
     </h:body>    
 

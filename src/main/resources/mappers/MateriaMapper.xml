@@ -8,7 +8,7 @@ and open the template in the editor.
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="proyecto.dao.mybatis.mappers.MateriaMapper">
+<mapper namespace="proyecto.dao.mybatis.mappers.MateriaMapper">   
     <select parameterType="map" id="ConsultarMaterias" resultMap="MateriaResult">
         
         SELECT
@@ -21,14 +21,27 @@ and open the template in the editor.
         asi.id as ASI_id,
         asi.nombre as ASI_nombre,
         
+        pro.documento as PRO_documento,
+        pro.nombre as PRO_nombre,
+        pro.correo as PRO_correo,
+        pro.telefono as PRO_telefono,
+        pro.tipo_documento as PRO_tipo_documento,
+        
+        coh.id as COH_id,
+        coh.fecha_inicio as COH_fecha_inicio,
+        coh.fecha_fin as COH_fecha_fin,
+        coh.periodo as COH_periodo,
+        
         pos.id as ASI_POS_id,
         pos.nombre as ASI_POS_id,
         pos.creditos as ASI_POS_id
         
-	FROM materia as mat
-        join asignatura as asi on mat.Asignatura_id=asi.id
-        join posgrado as pos on asi.posgrado_id=pos.id;
-        
+        FROM MateriaCohorte as matc
+        left join Materia as mat on matc.Materia_sigla = mat.sigla
+        left join Asignatura as asi on mat.Asignatura_id = asi.id
+        left join Posgrado as pos on asi.Posgrado_id = pos.id
+        left join Cohorte as coh on matc.Cohorte_id = coh.id
+        left join Profesor as pro on matc.Profesor_documento = pro.documento        
     </select>
     
     <resultMap type="Materia" id="MateriaResult">
@@ -36,6 +49,8 @@ and open the template in the editor.
         <result property='nombre' column='nombre'/>
         <result property='creditos' column='creditos'/>
         <result property='descripcion' column='descripcion'/>
-        <association property="asignatura_id" javaType="Asignatura" columnPrefix='ASI_' resultMap='proyecto.dao.mybatis.mappers.AsignaturaMapper.AsignaturaResult' ></association> 
+        <association property="asignatura_id" javaType="Asignatura" columnPrefix='ASI_' resultMap='proyecto.dao.mybatis.mappers.AsignaturaMapper.AsignaturaResult' ></association>
+        <association property="profesor" javaType="Profesor" columnPrefix='PRO_' resultMap='proyecto.dao.mybatis.mappers.ProfesorMapper.ProfesorResult' ></association>
+        <association property="cohorte" javaType="Cohorte" columnPrefix='COH_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper.CohorteResult' ></association> 
     </resultMap>  
 </mapper>
