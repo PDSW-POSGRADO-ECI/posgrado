@@ -4,33 +4,64 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<!DOCTYPE html>
 <html xmlns="http://www.w3c.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui" 
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Reporte de Recursos</title>
+        <style>
+            .tadiwa{
+                background-image:url("/resources/escuela3.jpg");
+            }
+            .ui-button-text{
+                font-size:15px;
+            }
+            .smallButton .ui-button-text {
+                font-size:12px;
+            }
+            .outerpanelgrid>tbody>tr{
+                border: none !important;
+            }
+            .outerpanelgrid>tbody>tr>td{
+                border: none !important;
+            }
+        </style>
     </h:head>
-    <h:form id="ReporteRecurso" >
-        <h:body>
-            <p:panel id="Periodos" header="Periodos" >
-                <p:dataTable id="TablePeriodos" var="per" value="#{ReportesBean.periodos}" selectionMode="single"  rowKey="#{ReportesBean.periodo}" >
-                    <p:column headerText="Periodos: ">
+    <h:body>
+        <h:form id="Reporte">
+            <p:commandButton style="position:absolute ; top: 1%; left: 1%" action="Menu" value="Volver al Menu"/>
+            <br>
+
+            </br>
+
+            <p:outputLabel for="basic" value="Periodos Cursados:" style="position:absolute ; top: 20%; left: 1%"/>
+            <p:selectOneListbox id="basic" value="#{ReportesBean.periodo}" style="position:absolute ; top: 30%; left: 1%" filterMatchMode="contains">
+                <f:selectItems value="#{ReportesBean.periodos}" var="per">
+                    <p:column>
                         <h:outputText value="#{per}" />
                     </p:column>
-                </p:dataTable>
-                <p:commandButton value="Volver al Menu" action="Menu"/>
-                <p:dataTable id="TablaRecursos" var="rec"  value="#{ReportesBean.recursosXperiodo}">
-                    <p:column headerText="Nombre Recurso">
-                        <h:outputText value="#{rec.nomRecurso}"/>
-                    </p:column>
-                    <p:column headerText="Fecha">
-                        <h:outputText value="#{rec.clase_id}"/>
-                    </p:column>
-                </p:dataTable>
-                <p:commandButton value="Volver al Menu" action="Menu"/>
-            </p:panel>
-               
-        </h:body>
-    </h:form>
+                </f:selectItems>
+            </p:selectOneListbox>
+
+            <p:commandButton style="position:absolute ; top: 50%; left: 1%" update="Reporte" value="Generar Reporte" actionListener="#{ReportesBean.RecursosXperiodo}" />
+
+            <p:dataTable style="position:absolute ; top: 20%; left: 15%; right:15%" id="TablaRecursos" var="rec"  value="#{ReportesBean.rec}">
+                <p:column headerText="Nombre Recurso">
+                    <h:outputText value="#{rec.nomRecurso}"/>
+                </p:column>
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{rec.clase_id.fecha}"/>
+                </p:column>
+                <p:column headerText="Hora Inicio">
+                    <h:outputText value="#{rec.clase_id.hora_inicio}"/>
+                </p:column>
+                <p:column headerText="Hora Fin">
+                    <h:outputText value="#{rec.clase_id.hora_fin}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+
 </html>

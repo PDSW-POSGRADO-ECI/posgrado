@@ -24,7 +24,7 @@ public class mybatisRecursoDAO implements RecursoDAO {
     public List<Recurso> loadRecursoXperiodo(String per) throws ExceptionPersistence {
         List<Recurso> rec=null;
         try{
-            System.out.println(per);
+            //System.out.println(per);
             rec=recursoMapper.consultarRecursoDePeriodo(per);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){

@@ -14,7 +14,4 @@ import proyecto.entities.Clase;
  */
 public interface ClaseMapper {
     public List<Clase> consultarClase();
-
-    
-
 }

@@ -66,8 +66,8 @@ public class Materia implements Serializable{
         return asignatura_id;
     }
 
-    public void setAsignatura_id(Asignatura Asignatura_id) {
-        this.asignatura_id = Asignatura_id;
+    public void setAsignatura_id(Asignatura asignatura_id) {
+        this.asignatura_id = asignatura_id;
     }
 
     public String getDescripcion() {
@@ -77,5 +77,7 @@ public class Materia implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    
 
 }
