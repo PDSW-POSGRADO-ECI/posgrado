@@ -97,11 +97,11 @@ INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES
 
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(1,'7:00','10:00', '2017-01-02', 'INN', 5);
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(2, '15:00','17:00', '2017-01-01', 'TTDG',24);
-INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(3, '13:00','15:00', '2017-01-12', 'TTDG',24);
-INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(4, '12:00','14:00', '2017-01-20', 'TTDG',24);
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(3, '13:00','12:00', '2017-01-12', 'TTDG',24);
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(4, '12:00','16:00', '2017-01-12', 'TTDG',24);
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(5, '10:00','12:00', '2017-03-10','TTDG',2);
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(6, '8:00','10:30', '2017-01-03','INN',2);
-INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(7, '13:00','15:00', '2017-01-03', 'FPGP',2);
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(7, '13:00','15:00', '2017-03-10', 'FPGP',2);
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(8, '12:00','14:00', '2017-03-10', 'EDO',1);
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(9, '10:00','12:00', '2017-01-01', 'INN',4);
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(10, '8:00','10:30', '2017-02-01', 'INN',1);
@@ -114,9 +114,13 @@ INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,m
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(17, '13:00','15:00', '2017-02-11', 'IALE',25);
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(18, '12:00','14:00', '2017-03-12', 'FPGP',1 );
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(19, '10:00','12:00', '2017-04-13', 'INN',1);
-INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(20, '8:00','10:30', '2017-05-02', 'DVG',24);
-INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(21, '13:00','15:00', '2017-04-03', 'IALI',24 );
-INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(22, '13:00','15:00', '2017-05-10', 'EDO',24 );
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(20, '8:00','10:30', '2017-05-10', 'DVG',24);
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(21, '13:00','15:00', '2017-05-12', 'IALI',24 );
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(22, '16:00','17:00', '2017-05-12', 'EDO',24 );
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(23, '7:00','8:00', '2017-01-12', 'IALI',24 );
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(24, '10:00','13:00', '2017-05-10', 'EDO',24 );
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(25, '7:00','8:00', '2017-3-12', 'IALI',24 );
+INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(26, '10:00','13:00', '2017-04-11', 'EDO',24 );
 
 INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(1, 'Portatiles',true, 1,43);
 INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(2, 'libro de economia 1',true, 1,10);

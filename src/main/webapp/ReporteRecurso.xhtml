@@ -11,28 +11,18 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Reporte de Recursos</title>
-        <style>
-            .tadiwa{
-                background-image:url("/resources/escuela3.jpg");
-            }
-            .ui-button-text{
-                font-size:15px;
-            }
-            .smallButton .ui-button-text {
-                font-size:12px;
-            }
-            .outerpanelgrid>tbody>tr{
-                border: none !important;
-            }
-            .outerpanelgrid>tbody>tr>td{
-                border: none !important;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="formatos.css"></link>
     </h:head>
     <h:body>
+        <h:graphicImage value="resources/logo4.png" class="horizontal"></h:graphicImage>
         <h:form id="ReporteRecursos">
-            <p:commandButton style="position:absolute ; top: 1%; left: 1%" action="Menu" value="Volver al Menu"/>
-            <h:panelGrid columns="3" style="margin:10px 0; position:absolute ; top: 20%; left: 5%; right:5%">
+            <div id="barra2" style="text-align: right;" >
+                <h:panelGrid columns="2" style="margin-left: auto">
+                    <span class="ui-icon ui-icon-extlink"></span>
+                    <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Regresar</p:commandLink>
+                </h:panelGrid>
+            </div>
+            <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 18%; left: 3%; right:5%">
                 <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="idp" />
                 <p:autoComplete id="idp" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
                 <p:commandButton icon="ui-icon-refresh" value="Generar" update=":ReporteRecursos:TablaRecursos"/>
@@ -40,7 +30,7 @@ and open the template in the editor.
             <br>
 
             </br>
-            <p:dataTable id="TablaRecursos" style="position:absolute ; top: 30%; left: 5%; right:5%" var="rec" value="#{ReportesBean.recursos}">
+            <p:dataTable id="TablaRecursos" style="position:absolute ; top: 32%; left: 5%; right:5%" var="rec" value="#{ReportesBean.recursos}">
                 <p:column headerText="Nombre Recurso">
                     <h:outputText value="#{rec.nomRecurso}"/>
                 </p:column>

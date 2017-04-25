@@ -5,37 +5,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title>Reporte Semestral </title>
-        <style>
-            .tadiwa{
-                background-image:url("/resources/escuela3.jpg");
-            }
-            .ui-button-text{
-                font-size:15px;
-            }
-            .smallButton .ui-button-text {
-                font-size:12px;
-            }
-            .outerpanelgrid>tbody>tr{
-                border: none !important;
-            }
-            .outerpanelgrid>tbody>tr>td{
-                border: none !important;
-            }
-        </style>
+        <title>Reporte Semestral (Todos los periodos)</title>
+        <link rel="stylesheet" type="text/css" href="formatos.css"></link>
     </h:head>
     <h:body>
+        <h:graphicImage value="resources/logo4.png" class="horizontal"></h:graphicImage>
         <h:form id="ReporteSemestral">
-            <p:commandButton style="position:absolute ; top: 1%; left: 1%" action="Menu" value="Volver al Menu"/>
-            <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 20%; left: 5%; right:5%">
+           <div id="barra2" style="text-align: right;" >
+                <h:panelGrid columns="2" style="margin-left: auto">
+                    <span class="ui-icon ui-icon-extlink"></span>
+                    <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Regresar</p:commandLink>
+                </h:panelGrid>
+            </div> 
+            <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 17%; left: 3%; right:5%">
                 <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="dd" />
                 <p:autoComplete id="dd" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
                 <p:commandButton icon="ui-icon-refresh" value="Generar" update=":ReporteSemestral:clasesdt"/>
-            </h:panelGrid>
-            <br>
-
-            </br>
-            <p:dataTable id="clasesdt" style="position:absolute ; top: 30%; left: 5%; right:5%" var="cla" value="#{ReportesBean.clases}">
+            </h:panelGrid>          
+            <p:dataTable id="clasesdt" style="position:absolute ; top: 31%; left: 5%; right:5%" var="cla" value="#{ReportesBean.clases}">
                 <p:column headerText="Cohorte">
                     <h:outputText value="#{cla.materia_cohorte_id.id}"/>
                 </p:column>
