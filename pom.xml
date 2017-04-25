@@ -199,6 +199,8 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
+							<outputDirectory>${basedir}/target/endorsed
+                            </outputDirectory>
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>com.github.jsimone</groupId>

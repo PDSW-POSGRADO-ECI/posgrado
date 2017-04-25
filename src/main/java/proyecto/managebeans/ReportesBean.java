@@ -15,7 +15,6 @@ import javax.faces.bean.SessionScoped;
 import proyecto.entities.Clase;
 import proyecto.entities.Cohorte;
 import proyecto.entities.Materia;
-import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
 import proyecto.services.ServiciosReporte;
@@ -31,22 +30,16 @@ import proyecto.services.ServiciosReporteFactory;
 public class ReportesBean implements Serializable {
 
     ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
-    private String periodo;
-    private List<Recurso> rec;
+    String periodo;
 
     public ReportesBean() {
         periodo = "";
-        rec = new ArrayList<>();
     }
 
-    public void RecursosXperiodo() throws ExceptionServiciosReporte {
+    public List<Recurso> getRecursos() throws ExceptionServiciosReporte {
 
-        rec = report.consultarRecursosXperiodo(periodo);
+        return report.consultarRecursosXperiodo(periodo);
 
-    }
-
-    public List<Recurso> getRec() {
-        return rec;
     }
 
     public List<String> getPeriodos() throws ExceptionServiciosReporte {
@@ -57,7 +50,6 @@ public class ReportesBean implements Serializable {
         }
         return per;
     }
-
     public List<Materia> getMaterias() throws ExceptionServiciosReporte {
         return report.consultarMaterias();
     }
@@ -68,14 +60,6 @@ public class ReportesBean implements Serializable {
 
     public String getProfesor(Clase clase) throws ExceptionServiciosReporte {
         return report.consultarProfesor(clase.getMateria_cohorte_id().getId(), clase.getMateria_cohorte_sigla().getSigla()).getNombre();
-    }
-
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
     }
 
     public List<Clase> getClases() throws ExceptionServiciosReporte {
@@ -104,5 +88,12 @@ public class ReportesBean implements Serializable {
     
     public List<String> completeText(String query) throws ExceptionServiciosReporte {
         return getPeriodos();
+    }
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 }
