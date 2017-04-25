@@ -27,7 +27,7 @@
     <h:body>
         <h:form id="ReporteSemestral">
             <p:commandButton style="position:absolute ; top: 1%; left: 1%" action="Menu" value="Volver al Menu"/>
-            <h:panelGrid columns="3" style="margin:10px 0; position:absolute ; top: 20%; left: 5%; right:5%">
+            <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 20%; left: 5%; right:5%">
                 <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="dd" />
                 <p:autoComplete id="dd" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
                 <p:commandButton icon="ui-icon-refresh" value="Generar" update=":ReporteSemestral:clasesdt"/>
