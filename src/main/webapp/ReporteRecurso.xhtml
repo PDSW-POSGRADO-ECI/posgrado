@@ -11,43 +11,26 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Reporte de Recursos</title>
-        <style>
-            .tadiwa{
-                background-image:url("/resources/escuela3.jpg");
-            }
-            .ui-button-text{
-                font-size:15px;
-            }
-            .smallButton .ui-button-text {
-                font-size:12px;
-            }
-            .outerpanelgrid>tbody>tr{
-                border: none !important;
-            }
-            .outerpanelgrid>tbody>tr>td{
-                border: none !important;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="formatos.css"></link>
     </h:head>
     <h:body>
-        <h:form id="Reporte">
-            <p:commandButton style="position:absolute ; top: 1%; left: 1%" action="Menu" value="Volver al Menu"/>
+        <h:graphicImage value="resources/logo4.png" class="horizontal"></h:graphicImage>
+        <h:form id="ReporteRecursos">
+            <div id="barra2" style="text-align: right;" >
+                <h:panelGrid columns="2" style="margin-left: auto">
+                    <span class="ui-icon ui-icon-extlink"></span>
+                    <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Regresar</p:commandLink>
+                </h:panelGrid>
+            </div>
+            <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 18%; left: 3%; right:5%">
+                <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="idp" />
+                <p:autoComplete id="idp" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
+                <p:commandButton icon="ui-icon-refresh" value="Generar" update=":ReporteRecursos:TablaRecursos"/>
+            </h:panelGrid>
             <br>
 
             </br>
-
-            <p:outputLabel for="basic" value="Periodos Cursados:" style="position:absolute ; top: 20%; left: 1%"/>
-            <p:selectOneListbox id="basic" value="#{ReportesBean.periodo}" style="position:absolute ; top: 30%; left: 1%" filterMatchMode="contains">
-                <f:selectItems value="#{ReportesBean.periodos}" var="per">
-                    <p:column>
-                        <h:outputText value="#{per}" />
-                    </p:column>
-                </f:selectItems>
-            </p:selectOneListbox>
-
-            <p:commandButton style="position:absolute ; top: 50%; left: 1%" update="Reporte" value="Generar Reporte" actionListener="#{ReportesBean.RecursosXperiodo}" />
-
-            <p:dataTable style="position:absolute ; top: 20%; left: 15%; right:15%" id="TablaRecursos" var="rec"  value="#{ReportesBean.rec}">
+            <p:dataTable id="TablaRecursos" style="position:absolute ; top: 32%; left: 5%; right:5%" var="rec" value="#{ReportesBean.recursos}">
                 <p:column headerText="Nombre Recurso">
                     <h:outputText value="#{rec.nomRecurso}"/>
                 </p:column>
