@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Reporte Semestral (Todos los periodos)</title>
+        <link rel="stylesheet" type="text/css" href="formatos.css"></link>
+    </h:head>
+    <h:body>
+        <h:graphicImage value="resources/logo4.png" class="horizontal"></h:graphicImage>
+        <h:form id="ReporteSemestral">
+           <div id="barra2" style="text-align: right;" >
+                <h:panelGrid columns="2" style="margin-left: auto">
+                    <span class="ui-icon ui-icon-extlink"></span>
+                    <p:commandLink class="cmStyle" action="Inicio?faces-redirect=true">Cerrar Sesión</p:commandLink>
+                </h:panelGrid>
+            </div> 
+            <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 20%; left: 3%; right:5%">
+                <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="dd" />
+                <p:autoComplete id="dd" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
+                <p:commandButton icon="ui-icon-refresh" value="Generar" update=":ReporteSemestral:clasesdt"/>
+            </h:panelGrid>          
+            <p:dataTable id="clasesdt" style="position:absolute ; top: 35%; left: 5%; right:5%" var="cla" value="#{ReportesBean.clases}">
+                <p:column headerText="Cohorte">
+                    <h:outputText value="#{cla.materia_cohorte_id.id}"/>
+                </p:column>
+                <p:column headerText="Asignatura">
+                    <h:outputText value="#{cla.materia_cohorte_sigla.asignatura_id.nombre}" />
+                </p:column>
+                <p:column headerText="Materia">
+                    <h:outputText value="#{cla.materia_cohorte_sigla.nombre}" />
+                </p:column>
+                <p:column headerText="Profesor">
+                    <h:outputText value="#{ReportesBean.getProfesor(cla)}" />
+                </p:column>
+                <p:column headerText="Horas">
+                    <h:outputText value="#{cla.materia_cohorte_sigla.creditos}" />
+                </p:column>
+                <p:columns value="#{ReportesBean.fechas}" var="fecha">
+                    <f:facet name="header">
+                        <h:outputText value="#{ReportesBean.getHeader(fecha)}" />
+                    </f:facet>
+                    <h:outputText value="#{ReportesBean.getProperty(cla, fecha)}" />
+                </p:columns>
+            </p:dataTable>
+        </h:form>
+    </h:body>    
+</html>
+
+
+

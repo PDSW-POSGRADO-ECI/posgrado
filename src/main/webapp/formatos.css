@@ -32,6 +32,75 @@ body{
     color: #ffffff;
     background: #0db20a;
     background-size: cover;
-    padding: 10px;
+    padding: 8px;
     font: bold 12px Verdana, sans-serif;
+    height: 0.45cm; 
+    margin-top: 2.6cm;
+}
+
+
+#barra2{
+    color: #ffffff;
+    background: #16a3bc;
+    background-size: cover;
+    padding: 8px;
+    font: bold 12px Verdana, sans-serif;
+    height: 0.45cm;  
+}
+
+#barra3{
+    color: #ffffff;
+    background: #a00909;
+    background-size: cover;
+    padding: 8px;
+    font: bold 12px Verdana, sans-serif;
+    height: 0.45cm;  
+    margin-top: 2.2cm;
+}
+.contra{
+    color: #a59b9b;
+    font: bold 12px Verdana, sans-serif !important;
+    text-decoration: none;  
+    
+}
+
+.contra:hover{
+    color: #6ac3ed;   
+    font: bold 12px Verdana, sans-serif;
+    text-decoration: underline;  
+}
+
+.cmStyle{
+    text-align: right;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.cmStyle:hover{  
+    color: #4f4f4f;      
+    text-decoration: underline;
+ 
+}
+
+.horizontal {
+    padding-left: 200px; 
+    
+}
+
+.tadiwa{
+    background-image:url("/resources/escuela3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+}
+
+.sizel{
+    font: bold 12px Verdana, sans-serif;
+}
+
+.bloquef{
+    background-image: url("/resources/f.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }

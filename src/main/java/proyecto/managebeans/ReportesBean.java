@@ -15,7 +15,6 @@ import javax.faces.bean.SessionScoped;
 import proyecto.entities.Clase;
 import proyecto.entities.Cohorte;
 import proyecto.entities.Materia;
-import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
 import proyecto.services.ServiciosReporte;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>  
+        <link rel="stylesheet" type="text/css" href="formatos.css"></link>
+    </h:head>
+    <h:body class="bloquef">       
+        <h:form>
+            <div id="barra" style="text-align: right;" >
+                <h:panelGrid columns="2" style="margin-left: auto">
+                    <span class="ui-icon ui-icon-extlink"></span>
+                    <p:commandLink class="cmStyle" action="Inicio?faces-redirect=true">Cerrar Sesión</p:commandLink>
+                </h:panelGrid>
+            </div>   
+            <p:panelGrid  id="Menu"  style="position:absolute ; top: 30%; left: 0%" >
+                <f:facet name="header">
+                    <p:row>
+                        <p:column colspan="6"> Reportes</p:column>
+                </p:row>
+                </f:facet>
+                <p:row>
+                    <p:column colspan="2">
+                        <p:outputLabel for="repRecurso" value="Reporte de Recursos:" />
+                    </p:column>
+                    <p:column colspan="2">
+                        <p:commandButton  id="repRecurso" update="Menu" value="Generar Reporte" type="submit"  action="ReporteRecurso?faces-redirect=true"/> 
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2">
+                        <p:outputLabel for="repGeneral" value="Reporte General:   " />
+                    </p:column>
+                    <p:column>
+                        <p:commandButton id="repGeneral" update="Menu" value="Generar Reporte" action="ReporteSemestralBaseDatos?faces-redirect=true"/> 
+                    </p:column>
+                </p:row>
+            </p:panelGrid>          
+        </h:form>
+   </h:body>
+</html>
+

@@ -5,40 +5,32 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:head>
-        
         <title>Inicio de Sesion</title>
-        <style>
-            .tadiwa{
-                background-image:url("/resources/escuela3.jpg");
-            }
-            
-        </style>
-    </h:head>
-    
-    <h:body styleClass="tadiwa">
-        
-        
-        <h:form id="login">
-     
-            <p:panel header="Inicio de Sesión" style="height:240px;width:380px;position:absolute ; top: 50%; left: 50%;margin-top:-150px;margin-left:-180px;">
-                <p:spacer></p:spacer>
-                
-                <h:panelGrid  id="loginPanel"  columns="2"  cellpadding="1" cellspacing="1" style="">
-                    
-                    <h:outputText value="Usuario: "  />
+        <link rel="stylesheet" type="text/css" href="formatos.css"></link>
+    </h:head> 
+    <h:body class="tadiwa">
+        <h:form id="login"> 
+            <div id="barra3" style="text-align: right;"></div> 
+            <p:panel header="Inicio de Sesión" style="position:absolute ; top: 50%; left: 50%;margin-top:-150px;margin-left:-180px;">
+                <h:panelGrid  id="loginPanel"  columns="1">
+                    <p:row>
+                    <h:outputText value="Nombre de usuario" class="sizel"/>
+                    </p:row>
+                    <p:row>
                     <p:inputText  id="userName"/> 
-                    <p:spacer></p:spacer>
-                    <p:message for="userName" ></p:message>
-                    <h:outputText value="Contraseña: " />
+                    <p:message for="userName" ></p:message> 
+                    </p:row>
+                    <p:row>
+                    <h:outputText value="Contraseña" class="sizel"/>
+                    </p:row> 
+                    <p:row>
                     <p:password id="contraseña" value="no" feedback="false"></p:password>
-                    <p:spacer></p:spacer>
                     <p:message for="contraseña" ></p:message>
-                    <p:spacer></p:spacer>
-                    <p:commandButton action="Menu" value="Login" update="login" ></p:commandButton>
-                </h:panelGrid>
-                
-            </p:panel>
-           
+                    </p:row> 
+                    <p:commandLink class="contra">¿Olvidate tu contraseña?</p:commandLink>
+                    <p:commandButton action="Menu?faces-redirect=true" value="Login" update="login" ></p:commandButton>
+                </h:panelGrid>           
+            </p:panel>         
        </h:form>
    </h:body>
 </html>
