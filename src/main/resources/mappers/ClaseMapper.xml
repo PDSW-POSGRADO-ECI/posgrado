@@ -32,7 +32,6 @@ and open the template in the editor.
         and matco.cohorte_id=cla.materia_cohorte_cohorte_id
         join materia as mat on mat.sigla=matco.materia_sigla
         join cohorte as co on co.id=matco.cohorte_id;
-        
     </select>
     
     <select parameterType="map" id="consultarClaseXperiodo" resultMap="ClaseResult">
@@ -71,6 +70,7 @@ and open the template in the editor.
         
         WHERE co.periodo = #{periodo}
         
+        ORDER BY asi.id, co.id
     </select>
     
     <resultMap type='Clase' id='ClaseResult'>

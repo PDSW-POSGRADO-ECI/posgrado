@@ -94,6 +94,14 @@ public class ReportesBean implements Serializable {
         return result;
     }
 
+    public String getHeader(Date header) {
+            return new java.sql.Date(header.getTime()).toString();
+        }
+    
+    public String getProperty(Clase property, Date header) {
+            return property.getFecha().toString().equals(header.toString()) ? property.getHora_inicio().toString() : "";
+        }
+    
     public List<String> completeText(String query) throws ExceptionServiciosReporte {
         return getPeriodos();
     }
