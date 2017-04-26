@@ -53,6 +53,10 @@ public class Posgrado implements Serializable{
         this.creditos = creditos;
     }
 
-    
-    
+     @Override
+    public String toString() {
+        return "Posgrado{" + "id=" + id+ ", nombre=" + nombre+'}';
+    }
 }
+    
+

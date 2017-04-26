@@ -12,7 +12,17 @@ import proyecto.entities.Cohorte;
  *
  * @author Laura RB
  */
-public interface CohorteDAO {
-    public List<Cohorte> loadPeriodos() throws ExceptionPersistence;
+public interface CohorteDAO { 
+    
+    /*
+    *Obtener 
+    *@return 
+    **/
+    public List<String> loadPeriodos() throws ExceptionPersistence;
+     
+    /*
+    *Obtener 
+    *@return 
+    **/
     public List<Cohorte> loadPeriodo(String p) throws ExceptionPersistence;
 }

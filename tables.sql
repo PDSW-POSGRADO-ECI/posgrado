@@ -16,7 +16,8 @@ CREATE TABLE Clase (
     hora_fin time  NOT NULL,
     fecha date  NOT NULL,
     Materia_cohorte_Materia_sigla varchar(5)  NOT NULL,
-    Materia_cohorte_Cohorte_id int  NOT NULL
+    Materia_cohorte_Cohorte_id int  NOT NULL,
+	Materia_cohorte_Profesor_documento int  NOT NULL
 );
 
 -- Table: Cohorte
@@ -101,24 +102,32 @@ CREATE TABLE usr (
     pwd varchar(100)  NOT NULL,
     salt varchar(5)  NOT NULL
 );
+
+-- Table: usrXol
+CREATE TABLE usrXrol (
+    rol_rol varchar(30)  NOT NULL,
+    usr_usuario int  NOT NULL
+    
+);
+
 -- primary keys unique keys
 ALTER TABLE Asignatura ADD CONSTRAINT Asignatura_pk PRIMARY KEY (id);
 ALTER TABLE Clase ADD CONSTRAINT Clase_pk PRIMARY KEY (id);
 ALTER TABLE Cohorte ADD CONSTRAINT Cohorte_pk PRIMARY KEY (id);
 ALTER TABLE Horario ADD CONSTRAINT Horario_pk PRIMARY KEY (id);
 ALTER TABLE Materia ADD CONSTRAINT Sigla PRIMARY KEY (sigla);
-ALTER TABLE MateriaCohorte ADD CONSTRAINT MateriaCohorte_pk PRIMARY KEY (Materia_sigla,Cohorte_id);
+ALTER TABLE MateriaCohorte ADD CONSTRAINT MateriaCohorte_pk PRIMARY KEY (Materia_sigla,Cohorte_id,Profesor_documento);
 ALTER TABLE MateriaPerrequisito ADD CONSTRAINT MateriaPerrequisito_pk PRIMARY KEY (Materia_sigla);
 ALTER TABLE Posgrado ADD CONSTRAINT Posgrado_pk PRIMARY KEY (id);
 ALTER TABLE Profesor ADD CONSTRAINT Profesor_pk PRIMARY KEY (documento);
 ALTER TABLE Salon ADD CONSTRAINT Salon_pk PRIMARY KEY (Clase_id);
 ALTER TABLE rol ADD CONSTRAINT rol_pk PRIMARY KEY (rol);
 ALTER TABLE usr ADD CONSTRAINT usr_pk PRIMARY KEY (usuario);
+ALTER TABLE usrXrol ADD CONSTRAINT usrXol_pk PRIMARY KEY (rol_rol,usr_usuario);
 
 -- unique keys
 ALTER TABLE Clase ADD CONSTRAINT uk_clase UNIQUE (id) ;
-ALTER TABLE Profesor ADD CONSTRAINT Profesor_ak_1 UNIQUE (nombre) ;
-
+ALTER TABLE Profesor ADD CONSTRAINT Profesor_ak_1 UNIQUE (correo) ;
 -- foreign keys
 -- Reference: Asignatura_Posgrado (table: Asignatura)
 
@@ -127,10 +136,9 @@ ALTER TABLE Asignatura ADD CONSTRAINT Asignatura_Posgrado
     REFERENCES Posgrado (id)  
 ;
 
--- Reference: Clase_Materia_cohorte (table: Clase)
-ALTER TABLE Clase ADD CONSTRAINT Clase_Materia_cohorte
-    FOREIGN KEY (Materia_cohorte_Materia_sigla, Materia_cohorte_Cohorte_id)
-    REFERENCES MateriaCohorte (Materia_sigla, Cohorte_id)  
+ALTER TABLE Clase ADD CONSTRAINT Clase_MateriaCohorte
+    FOREIGN KEY (Materia_Cohorte_Materia_sigla, Materia_Cohorte_Cohorte_id, Materia_Cohorte_Profesor_documento)
+    REFERENCES MateriaCohorte (Materia_sigla, Cohorte_id, Profesor_documento)  
 ;
 
 -- Reference: Horario_Profesor (table: Horario)

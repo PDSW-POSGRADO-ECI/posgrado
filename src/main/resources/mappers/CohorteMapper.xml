@@ -11,7 +11,7 @@ and open the template in the editor.
 <mapper namespace="proyecto.dao.mybatis.mappers.CohorteMapper"> 
   
     
-    <select parameterType="map" id="consultarPeriodos" resultMap="CohorteResult">
+    <select parameterType="String" id="consultarPeriodos"  resultMap="periodo">
         SELECT 
             co.periodo
         FROM cohorte as co
@@ -23,7 +23,7 @@ and open the template in the editor.
         
         SELECT
             co.id,
-            co.fecha_inicio,
+            co.fehca_inicio,
             co.fecha_fin,
             co.periodo
         FROM Cohorte as co WHERE co.periodo=#{periodo};
@@ -38,6 +38,8 @@ and open the template in the editor.
         <result property='periodo' column='periodo'/> 
     </resultMap>
     
+    <resultMap type="String" id="periodo">
+    </resultMap>
     
 </mapper>
 

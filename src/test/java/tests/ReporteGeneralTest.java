@@ -85,9 +85,10 @@ public class ReporteGeneralTest {
         stmt.execute("INSERT INTO Materia (sigla, nombre,creditos,asignatura_id,descripcion )  VALUES ( 'FGPR', 'fundamentos gerenciales',1,1,'fundamentos de gerencia de proyectos para empresarios' );");
         stmt.execute("INSERT INTO Materia (sigla, nombre,creditos,asignatura_id,descripcion )  VALUES ( 'FGPR2', 'fundamentos gerenciales 2',1,1,'fundamentos de gerencia de proyectos para empresarios nivel 2' );");
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1018428, 'Sergio Chacon', 'sergio@correo.com',8115134,'cc' );");
+        stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1018448, 'Sergio Chacon', 'sergi@correo.com',8115134,'cc' );");
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FGPR',1,1018428)");
-        stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FGPR2',1,1018428)");
-        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(1, '07:00:00','09:00:00', '2017-01-02', 'FGPR', 1 );");
+        stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FGPR2',1,1018448)");
+        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id,materia_cohorte_profesor_documento )  VALUES(1, '07:00:00','09:00:00', '2017-01-02', 'FGPR', 1 ,1018428);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(1, 'libro de economia 1',true, 1,1);");
         conn.close(); 
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
@@ -105,7 +106,7 @@ public class ReporteGeneralTest {
         stmt.execute("INSERT INTO Materia (sigla, nombre,creditos,asignatura_id,descripcion )  VALUES ( 'FGPR', 'fundamentos gerenciales',1,1,'fundamentos de gerencia de proyectos para empresarios' );");
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1018428, 'Sergio Chacon', 'sergio@correo.com',8115134,'cc' );");
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FGPR',1,1018428)");
-        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id )  VALUES(1, '07:00:00','09:00:00', '2017-01-02', 'FGPR', 1 );");
+        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_cohorte_materia_sigla,materia_cohorte_cohorte_id ,materia_cohorte_profesor_documento)  VALUES(1, '07:00:00','09:00:00', '2017-01-02', 'FGPR', 1 ,1018428);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(1, 'libro de economia 1',true, 1,1);");
         conn.close(); 
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();

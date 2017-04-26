@@ -13,7 +13,11 @@ import proyecto.entities.Materia;
  * @author Daniel Rodriguez
  */
 public interface MateriaDAO {
-    
+     
+    /*
+    *Obtener 
+    *@return 
+    **/
     public List<Materia> loadMaterias() throws ExceptionPersistence;
     
 }

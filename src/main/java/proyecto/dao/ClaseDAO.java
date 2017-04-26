@@ -5,6 +5,7 @@
  */
 package proyecto.dao;
 
+import java.util.Date;
 import java.util.List;
 import proyecto.entities.Clase;
 
@@ -12,8 +13,22 @@ import proyecto.entities.Clase;
  *
  * @author Laura RB
  */
-public interface ClaseDAO {
+public interface ClaseDAO { 
+    /*
+    *Obtener 
+    *@return 
+    **/
     public List<Clase> loadClase() throws ExceptionPersistence;
     
+    /*
+    *Obtener 
+    *@return 
+    **/
+    public List<Date> loadFechas(String periodo) throws ExceptionPersistence; 
+    
+    /*
+    *Obtener 
+    *@return 
+    **/
     public List<Clase> loadClaseXperiodo(String periodo) throws ExceptionPersistence;
 }

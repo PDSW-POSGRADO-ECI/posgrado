@@ -69,8 +69,17 @@ and open the template in the editor.
         join Posgrado as pos on asi.Posgrado_id = pos.id 
         
         WHERE co.periodo = #{periodo}
-        
-        ORDER BY asi.id, co.id
+        ORDER BY asi.id, co.id, cla.fecha
+    </select>
+    
+    <select parameterType="map" id="consultarFechas" resultMap="fecha">
+        SELECT
+            cla.fecha
+        FROM clase as cla 
+        join cohorte as co on co.id=cla.materia_cohorte_cohorte_id
+	WHERE periodo=#{periodo}
+        GROUP BY cla.fecha
+        ORDER BY cla.fecha
     </select>
     
     <resultMap type='Clase' id='ClaseResult'>
@@ -81,6 +90,9 @@ and open the template in the editor.
         <association property="materia_cohorte_id" javaType="Cohorte" columnPrefix='CO_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper.CohorteResult'></association>      
         <association property="materia_cohorte_sigla" javaType="Materia" columnPrefix='MAT_' resultMap='proyecto.dao.mybatis.mappers.MateriaMapper.MateriaResult'></association>      
 
+    </resultMap>
+    
+    <resultMap id="fecha" type="Date">
     </resultMap>
     
     

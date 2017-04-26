@@ -76,7 +76,9 @@ public class Profesor implements Serializable{
         this.tipo_documento = tipo_documento;
     }
 
-    
-    
+     @Override
+    public String toString() {
+        return "Profesor{" + "docuemnto=" + documento+ ", nombre=" + nombre+'}';
+    }
     
 }

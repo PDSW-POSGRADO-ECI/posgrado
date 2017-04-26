@@ -14,6 +14,16 @@ import proyecto.entities.Cohorte;
  * @author Laura RB
  */
 public interface CohorteMapper {
-    public List<Cohorte> consultarPeriodos();
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<String> consultarPeriodos();
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
     public List<Cohorte> consultarPeriodo(@Param("periodo") String per);
 }

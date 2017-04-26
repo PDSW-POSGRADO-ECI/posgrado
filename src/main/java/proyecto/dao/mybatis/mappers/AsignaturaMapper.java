@@ -14,6 +14,11 @@ import proyecto.entities.Asignatura;
  */
 public interface AsignaturaMapper {
     
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
     public List<Asignatura> consultarAsignaturas();
     
 }

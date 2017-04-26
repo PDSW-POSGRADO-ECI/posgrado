@@ -5,6 +5,7 @@
  */
 package proyecto.dao.mybatis.mappers;
 
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import proyecto.entities.Clase;
@@ -14,7 +15,22 @@ import proyecto.entities.Clase;
  * @author Laura RB
  */
 public interface ClaseMapper {
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
     public List<Clase> consultarClase();
-    
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Date> consultarFechas(@Param("periodo") String periodo);
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
     public List<Clase> consultarClaseXperiodo(@Param("periodo") String periodo);
 }

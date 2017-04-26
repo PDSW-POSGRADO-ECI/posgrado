@@ -18,9 +18,11 @@ import proyecto.entities.Materia;
  */
 public class mybatisMateriaDAO implements MateriaDAO {
 
-    @Inject
-    private MateriaMapper materiaMapper;
-
+    @Inject private MateriaMapper materiaMapper;
+    
+    /*
+    *@see  MateriaDAO loadMaterias
+    **/
     @Override
     public List<Materia> loadMaterias() throws ExceptionPersistence {
         try {

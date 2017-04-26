@@ -13,6 +13,17 @@ import proyecto.entities.Recurso;
  * @author Laura RB
  */
 public interface RecursoDAO {
+     
+    /*
+    *Obtener todas los recursos de un peruiodo
+    *@param per
+    *@return asig retorna una lista de asignaturas
+    **/
     public List<Recurso> loadRecursoXperiodo(String per)throws ExceptionPersistence;
+     
+    /*
+    *Obtener todos los recursos de la base de datos
+    *@return retorna lista de todos los recursos
+    **/
     public List<Recurso> loadRecursos()throws ExceptionPersistence;
 }

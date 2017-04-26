@@ -16,8 +16,16 @@ import proyecto.entities.Recurso;
  * @author Laura RB
  */
 public interface RecursoMapper {
-
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
     public List<Recurso> consultarRecursoDePeriodo(@Param("periodo") String per );
-    
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
     public List<Recurso> consultarRecursos();
 }

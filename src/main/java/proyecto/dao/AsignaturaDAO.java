@@ -13,7 +13,11 @@ import proyecto.entities.Asignatura;
  * @author Daniel Rodriguez
  */
 public interface AsignaturaDAO {
-    
+     
+    /*
+    *Obtener 
+    *@return 
+    **/
     public List<Asignatura> loadAsignaturas() throws ExceptionPersistence;
     
 }

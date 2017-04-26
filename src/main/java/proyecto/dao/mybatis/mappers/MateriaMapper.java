@@ -13,7 +13,11 @@ import proyecto.entities.Materia;
  * @author Daniel Rodriguez
  */
 public interface MateriaMapper {
-    
+     
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
     public List<Materia> ConsultarMaterias();
     
 }

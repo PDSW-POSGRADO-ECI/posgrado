@@ -18,9 +18,11 @@ import proyecto.entities.Profesor;
  */
 public class mybatisProfesorDAO implements ProfesorDAO {
 
-    @Inject
-    private ProfesorMapper profesorMapper;
-
+    @Inject private ProfesorMapper profesorMapper;
+    
+    /*
+    *@see ProfesorDAO loadProfesores
+    **/
     @Override
     public List<Profesor> loadProfesores() throws ExceptionPersistence {
         try {
@@ -29,7 +31,10 @@ public class mybatisProfesorDAO implements ProfesorDAO {
             throw new ExceptionPersistence("Error al cargar profesores", e);
         }
     }
-
+    
+    /*
+    *@see ProfesorDAO loadProfesor
+    **/
     @Override
     public Profesor loadProfesor(int cohorte, String materia) throws ExceptionPersistence {
         try {

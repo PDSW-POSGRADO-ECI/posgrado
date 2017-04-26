@@ -19,7 +19,10 @@ import proyecto.entities.Asignatura;
 public class mybatisAsignaturaDAO implements AsignaturaDAO{
     
     @Inject private AsignaturaMapper asignaturaMapper;
-
+    
+    /*
+    *@see AsignaturaDAO loadAsignaturas
+    **/
     @Override
     public List<Asignatura> loadAsignaturas() throws ExceptionPersistence {
         List<Asignatura> asig=null;

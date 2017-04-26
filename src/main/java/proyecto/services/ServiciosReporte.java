@@ -5,6 +5,7 @@
  */
 package proyecto.services;
 
+import java.util.Date;
 import java.util.List;
 import proyecto.entities.Clase;
 import proyecto.entities.Cohorte;
@@ -20,7 +21,7 @@ public interface ServiciosReporte {
 
     public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte;
 
-    public List<Cohorte> obtenerPeriodos() throws ExceptionServiciosReporte;
+    public List<String> obtenerPeriodos() throws ExceptionServiciosReporte;
 
     public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte;
 
@@ -29,6 +30,8 @@ public interface ServiciosReporte {
     public Profesor consultarProfesor(int cohorte, String materia) throws ExceptionServiciosReporte;
 
     public List<Clase> colsultarClaseXperiodo(String a) throws ExceptionServiciosReporte;
+    
+    public List<Date> colsultarFechas(String per) throws ExceptionServiciosReporte;
 
     public List<Materia> consultarMaterias() throws ExceptionServiciosReporte;
 }

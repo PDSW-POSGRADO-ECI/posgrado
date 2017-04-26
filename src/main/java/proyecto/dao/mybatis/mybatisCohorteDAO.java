@@ -20,10 +20,12 @@ public class mybatisCohorteDAO implements CohorteDAO{
     
     @Inject private CohorteMapper corteMapper;
 
-    
+    /*
+    *@see CohorteDAO loadPeriodos
+    **/
     @Override
-    public List<Cohorte> loadPeriodos() {
-        List<Cohorte> per=null;
+    public List<String> loadPeriodos() {
+        List<String> per=null;
         try{
             per=corteMapper.consultarPeriodos();
         }
@@ -34,6 +36,9 @@ public class mybatisCohorteDAO implements CohorteDAO{
         return per;
     }
     
+    /*
+    *@see loadPeriodos loadPeriodo
+    **/
     @Override
     public List<Cohorte> loadPeriodo(String p ) {
         List<Cohorte> per=null;
@@ -46,4 +51,5 @@ public class mybatisCohorteDAO implements CohorteDAO{
         
         return per;
     }
+    
 }

@@ -35,7 +35,7 @@ and open the template in the editor.
                     <h:outputText value="#{rec.nomRecurso}"/>
                 </p:column>
                 <p:column headerText="Fecha">
-                    <h:outputText value="#{rec.clase_id.fecha}"/>
+                    <h:outputText value="#{ReportesBean.getHeader(rec.clase_id.fecha)}"/>
                 </p:column>
                 <p:column headerText="Hora Inicio">
                     <h:outputText value="#{rec.clase_id.hora_inicio}"/>

@@ -37,6 +37,8 @@ and open the template in the editor.
         
         WHERE matc.Cohorte_id = #{cohorte} AND
         matc.Materia_sigla = #{materia};
+
+        
     </select>
     
     <resultMap type="Profesor" id="ProfesorResult">
