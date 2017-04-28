@@ -20,6 +20,22 @@ body{
     font-size:12px;
 }
 
+.buton .ui-button-text {
+    border: 1px solid #aaa;
+    border-radius:3px;
+    font: 13.3333px Verdana, sans-serif !important;
+    background-color: #ededed;
+    position:absolute;
+  
+}
+
+.buton .ui-button-text:hover {
+    border: 1px solid #aaa;
+    border-radius:3px;
+    background-color: #ededed;
+    border-color: #4587ef;
+    
+}
 .outerpanelgrid>tbody>tr{
     border: none !important;
 }
@@ -32,12 +48,22 @@ body{
     color: #ffffff;
     background: #0db20a;
     background-size: cover;
-    padding: 8px;
+    padding: 10px;
     font: bold 12px Verdana, sans-serif;
-    height: 0.45cm; 
-    margin-top: 2.6cm;
+    height: 0.45cm;
+    margin-top: 2.62cm;
+    
+    
 }
-
+.grapAlign {
+    display: block;
+    margin-right: 1cm !important;
+    height: 110px;
+    margin: 0px 6% 0px 0px;
+    padding: 0;
+    width: 85%;
+    background-size: contain !important;
+}
 
 #barra2{
     color: #ffffff;
@@ -59,27 +85,23 @@ body{
 }
 .contra{
     color: #a59b9b;
-    font: bold 12px Verdana, sans-serif !important;
-    text-decoration: none;  
-    
+    font: bold 10px Verdana, sans-serif !important;
+    text-decoration: none;    
 }
 
 .contra:hover{
-    color: #6ac3ed;   
-    font: bold 12px Verdana, sans-serif;
-    text-decoration: underline;  
+    color: #4587ef;       
 }
 
 .cmStyle{
     text-align: right;
     color: #ffffff;
     text-decoration: none;
+    font: 12px Verdana, sans-serif !important;
 }
 
 .cmStyle:hover{  
     color: #4f4f4f;      
-    text-decoration: underline;
- 
 }
 
 .horizontal {
@@ -94,8 +116,25 @@ body{
     background-attachment: fixed; 
 }
 
+.edificio{
+    background-image:url("/resources/edificio.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+}
+
 .sizel{
-    font: bold 12px Verdana, sans-serif;
+    font: bold 12px Verdana, sans-serif !important;
+}
+
+.size2{
+    font: bold 12px Verdana, sans-serif !important;
+    font-size: 0.8em;
+    font-weight: lighter;
+    padding: 0px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    
+ 
 }
 
 .bloquef{
@@ -103,4 +142,87 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+
+.customTitleBar > .ui-panel-titlebar {
+    background-color: red;   
+}
+
+.panelgrid-dotted-border{
+  border: 1px;
+}
+.panel-body{
+    margin: 0 auto;
+}
+.ui-icon.inline { 
+    display:inline-block; 
+    margin-top: 7px;   
+}​
+
+.ui-panel .ui-panel-titlebar {
+    padding: .5em 1em .3em;
+}
+
+.ui-widget-header {
+    border: 0px solid #d5d5d5;
+    background: #e0e0e0;
+    color: #000000;
+    font-weight: bold;
+}
+
+.ui-widget-content {
+    background: #fff;
+    color: #222;
+}
+
+.ui-widget {
+    font-family: "latoregular","Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 1em;
+    font-size: 1em;
+}
+
+
+.input{
+    border:1px ;
+    border-radius:3px; 
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.075);  
+}
+  
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #27398e;
+  text-align: center;
+  font: 12px Verdana, sans-serif !important;
+}
+
+.panelHorizontal{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    vertical-align: auto;
+  
+}
+
+
+img {
+    max-width: 70%;
+    height: auto;   
+    position: absolute;
+    margin-left: 200px;
+}
+
+.item {
+    background: #ffffff;
+    height: 100px;
+    background-size: cover;
+    left: 600px;   
+}
+
+.borde{
+    border-top: 10px solid #27398e; 
 }

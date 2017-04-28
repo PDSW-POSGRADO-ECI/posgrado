@@ -6,34 +6,40 @@
     
     <h:head>
         <title>Inicio de Sesion</title>
-        <style>
-            .tadiwa{
-                background-image:url("/resources/escuela3.jpg");
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="formatos.css"></link>
     </h:head>
-    <h:body  class="tadiwa">
-        <h:form id="login">
-            <p:panel header="Inicio de Sesión" style="height:240px;width:380px;position:absolute ; top: 50%; left: 50%;margin-top:-150px;margin-left:-180px;">
-                <p:spacer></p:spacer>
-                
-                <h:panelGrid  id="loginPanel"  columns="2"  cellpadding="1" cellspacing="1" style="">
+    <h:body>
+
+        <h:form id="login">  
+            <div class="item">
+                <img src="resources/campus.jpg" class="imagen" />
+            </div>
+            <div class="borde"></div>
+            <p:panel class="panel-body"  style="height:230px;width:250px;position:absolute ; top: 50%; left: 50%;margin-top:-150px;margin-left:-150px;">               
+                <f:facet name="header">
+                    <p:outputLabel class="size2">Iniciar Sesión</p:outputLabel>
+                </f:facet>
+                <h:panelGrid  id="loginPanel"  columns="1"  >               
                     <p:row>
-                    <h:outputText value="Usuario: "  />
-                    <p:inputText  id="userName"/> 
-                    <p:message for="userName" ></p:message> 
+                        <h:outputText value="Nombre de usuario" class="sizel"/>
                     </p:row>
                     <p:row>
-                    <h:outputText value="Contraseña" class="sizel"/>
+                        <p:inputText type="text" class="input"/> 
+                       
+                    </p:row>
+                    <p:row>
+                        <h:outputText value="Contraseña" class="sizel"/>
                     </p:row> 
                     <p:row>
-                    <p:password id="contraseña" value="no" feedback="false"></p:password>
-                    <p:message for="contraseña" ></p:message>
+                        <p:password value="no"></p:password>
                     </p:row> 
-                    <p:commandLink class="contra">¿Olvidate tu contraseña?</p:commandLink>
-                    <p:commandButton action="Menu?faces-redirect=true" value="Login" update="login" ></p:commandButton>
+                        <p:commandLink class="contra">¿Olvidate tu contraseña?</p:commandLink>
+                    
+                    <p:commandButton action="Menu?faces-redirect=true" value="Entrar" class="buton"></p:commandButton>
+                    
                 </h:panelGrid>           
-            </p:panel>         
+            </p:panel> 
+            <div class="footer">This footer will always be positioned at the bottom of the page</div>
        </h:form>
    </h:body>
 </html>
