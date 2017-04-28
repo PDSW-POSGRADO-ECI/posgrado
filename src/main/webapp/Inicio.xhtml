@@ -9,12 +9,11 @@
         <link rel="stylesheet" type="text/css" href="formatos.css"></link>
     </h:head>
     <h:body>
-
         <h:form id="login">  
             <div class="item">
                 <img src="resources/campus.jpg" class="imagen" />
             </div>
-            <div class="borde"></div>
+            <div id="borde"></div>
             <p:panel class="panel-body"  style="height:230px;width:250px;position:absolute ; top: 50%; left: 50%;margin-top:-150px;margin-left:-150px;">               
                 <f:facet name="header">
                     <p:outputLabel class="size2">Iniciar Sesión</p:outputLabel>
@@ -33,10 +32,8 @@
                     <p:row>
                         <p:password value="no"></p:password>
                     </p:row> 
-                        <p:commandLink class="contra">¿Olvidate tu contraseña?</p:commandLink>
-                    
-                    <p:commandButton action="Menu?faces-redirect=true" value="Entrar" class="buton"></p:commandButton>
-                    
+                    <p:commandLink class="contra" >¿Olvidate tu contraseña?</p:commandLink>
+                    <p:commandButton action="Menu?faces-redirect=true" value="Entrar" class="buton"></p:commandButton>                  
                 </h:panelGrid>           
             </p:panel> 
             <div class="footer">This footer will always be positioned at the bottom of the page</div>

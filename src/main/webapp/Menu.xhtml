@@ -6,61 +6,30 @@
     
     <h:head>  
         <link rel="stylesheet" type="text/css" href="formatos.css"></link>
-    </h:head>
-    <h:body class="bloquef">       
+        <link rel="stylesheet" type="text/css" href="fonts.css"></link>
+    </h:head >
+    <h:body class="bloquef">
+        <div class="item">
+                <img src="resources/campus.jpg" class="imagen" />
+        </div> 
+        
         <h:form>
-            <div id="barra" style="text-align: right;" >
-                <h:panelGrid columns="2" style="margin-right: auto">
-                    <span class="ui-icon ui-icon-extlink"></span>
-                    <p:commandLink class="cmStyle" action="Inicio?faces-redirect=true">Cerrar Sesión</p:commandLink>
-                </h:panelGrid>
-            </div>   
-            <p:panelGrid  id="Reportes"  columns="1" style="margin:10px 0; position:absolute ; top: 30%; left: 25%; right:5%" >
-                <f:facet name="header">
-                    <p:row>
-                        <p:column colspan="6"> Reportes</p:column>
-                    </p:row>
-                </f:facet>
-                <p:row>
-                    <p:column colspan="2">
-                        <p:outputLabel for="repRecurso" value="Reporte de Recursos: " />
-                    </p:column>
-                    <p:column colspan="2">
-                        <p:commandButton  id="repRecurso" update="Reportes" value="Generar Reporte" type="submit"  action="ReporteRecurso?faces-redirect=true"/> 
-                    </p:column>
-                </p:row>
-                <p:row>
-                    <p:column colspan="2">
-                        <p:outputLabel for="repGeneral" value="Reporte General:   " />
-                    </p:column>
-                    <p:column>
-                        <p:commandButton id="repGeneral" update="Reportes" value="Generar Reporte" action="ReporteSemestral?faces-redirect=true"/> 
-                    </p:column>
-                </p:row>
-            </p:panelGrid>  
-            <p:panelGrid  id="registros"  columns="1" style="margin:10px 0; position:absolute ; top: 30%; left: 50%; right:5%" >
-                <f:facet name="header">
-                    <p:row>
-                        <p:column colspan="6"> Registros</p:column>
-                    </p:row>
-                </f:facet>
-                <p:row>
-                    <p:column colspan="2">
-                        <p:outputLabel for="reMateria" value="Registrar Nueva Materia:" />
-                    </p:column>
-                    <p:column colspan="2">
-                        <p:commandButton  id="reMateria" update="registros" value="Registrar Materia" type="submit"  action="RegistrarMateria?faces-redirect=true"/> 
-                    </p:column>
-                </p:row>
-                <p:row>
-                    <p:column colspan="2">
-                        <p:outputLabel for="reClase" value="Registrar Nueva Clase: " />
-                    </p:column>
-                    <p:column>
-                        <p:commandButton id="reClase" update="registros" value="Regsitrar Clase  " action="RegistrarClase?faces-redirect=true"/> 
-                    </p:column>
-                </p:row>
-            </p:panelGrid>  
+            <header>
+            <nav>
+                <ul><li><p:commandLink action="Menu?faces-redirect=true"><span><i class="icon icon-home"></i></span>Inicio</p:commandLink></li>
+                    <li><p:commandLink action="Menu?faces-redirect=true"><span><i class="icon icon-folder-open"></i></span>Reportes</p:commandLink>                  
+                        <ul> 
+                            <li><p:commandLink action="ReporteSemestral?faces-redirect=true">General</p:commandLink></li>
+                            <li><p:commandLink action="ReporteRecurso?faces-redirect=true">Recursos</p:commandLink></li>
+                        </ul> 
+                    </li>
+                    <li><p:commandLink action="RegistrarMateria?faces-redirect=true"><span><i class="icon icon-file-empty"></i></span>Materias</p:commandLink></li>
+                    <li><p:commandLink action="RegistrarClase?faces-redirect=true"><span><i class="icon icon-file-empty"></i></span>Clases</p:commandLink></li>
+                    <li><p:commandLink action="Inicio?faces-redirect=true"><span><i class="icon icon-exit"></i></span>Salir</p:commandLink></li>
+                </ul>
+            </nav>
+            </header> 
+
         </h:form>
    </h:body>
 </html>
