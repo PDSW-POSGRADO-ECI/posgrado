@@ -16,18 +16,14 @@ import java.util.Date;
 public class Cohorte implements Serializable{
 
     private int id;
-    private Date fecha_inicio;
-    private Date fecha_fin;
-    private String periodo;
+    private Periodo periodo;
     
     public Cohorte(){
-        periodo="";
+        periodo=null;
     }
     
-    public Cohorte(int id, Date inicio,Date fin, String per) {
+    public Cohorte(int id, Periodo per) {
         this.id=id;
-        fecha_inicio=inicio;
-        fecha_fin=fin;
         periodo=per;
         
     }
@@ -40,27 +36,12 @@ public class Cohorte implements Serializable{
         this.id = id;
     }
 
-    public Date getFecha_inicio() {
-        return fecha_inicio;
-    }
 
-    public void setFecha_inicio(Date fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
-    }
-
-    public Date getFecha_fin() {
-        return fecha_fin;
-    }
-
-    public void setFecha_fin(Date fecha_fin) {
-        this.fecha_fin = fecha_fin;
-    }
-
-    public String getPeriodo() {
+    public Periodo getPeriodo() {
         return periodo;
     }
 
-    public void setPeriodo(String periodo) {
+    public void setPeriodo(Periodo periodo) {
         this.periodo = periodo;
     }
 

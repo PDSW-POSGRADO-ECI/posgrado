@@ -27,11 +27,8 @@ and open the template in the editor.
         mat.nombre as MAT_nombre
         
 	FROM clase as cla 
-        join materiacohorte as matco on 
-        matco.materia_sigla=cla.materia_cohorte_materia_sigla 
-        and matco.cohorte_id=cla.materia_cohorte_cohorte_id
-        join materia as mat on mat.sigla=matco.materia_sigla
-        join cohorte as co on co.id=matco.cohorte_id;
+        join materia as mat on mat.sigla=cla.materia_sigla
+        join cohorte as co on co.id=cla.cohorte_id;
     </select>
     
     <select parameterType="map" id="consultarClaseXperiodo" resultMap="ClaseResult">
@@ -43,43 +40,42 @@ and open the template in the editor.
         cla.fecha,
         
         co.id as CO_id,
-        co.fecha_inicio as CO_fecha_inicio,
-        co.fecha_fin as CO_fecha_fin,
-        co.periodo as CO_periodo,
+        
+        pro.documento as PRO_documento,
+        pro.nombre as PRO_nombre,
         
         mat.sigla as MAT_sigla,
         mat.nombre as MAT_nombre,
         mat.creditos as MAT_creditos,
-        mat.descripcion as MAT_descripcion,
         
         asi.id as MAT_ASI_id,
         asi.nombre as MAT_ASI_nombre,
         
         pos.id as MAT_ASI_POS_id,
-        pos.nombre as MAT_ASI_POS_id,
-        pos.creditos as MAT_ASI_POS_id
+        pos.nombre as MAT_ASI_POS_id
         
 	FROM clase as cla 
-        join materiacohorte as matco on 
-        matco.materia_sigla=cla.materia_cohorte_materia_sigla 
-        and matco.cohorte_id=cla.materia_cohorte_cohorte_id
-        join materia as mat on mat.sigla=matco.materia_sigla
-        join cohorte as co on co.id=matco.cohorte_id
+        join materia as mat on mat.sigla=cla.materia_sigla
+        join cohorte as co on co.id=cla.cohorte_id
         join Asignatura as asi on mat.Asignatura_id = asi.id
         join Posgrado as pos on asi.Posgrado_id = pos.id 
+        join periodo as per on per.periodo=co.periodo_periodo
+        join profesor as pro on pro.documento=cla.profesor_documento
         
-        WHERE co.periodo = #{periodo}
+        WHERE per.periodo = #{periodo}
         ORDER BY asi.id, co.id, cla.fecha
     </select>
     
     <select parameterType="map" id="consultarFechas" resultMap="fecha">
-        SELECT
+         SELECT
             cla.fecha
+
         FROM clase as cla 
-        join cohorte as co on co.id=cla.materia_cohorte_cohorte_id
-	WHERE periodo=#{periodo}
+        join cohorte as co on co.id=cla.cohorte_id
+        join periodo as per on co.periodo_periodo=per.periodo
+        
+	WHERE per.periodo=#{periodo}
         GROUP BY cla.fecha
-        ORDER BY cla.fecha
     </select>
     
     <resultMap type='Clase' id='ClaseResult'>
@@ -87,8 +83,9 @@ and open the template in the editor.
         <result property='hora_inicio' column='hora_inicio'/>
         <result property='hora_fin' column='hora_fin'/>   
         <result property='fecha' column='fecha'/>      
-        <association property="materia_cohorte_id" javaType="Cohorte" columnPrefix='CO_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper.CohorteResult'></association>      
-        <association property="materia_cohorte_sigla" javaType="Materia" columnPrefix='MAT_' resultMap='proyecto.dao.mybatis.mappers.MateriaMapper.MateriaResult'></association>      
+        <association property="cohorte_id" javaType="Cohorte" columnPrefix='CO_' resultMap='proyecto.dao.mybatis.mappers.CohorteMapper.CohorteResult'></association>      
+        <association property="materia_sigla" javaType="Materia" columnPrefix='MAT_' resultMap='proyecto.dao.mybatis.mappers.MateriaMapper.MateriaResult'></association> 
+        <association property="profesor_documento" javaType="Profesor" columnPrefix='PRO_' resultMap='proyecto.dao.mybatis.mappers.ProfesorMapper.ProfesorResult'></association>      
 
     </resultMap>
     

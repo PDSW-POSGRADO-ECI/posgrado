@@ -6,7 +6,6 @@
 package proyecto.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
@@ -75,6 +74,8 @@ public class Profesor implements Serializable{
     public void setTipo_documento(String tipo_documento) {
         this.tipo_documento = tipo_documento;
     }
+
+    
 
      @Override
     public String toString() {

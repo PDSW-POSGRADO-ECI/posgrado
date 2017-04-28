@@ -24,19 +24,19 @@
             </h:panelGrid>          
             <p:dataTable id="clasesdt" style="position:absolute ; top: 31%; left: 5%; right:5%" var="cla" value="#{ReportesBean.clases}">
                 <p:column headerText="Cohorte">
-                    <h:outputText value="#{cla.materia_cohorte_id.id}"/>
+                    <h:outputText value="#{cla.cohorte_id.id}"/>
                 </p:column>
                 <p:column headerText="Asignatura">
-                    <h:outputText value="#{cla.materia_cohorte_sigla.asignatura_id.nombre}" />
+                    <h:outputText value="#{cla.materia_sigla.asignatura_id.nombre}" />
                 </p:column>
                 <p:column headerText="Materia">
-                    <h:outputText value="#{cla.materia_cohorte_sigla.nombre}" />
+                    <h:outputText value="#{cla.materia_sigla.nombre}" />
                 </p:column>
                 <p:column headerText="Profesor">
                     <h:outputText value="#{ReportesBean.getProfesor(cla)}" />
                 </p:column>
                 <p:column headerText="Horas">
-                    <h:outputText value="#{cla.materia_cohorte_sigla.creditos}" />
+                    <h:outputText value="#{cla.materia_sigla.creditos}" />
                 </p:column>
                 <p:columns value="#{ReportesBean.fechas}" var="fecha">
                     <f:facet name="header">

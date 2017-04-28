@@ -18,21 +18,23 @@ public class Clase implements Serializable{
     private int id;
     private Time hora_inicio;
     private Time hora_fin;
-    private Cohorte materia_cohorte_id;
-    private Materia materia_cohorte_sigla;
+    private Cohorte cohorte_id;
+    private Materia materia_sigla;
+    private Profesor profesor_documento;
     private Date fecha;
     
     public Clase(){
         //this.recursos = new ArrayList<>();
     }
     
-    public Clase(int id,Time inicio,Time fin,Cohorte corte,Materia mat,Date fecha){
+    public Clase(int id,Time inicio,Time fin,Cohorte corte,Materia mat,Date fecha,Profesor prof){
         this.id=id;
         hora_inicio=inicio;
         hora_fin=fin;
-        materia_cohorte_sigla=mat;
-        materia_cohorte_id=corte;
+        materia_sigla=mat;
+        cohorte_id=corte;
         this.fecha=fecha;
+        profesor_documento=prof;
 
     
     }
@@ -61,21 +63,30 @@ public class Clase implements Serializable{
         this.hora_fin = hora_fin;
     }
 
-    public Cohorte getMateria_cohorte_id() {
-        return materia_cohorte_id;
+    public Cohorte getCohorte_id() {
+        return cohorte_id;
     }
 
-    public void setMateria_cohorte_id(Cohorte materia_cohorte_id) {
-        this.materia_cohorte_id = materia_cohorte_id;
+    public void setCohorte_id(Cohorte cohorte_id) {
+        this.cohorte_id = cohorte_id;
     }
 
-    public Materia getMateria_cohorte_sigla() {
-        return materia_cohorte_sigla;
+    public Materia getMateria_sigla() {
+        return materia_sigla;
     }
 
-    public void setMateria_cohorte_sigla(Materia materia_cohorte_sigla) {
-        this.materia_cohorte_sigla = materia_cohorte_sigla;
+    public void setMateria_sigla(Materia materia_sigla) {
+        this.materia_sigla = materia_sigla;
     }
+
+    public Profesor getProfesor_documento() {
+        return profesor_documento;
+    }
+
+    public void setProfesor_documento(Profesor profesor_documento) {
+        this.profesor_documento = profesor_documento;
+    }
+
 
     public Date getFecha() {
         return fecha;

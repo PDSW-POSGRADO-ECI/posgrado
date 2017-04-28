@@ -15,6 +15,7 @@
         <typeAlias type='proyecto.entities.Asignatura' alias='Asignatura'/>
         <typeAlias type='proyecto.entities.Profesor' alias='Profesor'/>
         <typeAlias type='proyecto.entities.Posgrado' alias='Posgrado'/>
+        <typeAlias type='proyecto.entities.Periodo' alias='Periodo'/>
     </typeAliases>
        
     <environments default="development">

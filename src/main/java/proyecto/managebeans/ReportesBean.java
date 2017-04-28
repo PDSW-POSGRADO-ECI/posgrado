@@ -78,7 +78,7 @@ public class ReportesBean implements Serializable {
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     public String getProfesor(Clase clase) throws ExceptionServiciosReporte {
-        return report.consultarProfesor(clase.getMateria_cohorte_id().getId(), clase.getMateria_cohorte_sigla().getSigla()).getNombre();
+        return report.consultarProfesor(clase.getCohorte_id().getId(), clase.getMateria_sigla().getSigla()).getNombre();
     }
     
      /**

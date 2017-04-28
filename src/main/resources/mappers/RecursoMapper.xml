@@ -24,8 +24,10 @@ and open the template in the editor.
         
 	FROM recurso as rec 
         join clase as cla on cla.id=rec.clase_id
-        join cohorte as co on cla.materia_cohorte_cohorte_id=co.id 
-        WHERE co.periodo=#{periodo}
+        join cohorte as co on cla.cohorte_id=co.id 
+        join periodo as per on  per.periodo=co.periodo_periodo
+
+        WHERE per.periodo=#{periodo}
         ORDER BY cla.fecha;
         
     </select>
@@ -44,7 +46,7 @@ and open the template in the editor.
         
 	FROM recurso as rec 
         join clase as cla on cla.id=rec.clase_id
-        join cohorte as co on cla.materia_cohorte_cohorte_id=co.id
+        join cohorte as co on cla.cohorte_id=co.id
         
         
     </select>

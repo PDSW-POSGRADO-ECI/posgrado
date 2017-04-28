@@ -20,6 +20,7 @@ and open the template in the editor.
         <typeAlias type='proyecto.entities.Cohorte' alias='Cohorte'/>
         <typeAlias type='proyecto.entities.Asignatura' alias='Asignatura'/>
         <typeAlias type='proyecto.entities.Profesor' alias='Profesor'/>
+        <typeAlias type='proyecto.entities.Periodo' alias='Periodo'/>
     </typeAliases>        
     
     

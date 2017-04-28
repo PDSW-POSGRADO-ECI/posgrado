@@ -15,18 +15,18 @@
                     <p:commandLink class="cmStyle" action="Inicio?faces-redirect=true">Cerrar Sesión</p:commandLink>
                 </h:panelGrid>
             </div>   
-            <p:panelGrid  id="Menu"  style="position:absolute ; top: 30%; left: 0%" >
+            <p:panelGrid  id="Reportes"  columns="1" style="margin:10px 0; position:absolute ; top: 30%; left: 25%; right:5%" >
                 <f:facet name="header">
                     <p:row>
                         <p:column colspan="6"> Reportes</p:column>
-                </p:row>
+                    </p:row>
                 </f:facet>
                 <p:row>
                     <p:column colspan="2">
-                        <p:outputLabel for="repRecurso" value="Reporte de Recursos:" />
+                        <p:outputLabel for="repRecurso" value="Reporte de Recursos: " />
                     </p:column>
                     <p:column colspan="2">
-                        <p:commandButton  id="repRecurso" update="Menu" value="Generar Reporte" type="submit"  action="ReporteRecurso?faces-redirect=true"/> 
+                        <p:commandButton  id="repRecurso" update="Reportes" value="Generar Reporte" type="submit"  action="ReporteRecurso?faces-redirect=true"/> 
                     </p:column>
                 </p:row>
                 <p:row>
@@ -34,10 +34,33 @@
                         <p:outputLabel for="repGeneral" value="Reporte General:   " />
                     </p:column>
                     <p:column>
-                        <p:commandButton id="repGeneral" update="Menu" value="Generar Reporte" action="ReporteSemestral?faces-redirect=true"/> 
+                        <p:commandButton id="repGeneral" update="Reportes" value="Generar Reporte" action="ReporteSemestral?faces-redirect=true"/> 
                     </p:column>
                 </p:row>
-            </p:panelGrid>          
+            </p:panelGrid>  
+            <p:panelGrid  id="registros"  columns="1" style="margin:10px 0; position:absolute ; top: 30%; left: 50%; right:5%" >
+                <f:facet name="header">
+                    <p:row>
+                        <p:column colspan="6"> Registros</p:column>
+                    </p:row>
+                </f:facet>
+                <p:row>
+                    <p:column colspan="2">
+                        <p:outputLabel for="reMateria" value="Registrar Nueva Materia:" />
+                    </p:column>
+                    <p:column colspan="2">
+                        <p:commandButton  id="reMateria" update="registros" value="Registrar Materia" type="submit"  action="RegistrarMateria?faces-redirect=true"/> 
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2">
+                        <p:outputLabel for="reClase" value="Registrar Nueva Clase: " />
+                    </p:column>
+                    <p:column>
+                        <p:commandButton id="reClase" update="registros" value="Regsitrar Clase  " action="RegistrarClase?faces-redirect=true"/> 
+                    </p:column>
+                </p:row>
+            </p:panelGrid>  
         </h:form>
    </h:body>
 </html>

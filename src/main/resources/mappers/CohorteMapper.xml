@@ -10,36 +10,41 @@ and open the template in the editor.
 
 <mapper namespace="proyecto.dao.mybatis.mappers.CohorteMapper"> 
   
-    
-    <select parameterType="String" id="consultarPeriodos"  resultMap="periodo">
-        SELECT 
-            co.periodo
-        FROM cohorte as co
-        GROUP BY co.periodo
-        ORDER BY co.periodo;
-    </select>
-    
-    <select parameterType="map" id="consultarPeriodo" resultMap="CohorteResult">
+    <select parameterType="map" id="consultarPeriodos" resultMap="periodo">
         
         SELECT
-            co.id,
-            co.fehca_inicio,
-            co.fecha_fin,
-            co.periodo
-        FROM Cohorte as co WHERE co.periodo=#{periodo};
+            per.periodo
+        FROM periodo as per;
+        
+    </select>
+    
+    <select parameterType="map" id="consultarCorteXPeriodo" resultMap="CohorteResult">
+        
+        SELECT
+            co.id
+            
+        FROM Cohorte as co 
+        join periodo as per on co.periodo=per.periodo
+        WHERE per.periodo=#{periodo};
         
         
     </select>
+
     
     <resultMap type='Cohorte' id='CohorteResult'>
         <id property='id' column='id'/>
         <result property='fecha_inicio' column='fecha_inicio'/>
         <result property='fecha_fin' column='fecha_fin'/> 
-        <result property='periodo' column='periodo'/> 
+        <association property="periodo" javaType="Periodo" columnPrefix='PRO_' resultMap='PeriodoResult'></association> 
+    </resultMap>
+      <resultMap type='Periodo' id='PeriodoResult'>
+        <id property='periodo' column='periodo'/>
+        <result property='fecha_inicio' column='fecha_inicio'/>
+        <result property='fecha_fin' column='fecha_fin'/> 
     </resultMap>
     
     <resultMap type="String" id="periodo">
     </resultMap>
-    
+
 </mapper>
 
