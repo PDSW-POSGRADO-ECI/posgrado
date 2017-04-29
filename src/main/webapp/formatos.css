@@ -17,13 +17,13 @@ body{
 }
 
 .smallButton .ui-button-text {
-    font-size:12px;
+    font-size:15px;
 }
 
 .buton .ui-button-text {
     border: 1px solid #aaa;
     border-radius:3px;
-    font: 13.3333px Verdana, sans-serif !important;
+    font: 14px Verdana, sans-serif !important;
     background-color: #ededed;
     position:absolute;
   
@@ -43,18 +43,6 @@ body{
 .outerpanelgrid>tbody>tr>td{
     border: none !important;
 }
-
-#barra{
-    color: #ffffff;
-    background: #0db20a;
-    background-size: cover;
-    padding: 10px;
-    font: bold 12px Verdana, sans-serif;
-    height: 0.45cm;
-    margin-top: 2.62cm;
-    
-    
-}
 .grapAlign {
     display: block;
     margin-right: 1cm !important;
@@ -65,27 +53,47 @@ body{
     background-size: contain !important;
 }
 
+#barra{
+    color: #ffffff;
+    background: #0db20a;
+    background-size: cover;
+    padding: 20px;
+    font: bold 14px Verdana, sans-serif;
+    height: 0.50cm;
+    margin-top: 2.2cm;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    
+}
 #barra2{
     color: #ffffff;
     background: #16a3bc;
     background-size: cover;
-    padding: 8px;
-    font: bold 12px Verdana, sans-serif;
-    height: 0.45cm;  
+    padding: 20px;
+    font: bold 14px Verdana, sans-serif;
+    height: 0.50cm;  
+    margin-top: 2.2cm;
+    position: absolute;
+    left: 0px;
+    top: 0px;
 }
 
 #barra3{
     color: #ffffff;
     background: #a00909;
     background-size: cover;
-    padding: 8px;
-    font: bold 12px Verdana, sans-serif;
-    height: 0.45cm;  
+    padding: 20px;
+    font: bold 14px Verdana, sans-serif;
+    height: 0.50cm;  
     margin-top: 2.2cm;
+    position: absolute;
+    left: 0px;
+    top: 0px;
 }
 .contra{
     color: #a59b9b;
-    font: bold 10px Verdana, sans-serif !important;
+    font: bold 14px Verdana, sans-serif !important;
     text-decoration: none;    
 }
 
@@ -97,7 +105,7 @@ body{
     text-align: right;
     color: #ffffff;
     text-decoration: none;
-    font: 12px Verdana, sans-serif !important;
+    font: 14px Verdana, sans-serif !important;
 }
 
 .cmStyle:hover{  
@@ -105,7 +113,7 @@ body{
 }
 
 .horizontal {
-    padding-left: 200px; 
+    padding-left: 0px; 
     
 }
 
@@ -124,11 +132,11 @@ body{
 }
 
 .sizel{
-    font: bold 12px Verdana, sans-serif !important;
+    font: bold 14px Verdana, sans-serif !important;
 }
 
 .size2{
-    font: bold 12px Verdana, sans-serif !important;
+    font: bold 15px Verdana, sans-serif !important;
     font-size: 0.8em;
     font-weight: lighter;
     padding: 0px;
@@ -143,6 +151,7 @@ body{
     background-size: cover;
     background-attachment: fixed;
 }
+
 
 .customTitleBar > .ui-panel-titlebar {
     background-color: red;   
@@ -194,9 +203,10 @@ body{
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: #27398e;
+  border-top: 50px solid #a00909;
+  color: #000000;
   text-align: center;
-  font: 12px Verdana, sans-serif !important;
+  font: 14px Verdana, sans-serif !important;
 }
 
 .panelHorizontal{
@@ -223,6 +233,107 @@ img {
     left: 600px;   
 }
 
-.borde{
-    border-top: 10px solid #27398e; 
+#borde{
+    border-top: 18px solid #a00909;
+    color:  #ffffff;
 }
+
+header {
+    font-family: sans-serif;
+}
+
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav > ul > li:hover > ul {
+    display: block; 
+}
+
+nav > ul > li > ul a:hover{
+    background: #969192;
+}
+
+nav > ul li ul a{
+    color: #ffffff;
+    display: block;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -ms-transition: all .6s ease;
+    -o-transition: all .6s ease;
+    transition: all .6s ease;
+    
+}
+
+nav li{
+    position: relative;
+}
+nav li ul {
+    position: absolute;
+    width: 100%
+}
+
+nav > ul>li>a{
+    color: #ddd;
+    display: block;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -ms-transition: all .6s ease;
+    -o-transition: all .6s ease;
+    transition: all .6s ease;
+    
+}
+
+
+
+nav > ul > li > a{
+    background: #333;
+    display: table-cell;
+    width: 100%;
+    position: relative; 
+    overflow: hidden;
+}
+
+nav > ul > li > ul {
+    background: #d81327;
+    color: black;
+    display: none;
+}
+
+nav > ul > li {
+    float: left;  
+}
+
+nav > ul > li > a span{
+    background: #d81327;
+    display: block;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    top: -55px;
+    -webkit-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -ms-transition: all .6s ease;
+    -o-transition: all .6s ease;
+    transition: all .6s ease;
+}
+
+nav > ul > li > a span .icon{
+    display: block;
+    line-height: 60px;
+}
+
+nav > ul > li > a:hover span{
+    top:0;
+} 
+
