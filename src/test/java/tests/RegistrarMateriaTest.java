@@ -16,9 +16,9 @@ import org.junit.Before;
  *
  * @author Laura RB
  */
-public class RegistrarMateria {
+public class RegistrarMateriaTest {
 
-    public RegistrarMateria() {
+    public RegistrarMateriaTest() {
     }
      @Before
     public void setUp() {
@@ -28,6 +28,7 @@ public class RegistrarMateria {
         Statement stmt = getConnection().createStatement();
         stmt.execute("delete from Recurso");
         stmt.execute("delete from Clase");
+        stmt.execute("delete from MateriaCohorte");
         stmt.execute("delete from Profesor");
         stmt.execute("delete from Cohorte");
         stmt.execute("delete from Materia");

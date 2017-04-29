@@ -35,8 +35,8 @@ public class ProgramarMateriaTest {
         Statement stmt = getConnection().createStatement();
         stmt.execute("delete from Recurso");
         stmt.execute("delete from Clase");
-        stmt.execute("delete from Profesor");
         stmt.execute("delete from MateriaCohorte");
+        stmt.execute("delete from Profesor");
         stmt.execute("delete from Cohorte");
         stmt.execute("delete from Materia");
         stmt.execute("delete from Asignatura");
@@ -70,7 +70,7 @@ public class ProgramarMateriaTest {
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1418432, 'Crisrtian Alba', 'sergo@correo.com',8165134,'cc' );");
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1818428, 'Sergio Chacon', 'sergio@coreo.com',3115134,'cc' );");
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FDF',4,1818428)");
-        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_sigla,cohorte_id ,profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
+        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
         
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         report.registrarClase(24, "2017-1", new java.sql.Date(2017,06,01),  new java.sql.Time(7), new java.sql.Time(10),1418432);
@@ -97,7 +97,7 @@ public class ProgramarMateriaTest {
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1418432, 'Crisrtian Alba', 'sergo@correo.com',8165134,'cc' );");
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1818428, 'Sergio Chacon', 'sergio@coreo.com',3115134,'cc' );");
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FDF',4,1818428)");
-        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_sigla,cohorte_id ,profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
+        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
         
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         int documento=1418432;
@@ -132,7 +132,7 @@ public class ProgramarMateriaTest {
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1418432, 'Crisrtian Alba', 'sergo@correo.com',8165134,'cc' );");
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1818428, 'Sergio Chacon', 'sergio@coreo.com',3115134,'cc' );");
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FDF',4,1818428)");
-        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_sigla,cohorte_id ,profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
+        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(1, 'computador portatil',false, 1,1);");
         
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
@@ -168,7 +168,7 @@ public class ProgramarMateriaTest {
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1418432, 'Crisrtian Alba', 'sergo@correo.com',8165134,'cc' );");
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1818428, 'Sergio Chacon', 'sergio@coreo.com',3115134,'cc' );");
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FDF',4,1818428)");
-        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_sigla,cohorte_id ,profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
+        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(1, 'computador portatil',false, 1,1);");
         
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
@@ -198,7 +198,7 @@ public class ProgramarMateriaTest {
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1418432, 'Crisrtian Alba', 'sergo@correo.com',8165134,'cc' );");
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1818428, 'Sergio Chacon', 'sergio@coreo.com',3115134,'cc' );");
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FDF',4,1818428)");
-        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_sigla,cohorte_id ,profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
+        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(1, 'computador portatil',false, 1,1);");
         
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
@@ -230,7 +230,7 @@ public class ProgramarMateriaTest {
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1418432, 'Crisrtian Alba', 'sergo@correo.com',8165134,'cc' );");
         stmt.execute("INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (1818428, 'Sergio Chacon', 'sergio@coreo.com',3115134,'cc' );");
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FDF',4,1818428)");
-        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materia_sigla,cohorte_id ,profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
+        stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(1, 'computador portatil',false, 1,1);");
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         int doc=1418432;

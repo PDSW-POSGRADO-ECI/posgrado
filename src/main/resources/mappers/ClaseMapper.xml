@@ -51,7 +51,7 @@ and open the template in the editor.
         asi.nombre as MAT_ASI_nombre,
         
         pos.id as MAT_ASI_POS_id,
-        pos.nombre as MAT_ASI_POS_id
+        pos.nombre as MAT_ASI_POS_nombre
         
 	FROM clase as cla 
         join materia as mat on mat.sigla=cla.materiacohorte_materia_sigla

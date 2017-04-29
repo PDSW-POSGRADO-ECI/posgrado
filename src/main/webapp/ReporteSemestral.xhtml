@@ -25,9 +25,12 @@
                 <p:autoComplete id="dd" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
                 <p:commandButton icon="ui-icon-refresh" value="Generar" update=":ReporteSemestral:clasesdt"/>
             </h:panelGrid>          
-            <p:dataTable id="clasesdt" style="position:absolute ; top: 31%; left: 5%; right:5%" var="cla" value="#{ReportesBean.clases}">
+            <p:dataTable id="clasesdt" scrollable="true" scrollWidth="91%" scrollHeight="580" style="position:absolute ; top: 31%; left: 5%; right:5%" var="cla" value="#{ReportesBean.clases}">
                 <p:column headerText="Cohorte">
                     <h:outputText value="#{cla.cohorte_id.id}"/>
+                </p:column>
+                <p:column headerText="Posgrado">
+                    <h:outputText value="#{cla.materia_sigla.asignatura_id.posgrado_id.nombre}" />
                 </p:column>
                 <p:column headerText="Asignatura">
                     <h:outputText value="#{cla.materia_sigla.asignatura_id.nombre}" />

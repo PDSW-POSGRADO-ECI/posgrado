@@ -17,23 +17,30 @@
             <header>
                 <div id="barra2" style="text-align: right; margin:25px 0;  position:relative ; top: 0%; left: 0%; right:10%" >
                     <h:panelGrid columns="3" style="margin-right: auto">
-                        <i class="icon icon-home"></i>
-                        <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Cerrar sesion</p:commandLink>
+                        <i class="icon icon-exit"></i>
+                        <p:commandLink class="cmStyle" action="Inicio?faces-redirect=true">Cerrar sesion</p:commandLink>
+                        
                     </h:panelGrid>
+                    <nav style="text-align: right;position:relative ;top:-95%; left:15%; right:0%">
+                        <ul><li><p:commandLink action="Menu?faces-redirect=true"><span><i class="icon icon-menu"></i></span>Reportes del periodo</p:commandLink>                  
+                                <ul> 
+                                    <li><p:commandLink action="ReporteSemestral?faces-redirect=true"><span><i class="icon icon-file-empty"></i></span>General</p:commandLink></li>
+                                    <li><p:commandLink action="ReporteRecurso?faces-redirect=true"><span><i class="icon icon-file-empty"></i></span>Recursos</p:commandLink></li>
+                                </ul> 
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav style="text-align: right;position:relative ;top:-95%; left:18%; right:0%;color: #0db20a">
+                        <ul><li><p:commandLink action="Menu?faces-redirect=true"><span><i class="icon icon-menu"></i></span>Registros del periodo</p:commandLink>
+                                <ul> 
+                                    <li><p:commandLink action="RegistrarMateria?faces-redirect=true"><span><i class="icon icon-file-empty"></i></span>Reigistrar Materia</p:commandLink></li>
+                                    <li><p:commandLink action="RegistrarClase?faces-redirect=true"><span><i class="icon icon-file-empty"></i></span>Programar Clases</p:commandLink></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                <nav>
-                    <ul><li><p:commandLink action="Menu?faces-redirect=true"><span><i class="icon icon-home"></i></span>Inicio</p:commandLink></li>
-                        <li><p:commandLink action="Menu?faces-redirect=true"><span><i class="icon icon-folder-open"></i></span>Reportes</p:commandLink>                  
-                        <ul> 
-                            <li><p:commandLink action="ReporteSemestral?faces-redirect=true">General</p:commandLink></li>
-                            <li><p:commandLink action="ReporteRecurso?faces-redirect=true">Recursos</p:commandLink></li>
-                        </ul> 
-                        </li>
-                        <li><p:commandLink action="RegistrarMateria?faces-redirect=true"><span><i class="icon icon-file-empty"></i></span>Materias</p:commandLink></li>
-                        <li><p:commandLink action="RegistrarClase?faces-redirect=true"><span><i class="icon icon-file-empty"></i></span>Clases</p:commandLink></li>
-                        <li><p:commandLink action="Inicio?faces-redirect=true"><span><i class="icon icon-exit"></i></span>Salir</p:commandLink></li>
-                    </ul>
-                </nav>
+                
             </header> 
 
         </h:form>

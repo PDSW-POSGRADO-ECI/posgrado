@@ -118,7 +118,7 @@ public class ReporteGeneralTest {
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiaCohorte_materia_sigla,materiaCohorte_cohorte_id ,materiaCohorte_profesor_documento)  VALUES(2, '15:00:00 ','17:00:00 ', '2017-01-01', 'FGPR2',4,1818428);");
         ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         List<Materia> materia = report.consultarMaterias();
-        Profesor profesor = report.consultarProfesor(4, materia.get(0).getSigla());
+        Profesor profesor = report.consultarProfesor(1, materia.get(0).getSigla());
         assertEquals("", "Sergio Chacon", profesor.getNombre());
     }
 
