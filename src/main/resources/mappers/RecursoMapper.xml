@@ -24,7 +24,10 @@ and open the template in the editor.
         
 	FROM recurso as rec 
         join clase as cla on cla.id=rec.clase_id
-        join cohorte as co on cla.cohorte_id=co.id 
+	join materiacohorte as matco on (matco.materia_sigla=cla.materiaCohorte_materia_sigla AND
+        matco.cohorte_id=cla.materiaCohorte_cohorte_id AND
+        matco.profesor_documento=cla.materiaCohorte_profesor_documento )
+        join cohorte as co on matco.cohorte_id=co.id 
         join periodo as per on  per.periodo=co.periodo_periodo
 
         WHERE per.periodo=#{periodo}
@@ -42,11 +45,9 @@ and open the template in the editor.
         cla.fecha as CLA_fecha,
         cla.hora_inicio as CLA_hora_inicio,
         cla.hora_fin as  CLA_hora_fin
-   
         
 	FROM recurso as rec 
         join clase as cla on cla.id=rec.clase_id
-        join cohorte as co on cla.cohorte_id=co.id
         
         
     </select>

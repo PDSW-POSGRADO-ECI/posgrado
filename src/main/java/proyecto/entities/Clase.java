@@ -87,6 +87,10 @@ public class Clase implements Serializable{
         this.profesor_documento = profesor_documento;
     }
 
+    
+
+   
+
 
     public Date getFecha() {
         return fecha;

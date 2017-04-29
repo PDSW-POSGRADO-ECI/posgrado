@@ -32,11 +32,14 @@ and open the template in the editor.
             pro.telefono,
             pro.tipo_documento
         
-        FROM profesor as pro 
-        join clase as cla on pro.documento = cla.Profesor_documento
+        FROM clase as cla 
+        join materiacohorte as matco on (matco.materia_sigla=cla.materiacohorte_materia_sigla AND
+        matco.cohorte_id=cla.materiacohorte_cohorte_id AND
+        matco.profesor_documento=cla.materiacohorte_profesor_documento )
+        join profesor as pro  on pro.documento=matco.profesor_documento
         
-        WHERE cla.Cohorte_id = #{cohorte} AND
-        cla.Materia_sigla = #{materia};
+        WHERE cla.id = #{claid} AND
+        matco.Materia_sigla = #{materia};
         
 
     </select>

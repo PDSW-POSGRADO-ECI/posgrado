@@ -7,8 +7,6 @@ package proyecto.managebeans;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -78,7 +76,7 @@ public class ReportesBean implements Serializable {
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     public String getProfesor(Clase clase) throws ExceptionServiciosReporte {
-        return report.consultarProfesor(clase.getCohorte_id().getId(), clase.getMateria_sigla().getSigla()).getNombre();
+        return report.consultarProfesor(clase.getId(), clase.getMateria_sigla().getSigla()).getNombre();
     }
     
      /**

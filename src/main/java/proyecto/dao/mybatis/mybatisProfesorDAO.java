@@ -36,11 +36,11 @@ public class mybatisProfesorDAO implements ProfesorDAO {
     *@see ProfesorDAO loadProfesor
     **/
     @Override
-    public Profesor loadProfesor(int cohorte, String materia) throws ExceptionPersistence {
+    public Profesor loadProfesor(int claseid, String materia) throws ExceptionPersistence {
         try {
-            return profesorMapper.consultarProfesor(cohorte, materia);
+            return profesorMapper.consultarProfesor(claseid, materia);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new ExceptionPersistence("Error al cargar al profesor de la materia " + materia + " en el cohorte " + cohorte + ".", e);
+            throw new ExceptionPersistence("Error al cargar al profesor de la materia " + materia + " en el cohorte " + claseid + ".", e);
         }
     }
 }

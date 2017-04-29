@@ -25,5 +25,5 @@ public interface ProfesorMapper {
     *Obtener todas las asignaturas de la base de datos
     *@return asig retorna una lista de asignaturas
     **/
-    public Profesor consultarProfesor(@Param("cohorte")int cohorte, @Param("materia")String materia);
+    public Profesor consultarProfesor(@Param("claid")int idcla, @Param("materia")String materia);
 }

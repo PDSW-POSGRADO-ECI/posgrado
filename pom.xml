@@ -149,7 +149,7 @@
                         </goals>
                         <configuration>
                             <srcFiles>                                
-                                <srcFile>tables.sql</srcFile>                                
+                                <srcFile>tables.sql</srcFile>                               
                             </srcFiles>
                         </configuration>
                     </execution>
@@ -199,7 +199,7 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
-							<outputDirectory>${basedir}/target/endorsed
+			    <outputDirectory>${basedir}/target/endorsed
                             </outputDirectory>
                             <artifactItems>
                                 <artifactItem>

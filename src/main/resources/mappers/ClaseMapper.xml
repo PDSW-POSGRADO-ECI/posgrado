@@ -21,14 +21,13 @@ and open the template in the editor.
         cla.fecha,
         
         co.id as CO_id,
-        co.fecha_inicio CO_fecha_inicio,
-        co.fecha_fin CO_fecha_fin,
         
         mat.nombre as MAT_nombre
         
 	FROM clase as cla 
-        join materia as mat on mat.sigla=cla.materia_sigla
-        join cohorte as co on co.id=cla.cohorte_id;
+	join materia as mat on mat.sigla=cla.materiacohorte_materia_sigla
+        join cohorte as co on co.id=cla.materiacohorte_cohorte_id 
+	join periodo as per on co.periodo_periodo=per.periodo;
     </select>
     
     <select parameterType="map" id="consultarClaseXperiodo" resultMap="ClaseResult">
@@ -55,23 +54,23 @@ and open the template in the editor.
         pos.nombre as MAT_ASI_POS_id
         
 	FROM clase as cla 
-        join materia as mat on mat.sigla=cla.materia_sigla
-        join cohorte as co on co.id=cla.cohorte_id
+        join materia as mat on mat.sigla=cla.materiacohorte_materia_sigla
+        join cohorte as co on co.id=cla.materiacohorte_cohorte_id
         join Asignatura as asi on mat.Asignatura_id = asi.id
         join Posgrado as pos on asi.Posgrado_id = pos.id 
         join periodo as per on per.periodo=co.periodo_periodo
-        join profesor as pro on pro.documento=cla.profesor_documento
+        join profesor as pro on pro.documento=cla.materiacohorte_profesor_documento
         
         WHERE per.periodo = #{periodo}
         ORDER BY asi.id, co.id, cla.fecha
     </select>
     
     <select parameterType="map" id="consultarFechas" resultMap="fecha">
-         SELECT
+        SELECT
             cla.fecha
 
         FROM clase as cla 
-        join cohorte as co on co.id=cla.cohorte_id
+        join cohorte as co on co.id=cla.materiacohorte_cohorte_id
         join periodo as per on co.periodo_periodo=per.periodo
         
 	WHERE per.periodo=#{periodo}
