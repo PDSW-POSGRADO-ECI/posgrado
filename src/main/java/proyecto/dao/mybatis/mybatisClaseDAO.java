@@ -6,6 +6,7 @@
 package proyecto.dao.mybatis;
 
 import com.google.inject.Inject;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -27,14 +28,11 @@ public class mybatisClaseDAO implements ClaseDAO {
     **/
     @Override
     public List<Clase> loadClase() throws ExceptionPersistence {
-        List<Clase> per = null;
         try {
-            per = claseMapper.consultarClase();
+            return claseMapper.consultarClase();
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new PersistenceException("Error al cargar Clase "+per.toString(), e);
+            throw new PersistenceException("Error al cargar Clase ", e);
         }
-
-        return per;
     }
     
     /*
@@ -60,5 +58,10 @@ public class mybatisClaseDAO implements ClaseDAO {
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
             throw new PersistenceException("Error al consultar fechas", e);
         }
+    }
+
+    @Override
+    public void saveClase(int corte, String per, Date fecha, Time horainit, Time horafin, int doc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

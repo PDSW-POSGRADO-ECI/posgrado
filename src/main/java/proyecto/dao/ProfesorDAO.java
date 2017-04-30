@@ -25,4 +25,13 @@ public interface ProfesorDAO {
     *@return retorna un profeso d eun corte y una materia especifica
     **/
     public Profesor loadProfesor(int claseid, String materia) throws ExceptionPersistence;
+    
+    /*
+    *registrar un profesor a un corte de un periodo
+    *@param doc
+    *@param cort
+    *@param periodo
+    *@param sigla
+    **/
+    public void saveProfesorCohorte(int doc, int cort, String periodo, String sigla);
 }

@@ -20,4 +20,19 @@ public interface MateriaDAO {
     **/
     public List<Materia> loadMaterias() throws ExceptionPersistence;
     
+    /*
+    *Obtener todas las materias de una asignatura
+    *@param asignatura
+    *@return mat retorna una lista de materias
+    **/
+    public List<Materia> consultarMaterias(int asignatura)throws ExceptionPersistence;
+    
+    /*
+    *Consultar si ya existe un profesor para un determinado cohorte y materia 
+    *@param doc
+    *@param cor
+    *@param sigla
+    *@return booleano de si ya existe o no
+    **/
+    public boolean consultarMateriaCohorte(int doc, int cor, String sigla)throws ExceptionPersistence;
 }

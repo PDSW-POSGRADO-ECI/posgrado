@@ -77,6 +77,9 @@ and open the template in the editor.
         GROUP BY cla.fecha
     </select>
     
+    <select parameterType="map" id="registrarClase">
+        INSERT INTO Clase(hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento) VALUES (#{idcor},#{periodo},#{fecha},#{hinit},#{hfin},#{docu});
+    </select>
     <resultMap type='Clase' id='ClaseResult'>
         <id property='id' column='id'/>
         <result property='hora_inicio' column='hora_inicio'/>

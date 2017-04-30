@@ -26,4 +26,14 @@ public interface RecursoDAO {
     *@return retorna lista de todos los recursos
     **/
     public List<Recurso> loadRecursos()throws ExceptionPersistence;
+    
+    /*
+    *Registrar un nuevo recurso
+    *@param idclase
+    *@nombreRecurso
+    *@return asig retorna una lista de asignaturas
+    **/
+    public void saveRecurso(int idclase, String nombreRecurso);
+    
+    
 }

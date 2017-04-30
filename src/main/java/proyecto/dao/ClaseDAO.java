@@ -5,6 +5,7 @@
  */
 package proyecto.dao;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import proyecto.entities.Clase;
@@ -31,4 +32,15 @@ public interface ClaseDAO {
     *@return 
     **/
     public List<Clase> loadClaseXperiodo(String periodo) throws ExceptionPersistence;
+    
+    /*
+    *Reguistar una nueva clase 
+    *@param corte
+    *@param per
+    *@param fecha
+    *@param horainit 
+    *@param horafin
+    *@doc
+    **/
+    public void saveClase(int corte, String per,Date fecha, Time horainit,Time horafin,int doc)throws ExceptionPersistence;
 }

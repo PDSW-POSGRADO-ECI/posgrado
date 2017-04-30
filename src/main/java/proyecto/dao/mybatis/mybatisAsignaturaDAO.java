@@ -11,6 +11,7 @@ import proyecto.dao.AsignaturaDAO;
 import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.mybatis.mappers.AsignaturaMapper;
 import proyecto.entities.Asignatura;
+import proyecto.entities.Posgrado;
 
 /**
  *
@@ -25,14 +26,27 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO{
     **/
     @Override
     public List<Asignatura> loadAsignaturas() throws ExceptionPersistence {
-        List<Asignatura> asig=null;
         try{
-            asig=asignaturaMapper.consultarAsignaturas();
+            return asignaturaMapper.consultarAsignaturas();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar las asignaturas "+asig.toString(),e);
+            throw new ExceptionPersistence("Error al cargar las asignaturas ",e);
         } 
-        return asig;
+    }
+
+    @Override
+    public List<Asignatura> loadAsignaturas(int posgrado) throws ExceptionPersistence {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Posgrado> loadPosgrados() throws ExceptionPersistence {
+        try{
+            return asignaturaMapper.consultarPosgrados();
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new ExceptionPersistence("Error al cargar posgrados ",e);
+        } 
     }
     
 }

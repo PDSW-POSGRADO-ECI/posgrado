@@ -6,7 +6,9 @@
 package proyecto.dao.mybatis.mappers;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 import proyecto.entities.Asignatura;
+import proyecto.entities.Posgrado;
 
 /**
  *
@@ -20,5 +22,17 @@ public interface AsignaturaMapper {
     *@return asig retorna una lista de asignaturas
     **/
     public List<Asignatura> consultarAsignaturas();
+    
+    /*
+    *Obtener todas las asignaturas de un posgrado
+    *@return asig retorna una lista de asignaturas 
+    **/
+    public List<Asignatura> consultarAsignaturasXposgrado(@Param("idposgrado")int posgrado);
+    
+    /*
+    *Obtener todas las asignaturas de un posgrado
+    *@return asig retorna una lista de asignaturas 
+    **/
+    public List<Posgrado> consultarPosgrados();
     
 }

@@ -25,6 +25,28 @@ and open the template in the editor.
         
     </select>
     
+    <select parameterType="map" id="consultarAsignaturasXposgrado" resultMap="AsignaturaResult">
+        SELECT
+        
+        asi.id,
+        asi.nombre
+        
+	FROM asignatura as asi
+        join posgrado as pos on asi.posgrado_id=#{idposgrado}
+        GROUP BY asi.id;
+        
+    </select>
+    
+    <select parameterType="map" id="consultarPosgrados" resultMap="PosgradoResult">
+        SELECT
+        
+        pos.id,
+        pos.nombre
+        
+	FROM posgrado as pos;
+        
+    </select>
+    
     <resultMap type="Asignatura" id="AsignaturaResult">
         <id property='id' column='id'/>
         <result property='nombre' column='nombre'/>

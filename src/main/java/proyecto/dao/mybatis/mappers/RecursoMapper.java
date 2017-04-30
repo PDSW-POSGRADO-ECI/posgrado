@@ -28,4 +28,12 @@ public interface RecursoMapper {
     *@return asig retorna una lista de asignaturas
     **/
     public List<Recurso> consultarRecursos();
+    
+    /*
+    *Registrar un nuevo recurso
+    *@param idclase
+    *@nombreRecurso
+    *@return asig retorna una lista de asignaturas
+    **/
+    public void registrarRecurso(@Param("idcla")int idclase, @Param("nomrec")String nombreRecurso);
 }

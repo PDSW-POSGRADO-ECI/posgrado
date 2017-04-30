@@ -25,15 +25,12 @@ public class mybatisCohorteDAO implements CohorteDAO{
     **/
     @Override
     public List<String> loadPeriodos() {
-        List<String> per=null;
         try{
-            per=corteMapper.consultarPeriodos();
+            return corteMapper.consultarPeriodos();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al cargar Periodo ",e);
         }        
-        
-        return per;
     }
     
     /*
@@ -41,15 +38,12 @@ public class mybatisCohorteDAO implements CohorteDAO{
     **/
     @Override
     public List<Cohorte> loadPeriodo(String p ) {
-        List<Cohorte> per=null;
         try{
-            per=corteMapper.consultarPeriodo(p);
+            return corteMapper.consultarPeriodo(p);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al cargar Periodo ",e);
         }        
-        
-        return per;
     }
     
 }

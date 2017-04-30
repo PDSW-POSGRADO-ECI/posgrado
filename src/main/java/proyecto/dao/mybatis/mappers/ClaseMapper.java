@@ -5,6 +5,7 @@
  */
 package proyecto.dao.mybatis.mappers;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -33,4 +34,16 @@ public interface ClaseMapper {
     *@return asig retorna una lista de asignaturas
     **/
     public List<Clase> consultarClaseXperiodo(@Param("periodo") String periodo);
+    
+    /*
+    *Reguistar una nueva clase 
+    *@param corte
+    *@param per
+    *@param fecha
+    *@param horainit 
+    *@param horafin
+    *@doc
+    **/
+    public void registrarClase(@Param("idcor")int corte, @Param("periodo")String per,
+            @Param("fecha")Date fecha, @Param("hinit")Time horainit,@Param("hfin") Time horafin,@Param("docu")int doc);
 }

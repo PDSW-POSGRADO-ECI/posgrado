@@ -43,4 +43,9 @@ public class mybatisProfesorDAO implements ProfesorDAO {
             throw new ExceptionPersistence("Error al cargar al profesor de la materia " + materia + " en el cohorte " + claseid + ".", e);
         }
     }
+
+    @Override
+    public void saveProfesorCohorte(int doc, int cort, String periodo, String sigla) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -7,8 +7,10 @@ package proyecto.services.impl;
 
 import com.google.inject.Inject;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import proyecto.dao.AsignaturaDAO;
 import proyecto.dao.ClaseDAO;
 import proyecto.dao.CohorteDAO;
 import proyecto.dao.ExceptionPersistence;
@@ -37,7 +39,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     @Inject private CohorteDAO corte;
     @Inject private ClaseDAO clase;
     @Inject private MateriaDAO materia;
-    
+    @Inject private AsignaturaDAO asignatura;
     /**
      * Consultar 
      * @param a
@@ -127,7 +129,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     
     /**
      * Consultar 
-     * @param cohorte
+     * @param claseid
      * @param materia
      * @return 
      * @throws proyecto.services.ExceptionServiciosReporte
@@ -169,12 +171,35 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     @Override
-    public void registrarProfesorCohorte(int doc, int cort, String periodo, String fdf) throws ExceptionServiciosReporte {
+    public void registrarProfesorCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionServiciosReporte {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte {
+    public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<String> consultarAsignaturas(String posgrado) throws ExceptionServiciosReporte {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<String> consultarMaterias(String asignatura) throws ExceptionServiciosReporte {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<String> consultarPosgrados() throws ExceptionServiciosReporte{
+        ArrayList<String> pos=new ArrayList<>();
+       try {
+            for(int i=0;i<asignatura.loadPosgrados().size();i++){
+                pos.add(asignatura.loadPosgrados().get(i).getNombre());
+            }
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
+        }
+       return pos;
     }
 }

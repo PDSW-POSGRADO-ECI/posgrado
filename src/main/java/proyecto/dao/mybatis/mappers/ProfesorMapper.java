@@ -22,8 +22,17 @@ public interface ProfesorMapper {
     public List<Profesor> consultarProfesores();
      
     /*
-    *Obtener todas las asignaturas de la base de datos
-    *@return asig retorna una lista de asignaturas
+    *Obtener un profesor de una clase y materia
+    *@return Profesor 
     **/
     public Profesor consultarProfesor(@Param("claid")int idcla, @Param("materia")String materia);
+    
+    /*
+    *registrar un profesor a un corte de un periodo
+    *@param doc
+    *@param cort
+    *@param periodo
+    *@param sigla
+    **/
+    public void registrarProfesorCohorte(@Param("docu")int doc, @Param("idcor")int cort, @Param("period")String periodo, @Param("sigla")String sigla);
 }

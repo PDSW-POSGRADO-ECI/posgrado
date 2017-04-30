@@ -25,16 +25,12 @@ public class mybatisRecursoDAO implements RecursoDAO {
     **/
     @Override
     public List<Recurso> loadRecursoXperiodo(String per) throws ExceptionPersistence {
-        List<Recurso> rec=null;
         try{
-            //System.out.println(per);
-            rec=recursoMapper.consultarRecursoDePeriodo(per);
+            return recursoMapper.consultarRecursoDePeriodo(per);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar Recurso "+rec.toString(),e);
+            throw new ExceptionPersistence("Error al cargar Recurso ",e);
         }        
-        
-        return rec;
     }
     
     /*
@@ -42,14 +38,17 @@ public class mybatisRecursoDAO implements RecursoDAO {
     **/
     @Override
     public List<Recurso> loadRecursos() throws ExceptionPersistence {
-        List<Recurso> rec=null;
         try{
-            rec=recursoMapper.consultarRecursos();
+            return recursoMapper.consultarRecursos();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar Recurso "+rec.toString(),e);
+            throw new ExceptionPersistence("Error al cargar Recurso ",e);
         }        
-        
-        return rec;    }
+    }
+
+    @Override
+    public void saveRecurso(int idclase, String nombreRecurso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

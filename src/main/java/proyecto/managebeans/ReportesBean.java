@@ -43,6 +43,7 @@ public class ReportesBean implements Serializable {
         return report.consultarRecursosXperiodo(periodo);
     }
     
+    
     /*
     *Obtener todos los periodos 
     *@return retorna una lista de strings los periodos de la base de datos
@@ -126,7 +127,6 @@ public class ReportesBean implements Serializable {
     public List<String> completeText(String query) throws ExceptionServiciosReporte {
         return getPeriodos();
     }
-    
     /**
      * Get the value of Periodo
      * @return periodo
@@ -142,4 +142,6 @@ public class ReportesBean implements Serializable {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
+
+    
 }

@@ -35,13 +35,21 @@ public interface ServiciosReporte {
     public List<Date> colsultarFechas(String per) throws ExceptionServiciosReporte;
 
     public List<Materia> consultarMaterias() throws ExceptionServiciosReporte;
-
+    
+    /*
+    *Sprint2
+    */
     public void registrarClase(int corte, String per, Date fecha, Time horainit, Time horafin,int doc) throws ExceptionServiciosReporte;
 
     public void registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte;
 
-    public void registrarProfesorCohorte(int doc, int cort, String periodo, String fdf)throws ExceptionServiciosReporte;
+    public void registrarProfesorCohorte(int doc, int cort, String periodo, String sigla)throws ExceptionServiciosReporte;
 
-    public Object consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte;
+    public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte;
+    
+    public List<String> consultarMaterias(String asignatura) throws ExceptionServiciosReporte;
+    public List<String> consultarAsignaturas(String posgrado) throws ExceptionServiciosReporte;
+
+    public List<String> consultarPosgrados()throws ExceptionServiciosReporte;
 
 }

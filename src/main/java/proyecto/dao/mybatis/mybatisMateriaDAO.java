@@ -32,4 +32,14 @@ public class mybatisMateriaDAO implements MateriaDAO {
         }
     }
 
+    @Override
+    public List<Materia> consultarMaterias(int asignatura) throws ExceptionPersistence {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionPersistence {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
