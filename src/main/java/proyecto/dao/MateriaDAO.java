@@ -25,7 +25,7 @@ public interface MateriaDAO {
     *@param asignatura
     *@return mat retorna una lista de materias
     **/
-    public List<Materia> consultarMaterias(int asignatura)throws ExceptionPersistence;
+    public List<Materia> loadMateriasXasignatura(String asignatura)throws ExceptionPersistence;
     
     /*
     *Consultar si ya existe un profesor para un determinado cohorte y materia 
@@ -34,5 +34,5 @@ public interface MateriaDAO {
     *@param sigla
     *@return booleano de si ya existe o no
     **/
-    public boolean consultarMateriaCohorte(int doc, int cor, String sigla)throws ExceptionPersistence;
+    public boolean loadMateriaCohorte(int doc, int cor, String sigla)throws ExceptionPersistence;
 }

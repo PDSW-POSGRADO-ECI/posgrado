@@ -7,6 +7,7 @@ package proyecto.dao.mybatis;
 
 import com.google.inject.Inject;
 import java.util.List;
+import org.apache.ibatis.exceptions.PersistenceException;
 import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.MateriaDAO;
 import proyecto.dao.mybatis.mappers.MateriaMapper;
@@ -26,20 +27,24 @@ public class mybatisMateriaDAO implements MateriaDAO {
     @Override
     public List<Materia> loadMaterias() throws ExceptionPersistence {
         try {
-            return materiaMapper.ConsultarMaterias();
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            return materiaMapper.consultarMaterias();
+        } catch (PersistenceException e) {
             throw new ExceptionPersistence("Error al cargar las materias.", e);
         }
     }
 
     @Override
-    public List<Materia> consultarMaterias(int asignatura) throws ExceptionPersistence {
+    public boolean loadMateriaCohorte(int doc, int cor, String sigla) throws ExceptionPersistence {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionPersistence {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Materia> loadMateriasXasignatura(String asignatura) throws ExceptionPersistence {
+         try {
+            return materiaMapper.consultarMateriasXasignatura(asignatura);
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar las materias de la asignatura"+ asignatura, e);
+        }
     }
 
 }

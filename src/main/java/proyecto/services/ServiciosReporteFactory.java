@@ -102,7 +102,7 @@ public class ServiciosReporteFactory {
         return instance == null ? new ServiciosReporteFactory() : instance;
     }
 
-    public static void main(String a[]) throws ExceptionServiciosReporte {
+    public static void main(String a[]){
 
     }
 

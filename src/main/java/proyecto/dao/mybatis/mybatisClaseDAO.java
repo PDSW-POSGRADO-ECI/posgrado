@@ -30,7 +30,7 @@ public class mybatisClaseDAO implements ClaseDAO {
     public List<Clase> loadClase() throws ExceptionPersistence {
         try {
             return claseMapper.consultarClase();
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al cargar Clase ", e);
         }
     }
@@ -42,7 +42,7 @@ public class mybatisClaseDAO implements ClaseDAO {
     public List<Clase> loadClaseXperiodo(String periodo) throws ExceptionPersistence {
         try {
             return claseMapper.consultarClaseXperiodo(periodo);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al cargar Clase por periodo (" + periodo + ")", e);
         }
     }
@@ -55,7 +55,7 @@ public class mybatisClaseDAO implements ClaseDAO {
     public List<Date> loadFechas(String periodo) throws ExceptionPersistence {
         try {
             return claseMapper.consultarFechas(periodo);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar fechas", e);
         }
     }

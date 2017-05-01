@@ -33,7 +33,7 @@ and open the template in the editor.
             <br>
             
             </br>
-            <p:dataTable id="TablaRecursos" style="position:absolute ; top: 32%; left: 5%; right:5%" var="rec" value="#{ReportesBean.recursos}">
+            <p:dataTable id="TablaRecursos" scrollable="true" scrollHeight="500" style="position:absolute ; top: 32%; left: 5%; right:5%" var="rec" value="#{ReportesBean.recursos}">
                 <p:column headerText="Nombre Recurso">
                     <h:outputText value="#{rec.nomRecurso}"/>
                 </p:column>

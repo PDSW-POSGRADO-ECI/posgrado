@@ -5,6 +5,7 @@
  */
 package proyecto.dao.mybatis.mappers;
 
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import proyecto.entities.Cohorte;
@@ -16,14 +17,26 @@ import proyecto.entities.Cohorte;
 public interface CohorteMapper {
      
     /*
-    *Obtener todas las asignaturas de la base de datos
+    *Obtener todos los periodos
     *@return asig retorna una lista de asignaturas
     **/
     public List<String> consultarPeriodos();
      
     /*
-    *Obtener todas las asignaturas de la base de datos
+    *Obtener todas los cortes d eun periodo
     *@return asig retorna una lista de asignaturas
     **/
     public List<Cohorte> consultarPeriodo(@Param("periodo") String per);
+    
+    /*
+    *Obtener todas las asignaturas de la base de datos
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Cohorte> consultarMateriaCohorte(@Param("periodo")String per,@Param("nombremat") String mat);
+    
+    /*
+    *Obtener todos los periodos
+    *@return asig retorna una lista de asignaturas
+    **/
+    public void registrarPeriodo(@Param("periodo")String periodo,@Param("fecha_inicio") Date fini,@Param("fecha_fin") Date ffin);
 }

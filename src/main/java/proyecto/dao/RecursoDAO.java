@@ -33,7 +33,7 @@ public interface RecursoDAO {
     *@nombreRecurso
     *@return asig retorna una lista de asignaturas
     **/
-    public void saveRecurso(int idclase, String nombreRecurso);
+    public void saveRecurso(int idclase, String nombreRecurso)throws ExceptionPersistence;
     
     
 }

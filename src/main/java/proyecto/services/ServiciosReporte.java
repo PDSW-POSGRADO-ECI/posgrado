@@ -47,9 +47,17 @@ public interface ServiciosReporte {
 
     public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte;
     
-    public List<String> consultarMaterias(String asignatura) throws ExceptionServiciosReporte;
-    public List<String> consultarAsignaturas(String posgrado) throws ExceptionServiciosReporte;
+    public List<String> consultarMaterias(String asig) throws ExceptionServiciosReporte;
+    public List<String> consultarAsignaturas(String pos) throws ExceptionServiciosReporte;
 
     public List<String> consultarPosgrados()throws ExceptionServiciosReporte;
+
+    public List<String> consultarMateriaCohorte(String periodo, String mat)throws ExceptionServiciosReporte;
+
+    public String registrarPeriodo(String per,Date fini,Date ffin)throws ExceptionServiciosReporte;
+    
+    public String registrarPosgrado(String nom,int credit)throws ExceptionServiciosReporte;
+    
+    public String registrarAsignatura(String nom,String posgrado)throws ExceptionServiciosReporte;
 
 }

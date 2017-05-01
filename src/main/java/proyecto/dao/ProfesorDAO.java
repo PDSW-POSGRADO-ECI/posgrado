@@ -33,5 +33,5 @@ public interface ProfesorDAO {
     *@param periodo
     *@param sigla
     **/
-    public void saveProfesorCohorte(int doc, int cort, String periodo, String sigla);
+    public void saveProfesorCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionPersistence;
 }

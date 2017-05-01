@@ -7,6 +7,7 @@ package proyecto.dao.mybatis;
 
 import com.google.inject.Inject;
 import java.util.List;
+import org.apache.ibatis.exceptions.PersistenceException;
 import proyecto.dao.AsignaturaDAO;
 import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.mybatis.mappers.AsignaturaMapper;
@@ -29,14 +30,19 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO{
         try{
             return asignaturaMapper.consultarAsignaturas();
         }
-        catch(org.apache.ibatis.exceptions.PersistenceException e){
+        catch(PersistenceException e){
             throw new ExceptionPersistence("Error al cargar las asignaturas ",e);
         } 
     }
 
     @Override
-    public List<Asignatura> loadAsignaturas(int posgrado) throws ExceptionPersistence {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Asignatura> loadAsignaturas(String posgrado) throws ExceptionPersistence {
+         try{
+            return asignaturaMapper.consultarAsignaturasXposgrado(posgrado);
+        }
+        catch(PersistenceException e){
+            throw new ExceptionPersistence("Error al cargar las asignaturas del  posgrado"+posgrado,e);
+        } 
     }
 
     @Override
@@ -44,9 +50,30 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO{
         try{
             return asignaturaMapper.consultarPosgrados();
         }
-        catch(org.apache.ibatis.exceptions.PersistenceException e){
+        catch(PersistenceException e){
             throw new ExceptionPersistence("Error al cargar posgrados ",e);
         } 
     }
+    
+    @Override
+    public void savePosgrado(String nom, int credit) throws ExceptionPersistence {
+        try{
+            asignaturaMapper.registrarPosgrado(nom,credit);
+        }
+        catch(PersistenceException e){
+            throw new ExceptionPersistence("Error al registrar posgrado ",e);
+        } 
+    }
+    
+    @Override
+    public void saveAsignatura(String nom, String posgrado) throws ExceptionPersistence {
+        try{
+            asignaturaMapper.registrarAsignatura(nom,posgrado);
+        }
+        catch(PersistenceException e){
+            throw new ExceptionPersistence("Error al registrar asignatura ",e);
+        } 
+    }
+
     
 }

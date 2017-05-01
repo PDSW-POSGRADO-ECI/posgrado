@@ -27,10 +27,22 @@ and open the template in the editor.
         join periodo as per on co.periodo=per.periodo
         WHERE per.periodo=#{periodo};
         
-        
     </select>
+    <select parameterType="map" id="consultarMateriaCohorte" resultMap="CohorteResult">
+        
+        SELECT
+            co.id
+            
+        FROM materiacohorte as matco
+        join cohorte as co on matco.cohorte_id=co.id
+        join materia as mat on matco.materia_sigla=mat.sigla
+        WHERE co.periodo_periodo=#{periodo} and mat.nombre=#{nombremat}
+        GROUP BY co.id;
 
-    
+    </select>
+     <select parameterType="map" id="registrarPeriodo">
+        INSERT INTO Periodo(periodo,fehca_inicio,fecha_fin) VALUES (#{periodo},#{fecha_inicio},#{fecha_fin});
+    </select>
     <resultMap type='Cohorte' id='CohorteResult'>
         <id property='id' column='id'/>
         <result property='fecha_inicio' column='fecha_inicio'/>

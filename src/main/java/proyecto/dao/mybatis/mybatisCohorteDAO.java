@@ -6,9 +6,11 @@
 package proyecto.dao.mybatis;
 
 import com.google.inject.Inject;
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.exceptions.PersistenceException;
 import proyecto.dao.CohorteDAO;
+import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.mybatis.mappers.CohorteMapper;
 import proyecto.entities.Cohorte;
 
@@ -28,7 +30,7 @@ public class mybatisCohorteDAO implements CohorteDAO{
         try{
             return corteMapper.consultarPeriodos();
         }
-        catch(org.apache.ibatis.exceptions.PersistenceException e){
+        catch(PersistenceException e){
             throw new PersistenceException("Error al cargar Periodo ",e);
         }        
     }
@@ -41,9 +43,24 @@ public class mybatisCohorteDAO implements CohorteDAO{
         try{
             return corteMapper.consultarPeriodo(p);
         }
-        catch(org.apache.ibatis.exceptions.PersistenceException e){
+        catch(PersistenceException e){
             throw new PersistenceException("Error al cargar Periodo ",e);
         }        
+    }
+
+    @Override
+    public List<Cohorte> loadMateriaCohorte(String periodo, String mat) throws ExceptionPersistence {
+        try{
+            return corteMapper.consultarMateriaCohorte(periodo,mat);
+        }
+        catch(PersistenceException e){
+            throw new PersistenceException("Error al cargar materiacorte del periodo"+periodo+"de la materia"+mat,e);
+        }   
+    }
+
+    @Override
+    public void savePeriodo(String per,Date fini,Date ffin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

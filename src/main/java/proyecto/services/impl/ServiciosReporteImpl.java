@@ -17,9 +17,11 @@ import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.MateriaDAO;
 import proyecto.dao.ProfesorDAO;
 import proyecto.dao.RecursoDAO;
+import proyecto.entities.Asignatura;
 import proyecto.entities.Clase;
 import proyecto.entities.Cohorte;
 import proyecto.entities.Materia;
+import proyecto.entities.Posgrado;
 import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
@@ -41,9 +43,9 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     @Inject private MateriaDAO materia;
     @Inject private AsignaturaDAO asignatura;
     /**
-     * Consultar 
+     * Consultar  los recursos por periodo selccionado
      * @param a
-     * @return 
+     * @return  una lista de recursos del determinado periodo
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
@@ -56,8 +58,8 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
     
     /**
-     * Consultar 
-     * @return 
+     * Consultar todos los periodos
+     * @return una lista de string con los periodos
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
@@ -70,9 +72,9 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
     
     /**
-     * Consultar 
+     * consultar todos los cohortes de un periodo
      * @param a
-     * @return 
+     * @return lista de cohortes
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
@@ -85,8 +87,8 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
     
     /**
-     * Consultar 
-     * @return 
+     * Consultar todos los Profesores
+     * @return una lisrta de todos los profesores
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
@@ -99,9 +101,9 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
     
     /**
-     * Consultar 
+     * Consultar un clase de un periodo 
      * @param a
-     * @return 
+     * @return retorna una lista de clases de un periodo
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
@@ -114,8 +116,8 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
     
      /**
-     * Consultar 
-     * @return 
+     * Consultar todas las materias 
+     * @return  una lista de todas las materias
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
@@ -128,10 +130,10 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
     
     /**
-     * Consultar 
+     * Consultar Profesor de una clase
      * @param claseid
      * @param materia
-     * @return 
+     * @return retorna un profesor de la clase
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
@@ -146,9 +148,9 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
     
     /**
-     * Consultar 
+     * Consultar fechas de clases d eun periodo seleccionado
      * @param periodo
-     * @return 
+     * @return lista de fechas
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
@@ -159,47 +161,164 @@ public class ServiciosReporteImpl implements ServiciosReporte {
             throw new ExceptionServiciosReporte("Error al cargar fecha ", ex);
         }
     }
-
+    
+    /**
+     * registrar una nueva clase en la programacion
+     * @param i
+     * @param per
+     * @param fecha
+     * @param horafin
+     * @param horainit
+     * @param doc 
+     * @throws proyecto.services.ExceptionServiciosReporte
+     */
     @Override
     public void registrarClase(int i, String per, Date fecha, Time horainit, Time horafin ,int doc) throws ExceptionServiciosReporte{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    /**
+     *registrar un recurso a una clase determinada 
+     * @param idclase
+     * @param nombreRecurso
+     * @throws proyecto.services.ExceptionServiciosReporte
+     */
     @Override
     public void registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    /**
+     * registrar un nuevo corte de una materia 
+     * @param doc
+     * @param cort
+     * @param periodo 
+     * @param sigla 
+     * @throws proyecto.services.ExceptionServiciosReporte
+     */
     @Override
     public void registrarProfesorCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionServiciosReporte {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    /**
+     * Consultar MateriaCohorte 
+     * @param doc
+     * @param cor
+     * @param sigla
+     * @return retorna un boleano si se ecuentra registrado el profesor
+     * @throws proyecto.services.ExceptionServiciosReporte
+     */
     @Override
     public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    /**
+     * Consultar 
+     * @param posgrado
+     * @return una lista de strings con los nombres de las asignaturas
+     * @throws proyecto.services.ExceptionServiciosReporte
+     */
     @Override
     public List<String> consultarAsignaturas(String posgrado) throws ExceptionServiciosReporte {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<String> asig=new ArrayList<>();
+        try {
+            for(Asignatura a: asignatura.loadAsignaturas(posgrado)){
+                asig.add(a.getNombre());
+            }
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar asignaturas del posgrado"+posgrado, ex);
+        }
+       return asig;
     }
-
+    
+    /**
+     * Consultar Materias de una asignatura
+     * @param asignatura
+     * @return una lsita de strings con los nombres de las materias 
+     * @throws proyecto.services.ExceptionServiciosReporte
+     */
     @Override
     public List<String> consultarMaterias(String asignatura) throws ExceptionServiciosReporte {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<String> mat=new ArrayList<>();
+        try {
+            for(Materia a: materia.loadMateriasXasignatura(asignatura)){
+                mat.add(a.getNombre());
+            }
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar materias de asignatura"+asignatura, ex);
+        }
+       return mat;
     }
-
+    
+    /**
+     * Consultar 
+     * @return lista de strings con el nombre de los posgrados
+     * @throws proyecto.services.ExceptionServiciosReporte
+     */
     @Override
     public List<String> consultarPosgrados() throws ExceptionServiciosReporte{
         ArrayList<String> pos=new ArrayList<>();
-       try {
-            for(int i=0;i<asignatura.loadPosgrados().size();i++){
-                pos.add(asignatura.loadPosgrados().get(i).getNombre());
+        try {
+            for(Posgrado p: asignatura.loadPosgrados()){
+                pos.add(p.getNombre());
             }
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
         }
        return pos;
+    }
+    
+    /**
+     * Consultar Los cohortes de una materia 
+     * @param periodo
+     * @param mat
+     * @return lista de strings con el corte de la materia
+     * @throws proyecto.services.ExceptionServiciosReporte
+     */
+    @Override
+    public List<String> consultarMateriaCohorte(String periodo, String mat) throws ExceptionServiciosReporte {
+        ArrayList<String> pos=new ArrayList<>();
+        try {
+            for(Cohorte c: corte.loadMateriaCohorte(periodo, mat)){
+                pos.add(String.valueOf(c.getId()));
+            }
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
+        }
+       return pos;
+    }
+
+    @Override
+    public String registrarPeriodo(String per,Date fini, Date ffin) throws ExceptionServiciosReporte{
+        try {
+            corte.savePeriodo(per, fini, ffin);
+        } catch (ExceptionPersistence ex) {
+            return new ExceptionServiciosReporte("Error al registrar el periodo "+per+ex, ex).toString();
+        }
+        return null;
+    }
+
+    @Override
+    public  String registrarPosgrado(String nom, int credit) throws ExceptionServiciosReporte {
+        try {
+            asignatura.savePosgrado(nom, credit);
+        } catch (ExceptionPersistence ex) {
+            return new ExceptionServiciosReporte("El posgrado "+nom+" ya existe"+ex, ex).toString();
+        }
+        return null;
+        
+        
+    }
+
+    @Override
+    public String registrarAsignatura(String nom, String posgrado) throws ExceptionServiciosReporte {
+       try {
+            asignatura.saveAsignatura(nom, posgrado);
+        } catch (ExceptionPersistence ex) {
+            return new ExceptionServiciosReporte("La asignatura "+nom+" ya existe"+ex, ex).toString();
+        }
+       return null;
     }
 }

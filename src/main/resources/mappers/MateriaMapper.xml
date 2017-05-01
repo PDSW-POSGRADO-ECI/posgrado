@@ -9,7 +9,7 @@ and open the template in the editor.
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="proyecto.dao.mybatis.mappers.MateriaMapper">   
-    <select parameterType="map" id="ConsultarMaterias" resultMap="MateriaResult">
+    <select parameterType="map" id="consultarMaterias" resultMap="MateriaResult">
         
         SELECT
         
@@ -26,8 +26,21 @@ and open the template in the editor.
         pos.creditos as ASI_POS_id
         
         FROM Materia as mat
-        left join Asignatura as asi on mat.Asignatura_id = asi.id
-        left join Posgrado as pos on asi.Posgrado_id = pos.id      
+        join Asignatura as asi on mat.Asignatura_id = asi.id
+        join Posgrado as pos on asi.Posgrado_id = pos.id      
+    </select>
+    <select parameterType="map" id="consultarMateriasXasignatura" resultMap="MateriaResult">
+        
+        SELECT
+        
+        mat.sigla,
+        mat.nombre,
+        mat.creditos,
+        mat.descripcion
+             
+        FROM materia as mat
+        join asignatura as asi on mat.asignatura_id = asi.id
+        WHERE asi.nombre=#{nomasig}   
     </select>
     
     <resultMap type="Materia" id="MateriaResult">

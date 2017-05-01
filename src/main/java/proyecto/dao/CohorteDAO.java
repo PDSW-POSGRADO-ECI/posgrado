@@ -5,6 +5,7 @@
  */
 package proyecto.dao;
 
+import java.util.Date;
 import java.util.List;
 import proyecto.entities.Cohorte;
 
@@ -21,8 +22,18 @@ public interface CohorteDAO {
     public List<String> loadPeriodos() throws ExceptionPersistence;
      
     /*
-    *Obtener 
-    *@return 
+    *Obtener  un corte de un periodo
+    *@param p
+    *@return una lista de cohortes
     **/
     public List<Cohorte> loadPeriodo(String p) throws ExceptionPersistence;
+    
+    /*
+    *Obtener los cortes de una materia y periodo
+    *@return una lista de cohortes
+    **/
+    public List<Cohorte> loadMateriaCohorte(String periodo, String mat) throws ExceptionPersistence;
+
+    public void savePeriodo(String per,Date fini,Date ffin)throws ExceptionPersistence;
+
 }
