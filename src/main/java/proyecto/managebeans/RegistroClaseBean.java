@@ -8,8 +8,11 @@ package proyecto.managebeans;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import proyecto.entities.Profesor;
 import proyecto.services.ExceptionServiciosReporte;
 import proyecto.services.ServiciosReporte;
 import proyecto.services.ServiciosReporteFactory;
@@ -25,11 +28,15 @@ public class RegistroClaseBean implements Serializable{
     String posgrado;
     String asig;
     String periodo;
-    String nuevoper;
-    String nompos;
-    String nomasig;
     String mat;
     String corte;
+    String nuevoper;
+    String nuevopos;
+    String nuevoasig;
+    String nuevocorte;
+    String profe;
+    static String mensaje;
+    String selectpos;
     Date fini;
     Date ffin;
     int credit;
@@ -62,21 +69,22 @@ public class RegistroClaseBean implements Serializable{
     *insertar n nuevo periodo
     **/
     public void registrarPeriodo() throws ExceptionServiciosReporte {
-        report.registrarPeriodo(nuevoper, fini, ffin);
+        mensaje=report.registrarPeriodo(nuevoper, fini, ffin);
+         
     }
     
     /*
     *insertar n nuevo periodo
     **/
     public void registrarPosgrado() throws ExceptionServiciosReporte {
-        report.registrarPosgrado(nompos, credit);
+        mensaje= report.registrarPosgrado(nuevopos, credit);
     }
     
     /*
     *insertar n nuevo periodo
     **/
     public void registrarAsignatura() throws ExceptionServiciosReporte {
-        report.registrarAsignatura(nomasig, posgrado);
+        mensaje= report.registrarAsignatura(nuevoasig, selectpos);
     }
     /*
     *Obtener todos las materias relacionadas a una asignatura en particular
@@ -92,6 +100,22 @@ public class RegistroClaseBean implements Serializable{
     **/
     public List<String> getPeriodos() throws ExceptionServiciosReporte {
         return report.obtenerPeriodos();
+    }
+    
+    /*
+    *Obtener todos los periodos 
+    *@return retorna una lista de strings los periodos de la base de datos
+    **/
+    public List<Profesor> getProfesores() throws ExceptionServiciosReporte {
+        return report.colsultarProfesores();
+    }
+    
+    /*
+    *Obtener todos los periodos 
+    *@return retorna una lista de strings los periodos de la base de datos
+    **/
+    public void registrarMateriaCohorte() throws ExceptionServiciosReporte {
+        mensaje=report.registrarMateriaCohorte(credit, credit, periodo, asig);
     }
     
     /*
@@ -119,6 +143,13 @@ public class RegistroClaseBean implements Serializable{
         return s;
     }
     
+    public void saveMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        if(mensaje.contains("Error")){
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: ",mensaje));
+        }
+        else{context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Successful: ",mensaje));}
+    }
     /**
      * Get the value of Periodo
      * @return periodo
@@ -165,6 +196,79 @@ public class RegistroClaseBean implements Serializable{
 
     public void setCorte(String corte) {
         this.corte = corte;
+    }
+
+    public String getNuevoper() {
+        return nuevoper;
+    }
+
+    public void setNuevoper(String nuevoper) {
+        this.nuevoper = nuevoper;
+    }
+
+    public String getNuevopos() {
+        return nuevopos;
+    }
+
+    public void setNuevopos(String nuevopos) {
+        this.nuevopos = nuevopos;
+    }
+
+    public String getNuevoasig() {
+        return nuevoasig;
+    }
+
+    public void setNuevoasig(String nuevoasig) {
+        this.nuevoasig = nuevoasig;
+    }
+
+
+    public Date getFini() {
+        return fini;
+    }
+
+    public void setFini(Date fini) {
+        this.fini = fini;
+    }
+
+    public Date getFfin() {
+        return ffin;
+    }
+
+    public void setFfin(Date ffin) {
+        this.ffin = ffin;
+    }
+
+    public int getCredit() {
+        return credit;
+    }
+
+    public void setCredit(int credit) {
+        this.credit = credit;
+    }
+
+    public String getSelectpos() {
+        return selectpos;
+    }
+
+    public void setSelectpos(String selectpos) {
+        this.selectpos = selectpos;
+    }
+
+    public String getNuevocorte() {
+        return nuevocorte;
+    }
+
+    public void setNuevocorte(String nuevocorte) {
+        this.nuevocorte = nuevocorte;
+    }
+
+    public String getProfe() {
+        return profe;
+    }
+
+    public void setProfe(String profe) {
+        this.profe = profe;
     }
     
     

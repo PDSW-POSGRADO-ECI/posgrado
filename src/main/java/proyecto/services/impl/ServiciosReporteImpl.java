@@ -173,7 +173,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
-    public void registrarClase(int i, String per, Date fecha, Time horainit, Time horafin ,int doc) throws ExceptionServiciosReporte{
+    public String registrarClase(int i, String per, Date fecha, Time horainit, Time horafin ,int doc) throws ExceptionServiciosReporte{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -184,7 +184,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
-    public void registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte{
+    public String registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -197,7 +197,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
-    public void registrarProfesorCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionServiciosReporte {
+    public String registrarMateriaCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionServiciosReporte {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -292,33 +292,46 @@ public class ServiciosReporteImpl implements ServiciosReporte {
 
     @Override
     public String registrarPeriodo(String per,Date fini, Date ffin) throws ExceptionServiciosReporte{
+        String ms="Periodo Agregado";
         try {
-            corte.savePeriodo(per, fini, ffin);
+            if(!corte.loadPeriodos().contains(per) && fini.compareTo(ffin)<0){
+                corte.savePeriodo(per, fini, ffin);
+            }else{ms="Error el Periodo esta duplicado - La fecha inicial es mayor que la fecha de terminacion";}
         } catch (ExceptionPersistence ex) {
-            return new ExceptionServiciosReporte("Error al registrar el periodo "+per+ex, ex).toString();
+            return new ExceptionServiciosReporte("Error al registrar el periodo "+per, ex).getMessage();
         }
-        return null;
+        return ms;
     }
 
     @Override
     public  String registrarPosgrado(String nom, int credit) throws ExceptionServiciosReporte {
+        String ms="Posgrago Agregado";boolean var=true;
         try {
-            asignatura.savePosgrado(nom, credit);
+            for(int i=0; i<asignatura.loadPosgrados().size()&& var;i++ ){
+                if(asignatura.loadPosgrados().get(i).getNombre().equals(nom) || credit<=0){
+                    var=false;ms="Error el Posgrado esta duplicado - creditos invalidos";
+                }
+            }if(var){asignatura.savePosgrado(nom, credit);}
         } catch (ExceptionPersistence ex) {
-            return new ExceptionServiciosReporte("El posgrado "+nom+" ya existe"+ex, ex).toString();
+            throw new ExceptionServiciosReporte("El posgrado "+nom+" ya existe"+ex, ex);
         }
-        return null;
+        return ms;
         
         
     }
 
     @Override
     public String registrarAsignatura(String nom, String posgrado) throws ExceptionServiciosReporte {
+       String ms="Asignatura Agregada";boolean var=true;
        try {
-            asignatura.saveAsignatura(nom, posgrado);
+           for(int i=0; i<asignatura.loadAsignaturas().size()&& var;i++ ){
+                if(asignatura.loadAsignaturas().get(i).getNombre().equals(nom)){
+                    var=false;ms="Error la asignatura esta duplicada";
+                }
+            }if(var){asignatura.saveAsignatura(nom, posgrado);}
         } catch (ExceptionPersistence ex) {
-            return new ExceptionServiciosReporte("La asignatura "+nom+" ya existe"+ex, ex).toString();
+            throw new ExceptionServiciosReporte("La asignatura "+nom+" ya existe"+ex, ex);
         }
-       return null;
+       return ms;
     }
 }

@@ -204,7 +204,7 @@ public class ProgramarMateriaTest {
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         String nombre="Sergio Chacon";
         int doc=1418432;
-        report.registrarProfesorCohorte(doc,25,"2017-1","FDF");
+        report.registrarMateriaCohorte(doc, doc, nombre, nombre);
         assertEquals("Deberian haber registrado una nueva MateriaCohorte para"
                 + "el profesor"+doc +nombre,report.consultarMateriaCohorte(1418432,25,"FDF"),true);
         
@@ -235,7 +235,7 @@ public class ProgramarMateriaTest {
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         int doc=1418432;
         try{
-            report.registrarProfesorCohorte(doc,25,"2017-1","FDF");
+            report.registrarMateriaCohorte(doc,25,"2017-1","FDF");
             }
         catch(ExceptionServiciosReporte e){
             assertEquals("No deberia registrar profesor en una cohorte"

@@ -60,7 +60,12 @@ public class mybatisCohorteDAO implements CohorteDAO{
 
     @Override
     public void savePeriodo(String per,Date fini,Date ffin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            corteMapper.registrarPeriodo(per, fini, ffin);
+        }
+        catch(PersistenceException e){
+            throw new PersistenceException("Error al cargar Periodo ",e);
+        }  
     }
     
 }

@@ -10,7 +10,7 @@ and open the template in the editor.
 
 <mapper namespace="proyecto.dao.mybatis.mappers.CohorteMapper"> 
   
-    <select parameterType="map" id="consultarPeriodos" resultMap="periodo">
+    <select parameterType="map" id="consultarPeriodos" resultType="String">
         
         SELECT
             per.periodo
@@ -41,7 +41,7 @@ and open the template in the editor.
 
     </select>
      <select parameterType="map" id="registrarPeriodo">
-        INSERT INTO Periodo(periodo,fehca_inicio,fecha_fin) VALUES (#{periodo},#{fecha_inicio},#{fecha_fin});
+        INSERT INTO Periodo(periodo,fecha_inicio,fecha_fin) VALUES (#{periodo},#{fecha_inicio},#{fecha_fin});
     </select>
     <resultMap type='Cohorte' id='CohorteResult'>
         <id property='id' column='id'/>

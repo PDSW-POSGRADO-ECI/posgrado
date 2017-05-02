@@ -39,11 +39,11 @@ public interface ServiciosReporte {
     /*
     *Sprint2
     */
-    public void registrarClase(int corte, String per, Date fecha, Time horainit, Time horafin,int doc) throws ExceptionServiciosReporte;
+    public String registrarClase(int corte, String per, Date fecha, Time horainit, Time horafin,int doc) throws ExceptionServiciosReporte;
 
-    public void registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte;
+    public String registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte;
 
-    public void registrarProfesorCohorte(int doc, int cort, String periodo, String sigla)throws ExceptionServiciosReporte;
+    public String registrarMateriaCohorte(int doc, int cort,String periodo, String sigla)throws ExceptionServiciosReporte;
 
     public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte;
     

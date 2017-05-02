@@ -34,13 +34,6 @@ public interface AsignaturaMapper {
     *@return asig retorna una lista de asignaturas 
     **/
     public List<Posgrado> consultarPosgrados();
-    
-    /*
-    *Obtener todos los periodos
-    *@return asig retorna una lista de asignaturas
-    **/
-    public void registrarPeriodo(@Param("periodo") String nom,@Param("posgrado") String posgrado);
-    
     /*
     *Obtener todos los periodos
     *@return asig retorna una lista de asignaturas

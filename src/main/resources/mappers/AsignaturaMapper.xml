@@ -48,8 +48,15 @@ and open the template in the editor.
         
     </select>
      <select parameterType="map" id="registrarPosgrado">
-        INSERT INTO Posgrado(nombre,creditos) VALUES (#{nom},#{creditos});
+        INSERT INTO Posgrado(nombre,creditos) VALUES (#{nompos},#{credit});
     </select>
+     <insert parameterType="map" id="registrarAsignatura">
+         <selectKey keyProperty="id" resultType="int" order="BEFORE">
+             SELECT pos.id FROM posgrado as pos WHERE pos.nombre=#{nomposgrado};
+         </selectKey>
+        INSERT INTO Asignatura(nombre,posgrado_id) VALUES (#{nomasig},#{id});
+    </insert>
+    
     <resultMap type="Asignatura" id="AsignaturaResult">
         <id property='id' column='id'/>
         <result property='nombre' column='nombre'/>

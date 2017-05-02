@@ -4,30 +4,32 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui" 
-      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                    xmlns:p="http://primefaces.org/ui"
+                    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                    xmlns:h="http://xmlns.jcp.org/jsf/html"
+                    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Programar Clases</title>
         <link rel="stylesheet" type="text/css" href="formatos.css"/>
         <link rel="stylesheet" type="text/css" href="fonts.css"/>
     </h:head>
+    
     <h:body>
-        <div class="item">
+        <h:form id="ProgramarClase">
+            <div class="item">
                 <img src="resources/campus.jpg" class="imagen" />
-        </div>
-        <div id="barra2" style="text-align: right; margin:25px 0;  position:relative ; top: 0%; left: 0%; right:10%" >
+            </div>
+            <div id="barra2" style="text-align: right; margin:25px 0;  position:relative ; top: 0%; left: 0%; right:10%" >
                 <h:panelGrid columns="3" style="margin-right: auto">
                     <i class="icon icon-home"></i>
-                    <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Regresar</p:commandLink>
+                    <p:commandLink class="cmStyle" action="Menu">Regresar </p:commandLink>
                 </h:panelGrid>
-        </div>
-        <h:form id="ProgramarClase">
-            <p:panel id="paneles" header="Seleccione la siguientes informacion:" style="position:absolute ;left: 15%;height: 60%;width: 40%;">
+            </div>
+             
+            <p:panel id="paneles" header="Seleccione la siguientes informacion:" style="position:absolute ;left: 20%;height: 70%;width: 60%;" >
                 
-                <h:panelGrid columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 5%; left: 10%; ">
+                <h:panelGrid columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 5%; left: 10%; " >
                     <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="per" />
                     <p:autoComplete id="per" style="left: 15%" dropdown="true" value="#{RegistroClaseBean.periodo}" completeMethod="#{RegistroClaseBean.completeText(query, 0)}" >
                         <p:ajax event="itemSelect" update=":ProgramarClase" >  </p:ajax>
@@ -36,21 +38,21 @@ and open the template in the editor.
                 
                 <h:panelGrid id="panelpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 17%; left: 10%;">
                     <p:outputLabel style="font-weight:bold;" value="Seleccione el Posgrado:" for="pos" />
-                    <p:autoComplete id="pos" style="left:10%" dropdown="true" value="#{RegistroClaseBean.posgrado}" completeMethod="#{RegistroClaseBean.completeText(query, 1)}">
+                    <p:autoComplete  id="pos" style="left:10%" dropdown="true" value="#{RegistroClaseBean.posgrado}" completeMethod="#{RegistroClaseBean.completeText(query, 1)}" >
                         <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setAsig('')}" update=":ProgramarClase:panelasig" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>  
                 
                 <h:panelGrid id="panelasig" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 29%; left: 10%; ">
                     <p:outputLabel style="font-weight:bold;" value="Seleccione la Asignatura:" for="asig" />
-                    <p:autoComplete id="asig" style="left: 4%" dropdown="true" value="#{RegistroClaseBean.asig}" completeMethod="#{RegistroClaseBean.completeText(query, 2)}" >
+                    <p:autoComplete  id="asig" style="left: 4%" dropdown="true" value="#{RegistroClaseBean.asig}" completeMethod="#{RegistroClaseBean.completeText(query, 2)}" >
                         <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setMat('')}"  update=":ProgramarClase:panelmat" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>  
                 
                 <h:panelGrid id="panelmat" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 41%; left: 10%; ">
                     <p:outputLabel style="font-weight:bold;" value="Seleccione la Materia:" for="mat" />
-                    <p:autoComplete id="mat" style="left: 14%; " dropdown="true" value="#{RegistroClaseBean.mat}" completeMethod="#{RegistroClaseBean.completeText(query, 3)}" >
+                    <p:autoComplete  id="mat" style="left: 14%; " dropdown="true" value="#{RegistroClaseBean.mat}" completeMethod="#{RegistroClaseBean.completeText(query, 3)}" >
                          <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setCorte('')}"  update=":ProgramarClase:panelcor" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>
@@ -62,17 +64,76 @@ and open the template in the editor.
                 </h:panelGrid>
                 
                 <p:menuButton value="Opciones" style="margin:10px 0; position:absolute ; top: 75%; left:51%; ">
-                    <p:menuitem  value="Registrar nuevo periodo"   />
-                    <p:menuitem  value="Registrar nuevo posgrado"  />
-                    <p:menuitem  value="Registrar nueva Asignatura"  />
-                    <p:menuitem  value="Registrar nueva Materia"  />
-                    <p:menuitem  value="Registrar nueva Cohorte de Materia"  />
+                    <p:menuitem  value="Registrar nuevo periodo"  onclick="PF('dialogperiodo').show();" />
+                    <p:menuitem  value="Registrar nuevo posgrado"  onclick="PF('dialogpos').show();" />
+                    <p:menuitem  value="Registrar nueva Asignatura"  onclick="PF('dialogasig').show();" />
+                    <p:menuitem  value="Registrar nueva Materia"  onclick="PF('dialogmat').show();" />
+                    <p:menuitem  value="Registrar nueva Cohorte de Materia"  onclick="PF('dialogcorte').show();" />
                 </p:menuButton>
-                <p:commandButton  style="margin:10px 0; position:absolute ; top: 75%; left:15%; " action="RegistrarClases?faces-redirect=true" icon="ui-icon-arrowreturnthick-1-e" value="Programar Clases"/>
-            </p:panel>
-            <p:panel>
+                <p:commandButton  type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:15%; " action="RegistrarClases?faces-redirect=true" icon="ui-icon-arrowreturnthick-1-e" value="Programar Clases" />
                 
-            </p:panel>
+            </p:panel >
+        </h:form>
+        <h:form id="nuevoregistro">
+            
+            <p:dialog header="Registrar Periodo" widgetVar="dialogperiodo" modal="true" width="950" height="700" resizable="false">
+                <p:panel id="panelregistroperiodo" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
+                    <h:panelGrid id="panelregper" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
+                        <p:outputLabel style="font-weight:bold;" value="Periodo:" for="perinput" />
+                        <p:inputMask id="perinput" mask="2099-9" value="#{RegistroClaseBean.nuevoper}" required="true" />
+                        <p:outputLabel style="font-weight:bold;" value="Fecha de Inicio:" for="perini" />
+                        <p:calendar id="perini" value="#{RegistroClaseBean.fini}" pattern="yyyy-MM-dd" mask="true"  showOn="button" required="true" />
+                        <p:outputLabel style="font-weight:bold;" value="Fecha de Terminacion:" for="perfin" />
+                        <p:calendar id="perfin" value="#{RegistroClaseBean.ffin}" pattern="yyyy-MM-dd" mask="true"  showOn="button" required="true" />
+                    </h:panelGrid> 
+                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarPeriodo()}" action="#{RegistroClaseBean.saveMessage()}" update="ms"  value="Registrar Periodo" />
+                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms"  showDetail="true" autoUpdate="true" closable="true" />
+                </p:panel>
+            </p:dialog>  
+            <p:dialog header="Registrar Posgrado" widgetVar="dialogpos" modal="true" width="800" height="700" resizable="false">
+                <p:panel id="panelregistroposgrado" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
+                    <h:panelGrid id="panelregpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
+                        <p:outputLabel style="font-weight:bold;" value="Nombre del Posgrado:" for="posinput" />
+                        <p:inputText id="posinput" value="#{RegistroClaseBean.nuevopos}" required="true" />
+                        <p:outputLabel style="font-weight:bold;" value="Numero de creditos:" for="credit" />
+                        <p:spinner id="credit" value="#{RegistroClaseBean.credit}" min="0" max="200" />
+                    </h:panelGrid> 
+                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarPosgrado()}" action="#{RegistroClaseBean.saveMessage()}" update="ms1"  value="Registrar Posgrado" />
+                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms1"  showDetail="true" autoUpdate="true" closable="true" />
+                </p:panel>
+            </p:dialog> 
+            <p:dialog header="Registrar Asignatura" widgetVar="dialogasig" modal="true" width="800" height="700" resizable="false">
+                <p:panel id="panelregistroasig" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
+                    <h:panelGrid id="panelregasig" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
+                        <p:outputLabel style="font-weight:bold;" value="Nombre de la Asignatura:" for="asiginput" />
+                        <p:inputText id="asiginput" value="#{RegistroClaseBean.nuevoasig}" required="true" />
+                        <p:outputLabel style="font-weight:bold;" value="Posgrado :" for="posgradoselect" />
+                        <p:selectOneMenu id="posgradoselect" value="#{RegistroClaseBean.selectpos}" style="width:300px">
+                            <f:selectItems value="#{RegistroClaseBean.posgrados}" var="postera">
+                                <f:selectItem value="#{postera}"/>
+                            </f:selectItems>
+                        </p:selectOneMenu>
+                    </h:panelGrid> 
+                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarAsignatura()}" action="#{RegistroClaseBean.saveMessage()}" update="ms2"  value="Registrar Asignatura" />
+                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms2"  showDetail="true" autoUpdate="true" closable="true" />
+                </p:panel>
+            </p:dialog>
+            <p:dialog header="Registrar corte" widgetVar="dialogcorte" modal="true" width="800" height="700" resizable="false">
+                <p:panel id="panelregistrocorte" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
+                    <h:panelGrid id="panelregcorte" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
+                        <p:outputLabel style="font-weight:bold;" value="Numero de corte:" for="corteinput" />
+                        <p:spinner id="corteinput" value="#{RegistroClaseBean.nuevocorte}" min="0"  />
+                        <p:outputLabel style="font-weight:bold;" value="Profesor :" for="profeselect" />
+                        <p:selectOneMenu id="profeselect" value="#{RegistroClaseBean.profe}" style="width:300px">
+                            <f:selectItems value="#{RegistroClaseBean.profesores}" var="profe">
+                                <f:selectItem value="#{profe.nombre}"/>
+                            </f:selectItems>
+                        </p:selectOneMenu>
+                    </h:panelGrid> 
+                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarMateriaCohorte()}" action="#{RegistroClaseBean.saveMessage()}" update="ms3"  value="Registrar Materia de corte" />
+                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms3"  showDetail="true" autoUpdate="true" closable="true" />
+                </p:panel>
+            </p:dialog> 
         </h:form>
     </h:body>
-</html>
+</ui:composition>
