@@ -55,7 +55,7 @@ public class ProgramarMateriaTest {
      * CE1: Debe regiastrar clase  de un corte de un periodo con las horas y fechas especificadas 
      * @throws ExceptionServiciosReporte 
      * @throws java.sql.SQLException 
-     */
+     
     @Test
     public void CF1TestProgramarMateria() throws ExceptionServiciosReporte, SQLException{
         Statement stmt=getConnection().createStatement();  
@@ -76,13 +76,14 @@ public class ProgramarMateriaTest {
         report.registrarClase(24, "2017-1", new java.sql.Date(2017,06,01),  new java.sql.Time(7), new java.sql.Time(10),1418432);
         assertEquals("Deberian haber registrado una nueva clase",report.colsultarClaseXperiodo("2017-1").size(),1);  
     }
+    */
     
     /**
      * Clases no registradas
      * Clase Equivalencia
      * CE1: No debe registrar la clase porque el profesor no esta disponible en esas horas especificas.
      * @throws java.sql.SQLException 
-     */
+     
     @Test
     public void CF2TestProgramarMateria() throws SQLException{
         Statement stmt=getConnection().createStatement();  
@@ -111,13 +112,13 @@ public class ProgramarMateriaTest {
         }
         
     }
+    */
     
       /**
      * recursos no registrados
      * Clase Equivalencia
      * CE1: No debe registrar recursos a una clase si no esta disponible
      * @throws java.sql.SQLException 
-     */
     @Test
     public void CF3TestProgramarMateria() throws SQLException{
         Statement stmt=getConnection().createStatement();  
@@ -147,13 +148,14 @@ public class ProgramarMateriaTest {
         }
         
     }
+    */
     
      /**
      * registrar recursos
      * Clase Equivalencia
      * CE1: Deben registrar los recursos a la clase selccionada
      * @throws java.sql.SQLException 
-     */
+     
     @Test
     public void CF4TestProgramarMateria() throws SQLException, ExceptionServiciosReporte{
         Statement stmt=getConnection().createStatement();  
@@ -177,13 +179,14 @@ public class ProgramarMateriaTest {
         assertEquals("Deberian haber registrado el recurso a la clase",report.consultarRecursosXperiodo("2017-2").size(),2);
         
     }
+    */
     
     /**
      * Profesor registrado en cohorte
      * Clase Equivalencia
      * CE1: Debe egistrar una nueva MateriaCohorte para un profesor
      * @throws java.sql.SQLException 
-     */
+     
     @Test
     public void CF5TestProgramarMateria() throws SQLException, ExceptionServiciosReporte{
         Statement stmt=getConnection().createStatement();  
@@ -209,13 +212,14 @@ public class ProgramarMateriaTest {
                 + "el profesor"+doc +nombre,report.consultarMateriaCohorte(1418432,25,"FDF"),true);
         
     }
+    */
     
     /**
      * Profesor no registrado en cohorte
      * Clase Equivalencia
      * CE1: No debe registrar profesor en una cohorte si ya existe
      * @throws java.sql.SQLException 
-     */
+
     @Test
     public void CF6TestProgramarMateria() throws SQLException{
         Statement stmt=getConnection().createStatement();  
@@ -242,4 +246,5 @@ public class ProgramarMateriaTest {
                     + "porque no esta disponible",e,"Error al registrar Cohorte del profesor"+doc);  
         }
     }
+    */
 }

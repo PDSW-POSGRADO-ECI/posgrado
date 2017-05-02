@@ -59,7 +59,7 @@ public class ReporteRecursoTest {
      * CE1: Deben contener los recursos asociados al periodo (2017-1)
      * @throws ExceptionServiciosReporte 
      * @throws java.sql.SQLException 
-     */
+     
     @Test
     public void CERecursos1Test() throws ExceptionServiciosReporte,SQLException, Exception{
         Statement stmt=getConnection().createStatement(); 
@@ -83,6 +83,7 @@ public class ReporteRecursoTest {
         List<Recurso> rec=report.consultarRecursosXperiodo(report.obtenerPeriodos().get(0));
         assertEquals("Deberian devolver los recursos del periodo 2017-1",rec.size(),2);
     }
+    * */
     
     /**
      * Seleccion de peridodo academico para generar el reporte de recursos para 
@@ -90,7 +91,7 @@ public class ReporteRecursoTest {
      * Clase de Equivalencia
      * CE2: No bederia consultar recursos del periodo (2017-1)
      * @throws ExceptionServiciosReporte 
-     */
+     
     @Test
     public void CERecursos2Test() throws ExceptionServiciosReporte, SQLException, Exception{
         Statement stmt=getConnection().createStatement(); 
@@ -116,6 +117,7 @@ public class ReporteRecursoTest {
         List<Recurso> rec=report.consultarRecursosXperiodo(report.obtenerPeriodos().get(0));
         assertEquals("Deberian devolver los recursos del periodo 2017-1",rec.size(),1);
     }
+    * /
     
     /**
      * Seleccion de peridodo academico para generar el reporte de recursos para 
@@ -124,7 +126,7 @@ public class ReporteRecursoTest {
      * CE1: Deberia consultar todos los recursos ordenados por fecha de menor a mayor
      * @throws ExceptionServiciosReporte 
      * @throws java.sql.SQLException 
-     */
+     
     @Test
     public void CERecursos3Test() throws ExceptionServiciosReporte, SQLException, Exception{
         Statement stmt = getConnection().createStatement();
@@ -148,6 +150,7 @@ public class ReporteRecursoTest {
         List<Recurso> rec=report.consultarRecursosXperiodo(report.obtenerPeriodos().get(0));
         assertEquals("Deberian devolver los recursos del periodo 2017-1",rec.get(0).getClase_id().getFecha(),report.colsultarFechas(report.obtenerPeriodos().get(0)).get(0));
     }
+    * /
     
     /**
      * Seleccion de peridodo academico para generar el reporte de recursos para 
@@ -156,7 +159,7 @@ public class ReporteRecursoTest {
      * CE1: si no hay recursos asociados a el periodo elegino no deberia mostrar ningun recusro
      * @throws ExceptionServiciosReporte 
      * @throws java.sql.SQLException 
-     */
+     
     @Test
     public void CERecursos5Test() throws ExceptionServiciosReporte, SQLException, Exception{
         Statement stmt = getConnection().createStatement();
@@ -180,6 +183,7 @@ public class ReporteRecursoTest {
         List<Recurso> rec = report.consultarRecursosXperiodo(report.obtenerPeriodos().get(0));
         assertTrue("No deben aparecer recursos si no hay clases relacionadas con el periodo seleccionado", rec.isEmpty());
     }
+    * /
     
     /**
      * Seleccion de peridodo academico para generar el reporte de recursos para 
@@ -188,7 +192,7 @@ public class ReporteRecursoTest {
      * CE4: 
      * @throws ExceptionServiciosReporte 
      * @throws java.sql.SQLException 
-     */
+     
     @Test
     public void CERecursos4Test() throws ExceptionServiciosReporte, SQLException, Exception{
         Statement stmt=getConnection().createStatement(); 
@@ -212,8 +216,11 @@ public class ReporteRecursoTest {
         assertTrue("No deben aparecer recursos de un periodo que no exista (2016-1)", report.consultarRecursosXperiodo("2016-1").isEmpty());
         
     }
-        
+    */
+    
     @After
     public void tearDown() {
     }
+   
+    
 }
