@@ -43,6 +43,7 @@ and open the template in the editor.
         WHERE asi.nombre=#{nomasig}   
     </select>
     
+   
     <resultMap type="Materia" id="MateriaResult">
         <id property='sigla' column='sigla'/>
         <result property='nombre' column='nombre'/>

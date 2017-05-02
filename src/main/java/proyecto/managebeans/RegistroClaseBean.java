@@ -6,12 +6,16 @@
 package proyecto.managebeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import proyecto.entities.Asignatura;
+import proyecto.entities.Materia;
+import proyecto.entities.Posgrado;
 import proyecto.entities.Profesor;
 import proyecto.services.ExceptionServiciosReporte;
 import proyecto.services.ServiciosReporte;
@@ -34,7 +38,7 @@ public class RegistroClaseBean implements Serializable{
     String nuevopos;
     String nuevoasig;
     String nuevocorte;
-    String profe;
+    String selectprofe;
     static String mensaje;
     String selectpos;
     Date fini;
@@ -54,7 +58,11 @@ public class RegistroClaseBean implements Serializable{
     *@return retorna una lista de los posgrados
     **/
     public List<String> getPosgrados() throws ExceptionServiciosReporte {
-        return report.consultarPosgrados();
+        ArrayList<String> pos=new ArrayList<>();
+        for(Posgrado p: report.consultarPosgrados()){
+                pos.add(p.getNombre());
+            }
+        return pos;
     }
     
     /*
@@ -62,7 +70,11 @@ public class RegistroClaseBean implements Serializable{
     *@return retorna una lista de las asignaturas de posgrado
     **/
     public List<String> getAsignaturas() throws ExceptionServiciosReporte {
-        return report.consultarAsignaturas(posgrado);
+        ArrayList<String> asig=new ArrayList<>();
+        for(Asignatura a: report.consultarAsignaturas(posgrado)){
+                asig.add(a.getNombre());
+            }
+        return asig;
     }
     
     /*
@@ -91,7 +103,11 @@ public class RegistroClaseBean implements Serializable{
     *@return retorna una lista de las materias de la asignatura
     **/
     public List<String> getMaterias() throws ExceptionServiciosReporte {
-        return report.consultarMaterias(asig);
+        ArrayList<String> mat=new ArrayList<>();
+        for(Materia a: report.consultarMaterias(asig)){
+                mat.add(a.getNombre());
+            }
+        return mat;
     }
     
     /*
@@ -100,14 +116,6 @@ public class RegistroClaseBean implements Serializable{
     **/
     public List<String> getPeriodos() throws ExceptionServiciosReporte {
         return report.obtenerPeriodos();
-    }
-    
-    /*
-    *Obtener todos los periodos 
-    *@return retorna una lista de strings los periodos de la base de datos
-    **/
-    public List<Profesor> getProfesores() throws ExceptionServiciosReporte {
-        return report.colsultarProfesores();
     }
     
     /*
@@ -125,6 +133,18 @@ public class RegistroClaseBean implements Serializable{
     private List<String> getMateriaCohorte() throws ExceptionServiciosReporte {
         return report.consultarMateriaCohorte(periodo,mat);
     }
+    
+    /*
+    *Obtener los cortes de la materia determinada
+    *@return retorna una lista de strings con los cortes
+    **/
+    private List<String> getProfesores() throws ExceptionServiciosReporte {
+        ArrayList<String> prof=new ArrayList<>();
+        for(Profesor a: report.colsultarProfesores()){
+                prof.add(a.getNombre());
+            }
+        return prof;
+    }
     /**
      * Autocompletar los periodos de la base de datos
      * @param query el string registrado por el usuario
@@ -140,6 +160,7 @@ public class RegistroClaseBean implements Serializable{
         else if(num==2){s=getAsignaturas();}
         else if(num==3){s=getMaterias();}
         else if(num==4){s=getMateriaCohorte();}
+        else if(num==5){s=getProfesores();}
         return s;
     }
     
@@ -263,12 +284,12 @@ public class RegistroClaseBean implements Serializable{
         this.nuevocorte = nuevocorte;
     }
 
-    public String getProfe() {
-        return profe;
+    public String getSelectprofe() {
+        return selectprofe;
     }
 
-    public void setProfe(String profe) {
-        this.profe = profe;
+    public void setSelectprofe(String profe) {
+        this.selectprofe = profe;
     }
     
     

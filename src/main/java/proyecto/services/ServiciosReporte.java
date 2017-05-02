@@ -8,9 +8,11 @@ package proyecto.services;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
+import proyecto.entities.Asignatura;
 import proyecto.entities.Clase;
 import proyecto.entities.Cohorte;
 import proyecto.entities.Materia;
+import proyecto.entities.Posgrado;
 import proyecto.entities.Profesor;
 import proyecto.entities.Recurso;
 
@@ -47,10 +49,10 @@ public interface ServiciosReporte {
 
     public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte;
     
-    public List<String> consultarMaterias(String asig) throws ExceptionServiciosReporte;
-    public List<String> consultarAsignaturas(String pos) throws ExceptionServiciosReporte;
+    public List<Materia> consultarMaterias(String asig) throws ExceptionServiciosReporte;
+    public List<Asignatura> consultarAsignaturas(String pos) throws ExceptionServiciosReporte;
 
-    public List<String> consultarPosgrados()throws ExceptionServiciosReporte;
+    public List<Posgrado> consultarPosgrados()throws ExceptionServiciosReporte;
 
     public List<String> consultarMateriaCohorte(String periodo, String mat)throws ExceptionServiciosReporte;
 

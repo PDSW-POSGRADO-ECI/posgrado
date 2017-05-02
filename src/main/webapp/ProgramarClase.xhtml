@@ -74,8 +74,7 @@ and open the template in the editor.
                 
             </p:panel >
         </h:form>
-        <h:form id="nuevoregistro">
-            
+        <h:form id="nuevoregistro1">
             <p:dialog header="Registrar Periodo" widgetVar="dialogperiodo" modal="true" width="950" height="700" resizable="false">
                 <p:panel id="panelregistroperiodo" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
                     <h:panelGrid id="panelregper" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
@@ -90,6 +89,8 @@ and open the template in the editor.
                     <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms"  showDetail="true" autoUpdate="true" closable="true" />
                 </p:panel>
             </p:dialog>  
+        </h:form>
+        <h:form id="nuevoregistro2">
             <p:dialog header="Registrar Posgrado" widgetVar="dialogpos" modal="true" width="800" height="700" resizable="false">
                 <p:panel id="panelregistroposgrado" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
                     <h:panelGrid id="panelregpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
@@ -98,10 +99,13 @@ and open the template in the editor.
                         <p:outputLabel style="font-weight:bold;" value="Numero de creditos:" for="credit" />
                         <p:spinner id="credit" value="#{RegistroClaseBean.credit}" min="0" max="200" />
                     </h:panelGrid> 
-                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarPosgrado()}" action="#{RegistroClaseBean.saveMessage()}" update="ms1"  value="Registrar Posgrado" />
-                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms1"  showDetail="true" autoUpdate="true" closable="true" />
+                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarPosgrado()}" action="#{RegistroClaseBean.saveMessage()}" update="ms"  value="Registrar Posgrado" />
+                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms"  showDetail="true" autoUpdate="true" closable="true" />
+
                 </p:panel>
             </p:dialog> 
+        </h:form>
+        <h:form id="nuevoregistro3">
             <p:dialog header="Registrar Asignatura" widgetVar="dialogasig" modal="true" width="800" height="700" resizable="false">
                 <p:panel id="panelregistroasig" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
                     <h:panelGrid id="panelregasig" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
@@ -114,24 +118,25 @@ and open the template in the editor.
                             </f:selectItems>
                         </p:selectOneMenu>
                     </h:panelGrid> 
-                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarAsignatura()}" action="#{RegistroClaseBean.saveMessage()}" update="ms2"  value="Registrar Asignatura" />
-                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms2"  showDetail="true" autoUpdate="true" closable="true" />
+                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarAsignatura()}" action="#{RegistroClaseBean.saveMessage()}" update="ms"  value="Registrar Asignatura" />
+                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms"  showDetail="true" autoUpdate="true" closable="true" />
+
                 </p:panel>
             </p:dialog>
+        </h:form>
+        <h:form id="nuevoregistro4">
             <p:dialog header="Registrar corte" widgetVar="dialogcorte" modal="true" width="800" height="700" resizable="false">
                 <p:panel id="panelregistrocorte" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
                     <h:panelGrid id="panelregcorte" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
                         <p:outputLabel style="font-weight:bold;" value="Numero de corte:" for="corteinput" />
                         <p:spinner id="corteinput" value="#{RegistroClaseBean.nuevocorte}" min="0"  />
-                        <p:outputLabel style="font-weight:bold;" value="Profesor :" for="profeselect" />
-                        <p:selectOneMenu id="profeselect" value="#{RegistroClaseBean.profe}" style="width:300px">
-                            <f:selectItems value="#{RegistroClaseBean.profesores}" var="profe">
-                                <f:selectItem value="#{profe.nombre}"/>
-                            </f:selectItems>
-                        </p:selectOneMenu>
+                        <p:outputLabel style="font-weight:bold;" value="Profesor :" for="profselect" />
+                        <p:autoComplete id="profselect" dropdown="true" value="#{RegistroClaseBean.selectprofe}" completeMethod="#{RegistroClaseBean.completeText(query, 5)}" >
+                            
+                        </p:autoComplete>
                     </h:panelGrid> 
-                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarMateriaCohorte()}" action="#{RegistroClaseBean.saveMessage()}" update="ms3"  value="Registrar Materia de corte" />
-                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms3"  showDetail="true" autoUpdate="true" closable="true" />
+                    <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarMateriaCohorte()}" action="#{RegistroClaseBean.saveMessage()}" update="ms"  value="Registrar Materia de corte" />
+                    <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms"  showDetail="true" autoUpdate="true" closable="true" />
                 </p:panel>
             </p:dialog> 
         </h:form>

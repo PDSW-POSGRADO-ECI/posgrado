@@ -221,16 +221,14 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
-    public List<String> consultarAsignaturas(String posgrado) throws ExceptionServiciosReporte {
-        ArrayList<String> asig=new ArrayList<>();
+    public List<Asignatura> consultarAsignaturas(String posgrado) throws ExceptionServiciosReporte {
+        
         try {
-            for(Asignatura a: asignatura.loadAsignaturas(posgrado)){
-                asig.add(a.getNombre());
-            }
+            return asignatura.loadAsignaturas(posgrado);
+            
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al cargar asignaturas del posgrado"+posgrado, ex);
         }
-       return asig;
     }
     
     /**
@@ -240,16 +238,13 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
-    public List<String> consultarMaterias(String asignatura) throws ExceptionServiciosReporte {
+    public List<Materia> consultarMaterias(String asignatura) throws ExceptionServiciosReporte {
         ArrayList<String> mat=new ArrayList<>();
         try {
-            for(Materia a: materia.loadMateriasXasignatura(asignatura)){
-                mat.add(a.getNombre());
-            }
+            return materia.loadMateriasXasignatura(asignatura);
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al cargar materias de asignatura"+asignatura, ex);
         }
-       return mat;
     }
     
     /**
@@ -258,16 +253,12 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
-    public List<String> consultarPosgrados() throws ExceptionServiciosReporte{
-        ArrayList<String> pos=new ArrayList<>();
+    public List<Posgrado> consultarPosgrados() throws ExceptionServiciosReporte{
         try {
-            for(Posgrado p: asignatura.loadPosgrados()){
-                pos.add(p.getNombre());
-            }
+            return asignatura.loadPosgrados();
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
         }
-       return pos;
     }
     
     /**

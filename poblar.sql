@@ -129,15 +129,34 @@ INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,ma
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(25, '7:00','8:00', '2017-3-12', 'DDEC',24,1318433);
 INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(26, '10:00','13:00', '2017-04-11', 'DVG',24,2118434 );
 
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(1, 'Portatiles',true, 1,43);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(2, 'libro de economia 1',true, 1,10);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(3, 'Audio',true, 3,5);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(4, 'Libro 2',true, 3,10);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(5, 'Microfono',true, 2,2);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(6, 'libro de proyectos',true, 4,6);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(7, 'Diccionario',true, 5,20);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(8, 'Tamgrams',true, 2,6);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(9, 'Microfono',true, 2,2);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(10, 'grabadora ',true, 4,6);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(11, 'Diccionario',true, 5,20);
-INSERT INTO Recurso (id,recurso,disponible,clase_id ,cantidad)  VALUES(12, 'Tamgrams',true, 2,6);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(1, 'Portatiles',true,43);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(2, 'libro de economia 1',true,10);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(3, 'Audio',true,5);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(4, 'Libro 2',true,10);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(5, 'Microfono',true,2);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(6, 'libro de proyectos',true,6);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(7, 'Diccionario',true, 20);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(8, 'Tamgrams',true,6);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(9, 'Microfono',true, 2);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(10, 'grabadora ',true,6);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(11, 'Diccionario',true,20);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(12, 'Tamgrams',true, 6);
+
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(1,1,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(1,2,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(3,3,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(4,4,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(5,5,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(2,6,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(7,6,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(22,7,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(5,8,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(14,10,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(14,12,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(4,12,10);
+INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(14,11,10);
+
+INSERT INTO Rol(rol)  VALUES('Coordinador');
+INSERT INTO Rol(rol)  VALUES('Administrador');
+INSERT INTO Rol(rol)  VALUES('Asistente');
+INSERT INTO Rol(rol)  VALUES('Profesor');
