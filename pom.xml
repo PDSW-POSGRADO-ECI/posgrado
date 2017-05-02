@@ -12,7 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>        
                 
@@ -92,7 +92,25 @@
         </dependency>
 
 
+        <!--security-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.2.1</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <!--security-->
 
 
     </dependencies>
@@ -101,7 +119,7 @@
     
 
     <build>
-		<finalName>Postgrado-ECI</finalName>
+        <finalName>Postgrado-ECI</finalName>
         <plugins>
             
             
@@ -156,7 +174,7 @@
                 </executions>
             </plugin>
 			            
-			<!-- Tomcat embedded plugin. -->
+            <!-- Tomcat embedded plugin. -->
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -179,7 +197,7 @@
                     </compilerArguments>
                 </configuration>
             </plugin>
-			<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
@@ -188,7 +206,7 @@
                 </configuration>
             </plugin>
 			
-			<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.1</version>
@@ -199,7 +217,7 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
-			    <outputDirectory>${basedir}/target/endorsed
+                            <outputDirectory>${basedir}/target/endorsed
                             </outputDirectory>
                             <artifactItems>
                                 <artifactItem>
@@ -215,7 +233,7 @@
         
                 </executions>
             </plugin>
-			<plugin>
+            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.6</version>
                 <executions>

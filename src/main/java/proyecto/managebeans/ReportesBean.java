@@ -30,6 +30,25 @@ public class ReportesBean implements Serializable {
     ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
     String periodo;
     
+    String usuario;
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+    String contrasena;
+    
     /*Constructor de la clase ReportesBean*/
     public ReportesBean() {
         periodo = "";
@@ -142,6 +161,4 @@ public class ReportesBean implements Serializable {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
-
-    
 }

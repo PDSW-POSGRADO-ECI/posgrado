@@ -27,14 +27,13 @@
                         <h:outputText value="Nombre de usuario" class="sizel"/>
                     </p:row>
                     <p:row>
-                        <p:inputText type="text" class="input"/> 
-                       
+                        <p:inputText value="#{ReportesBean.usuario}" type="text" class="input"/> 
                     </p:row>
                     <p:row>
                         <h:outputText value="Contraseña" class="sizel"/>
                     </p:row> 
                     <p:row>
-                        <p:password value="no"></p:password>
+                        <p:password value="#{ReportesBean.contrasena}"></p:password>
                     </p:row> 
                     <p:commandLink class="contra" >¿Olvidate tu contraseña?</p:commandLink>
                     <p:commandButton action="Menu?faces-redirect=true" value="Entrar" class="buton"></p:commandButton>                  
