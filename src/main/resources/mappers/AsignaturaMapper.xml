@@ -52,6 +52,8 @@ and open the template in the editor.
      <select parameterType="map" id="registrarPosgrado">
         INSERT INTO Posgrado(nombre,creditos) VALUES (#{nompos},#{credit});
     </select>
+    
+    
      <insert parameterType="map" id="registrarAsignatura">
          <selectKey keyProperty="id" resultType="int" order="BEFORE">
              SELECT pos.id FROM posgrado as pos WHERE pos.nombre=#{nomposgrado};

@@ -40,15 +40,18 @@ and open the template in the editor.
         GROUP BY co.id;
 
     </select>
+    
      <select parameterType="map" id="registrarPeriodo">
         INSERT INTO Periodo(periodo,fecha_inicio,fecha_fin) VALUES (#{periodo},#{fecha_inicio},#{fecha_fin});
     </select>
+    
     <resultMap type='Cohorte' id='CohorteResult'>
         <id property='id' column='id'/>
         <result property='fecha_inicio' column='fecha_inicio'/>
         <result property='fecha_fin' column='fecha_fin'/> 
         <association property="periodo" javaType="Periodo" columnPrefix='PRO_' resultMap='PeriodoResult'></association> 
     </resultMap>
+    
       <resultMap type='Periodo' id='PeriodoResult'>
         <id property='periodo' column='periodo'/>
         <result property='fecha_inicio' column='fecha_inicio'/>
