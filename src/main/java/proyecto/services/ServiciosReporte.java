@@ -50,6 +50,9 @@ public interface ServiciosReporte {
     public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte;
     
     public List<Materia> consultarMaterias(String asig) throws ExceptionServiciosReporte;
+    
+    public List<String> consultarNombresMaterias(String asig) throws ExceptionServiciosReporte;
+    
     public List<Asignatura> consultarAsignaturas(String pos) throws ExceptionServiciosReporte;
 
     public List<Posgrado> consultarPosgrados()throws ExceptionServiciosReporte;
@@ -67,4 +70,6 @@ public interface ServiciosReporte {
     public List<String> consultarNombresPosgrado() throws ExceptionServiciosReporte;
     
     public List<String> consultarNombresAsignaturas(String periodo) throws ExceptionServiciosReporte;
+
+    public List<String> consultarNombresProfesores() throws ExceptionServiciosReporte;
 }

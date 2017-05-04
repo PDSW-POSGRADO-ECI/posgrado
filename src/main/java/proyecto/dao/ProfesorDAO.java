@@ -19,6 +19,8 @@ public interface ProfesorDAO {
     *@return retorna una lista de profesores
     **/
     public List<Profesor> loadProfesores() throws ExceptionPersistence;
+    
+    public List<String> loadNames() throws ExceptionPersistence;
      
     /*
     *Obtener un profesor de un corte y materia especifica

@@ -103,11 +103,12 @@ public class RegistroClaseBean implements Serializable {
     *@return retorna una lista de las materias de la asignatura
     **/
     public List<String> getMaterias() throws ExceptionServiciosReporte {
-        ArrayList<String> mat = new ArrayList<>();
-        for (Materia a : report.consultarMaterias(asig)) {
-            mat.add(a.getNombre());
-        }
-        return mat;
+//        ArrayList<String> mat = new ArrayList<>();
+//        for (Materia a : report.consultarMaterias(asig)) {
+//            mat.add(a.getNombre());
+//        }
+//        return mat;
+        return report.consultarNombresMaterias(asig);
     }
 
     /*
@@ -139,11 +140,12 @@ public class RegistroClaseBean implements Serializable {
     *@return retorna una lista de strings con los cortes
     **/
     private List<String> getProfesores() throws ExceptionServiciosReporte {
-        ArrayList<String> prof = new ArrayList<>();
-        for (Profesor a : report.colsultarProfesores()) {
-            prof.add(a.getNombre());
-        }
-        return prof;
+//        ArrayList<String> prof = new ArrayList<>();
+//        for (Profesor a : report.colsultarProfesores()) {
+//            prof.add(a.getNombre());
+//        }
+//        return prof;
+        return report.consultarNombresProfesores();
     }
 
     /**
@@ -154,7 +156,6 @@ public class RegistroClaseBean implements Serializable {
      * @return Lista de strings con el periodo que dijito el usuario
      * @throws proyecto.services.ExceptionServiciosReporte
      */
-
     public List<String> completeText(String query, int num) throws ExceptionServiciosReporte {
         List<String> s = null;
         switch (num) {

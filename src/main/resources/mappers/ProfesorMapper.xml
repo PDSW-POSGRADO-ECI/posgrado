@@ -23,6 +23,14 @@ and open the template in the editor.
         FROM profesor as pro;
     </select>
     
+    <select parameterType="map" id="consultarNombresProfesores" resultType="string">
+        SELECT
+
+        pro.nombre
+        
+        FROM profesor as pro;
+    </select>
+    
     <select parameterType="map" id="consultarProfesor" resultMap="ProfesorResult">
         SELECT
         

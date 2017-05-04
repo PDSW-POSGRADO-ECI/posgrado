@@ -20,6 +20,8 @@ public interface MateriaDAO {
     **/
     public List<Materia> loadMaterias() throws ExceptionPersistence;
     
+    public List<String> loadNames(String asignatura_id) throws ExceptionPersistence;
+    
     /*
     *Obtener todas las materias de una asignatura
     *@param asignatura

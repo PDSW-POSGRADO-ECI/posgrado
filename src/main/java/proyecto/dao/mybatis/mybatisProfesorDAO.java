@@ -18,8 +18,9 @@ import proyecto.entities.Profesor;
  */
 public class mybatisProfesorDAO implements ProfesorDAO {
 
-    @Inject private ProfesorMapper profesorMapper;
-    
+    @Inject
+    private ProfesorMapper profesorMapper;
+
     /*
     *@see ProfesorDAO loadProfesores
     **/
@@ -31,7 +32,7 @@ public class mybatisProfesorDAO implements ProfesorDAO {
             throw new ExceptionPersistence("Error al cargar profesores", e);
         }
     }
-    
+
     /*
     *@see ProfesorDAO loadProfesor
     **/
@@ -47,5 +48,14 @@ public class mybatisProfesorDAO implements ProfesorDAO {
     @Override
     public void saveProfesorCohorte(int doc, int cort, String periodo, String sigla) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<String> loadNames() throws ExceptionPersistence {
+        try {
+            return profesorMapper.consultarNombresProfesores();
+        } catch (org.apache.ibatis.exceptions.PersistenceException ex) {
+            throw new ExceptionPersistence("Error al cargar los nombres de los profesores", ex);
+        }
     }
 }

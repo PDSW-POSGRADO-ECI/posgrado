@@ -63,6 +63,16 @@ and open the template in the editor.
         
     </select>
     
+    <select parameterType="map" id="consultarNombresMateriasxAsignatura" resultType="string">
+        
+        SELECT
+        
+        mat.nombre
+             
+        FROM materia as mat
+        join asignatura as asi on mat.asignatura_id = asi.id
+        WHERE asi.nombre=#{asig}
+    </select>
    
     <resultMap type="Materia" id="MateriaResult">
         <id property='sigla' column='sigla'/>

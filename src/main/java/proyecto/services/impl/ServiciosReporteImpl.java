@@ -392,4 +392,24 @@ public class ServiciosReporteImpl implements ServiciosReporte {
             throw new ExceptionServiciosReporte("Error al cargar los nombres de las asignaturas del posgrado: " + posgrado, ex);
         }
     }
+
+    @Override
+    public List<String> consultarNombresMaterias(String asig) throws ExceptionServiciosReporte {
+        try {
+            return materia.loadNames(asig);
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de las materias de la asignatura: " + asig, ex);
+        }
+    }
+
+    @Override
+    public List<String> consultarNombresProfesores() throws ExceptionServiciosReporte {
+        try {
+            return profesor.loadNames();
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de los profesores", ex);
+        }
+    }
 }

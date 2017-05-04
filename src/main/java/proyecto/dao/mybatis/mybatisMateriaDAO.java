@@ -64,6 +64,15 @@ public class mybatisMateriaDAO implements MateriaDAO {
             throw new PersistenceException("Error al Insertar materia"+  e);
         }
     }
+
+    @Override
+    public List<String> loadNames(String asignatura_id) throws ExceptionPersistence {
+        try{
+            return materiaMapper.consultarNombresMateriasxAsignatura(asignatura_id);
+        } catch (PersistenceException e){
+            throw new ExceptionPersistence("Error al consultar los nombres de las materias correspondientes a :"+asignatura_id, e);
+        }
+    }
     
    
 

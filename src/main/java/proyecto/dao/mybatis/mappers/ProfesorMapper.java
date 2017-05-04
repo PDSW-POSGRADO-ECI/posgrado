@@ -35,4 +35,6 @@ public interface ProfesorMapper {
     *@param sigla
     **/
     public void registrarProfesorCohorte(@Param("docu")int doc, @Param("idcor")int cort, @Param("period")String periodo, @Param("sigla")String sigla);
+
+    public List<String> consultarNombresProfesores();
 }

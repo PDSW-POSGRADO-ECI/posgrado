@@ -42,6 +42,6 @@ public interface MateriaMapper {
     public void registrarMateria(@Param("sigla") String sigla, @Param("nombre") String nombre,@Param("creditos") int creditos, @Param("asig_id") int asignatura_id, @Param("descripcion")String descripcion);
     
 
-    
+    public List<String> consultarNombresMateriasxAsignatura(@Param("asig")String asignatura_nombre);
     
 }
