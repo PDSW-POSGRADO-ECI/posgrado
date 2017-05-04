@@ -38,21 +38,11 @@ and open the template in the editor.
         
     </select>
     
-    <select parameterType="map" id="consultarPosgrados" resultMap="PosgradoResult">
-        SELECT
-        
-        pos.id,
-        pos.nombre
-        
-	FROM posgrado as pos;
-        
-    </select>
-    
-    
-     <select parameterType="map" id="registrarPosgrado">
-        INSERT INTO Posgrado(nombre,creditos) VALUES (#{nompos},#{credit});
-    </select>
-    
+    <select id="consultarNombresAsignaturas" resultType="string">
+        SELECT DISTINCT
+        nombre
+        FROM asignatura;
+    </select>   
     
      <insert parameterType="map" id="registrarAsignatura">
          <selectKey keyProperty="id" resultType="int" order="BEFORE">
@@ -64,12 +54,6 @@ and open the template in the editor.
     <resultMap type="Asignatura" id="AsignaturaResult">
         <id property='id' column='id'/>
         <result property='nombre' column='nombre'/>
-        <association property="posgrado_id" javaType="Posgrado" columnPrefix="POS_" resultMap="PosgradoResult"></association>
-    </resultMap>
-    
-    <resultMap type="Posgrado" id="PosgradoResult" >
-        <id property='id' column='id'/>
-        <result property='nombre'  column='nombre'/>
-        <result property='creditos'  column='creditos'/>
+        <association property="posgrado_id" javaType="Posgrado" columnPrefix="POS_" resultMap="proyecto.dao.mybatis.mappers.PosgradoMapper.PosgradoResult"></association>
     </resultMap>
 </mapper>

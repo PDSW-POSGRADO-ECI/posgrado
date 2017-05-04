@@ -44,26 +44,6 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO{
             throw new ExceptionPersistence("Error al cargar las asignaturas del  posgrado"+posgrado,e);
         } 
     }
-
-    @Override
-    public List<Posgrado> loadPosgrados() throws ExceptionPersistence {
-        try{
-            return asignaturaMapper.consultarPosgrados();
-        }
-        catch(PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar posgrados ",e);
-        } 
-    }
-    
-    @Override
-    public void savePosgrado(String nom, int credit) throws ExceptionPersistence {
-        try{
-            asignaturaMapper.registrarPosgrado(nom,credit);
-        }
-        catch(PersistenceException e){
-            throw new ExceptionPersistence("Error al registrar posgrado ",e);
-        } 
-    }
     
     @Override
     public void saveAsignatura(String nom, String posgrado) throws ExceptionPersistence {

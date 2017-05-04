@@ -7,35 +7,24 @@ package proyecto.dao.mybatis.mappers;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import proyecto.entities.Asignatura;
 import proyecto.entities.Posgrado;
 
 /**
  *
- * @author Daniel Rodriguez
+ * @author 2122825
  */
-public interface AsignaturaMapper {
-    
-     
+public interface PosgradoMapper {
     /*
-    *Obtener todas las asignaturas de la base de datos
+    *Obtener todos los periodos
     *@return asig retorna una lista de asignaturas
     **/
-    public List<Asignatura> consultarAsignaturas();
+    public void registrarPosgrado(@Param("nompos")String nom, @Param("credit")int credit);
     
     /*
     *Obtener todas las asignaturas de un posgrado
     *@return asig retorna una lista de asignaturas 
     **/
-    public List<Asignatura> consultarAsignaturasXposgrado(@Param("nomposgrado")String posgrado);
+    public List<Posgrado> consultarPosgrados();
     
-    
-    /*
-    *Obtener todos los periodos
-    *@return asig retorna una lista de asignaturas
-    **/
-    public void registrarAsignatura(@Param("nomasig")String nom,@Param("nomposgrado")String posgrado);
-
-    
-    
+    public List<String> consultarNombrePosgrados();
 }

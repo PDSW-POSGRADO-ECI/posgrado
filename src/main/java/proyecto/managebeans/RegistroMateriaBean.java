@@ -5,16 +5,27 @@
  */
 package proyecto.managebeans;
 
+import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import proyecto.entities.Asignatura;
 import proyecto.entities.Materia;
 import proyecto.entities.Posgrado;
+import proyecto.services.ExceptionServiciosReporte;
+import proyecto.services.ServiciosReporte;
+import proyecto.services.ServiciosReporteFactory;
 
 /**
  *
  * @author 2122825
  */
+@ManagedBean(name="RegistroMateriaBean")
+@SessionScoped
 public class RegistroMateriaBean {
+    
+    ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    
     public Posgrado programa_seleccionado;
     public Asignatura asignatura_seleccionada;
     public List<Materia> pre_requisitos;
@@ -23,6 +34,15 @@ public class RegistroMateriaBean {
     public String sigla;
     public String nombre;
     public String descripcion;
+    public int creditos;
+
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
+    }
 
     public Posgrado getPrograma_seleccionado() {
         return programa_seleccionado;
@@ -78,5 +98,13 @@ public class RegistroMateriaBean {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    
+    public void registrarMateria() throws ExceptionServiciosReporte{
+        report.registrarMateria(sigla, nombre, creditos, asignatura_seleccionada.getId(), descripcion);
+    }
+    
+    public List<String> autoComplete(String query, int type){
+        return new ArrayList<>();
     }
 }

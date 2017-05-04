@@ -155,12 +155,28 @@ public class RegistroClaseBean implements Serializable{
     
     public List<String> completeText(String query,int num) throws ExceptionServiciosReporte {
         List<String> s=null;
-        if(num==0){s=getPeriodos();}
-        else if(num==1){s=getPosgrados();}
-        else if(num==2){s=getAsignaturas();}
-        else if(num==3){s=getMaterias();}
-        else if(num==4){s=getMateriaCohorte();}
-        else if(num==5){s=getProfesores();}
+        switch (num) {
+            case 0:
+                s=getPeriodos();
+                break;
+            case 1:
+                s=getPosgrados();
+                break;
+            case 2:
+                s=getAsignaturas();
+                break;
+            case 3:
+                s=getMaterias();
+                break;
+            case 4:
+                s=getMateriaCohorte();
+                break;
+            case 5:
+                s=getProfesores();
+                break;
+            default:
+                break;
+        }
         return s;
     }
     
@@ -291,6 +307,4 @@ public class RegistroClaseBean implements Serializable{
     public void setSelectprofe(String profe) {
         this.selectprofe = profe;
     }
-    
-    
 }

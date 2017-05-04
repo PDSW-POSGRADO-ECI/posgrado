@@ -15,6 +15,7 @@ import proyecto.dao.ClaseDAO;
 import proyecto.dao.CohorteDAO;
 import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.MateriaDAO;
+import proyecto.dao.PosgradoDAO;
 import proyecto.dao.ProfesorDAO;
 import proyecto.dao.RecursoDAO;
 import proyecto.entities.Asignatura;
@@ -48,6 +49,8 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     private MateriaDAO materia;
     @Inject
     private AsignaturaDAO asignatura;
+    @Inject
+    private PosgradoDAO posgrado;
 
     /**
      * Consultar los recursos por periodo selccionado
@@ -277,7 +280,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     @Override
     public List<Posgrado> consultarPosgrados() throws ExceptionServiciosReporte {
         try {
-            return asignatura.loadPosgrados();
+            return posgrado.loadPosgrados();
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
         }
@@ -324,14 +327,14 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         String ms = "Posgrago Agregado";
         boolean var = true;
         try {
-            for (int i = 0; i < asignatura.loadPosgrados().size() && var; i++) {
-                if (asignatura.loadPosgrados().get(i).getNombre().equals(nom) || credit <= 0) {
+            for (int i = 0; i < posgrado.loadPosgrados().size() && var; i++) {
+                if (posgrado.loadPosgrados().get(i).getNombre().equals(nom) || credit <= 0) {
                     var = false;
                     ms = "Error el Posgrado esta duplicado - creditos invalidos";
                 }
             }
             if (var) {
-                asignatura.savePosgrado(nom, credit);
+                posgrado.savePosgrado(nom, credit);
             }
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("El posgrado " + nom + " ya existe" + ex, ex);

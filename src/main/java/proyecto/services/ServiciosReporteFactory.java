@@ -22,6 +22,8 @@ import proyecto.dao.mybatis.mybatisMateriaDAO;
 import proyecto.dao.mybatis.mybatisProfesorDAO;
 import proyecto.dao.mybatis.mybatisRecursoDAO;
 import proyecto.services.impl.ServiciosReporteImpl;
+import proyecto.dao.PosgradoDAO;
+import proyecto.dao.mybatis.mybatisPosgradoDAO;
 
 /**
  *
@@ -48,7 +50,7 @@ public class ServiciosReporteFactory {
                 bind(MateriaDAO.class).to(mybatisMateriaDAO.class);
                 bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
                 bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
-
+                bind(PosgradoDAO.class).to(mybatisPosgradoDAO.class);
             }
 
         }
@@ -66,7 +68,7 @@ public class ServiciosReporteFactory {
                 bind(MateriaDAO.class).to(mybatisMateriaDAO.class);
                 bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
                 bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
-
+                bind(PosgradoDAO.class).to(mybatisPosgradoDAO.class);
             }
 
         }
