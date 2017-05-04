@@ -43,6 +43,22 @@ and open the template in the editor.
         WHERE asi.nombre=#{nomasig}   
     </select>
     
+    <select parameterType="map" id="consultarMateriasXposgrado" resultMap="MateriaResult">
+        
+      SELECT
+        
+        mat.sigla,
+        mat.nombre,
+        mat.creditos,
+        mat.descripcion
+             
+        FROM materia as mat
+        join asignatura as asi on mat.asignatura_id = asi.id
+	join posgrado as pos on pos.id=asi.posgrado_id
+        WHERE pos.nombre='#{nomposgrado}
+        
+    </select>
+    
    
     <resultMap type="Materia" id="MateriaResult">
         <id property='sigla' column='sigla'/>

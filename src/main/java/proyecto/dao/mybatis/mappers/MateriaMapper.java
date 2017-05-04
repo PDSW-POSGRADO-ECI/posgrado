@@ -36,5 +36,9 @@ public interface MateriaMapper {
     *@return booleano de si ya existe o no
     **/
     public boolean consultarMateriaCohorte(@Param("docu")int doc, @Param("idcpor")int cor, @Param("sigla")String sigla);
+
+    public List<Materia> consultarMateriasXposgrado(@Param("nomposgrado")String posgrado);
+
+    
     
 }
