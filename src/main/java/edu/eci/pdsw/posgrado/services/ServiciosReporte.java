@@ -3,18 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.services;
+package edu.eci.pdsw.posgrado.services;
 
+import edu.eci.pdsw.posgrado.entities.*;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
-import proyecto.entities.Asignatura;
-import proyecto.entities.Clase;
-import proyecto.entities.Cohorte;
-import proyecto.entities.Materia;
-import proyecto.entities.Posgrado;
-import proyecto.entities.Profesor;
-import proyecto.entities.Recurso;
 
 /**
  *

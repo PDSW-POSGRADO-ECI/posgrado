@@ -10,13 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import org.junit.After;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
-import org.junit.Test;
-import proyecto.services.ExceptionServiciosReporte;
-import proyecto.services.ServiciosReporte;
-import proyecto.services.ServiciosReporteFactory;
 
 /**
  *

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.dao.mybatis;
+package edu.eci.pdsw.posgrado.dao.mybatis;
 
 import com.google.inject.Inject;
+import edu.eci.pdsw.posgrado.dao.ExceptionPersistence;
+import edu.eci.pdsw.posgrado.dao.ProfesorDAO;
+import edu.eci.pdsw.posgrado.dao.mybatis.mappers.ProfesorMapper;
+import edu.eci.pdsw.posgrado.entities.Profesor;
 import java.util.List;
-import proyecto.dao.ExceptionPersistence;
-import proyecto.dao.ProfesorDAO;
-import proyecto.dao.mybatis.mappers.ProfesorMapper;
-import proyecto.entities.Profesor;
 
 /**
  *

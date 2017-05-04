@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.dao;
+package edu.eci.pdsw.posgrado.dao;
 
+import edu.eci.pdsw.posgrado.entities.Cohorte;
 import java.util.Date;
 import java.util.List;
-import proyecto.entities.Cohorte;
 
 /**
  *

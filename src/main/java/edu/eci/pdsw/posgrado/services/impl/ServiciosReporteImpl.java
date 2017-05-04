@@ -3,32 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.services.impl;
+package edu.eci.pdsw.posgrado.services.impl;
 
 import com.google.inject.Inject;
+import edu.eci.pdsw.posgrado.dao.*;
+import edu.eci.pdsw.posgrado.entities.Asignatura;
+import edu.eci.pdsw.posgrado.entities.Clase;
+import edu.eci.pdsw.posgrado.entities.Cohorte;
+import edu.eci.pdsw.posgrado.entities.Materia;
+import edu.eci.pdsw.posgrado.entities.Posgrado;
+import edu.eci.pdsw.posgrado.entities.Profesor;
+import edu.eci.pdsw.posgrado.entities.Recurso;
+import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
+import edu.eci.pdsw.posgrado.services.ServiciosReporte;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyecto.dao.AsignaturaDAO;
-import proyecto.dao.ClaseDAO;
-import proyecto.dao.CohorteDAO;
-import proyecto.dao.ExceptionPersistence;
-import proyecto.dao.MateriaDAO;
-import proyecto.dao.PosgradoDAO;
-import proyecto.dao.ProfesorDAO;
-import proyecto.dao.RecursoDAO;
-import proyecto.entities.Asignatura;
-import proyecto.entities.Clase;
-import proyecto.entities.Cohorte;
-import proyecto.entities.Materia;
-import proyecto.entities.Posgrado;
-import proyecto.entities.Profesor;
-import proyecto.entities.Recurso;
-import proyecto.services.ExceptionServiciosReporte;
-import proyecto.services.ServiciosReporte;
 
 /**
  *

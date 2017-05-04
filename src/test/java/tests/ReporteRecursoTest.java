@@ -6,6 +6,10 @@ package tests;
  * and open the template in the editor.
  */
 
+import edu.eci.pdsw.posgrado.entities.Recurso;
+import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
+import edu.eci.pdsw.posgrado.services.ServiciosReporte;
+import edu.eci.pdsw.posgrado.services.ServiciosReporteFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,16 +20,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-import proyecto.entities.Recurso;
-import proyecto.services.ExceptionServiciosReporte;
-import proyecto.services.ServiciosReporte;
-import proyecto.services.ServiciosReporteFactory;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  *

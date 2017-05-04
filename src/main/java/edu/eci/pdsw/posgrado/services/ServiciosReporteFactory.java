@@ -3,27 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.services;
+package edu.eci.pdsw.posgrado.services;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import edu.eci.pdsw.posgrado.dao.*;
+import edu.eci.pdsw.posgrado.dao.mybatis.*;
+import edu.eci.pdsw.posgrado.services.impl.ServiciosReporteImpl;
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
-import proyecto.dao.AsignaturaDAO;
-import proyecto.dao.ClaseDAO;
-import proyecto.dao.CohorteDAO;
-import proyecto.dao.MateriaDAO;
-import proyecto.dao.ProfesorDAO;
-import proyecto.dao.RecursoDAO;
-import proyecto.dao.mybatis.mybatisAsignaturaDAO;
-import proyecto.dao.mybatis.mybatisClaseDAO;
-import proyecto.dao.mybatis.mybatisCohorteDAO;
-import proyecto.dao.mybatis.mybatisMateriaDAO;
-import proyecto.dao.mybatis.mybatisProfesorDAO;
-import proyecto.dao.mybatis.mybatisRecursoDAO;
-import proyecto.services.impl.ServiciosReporteImpl;
-import proyecto.dao.PosgradoDAO;
-import proyecto.dao.mybatis.mybatisPosgradoDAO;
 
 /**
  *

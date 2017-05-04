@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.managebeans;
+package edu.eci.pdsw.posgrado.managebeans;
 
+import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
+import edu.eci.pdsw.posgrado.services.ServiciosReporte;
+import edu.eci.pdsw.posgrado.services.ServiciosReporteFactory;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -12,9 +15,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import proyecto.services.ExceptionServiciosReporte;
-import proyecto.services.ServiciosReporte;
-import proyecto.services.ServiciosReporteFactory;
 
 /**
  *
