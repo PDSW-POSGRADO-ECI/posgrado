@@ -38,6 +38,9 @@ public interface MateriaMapper {
     public boolean consultarMateriaCohorte(@Param("docu")int doc, @Param("idcpor")int cor, @Param("sigla")String sigla);
 
     public List<Materia> consultarMateriasXposgrado(@Param("nomposgrado")String posgrado);
+    
+    public void registrarMateria(@Param("sigla") String sigla, @Param("nombre") String nombre,@Param("creditos") int creditos, @Param("asig_id") int asignatura_id, @Param("descripcion")String descripcion);
+    
 
     
     

@@ -55,6 +55,15 @@ public class mybatisMateriaDAO implements MateriaDAO {
             throw new PersistenceException("Error al cargar las materias del posgrado"+ posgrado, e);
         }
     }
+
+    @Override
+    public void addMateria(String sigla, String nombre, int creditos, int asignatura_id, String descripcion) {
+         try {
+            materiaMapper.registrarMateria(sigla, nombre, creditos, asignatura_id, descripcion);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al Insertar materia"+  e);
+        }
+    }
     
    
 

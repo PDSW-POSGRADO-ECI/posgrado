@@ -43,6 +43,10 @@ and open the template in the editor.
         WHERE asi.nombre=#{nomasig}   
     </select>
     
+    <select parameterType="map" id="registrarMateria">
+        INSERT INTO Materia(sigla,nombre,creditos,Asignatura_id,descripcion) VALUES (#{sigla},#{nombre},#{creditos},#{asig_id},#{descripcion});
+    </select>
+    
     <select parameterType="map" id="consultarMateriasXposgrado" resultMap="MateriaResult">
         
       SELECT
