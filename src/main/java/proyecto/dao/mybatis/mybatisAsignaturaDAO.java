@@ -18,42 +18,48 @@ import proyecto.entities.Posgrado;
  *
  * @author Daniel Rodriguez
  */
-public class mybatisAsignaturaDAO implements AsignaturaDAO{
-    
-    @Inject private AsignaturaMapper asignaturaMapper;
-    
+public class mybatisAsignaturaDAO implements AsignaturaDAO {
+
+    @Inject
+    private AsignaturaMapper asignaturaMapper;
+
     /*
     *@see AsignaturaDAO loadAsignaturas
     **/
     @Override
     public List<Asignatura> loadAsignaturas() throws ExceptionPersistence {
-        try{
+        try {
             return asignaturaMapper.consultarAsignaturas();
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar las asignaturas ", e);
         }
-        catch(PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar las asignaturas ",e);
-        } 
     }
 
     @Override
     public List<Asignatura> loadAsignaturas(String posgrado) throws ExceptionPersistence {
-         try{
+        try {
             return asignaturaMapper.consultarAsignaturasXposgrado(posgrado);
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar las asignaturas del  posgrado" + posgrado, e);
         }
-        catch(PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar las asignaturas del  posgrado"+posgrado,e);
-        } 
-    }
-    
-    @Override
-    public void saveAsignatura(String nom, String posgrado) throws ExceptionPersistence {
-        try{
-            asignaturaMapper.registrarAsignatura(nom,posgrado);
-        }
-        catch(PersistenceException e){
-            throw new ExceptionPersistence("Error al registrar asignatura ",e);
-        } 
     }
 
-    
+    @Override
+    public void saveAsignatura(String nom, String posgrado) throws ExceptionPersistence {
+        try {
+            asignaturaMapper.registrarAsignatura(nom, posgrado);
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al registrar asignatura ", e);
+        }
+    }
+
+    @Override
+    public List<String> loadNames(String posgrado) throws ExceptionPersistence {
+        try {
+            return asignaturaMapper.consultarNombresAsignaturas(posgrado);
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar el nombre de las asignaturas", e);
+        }
+    }
+
 }

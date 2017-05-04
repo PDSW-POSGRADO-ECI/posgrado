@@ -10,6 +10,8 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyecto.dao.AsignaturaDAO;
 import proyecto.dao.ClaseDAO;
 import proyecto.dao.CohorteDAO;
@@ -369,6 +371,25 @@ public class ServiciosReporteImpl implements ServiciosReporte {
             materia.addMateria(sigla, nombre, creditos, asignatura_id, descripcion);
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al registrar la materia: " + sigla + ". Verifique que no esté duplicada", ex);
+        }
+    }
+
+    @Override
+    public List<String> consultarNombresPosgrado() throws ExceptionServiciosReporte {
+        try {
+            return posgrado.loadNames();
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de los posgrados.", ex);
+        }
+    }
+
+    @Override
+    public List<String> consultarNombresAsignaturas(String posgrado) throws ExceptionServiciosReporte {
+        try {
+            return asignatura.loadNames(posgrado);
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de las asignaturas del posgrado: " + posgrado, ex);
         }
     }
 }

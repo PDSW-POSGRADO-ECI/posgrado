@@ -24,4 +24,6 @@ public interface PosgradoDAO {
     *@return pos lista de posgrados
     **/
     public void savePosgrado(String nom, int credit)throws ExceptionPersistence;
+    
+    public List<String> loadNames() throws ExceptionPersistence;
 }

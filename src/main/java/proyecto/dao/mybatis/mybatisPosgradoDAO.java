@@ -17,28 +17,36 @@ import proyecto.entities.Posgrado;
  *
  * @author 2122825
  */
-public class mybatisPosgradoDAO implements PosgradoDAO{
+public class mybatisPosgradoDAO implements PosgradoDAO {
 
-    @Inject private PosgradoMapper posgradoMapper;
-    
+    @Inject
+    private PosgradoMapper posgradoMapper;
+
     @Override
     public List<Posgrado> loadPosgrados() throws ExceptionPersistence {
-        try{
+        try {
             return posgradoMapper.consultarPosgrados();
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar posgrados ", e);
         }
-        catch(PersistenceException e){
-            throw new ExceptionPersistence("Error al cargar posgrados ",e);
-        } 
     }
-    
+
     @Override
     public void savePosgrado(String nom, int credit) throws ExceptionPersistence {
-        try{
-            posgradoMapper.registrarPosgrado(nom,credit);
+        try {
+            posgradoMapper.registrarPosgrado(nom, credit);
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al registrar posgrado ", e);
         }
-        catch(PersistenceException e){
-            throw new ExceptionPersistence("Error al registrar posgrado ",e);
-        } 
     }
-    
+
+    @Override
+    public List<String> loadNames() throws ExceptionPersistence {
+        try {
+            return posgradoMapper.consultarNombrePosgrados();
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar los nombres de los posgrados", e);
+        }
+    }
+
 }

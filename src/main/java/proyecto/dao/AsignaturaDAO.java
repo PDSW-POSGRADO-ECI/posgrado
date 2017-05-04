@@ -7,7 +7,6 @@ package proyecto.dao;
 
 import java.util.List;
 import proyecto.entities.Asignatura;
-import proyecto.entities.Posgrado;
 
 /**
  *
@@ -26,6 +25,8 @@ public interface AsignaturaDAO {
     *@return asig retorna una lista de asignaturas 
     **/
     public List<Asignatura> loadAsignaturas(String posgrado)throws ExceptionPersistence;
+    
+    public List<String> loadNames(String posgrado) throws ExceptionPersistence;
 
     /*
     *Obtener todas los posgrados

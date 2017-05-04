@@ -27,8 +27,9 @@ import proyecto.services.ServiciosReporteFactory;
  */
 @ManagedBean(name = "RegistroClaseBean")
 @SessionScoped
-public class RegistroClaseBean implements Serializable{
-    ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte()  ;
+public class RegistroClaseBean implements Serializable {
+
+    ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
     String posgrado;
     String asig;
     String periodo;
@@ -44,72 +45,71 @@ public class RegistroClaseBean implements Serializable{
     Date fini;
     Date ffin;
     int credit;
-    
+
     /*Constructor de la clase ReportesBean*/
     public RegistroClaseBean() {
-        posgrado="";
-        periodo="";
-        asig="";
-        mat="";
-        corte="";
+        posgrado = "";
+        periodo = "";
+        asig = "";
+        mat = "";
+        corte = "";
     }
+
     /*
     *Obtener todas asignaturas de posgrado
     *@return retorna una lista de los posgrados
     **/
     public List<String> getPosgrados() throws ExceptionServiciosReporte {
-        ArrayList<String> pos=new ArrayList<>();
-        for(Posgrado p: report.consultarPosgrados()){
-                pos.add(p.getNombre());
-            }
-        return pos;
+//        ArrayList<String> pos=new ArrayList<>();
+//        for(Posgrado p: report.consultarPosgrados()){
+//                pos.add(p.getNombre());
+//            }
+//        return pos;
+        return report.consultarNombresPosgrado();
     }
-    
+
     /*
     *Obtener todas asignaturas de posgrado
     *@return retorna una lista de las asignaturas de posgrado
     **/
     public List<String> getAsignaturas() throws ExceptionServiciosReporte {
-        ArrayList<String> asig=new ArrayList<>();
-        for(Asignatura a: report.consultarAsignaturas(posgrado)){
-                asig.add(a.getNombre());
-            }
-        return asig;
+        return report.consultarNombresAsignaturas(posgrado);
     }
-    
+
     /*
     *insertar n nuevo periodo
     **/
     public void registrarPeriodo() throws ExceptionServiciosReporte {
-        mensaje=report.registrarPeriodo(nuevoper, fini, ffin);
-         
+        mensaje = report.registrarPeriodo(nuevoper, fini, ffin);
+
     }
-    
+
     /*
     *insertar n nuevo periodo
     **/
     public void registrarPosgrado() throws ExceptionServiciosReporte {
-        mensaje= report.registrarPosgrado(nuevopos, credit);
+        mensaje = report.registrarPosgrado(nuevopos, credit);
     }
-    
+
     /*
     *insertar n nuevo periodo
     **/
     public void registrarAsignatura() throws ExceptionServiciosReporte {
-        mensaje= report.registrarAsignatura(nuevoasig, selectpos);
+        mensaje = report.registrarAsignatura(nuevoasig, selectpos);
     }
+
     /*
     *Obtener todos las materias relacionadas a una asignatura en particular
     *@return retorna una lista de las materias de la asignatura
     **/
     public List<String> getMaterias() throws ExceptionServiciosReporte {
-        ArrayList<String> mat=new ArrayList<>();
-        for(Materia a: report.consultarMaterias(asig)){
-                mat.add(a.getNombre());
-            }
+        ArrayList<String> mat = new ArrayList<>();
+        for (Materia a : report.consultarMaterias(asig)) {
+            mat.add(a.getNombre());
+        }
         return mat;
     }
-    
+
     /*
     *Obtener todos los periodos 
     *@return retorna una lista de strings los periodos de la base de datos
@@ -117,92 +117,98 @@ public class RegistroClaseBean implements Serializable{
     public List<String> getPeriodos() throws ExceptionServiciosReporte {
         return report.obtenerPeriodos();
     }
-    
+
     /*
     *Obtener todos los periodos 
     *@return retorna una lista de strings los periodos de la base de datos
     **/
     public void registrarMateriaCohorte() throws ExceptionServiciosReporte {
-        mensaje=report.registrarMateriaCohorte(credit, credit, periodo, asig);
+        mensaje = report.registrarMateriaCohorte(credit, credit, periodo, asig);
     }
-    
+
     /*
     *Obtener los cortes de la materia determinada
     *@return retorna una lista de strings con los cortes
     **/
     private List<String> getMateriaCohorte() throws ExceptionServiciosReporte {
-        return report.consultarMateriaCohorte(periodo,mat);
+        return report.consultarMateriaCohorte(periodo, mat);
     }
-    
+
     /*
     *Obtener los cortes de la materia determinada
     *@return retorna una lista de strings con los cortes
     **/
     private List<String> getProfesores() throws ExceptionServiciosReporte {
-        ArrayList<String> prof=new ArrayList<>();
-        for(Profesor a: report.colsultarProfesores()){
-                prof.add(a.getNombre());
-            }
+        ArrayList<String> prof = new ArrayList<>();
+        for (Profesor a : report.colsultarProfesores()) {
+            prof.add(a.getNombre());
+        }
         return prof;
     }
+
     /**
      * Autocompletar los periodos de la base de datos
+     *
      * @param query el string registrado por el usuario
      * @param num
      * @return Lista de strings con el periodo que dijito el usuario
      * @throws proyecto.services.ExceptionServiciosReporte
      */
-    
-    public List<String> completeText(String query,int num) throws ExceptionServiciosReporte {
-        List<String> s=null;
+
+    public List<String> completeText(String query, int num) throws ExceptionServiciosReporte {
+        List<String> s = null;
         switch (num) {
             case 0:
-                s=getPeriodos();
+                s = getPeriodos();
                 break;
             case 1:
-                s=getPosgrados();
+                s = getPosgrados();
                 break;
             case 2:
-                s=getAsignaturas();
+                s = getAsignaturas();
                 break;
             case 3:
-                s=getMaterias();
+                s = getMaterias();
                 break;
             case 4:
-                s=getMateriaCohorte();
+                s = getMateriaCohorte();
                 break;
             case 5:
-                s=getProfesores();
+                s = getProfesores();
                 break;
             default:
                 break;
         }
         return s;
     }
-    
+
     public void saveMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
-        if(mensaje.contains("Error")){
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: ",mensaje));
+        if (mensaje.contains("Error")) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", mensaje));
+        } else {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Successful: ", mensaje));
         }
-        else{context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Successful: ",mensaje));}
     }
+
     /**
      * Get the value of Periodo
+     *
      * @return periodo
      */
     public String getPeriodo() {
         return periodo;
     }
-    
+
     /**
      * Set the value of Periodo
+     *
      * @param periodo String del perido seleccionado
      */
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
-    
+
     public String getPosgrado() {
         return posgrado;
     }
@@ -258,7 +264,6 @@ public class RegistroClaseBean implements Serializable{
     public void setNuevoasig(String nuevoasig) {
         this.nuevoasig = nuevoasig;
     }
-
 
     public Date getFini() {
         return fini;
