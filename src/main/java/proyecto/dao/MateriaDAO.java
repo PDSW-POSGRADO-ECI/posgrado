@@ -35,4 +35,6 @@ public interface MateriaDAO {
     *@return booleano de si ya existe o no
     **/
     public boolean loadMateriaCohorte(int doc, int cor, String sigla)throws ExceptionPersistence;
+    
+    public List<Materia>loadMateriasXposgrado(String posgrado);
 }

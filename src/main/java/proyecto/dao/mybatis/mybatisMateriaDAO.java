@@ -47,4 +47,15 @@ public class mybatisMateriaDAO implements MateriaDAO {
         }
     }
 
+    @Override
+    public List<Materia> loadMateriasXposgrado(String posgrado) {
+         try {
+            return materiaMapper.consultarMateriasXposgrado(posgrado);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al cargar las materias del posgrado"+ posgrado, e);
+        }
+    }
+    
+   
+
 }
