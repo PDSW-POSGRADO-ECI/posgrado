@@ -46,7 +46,7 @@ and open the template in the editor.
                 <h:panelGrid id="panelasig" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 29%; left: 10%; ">
                     <p:outputLabel style="font-weight:bold;" value="Prerrequisitos:" for="asig" />
                     <p:autoComplete  id="asig" style="left: 4%" dropdown="true" value="#{RegistroMateriaBean.requisito}" completeMethod="#{RegistroClaseBean.completeText(query, 2)}" >
-                        <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setMat('')}"  update=":RegistrarMateria:panelmat" >  </p:ajax>
+                        <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setMat('')}"  update=":RegistrarMateria" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>  
                 
