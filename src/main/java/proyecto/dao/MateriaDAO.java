@@ -38,5 +38,5 @@ public interface MateriaDAO {
     
     public List<Materia>loadMateriasXposgrado(String posgrado);
     
-    public void addMateria(String sigla,String nombre, int creditos, int asignatura_id, String descripcion);
+    public void addMateria(String sigla,String nombre, int creditos, int asignatura_id, String descripcion) throws ExceptionPersistence;
 }

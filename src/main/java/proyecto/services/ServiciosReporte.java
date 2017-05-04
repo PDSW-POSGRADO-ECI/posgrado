@@ -62,4 +62,5 @@ public interface ServiciosReporte {
     
     public String registrarAsignatura(String nom,String posgrado)throws ExceptionServiciosReporte;
 
+    public void registrarMateria(String sigla, String nombre, int creditos, int asignatura_id, String descripcion) throws ExceptionServiciosReporte;
 }
