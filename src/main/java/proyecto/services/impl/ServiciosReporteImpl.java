@@ -366,9 +366,9 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     @Override
-    public void registrarMateria(String sigla, String nombre, int creditos, int asignatura_id, String descripcion) throws ExceptionServiciosReporte {
+    public void registrarMateria(String sigla, String nombre, int creditos, String asignatura_nombre, String descripcion) throws ExceptionServiciosReporte {
         try {
-            materia.addMateria(sigla, nombre, creditos, asignatura_id, descripcion);
+            materia.addMateria(sigla, nombre, creditos, asignatura_nombre, descripcion);
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al registrar la materia: " + sigla + ". Verifique que no esté duplicada", ex);
         }
@@ -384,7 +384,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     @Override
-    public List<String> consultarNombresAsignaturas(String posgrado) throws ExceptionServiciosReporte {
+    public List<String> consultarNombresAsignaturasXposgrado(String posgrado) throws ExceptionServiciosReporte {
         try {
             return asignatura.loadNames(posgrado);
         } catch (ExceptionPersistence ex) {
@@ -410,6 +410,16 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         } catch (ExceptionPersistence ex) {
             Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExceptionServiciosReporte("Error al cargar los nombres de los profesores", ex);
+        }
+    }
+
+    @Override
+    public List<String> consultarNombresAsignaturas() throws ExceptionServiciosReporte {
+        try {
+            return asignatura.loadAllNames();
+        } catch (ExceptionPersistence ex) {
+            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de las asignaturas del posgrado: " + posgrado, ex);
         }
     }
 }

@@ -57,9 +57,9 @@ public class mybatisMateriaDAO implements MateriaDAO {
     }
 
     @Override
-    public void addMateria(String sigla, String nombre, int creditos, int asignatura_id, String descripcion) {
+    public void addMateria(String sigla, String nombre, int creditos, String asignatura_nombre, String descripcion) {
          try {
-            materiaMapper.registrarMateria(sigla, nombre, creditos, asignatura_id, descripcion);
+            materiaMapper.registrarMateria(sigla, nombre, creditos, asignatura_nombre, descripcion);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al Insertar materia"+  e);
         }

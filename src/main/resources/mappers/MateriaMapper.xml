@@ -43,13 +43,16 @@ and open the template in the editor.
         WHERE asi.nombre=#{nomasig}   
     </select>
     
-    <select parameterType="map" id="registrarMateria">
-        INSERT INTO Materia(sigla,nombre,creditos,Asignatura_id,descripcion) VALUES (#{sigla},#{nombre},#{creditos},#{asig_id},#{descripcion});
-    </select>
+    <insert parameterType="map" id="registrarMateria">
+        INSERT INTO Materia(sigla,nombre,creditos,Asignatura_id,descripcion)
+        SELECT (#{sigla},#{nombre},#{creditos},asi.id,#{descripcion})
+        FROM asignatura asi
+        WHERE asi.nombre = #{asig_nom}
+    </insert>
     
     <select parameterType="map" id="consultarMateriasXposgrado" resultMap="MateriaResult">
         
-      SELECT
+        SELECT
         
         mat.sigla,
         mat.nombre,
@@ -58,7 +61,7 @@ and open the template in the editor.
              
         FROM materia as mat
         join asignatura as asi on mat.asignatura_id = asi.id
-	join posgrado as pos on pos.id=asi.posgrado_id
+        join posgrado as pos on pos.id=asi.posgrado_id
         WHERE pos.nombre='#{nomposgrado}
         
     </select>

@@ -20,6 +20,12 @@ import proyecto.entities.Recurso;
 import proyecto.services.ExceptionServiciosReporte;
 import proyecto.services.ServiciosReporte;
 import proyecto.services.ServiciosReporteFactory;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *

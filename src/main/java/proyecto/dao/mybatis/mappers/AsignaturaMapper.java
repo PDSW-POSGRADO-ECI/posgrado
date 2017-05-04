@@ -37,5 +37,7 @@ public interface AsignaturaMapper {
     public void registrarAsignatura(@Param("nomasig")String nom,@Param("nomposgrado")String posgrado);
 
     
-    public List<String> consultarNombresAsignaturas(@Param("posgrado") String posgrado);
+    public List<String> consultarNombresAsignaturasXposgrado(@Param("posgrado") String posgrado);
+
+    public List<String> consultarNombresAsignaturas();
 }

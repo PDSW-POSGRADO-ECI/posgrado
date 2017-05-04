@@ -20,7 +20,7 @@ and open the template in the editor.
         pos.nombre as POS_nombre,
         pos.creditos as POS_creditos
         
-	FROM asignatura as asi
+        FROM asignatura as asi
         join posgrado as pos on asi.posgrado_id=pos.id;
         
     </select>
@@ -31,14 +31,14 @@ and open the template in the editor.
         asi.id,
         asi.nombre
         
-	FROM asignatura as asi
+        FROM asignatura as asi
         join posgrado as pos on asi.posgrado_id=pos.id
         WHERE pos.nombre=#{nomposgrado}
         ORDER BY asi.id;
         
     </select>
     
-    <select id="consultarNombresAsignaturas" resultType="string">
+    <select id="consultarNombresAsignaturasXposgrado" resultType="string">
         SELECT DISTINCT
         
         asi.nombre
@@ -47,12 +47,22 @@ and open the template in the editor.
         join posgrado as pos on asi.posgrado_id=pos.id
         WHERE pos.nombre=#{posgrado}
         ORDER BY asi.nombre
-    </select>   
+    </select>
     
-     <insert parameterType="map" id="registrarAsignatura">
-         <selectKey keyProperty="id" resultType="int" order="BEFORE">
-             SELECT pos.id FROM posgrado as pos WHERE pos.nombre=#{nomposgrado};
-         </selectKey>
+    <select id="consultarNombresAsignaturas" resultType="string">
+        SELECT DISTINCT
+        
+        asi.nombre
+        
+        FROM asignatura as asi
+
+        ORDER BY asi.nombre
+    </select>      
+    
+    <insert parameterType="map" id="registrarAsignatura">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT pos.id FROM posgrado as pos WHERE pos.nombre=#{nomposgrado};
+        </selectKey>
         INSERT INTO Asignatura(nombre,posgrado_id) VALUES (#{nomasig},#{id});
     </insert>
     

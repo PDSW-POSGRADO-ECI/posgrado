@@ -6,17 +6,12 @@
 package proyecto.managebeans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import proyecto.entities.Asignatura;
-import proyecto.entities.Materia;
-import proyecto.entities.Posgrado;
-import proyecto.entities.Profesor;
 import proyecto.services.ExceptionServiciosReporte;
 import proyecto.services.ServiciosReporte;
 import proyecto.services.ServiciosReporteFactory;
@@ -73,7 +68,7 @@ public class RegistroClaseBean implements Serializable {
     *@return retorna una lista de las asignaturas de posgrado
     **/
     public List<String> getAsignaturas() throws ExceptionServiciosReporte {
-        return report.consultarNombresAsignaturas(posgrado);
+        return report.consultarNombresAsignaturasXposgrado(posgrado);
     }
 
     /*

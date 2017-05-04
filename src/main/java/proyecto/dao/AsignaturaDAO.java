@@ -27,6 +27,8 @@ public interface AsignaturaDAO {
     public List<Asignatura> loadAsignaturas(String posgrado)throws ExceptionPersistence;
     
     public List<String> loadNames(String posgrado) throws ExceptionPersistence;
+    
+    public List<String> loadAllNames() throws ExceptionPersistence;
 
     /*
     *Obtener todas los posgrados

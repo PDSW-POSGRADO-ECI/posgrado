@@ -16,7 +16,7 @@ and open the template in the editor.
     </h:head>
     
     <h:body>
-        <h:form id="ProgramarClase">
+        <h:form id="RegistrarMateria">
             <div class="item">
                 <img src="resources/campus.jpg" class="imagen" />
             </div>
@@ -31,37 +31,24 @@ and open the template in the editor.
                 
                 <h:panelGrid columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 5%; left: 10%; " >
                     <p:outputLabel style="font-weight:bold" value="Programa:" for="per" />
-                    <p:autoComplete id="per" style="left: 15%" dropdown="true" value="#{RegistroClaseBean.posgrados}" completeMethod="#{RegistroClaseBean.completeText(query, 0)}" >
-                        <p:ajax event="itemSelect" update=":ProgramarClase" >  </p:ajax>
+                    <p:autoComplete id="per" style="left: 15%" dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroClaseBean.completeText(query, 0)}" >
+                        <p:ajax event="itemSelect" update="RegistrarMateria" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>   
                 
                 <h:panelGrid id="panelpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 17%; left: 10%;">
-                    <p:outputLabel style="font-weight:bold;" value="Seleccione el Posgrado:" for="pos" />
-                    <p:autoComplete  id="pos" style="left:10%" dropdown="true" value="#{RegistroClaseBean.posgrado}" completeMethod="#{RegistroClaseBean.completeText(query, 1)}" >
-                        <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setAsig('')}" update=":ProgramarClase:panelasig" >  </p:ajax>
+                    <p:outputLabel style="font-weight:bold;" value="Asignatura:" for="pos" />
+                    <p:autoComplete  id="pos" style="left:10%" dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroClaseBean.completeText(query, 1)}" >
+                        <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setAsig('')}" update=":RegistrarMateria:panelasig" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>  
                 
                 <h:panelGrid id="panelasig" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 29%; left: 10%; ">
-                    <p:outputLabel style="font-weight:bold;" value="Seleccione la Asignatura:" for="asig" />
-                    <p:autoComplete  id="asig" style="left: 4%" dropdown="true" value="#{RegistroClaseBean.asig}" completeMethod="#{RegistroClaseBean.completeText(query, 2)}" >
-                        <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setMat('')}"  update=":ProgramarClase:panelmat" >  </p:ajax>
+                    <p:outputLabel style="font-weight:bold;" value="Prerrequisitos:" for="asig" />
+                    <p:autoComplete  id="asig" style="left: 4%" dropdown="true" value="#{RegistroMateriaBean.requisito}" completeMethod="#{RegistroClaseBean.completeText(query, 2)}" >
+                        <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setMat('')}"  update=":RegistrarMateria:panelmat" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>  
-                
-                <h:panelGrid id="panelmat" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 41%; left: 10%; ">
-                    <p:outputLabel style="font-weight:bold;" value="Seleccione la Materia:" for="mat" />
-                    <p:autoComplete  id="mat" style="left: 14%; " dropdown="true" value="#{RegistroClaseBean.mat}" completeMethod="#{RegistroClaseBean.completeText(query, 3)}" >
-                         <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setCorte('')}"  update=":ProgramarClase:panelcor" >  </p:ajax>
-                    </p:autoComplete>
-                </h:panelGrid>
-                
-                <h:panelGrid id="panelcor" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 53%; left:10%; ">
-                    <p:outputLabel style="font-weight:bold;" value="Seleccione el Cohorte:" for="cor" />
-                    <p:autoComplete id="cor" style="left: 12%" dropdown="true" value="#{RegistroClaseBean.corte}" completeMethod="#{RegistroClaseBean.completeText(query, 4)}" >
-                    </p:autoComplete>
-                </h:panelGrid>
                 
                 <p:menuButton value="Opciones" style="margin:10px 0; position:absolute ; top: 75%; left:51%; ">
                     <p:menuitem  value="Registrar nuevo periodo"  onclick="PF('dialogperiodo').show();" />

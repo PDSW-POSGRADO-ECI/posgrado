@@ -12,7 +12,6 @@ import proyecto.dao.AsignaturaDAO;
 import proyecto.dao.ExceptionPersistence;
 import proyecto.dao.mybatis.mappers.AsignaturaMapper;
 import proyecto.entities.Asignatura;
-import proyecto.entities.Posgrado;
 
 /**
  *
@@ -56,7 +55,16 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO {
     @Override
     public List<String> loadNames(String posgrado) throws ExceptionPersistence {
         try {
-            return asignaturaMapper.consultarNombresAsignaturas(posgrado);
+            return asignaturaMapper.consultarNombresAsignaturasXposgrado(posgrado);
+        } catch (PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar el nombre de las asignaturas", e);
+        }
+    }
+
+    @Override
+    public List<String> loadAllNames() throws ExceptionPersistence {
+        try {
+            return asignaturaMapper.consultarNombresAsignaturas();
         } catch (PersistenceException e) {
             throw new ExceptionPersistence("Error al cargar el nombre de las asignaturas", e);
         }
