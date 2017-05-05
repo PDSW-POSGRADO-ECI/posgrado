@@ -1,0 +1,103 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4/05/2017, 04:29:45 PM
+    Author     : Brandon
+*/
+
+/*Margen pagina*/
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+}
+/*Imagen de inicio*/
+img {
+    display: block;
+    max-width: 70%;
+    height: auto;   
+    position: absolute;
+    margin-left: 300px;
+}
+
+.item {
+    background: #ffffff;
+    height: 100px;
+    background-size: cover;
+    left: 600px;   
+}
+
+/*ESTILOS*/
+
+/*Fuente barra navegacion*/
+nav{
+    font-family: "Roboto", sans-serif;
+}
+
+/* Quitar los puntos de ul*/
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+/*Borde de la barra*/
+nav > ul{
+    border-top: 10px solid #031b54; 
+}
+
+/*Quitar hipervinculos*/
+/*Color Texto*/
+nav a{
+    text-decoration: none;
+    display: block;
+    padding: 0 2.5em;
+    color: #fcfdff;
+    transition: 0.4s;
+}
+
+/*Altura Barra*/
+nav li{
+    line-height: 3rem;
+}
+
+/*Fondo de la barra*/
+nav > ul {
+   display: table;
+   background: #3d3e3f;
+   width: 100%;
+}
+
+/*Acomoda todo en forma horizontal*/
+nav > ul > li {
+    float: left;
+}
+
+/*Mouse sobre la barra*/
+nav a:hover {
+    background: rgba(0, 185, 252,0.5);
+}
+
+/*SUBMENU*/
+
+/*Evita que el submenu se afecte*/
+/*Evita que el submenu aparesca sin pasar un mouse*/
+nav li ul{
+    position: absolute;
+    display: none;
+}
+
+/*Fondo submenus*/
+nav li li{
+    background: #031b54;
+}
+
+/*Mostrar submenu al pasar el mouse*/
+nav li:hover > ul {
+    display: block;
+}

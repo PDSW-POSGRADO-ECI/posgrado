@@ -5,6 +5,11 @@
  */
 package tests;
 
+import edu.eci.pdsw.posgrado.entities.Materia;
+import edu.eci.pdsw.posgrado.entities.Profesor;
+import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
+import edu.eci.pdsw.posgrado.services.ServiciosReporte;
+import edu.eci.pdsw.posgrado.services.ServiciosReporteFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,17 +20,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-import proyecto.entities.Materia;
-import proyecto.entities.Profesor;
-import proyecto.services.ExceptionServiciosReporte;
-import proyecto.services.ServiciosReporte;
-import proyecto.services.ServiciosReporteFactory;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  *
