@@ -32,7 +32,13 @@ public interface MateriaDAO {
     **/
     public boolean loadMateriaCohorte(int doc, int cor, String sigla)throws ExceptionPersistence;
     
-    public List<Materia>loadMateriasXposgrado(String posgrado);
+    public List<Materia>loadMateriasXposgrado(String posgrado) ;
     
     public void addMateria(String sigla,String nombre, int creditos, String asignatura_id, String descripcion) throws ExceptionPersistence;
+    
+    public List<Materia> loadPrerrequisitosMateria(String sigla) throws ExceptionPersistence;
+    
+    public List<Materia> loadCorrequisitosMateria(String sigla) throws ExceptionPersistence;
+    
+    
 }

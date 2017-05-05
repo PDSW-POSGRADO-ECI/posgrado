@@ -64,6 +64,24 @@ public class mybatisMateriaDAO implements MateriaDAO {
             throw new ExceptionPersistence("Error al consultar los nombres de las materias correspondientes a :"+asignatura_id, e);
         }
     }
+
+    @Override
+    public List<Materia> loadPrerrequisitosMateria(String sigla) throws ExceptionPersistence {
+         try{
+            return materiaMapper.consultarPrerrequisitosDeMateria(sigla);
+        } catch (PersistenceException e){
+            throw new ExceptionPersistence("Error al consultar prerrequisitos de la materia "+sigla, e);
+        }
+    }
+
+    @Override
+    public List<Materia> loadCorrequisitosMateria(String sigla) throws ExceptionPersistence {
+         try{
+            return materiaMapper.consultarCorrequisitosDeMateria(sigla);
+        } catch (PersistenceException e){
+            throw new ExceptionPersistence("Error al consultar prerrequisitos de la materia "+sigla, e);
+        }
+    }
     
    
 

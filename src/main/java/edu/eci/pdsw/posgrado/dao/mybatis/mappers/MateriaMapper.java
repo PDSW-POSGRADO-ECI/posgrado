@@ -39,4 +39,14 @@ public interface MateriaMapper {
 
     public List<String> consultarNombresMateriasxAsignatura(@Param("asig")String asignatura_nombre);
     
+    public List<Materia> consultarPrerrequisitosDeMateria(@Param("materia_sigla")String sigla);
+    
+    public List<Materia> consultarCorrequisitosDeMateria(@Param("materia_sigla")String sigla);
+    
+    public List<String> consultarNombresRequisitos(@Param("materia_sigla")String sigla);
+    
+    public List<String> consultarNombresCorrequisitos(@Param("materia_sigla")String sigla);
+    
+    
+    
 }
