@@ -5,7 +5,9 @@
  */
 package proyecto.managebeans;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -40,6 +42,7 @@ public class RegistroClaseBean implements Serializable {
     Date fini;
     Date ffin;
     int credit;
+   
 
     /*Constructor de la clase ReportesBean*/
     public RegistroClaseBean() {
@@ -307,5 +310,5 @@ public class RegistroClaseBean implements Serializable {
 
     public void setSelectprofe(String profe) {
         this.selectprofe = profe;
-    }
+    }   
 }
