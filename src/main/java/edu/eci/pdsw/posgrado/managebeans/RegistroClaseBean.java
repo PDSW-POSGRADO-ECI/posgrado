@@ -5,10 +5,13 @@
  */
 package edu.eci.pdsw.posgrado.managebeans;
 
+
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
 import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
 import edu.eci.pdsw.posgrado.services.ServiciosReporte;
 import edu.eci.pdsw.posgrado.services.ServiciosReporteFactory;
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -40,6 +43,7 @@ public class RegistroClaseBean implements Serializable {
     Date fini;
     Date ffin;
     int credit;
+   
 
     /*Constructor de la clase ReportesBean*/
     public RegistroClaseBean() {
@@ -307,5 +311,5 @@ public class RegistroClaseBean implements Serializable {
 
     public void setSelectprofe(String profe) {
         this.selectprofe = profe;
-    }
+    }   
 }
