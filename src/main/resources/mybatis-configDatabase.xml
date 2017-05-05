@@ -8,14 +8,14 @@
     </settings>
     
     <typeAliases>
-        <typeAlias type='proyecto.entities.Recurso' alias='Recurso'/>
-        <typeAlias type='proyecto.entities.Clase' alias='Clase'/>
-        <typeAlias type='proyecto.entities.Materia' alias='Materia'/>
-        <typeAlias type='proyecto.entities.Cohorte' alias='Cohorte'/>
-        <typeAlias type='proyecto.entities.Asignatura' alias='Asignatura'/>
-        <typeAlias type='proyecto.entities.Profesor' alias='Profesor'/>
-        <typeAlias type='proyecto.entities.Posgrado' alias='Posgrado'/>
-        <typeAlias type='proyecto.entities.Periodo' alias='Periodo'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Recurso' alias='Recurso'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Clase' alias='Clase'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Materia' alias='Materia'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Cohorte' alias='Cohorte'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Asignatura' alias='Asignatura'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Profesor' alias='Profesor'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Posgrado' alias='Posgrado'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Periodo' alias='Periodo'/>
     </typeAliases>
        
     <environments default="development">

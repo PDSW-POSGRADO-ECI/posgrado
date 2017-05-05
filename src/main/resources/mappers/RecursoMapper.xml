@@ -8,7 +8,7 @@ and open the template in the editor.
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="proyecto.dao.mybatis.mappers.RecursoMapper">
+<mapper namespace="edu.eci.pdsw.posgrado.dao.mybatis.mappers.RecursoMapper">
     
     <select parameterType="map" id="consultarRecursoDePeriodo" resultMap="RecursoResult">
         SELECT
@@ -63,7 +63,7 @@ and open the template in the editor.
         <result property='nomRecurso' column='recurso'/>
         <result property='disponible' column='disponible'/> 
         <result property='cantidad' column='cantidad'/>
-        <association property="clase_id" javaType="Clase" columnPrefix='CLA_' resultMap='proyecto.dao.mybatis.mappers.ClaseMapper.ClaseResult'></association>      
+        <association property="clase_id" javaType="Clase" columnPrefix='CLA_' resultMap='edu.eci.pdsw.posgrado.dao.mybatis.mappers.ClaseMapper.ClaseResult'></association>      
     </resultMap>
     
 </mapper>

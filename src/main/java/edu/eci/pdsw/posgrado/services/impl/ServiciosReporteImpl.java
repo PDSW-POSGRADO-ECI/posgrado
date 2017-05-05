@@ -52,7 +52,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      *
      * @param a
      * @return una lista de recursos del determinado periodo
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
     public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte {
@@ -67,7 +67,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * Consultar todos los periodos
      *
      * @return una lista de string con los periodos
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
     public List<String> obtenerPeriodos() throws ExceptionServiciosReporte {
@@ -83,7 +83,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      *
      * @param a
      * @return lista de cohortes
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
     public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte {
@@ -98,7 +98,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * Consultar todos los Profesores
      *
      * @return una lisrta de todos los profesores
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
     public List<Profesor> colsultarProfesores() throws ExceptionServiciosReporte {
@@ -114,7 +114,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      *
      * @param a
      * @return retorna una lista de clases de un periodo
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
     public List<Clase> colsultarClaseXperiodo(String a) throws ExceptionServiciosReporte {
@@ -129,7 +129,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * Consultar todas las materias
      *
      * @return una lista de todas las materias
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
     public List<Materia> consultarMaterias() throws ExceptionServiciosReporte {
@@ -146,7 +146,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @param claseid
      * @param materia
      * @return retorna un profesor de la clase
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public Profesor consultarProfesor(int claseid, String materia) throws ExceptionServiciosReporte {
@@ -164,7 +163,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      *
      * @param periodo
      * @return lista de fechas
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public List<Date> colsultarFechas(String periodo) throws ExceptionServiciosReporte {
@@ -184,7 +182,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @param horafin
      * @param horainit
      * @param doc
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public String registrarClase(int i, String per, Date fecha, Time horainit, Time horafin, int doc) throws ExceptionServiciosReporte {
@@ -196,7 +193,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      *
      * @param idclase
      * @param nombreRecurso
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
     public String registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte {
@@ -210,7 +207,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @param cort
      * @param periodo
      * @param sigla
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public String registrarMateriaCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionServiciosReporte {
@@ -224,7 +220,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @param cor
      * @param sigla
      * @return retorna un boleano si se ecuentra registrado el profesor
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte {
@@ -236,7 +231,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      *
      * @param posgrado
      * @return una lista de strings con los nombres de las asignaturas
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public List<Asignatura> consultarAsignaturas(String posgrado) throws ExceptionServiciosReporte {
@@ -254,7 +248,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      *
      * @param asignatura
      * @return una lsita de strings con los nombres de las materias
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public List<Materia> consultarMaterias(String asignatura) throws ExceptionServiciosReporte {
@@ -270,7 +263,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * Consultar
      *
      * @return lista de strings con el nombre de los posgrados
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public List<Posgrado> consultarPosgrados() throws ExceptionServiciosReporte {
@@ -287,7 +279,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @param periodo
      * @param mat
      * @return lista de strings con el corte de la materia
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     @Override
     public List<String> consultarMateriaCohorte(String periodo, String mat) throws ExceptionServiciosReporte {

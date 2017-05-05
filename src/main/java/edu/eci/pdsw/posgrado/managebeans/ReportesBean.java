@@ -73,8 +73,8 @@ public class ReportesBean implements Serializable {
      
     /**
      * Get the value of Materias
-     * @return the value of Materias
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @return the value of Materia
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public List<Materia> getMaterias() throws ExceptionServiciosReporte {
         return report.consultarMaterias();
@@ -83,7 +83,7 @@ public class ReportesBean implements Serializable {
     /**
      * Consultar los cohortes de un periodo
      * @return Lista de cohortes del periodo
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public List<Cohorte> getCohortes() throws ExceptionServiciosReporte {
         return report.obtenerPeriodo(periodo);
@@ -93,7 +93,7 @@ public class ReportesBean implements Serializable {
      * Consultar los cohortes de un periodo
      * @param clase  la clase dada por un profesor
      * @return Retorna un string con el nombre del profesor
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public String getProfesor(Clase clase) throws ExceptionServiciosReporte {
         return report.consultarProfesor(clase.getId(), clase.getMateria_sigla().getSigla()).getNombre();
@@ -102,7 +102,7 @@ public class ReportesBean implements Serializable {
      /**
      * obtener todas las clases de un perido seleccionado
      * @return Lista de clases del periodo seleccionado
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public List<Clase> getClases() throws ExceptionServiciosReporte {
         return report.colsultarClaseXperiodo(periodo);
@@ -111,7 +111,7 @@ public class ReportesBean implements Serializable {
     /**
      * Obtener las fehcas 
      * @return result una lista de fechas de clase
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public List<Date> getFechas() throws ExceptionServiciosReporte {
         List<Date> dates=report.colsultarFechas(periodo);
@@ -141,7 +141,7 @@ public class ReportesBean implements Serializable {
      * Autocompletar los periodos de la base de datos
      * @param query el string registrado por el usuario
      * @return Lista de strings con el periodo que dijito el usuario
-     * @throws proyecto.services.ExceptionServiciosReporte
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public List<String> completeText(String query) throws ExceptionServiciosReporte {
         return getPeriodos();
