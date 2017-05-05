@@ -13,8 +13,10 @@ and open the template in the editor.
     <select parameterType="map" id="consultarPrerrequisitos" resultMap="PrerequisitoResult">
        SELECT
        preq.materia_sigla,
-       preq.prerrequisito_sigla
-       FROM Materia as mat JOIN PrerequisitoMateria as preq ON mat.sigla=preq.materia_sigla;
+       preq.prerrequisito_sigla,
+       preq.correquisito,
+       FROM Materia as mat 
+       JOIN PrerequisitoMateria as preq ON mat.sigla=preq.materia_sigla;
         
     </select>
     

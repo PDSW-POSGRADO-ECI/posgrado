@@ -22,13 +22,7 @@ public interface MateriaDAO {
     
     public List<String> loadNames(String asignatura_id) throws ExceptionPersistence;
     
-    /*
-    *Obtener todas las materias de una asignatura
-    *@param asignatura
-    *@return mat retorna una lista de materias
-    **/
-    public List<Materia> loadMateriasXasignatura(String asignatura)throws ExceptionPersistence;
-    
+       
     /*
     *Consultar si ya existe un profesor para un determinado cohorte y materia 
     *@param doc

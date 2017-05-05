@@ -39,15 +39,6 @@ public class mybatisMateriaDAO implements MateriaDAO {
     }
 
     @Override
-    public List<Materia> loadMateriasXasignatura(String asignatura) throws ExceptionPersistence {
-         try {
-            return materiaMapper.consultarMateriasXasignatura(asignatura);
-        } catch (PersistenceException e) {
-            throw new ExceptionPersistence("Error al cargar las materias de la asignatura"+ asignatura, e);
-        }
-    }
-
-    @Override
     public List<Materia> loadMateriasXposgrado(String posgrado) {
          try {
             return materiaMapper.consultarMateriasXposgrado(posgrado);

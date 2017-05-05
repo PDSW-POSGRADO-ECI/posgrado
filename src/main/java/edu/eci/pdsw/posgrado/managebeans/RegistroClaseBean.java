@@ -6,12 +6,10 @@
 package edu.eci.pdsw.posgrado.managebeans;
 
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
 import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
 import edu.eci.pdsw.posgrado.services.ServiciosReporte;
 import edu.eci.pdsw.posgrado.services.ServiciosReporteFactory;
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -40,6 +38,7 @@ public class RegistroClaseBean implements Serializable {
     String selectprofe;
     static String mensaje;
     String selectpos;
+    String selectmat;
     Date fini;
     Date ffin;
     int credit;
@@ -59,11 +58,7 @@ public class RegistroClaseBean implements Serializable {
     *@return retorna una lista de los posgrados
     **/
     public List<String> getPosgrados() throws ExceptionServiciosReporte {
-//        ArrayList<String> pos=new ArrayList<>();
-//        for(Posgrado p: report.consultarPosgrados()){
-//                pos.add(p.getNombre());
-//            }
-//        return pos;
+//      
         return report.consultarNombresPosgrado();
     }
 
@@ -80,7 +75,6 @@ public class RegistroClaseBean implements Serializable {
     **/
     public void registrarPeriodo() throws ExceptionServiciosReporte {
         mensaje = report.registrarPeriodo(nuevoper, fini, ffin);
-
     }
 
     /*
@@ -102,11 +96,6 @@ public class RegistroClaseBean implements Serializable {
     *@return retorna una lista de las materias de la asignatura
     **/
     public List<String> getMaterias() throws ExceptionServiciosReporte {
-//        ArrayList<String> mat = new ArrayList<>();
-//        for (Materia a : report.consultarMaterias(asig)) {
-//            mat.add(a.getNombre());
-//        }
-//        return mat;
         return report.consultarNombresMaterias(asig);
     }
 
@@ -123,37 +112,31 @@ public class RegistroClaseBean implements Serializable {
     *@return retorna una lista de strings los periodos de la base de datos
     **/
     public void registrarMateriaCohorte() throws ExceptionServiciosReporte {
-        mensaje = report.registrarMateriaCohorte(credit, credit, periodo, asig);
+        mensaje = report.registrarMateriaCohorte(selectprofe, credit,nuevoper,selectmat);
     }
 
     /*
     *Obtener los cortes de la materia determinada
     *@return retorna una lista de strings con los cortes
     **/
-    private List<String> getMateriaCohorte() throws ExceptionServiciosReporte {
-        return report.consultarMateriaCohorte(periodo, mat);
+    public List<String> getCohorte() throws ExceptionServiciosReporte {
+        return report.consultarCohorte(periodo, mat);
     }
 
     /*
     *Obtener los cortes de la materia determinada
     *@return retorna una lista de strings con los cortes
     **/
-    private List<String> getProfesores() throws ExceptionServiciosReporte {
-//        ArrayList<String> prof = new ArrayList<>();
-//        for (Profesor a : report.colsultarProfesores()) {
-//            prof.add(a.getNombre());
-//        }
-//        return prof;
+    public List<String> getProfesores() throws ExceptionServiciosReporte {    
         return report.consultarNombresProfesores();
     }
-
+    
     /**
      * Autocompletar los periodos de la base de datos
      *
      * @param query el string registrado por el usuario
      * @param num
      * @return Lista de strings con el periodo que dijito el usuario
-     * @throws proyecto.services.ExceptionServiciosReporte
      */
     public List<String> completeText(String query, int num) throws ExceptionServiciosReporte {
         List<String> s = null;
@@ -171,7 +154,7 @@ public class RegistroClaseBean implements Serializable {
                 s = getMaterias();
                 break;
             case 4:
-                s = getMateriaCohorte();
+                s = getCohorte();
                 break;
             case 5:
                 s = getProfesores();
@@ -186,11 +169,13 @@ public class RegistroClaseBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         if (mensaje.contains("Error")) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", mensaje));
-        } else {
+        } else if(mensaje.contains("!")){
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion: ", mensaje));
+        }else {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Successful: ", mensaje));
         }
     }
-
+    
     /**
      * Get the value of Periodo
      *
@@ -209,6 +194,14 @@ public class RegistroClaseBean implements Serializable {
         this.periodo = periodo;
     }
 
+    public String getSelectmat() {
+        return selectmat;
+    }
+
+    public void setSelectmat(String selectmat) {
+        this.selectmat = selectmat;
+    }
+    
     public String getPosgrado() {
         return posgrado;
     }

@@ -11,8 +11,8 @@ package edu.eci.pdsw.posgrado.entities;
  */
 public class PrerrequisitoMateria {
     
-    private String materia_sigla;
-    private String prerrequisito_sigla;
+    private Materia materia_sigla;
+    private Materia prerrequisito_sigla;
     private boolean correquisito;
 
     
@@ -30,45 +30,29 @@ public class PrerrequisitoMateria {
      * @param prerrequisito_sigla
      * @param correquisito 
      */
-    public PrerrequisitoMateria(String materia_sigla, String prerrequisito_sigla, boolean correquisito) {
+    public PrerrequisitoMateria(Materia materia_sigla, Materia prerrequisito_sigla, boolean correquisito) {
         this.materia_sigla = materia_sigla;
         this.prerrequisito_sigla = prerrequisito_sigla;
         this.correquisito = correquisito;
     }
 
-    
+    public Materia getMateria_sigla() {    
+        return materia_sigla;
+    }
+
+    public void setMateria_sigla(Materia materia_sigla) {
+        this.materia_sigla = materia_sigla;
+    }
+
+    public Materia getPrerrequisito_sigla() {
+        return prerrequisito_sigla;
+    }
+
     /**
      * Obtiene la sigla de la materia
      * @return  materia_sigla
      */
-    public String getMateria_sigla() {
-        return materia_sigla;
-    }
-
-    
-    /**
-     * Establece la sigla de la materia
-     * @param materia_sigla 
-     */
-    public void setMateria_sigla(String materia_sigla) {
-        this.materia_sigla = materia_sigla;
-    }
-
-    
-    /**
-     * Obtiene la sigla del prerrequisito de la materia
-     * @return 
-     */
-    public String getPrerrequisito_sigla() {
-        return prerrequisito_sigla;
-    }
-    
-
-    /**
-     * Establece la sigla del prerrequisito de la materia
-     * @param prerrequisito_sigla 
-     */
-    public void setPrerrequisito_sigla(String prerrequisito_sigla) {
+    public void setPrerrequisito_sigla(Materia prerrequisito_sigla) {    
         this.prerrequisito_sigla = prerrequisito_sigla;
     }
 

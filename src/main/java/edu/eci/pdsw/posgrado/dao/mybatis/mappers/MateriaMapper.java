@@ -21,12 +21,7 @@ public interface MateriaMapper {
     **/
     public List<Materia> consultarMaterias();
     
-    /*
-    *Obtener todas las materias de una asignatura
-    *@param asignatura
-    *@return mat retorna una lista de materias
-    **/
-        public List<Materia> consultarMateriasXasignatura(@Param("nomasig")String asignatura) ;
+    
     
     /*
     *Consultar si ya existe un profesor para un determinado cohorte y materia 

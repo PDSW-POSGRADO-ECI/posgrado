@@ -31,14 +31,14 @@ and open the template in the editor.
                 
                 <h:panelGrid columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 5%; left: 10%; " >
                     <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="per" />
-                    <p:autoComplete id="per" style="left: 15%" dropdown="true" value="#{RegistroClaseBean.periodo}" completeMethod="#{RegistroClaseBean.completeText(query, 0)}" >
+                    <p:autoComplete   id="per" style="left: 15%" dropdown="true" value="#{RegistroClaseBean.periodo}" completeMethod="#{RegistroClaseBean.completeText(query, 0)}" >
                         <p:ajax event="itemSelect" update=":ProgramarClase" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>   
                 
                 <h:panelGrid id="panelpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 17%; left: 10%;">
                     <p:outputLabel style="font-weight:bold;" value="Seleccione el Posgrado:" for="pos" />
-                    <p:autoComplete  id="pos" style="left:10%" dropdown="true" value="#{RegistroClaseBean.posgrado}" completeMethod="#{RegistroClaseBean.completeText(query, 1)}" >
+                    <p:autoComplete   id="pos" style="left:10%" dropdown="true" value="#{RegistroClaseBean.posgrado}" completeMethod="#{RegistroClaseBean.completeText(query, 1)}" >
                         <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setAsig('')}" update=":ProgramarClase:panelasig" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>  
@@ -52,7 +52,7 @@ and open the template in the editor.
                 
                 <h:panelGrid id="panelmat" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 41%; left: 10%; ">
                     <p:outputLabel style="font-weight:bold;" value="Seleccione la Materia:" for="mat" />
-                    <p:autoComplete  id="mat" style="left: 14%; " dropdown="true" value="#{RegistroClaseBean.mat}" completeMethod="#{RegistroClaseBean.completeText(query, 3)}" >
+                    <p:autoComplete   id="mat" style="left: 14%; " dropdown="true" value="#{RegistroClaseBean.mat}" completeMethod="#{RegistroClaseBean.completeText(query, 3)}" >
                          <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setCorte('')}"  update=":ProgramarClase:panelcor" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>
@@ -68,14 +68,16 @@ and open the template in the editor.
                     <p:menuitem  value="Registrar nuevo posgrado"  onclick="PF('dialogpos').show();" />
                     <p:menuitem  value="Registrar nueva Asignatura"  onclick="PF('dialogasig').show();" />
                     <p:menuitem  value="Registrar nueva Materia"  onclick="PF('dialogmat').show();" />
-                    <p:menuitem  value="Registrar nueva Cohorte de Materia"  onclick="PF('dialogcorte').show();" />
+                    <p:menuitem  value="Registrar nueva Cohorte de Materia"  onclick="PF('dialogcorte').show();"  />
                 </p:menuButton>
-                <p:commandButton  type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:15%; " action="RegistrarClases?faces-redirect=true" icon="ui-icon-arrowreturnthick-1-e" value="Programar Clases" />
-                
+                <p:commandButton  type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:15%; " action="RegistrarClase?faces-redirect=true"  icon="ui-icon-arrowreturnthick-1-e" value="Programar Clases" />
+                <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms"  showDetail="true" autoUpdate="true" closable="true" />
+
             </p:panel >
         </h:form>
+        
         <h:form id="nuevoregistro1">
-            <p:dialog header="Registrar Periodo" widgetVar="dialogperiodo" modal="true" width="950" height="700" resizable="false">
+            <p:dialog header="Registrar Periodo" widgetVar="dialogperiodo" modal="true" width="950" height="700" resizable="false" visible="">
                 <p:panel id="panelregistroperiodo" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
                     <h:panelGrid id="panelregper" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
                         <p:outputLabel style="font-weight:bold;" value="Periodo:" for="perinput" />
@@ -90,6 +92,8 @@ and open the template in the editor.
                 </p:panel>
             </p:dialog>  
         </h:form>
+        
+        
         <h:form id="nuevoregistro2">
             <p:dialog header="Registrar Posgrado" widgetVar="dialogpos" modal="true" width="800" height="700" resizable="false">
                 <p:panel id="panelregistroposgrado" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
@@ -105,6 +109,8 @@ and open the template in the editor.
                 </p:panel>
             </p:dialog> 
         </h:form>
+        
+        
         <h:form id="nuevoregistro3">
             <p:dialog header="Registrar Asignatura" widgetVar="dialogasig" modal="true" width="800" height="700" resizable="false">
                 <p:panel id="panelregistroasig" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
@@ -124,15 +130,21 @@ and open the template in the editor.
                 </p:panel>
             </p:dialog>
         </h:form>
-        <h:form id="nuevoregistro4">
-            <p:dialog header="Registrar corte" widgetVar="dialogcorte" modal="true" width="800" height="700" resizable="false">
+        
+        
+        <h:form id="nuevoregistro4"  >
+            <p:dialog header="Registrar corte" widgetVar="dialogcorte" modal="true" width="800" height="700" resizable="false"  >
                 <p:panel id="panelregistrocorte" header="Registre la siguiente informacion:" style="position:absolute ;top: 11%;left: 10%;height: 75%;width: 80%;" >
-                    <h:panelGrid id="panelregcorte" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
+                    <h:panelGrid id="panelcor" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 51%; left: 10%;" >
+                        <p:outputLabel style="font-weight:bold; " value="Posgrado seleccionado: #{RegistroClaseBean.posgrado}"  />
+                        <p:outputLabel  value="Asignatura seleccionada : #{RegistroClaseBean.asig}" />
+                        <p:outputLabel  value="Materia seleccionada: #{RegistroClaseBean.mat}"  />
+                        <p:outputLabel  value="Periodo seleccionado : #{RegistroClaseBean.periodo}"  />
                         <p:outputLabel style="font-weight:bold;" value="Numero de corte:" for="corteinput" />
                         <p:spinner id="corteinput" value="#{RegistroClaseBean.nuevocorte}" min="0"  />
                         <p:outputLabel style="font-weight:bold;" value="Profesor :" for="profselect" />
                         <p:autoComplete id="profselect" dropdown="true" value="#{RegistroClaseBean.selectprofe}" completeMethod="#{RegistroClaseBean.completeText(query, 5)}" >
-                            
+
                         </p:autoComplete>
                     </h:panelGrid> 
                     <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" actionListener="#{RegistroClaseBean.registrarMateriaCohorte()}" action="#{RegistroClaseBean.saveMessage()}" update="ms"  value="Registrar Materia de corte" />

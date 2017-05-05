@@ -20,8 +20,6 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -173,6 +171,84 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    
+
+    @Override
+    public List<String> consultarNombresPosgrado() throws ExceptionServiciosReporte {
+        try {
+            return posgrado.loadNames();
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de los posgrados.", ex);
+        }
+    }
+
+    
+     @Override
+    public boolean consultarMateriaCohorte(String sigla, String nombre, int cor) throws ExceptionServiciosReporte {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+   
+
+    /**
+     * Consultar Los cohortes de una materia
+     *
+     * @param periodo
+     * @param mat
+     * @return lista de strings con el corte de la materia
+     */
+    @Override
+    public List<String> consultarCohorte(String periodo, String mat) throws ExceptionServiciosReporte {
+        ArrayList<String> pos = new ArrayList<>();
+        try {
+            List<Cohorte> cor= corte.loadMateriaCohorte(periodo, mat);
+            for (Cohorte c : cor ) {
+                pos.add(String.valueOf(c.getId()));
+            }
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
+        }
+        return pos;
+    }
+
+    @Override
+    public List<String> consultarNombresAsignaturasXposgrado(String posgrado) throws ExceptionServiciosReporte {
+        try {
+            return asignatura.loadNames(posgrado);
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de las asignaturas del posgrado: " + posgrado, ex);
+        }
+    }
+
+    @Override
+    public List<String> consultarNombresMaterias(String asig) throws ExceptionServiciosReporte {
+        try {
+            return materia.loadNames(asig);
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de las materias de la asignatura: " + asig, ex);
+        }
+    }
+
+    @Override
+    public List<String> consultarNombresProfesores() throws ExceptionServiciosReporte {
+        try {
+            return profesor.loadNames();
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de los profesores", ex);
+        }
+    }
+
+    @Override
+    public List<String> consultarNombresAsignaturas() throws ExceptionServiciosReporte {
+        try {
+            return asignatura.loadAllNames();
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar los nombres de las asignaturas del posgrado: " + posgrado, ex);
+        }
+    }
+     
+     
     /**
      * registrar una nueva clase en la programacion
      *
@@ -184,7 +260,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @param doc
      */
     @Override
-    public String registrarClase(int i, String per, Date fecha, Time horainit, Time horafin, int doc) throws ExceptionServiciosReporte {
+    public String registrarClase(int cor, String mat, Date fecha, Time horainit, Time horafin, String profe) throws ExceptionServiciosReporte {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -200,104 +276,15 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * registrar un nuevo corte de una materia
-     *
-     * @param doc
-     * @param cort
-     * @param periodo
-     * @param sigla
-     */
-    @Override
-    public String registrarMateriaCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionServiciosReporte {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     * Consultar MateriaCohorte
-     *
-     * @param doc
-     * @param cor
-     * @param sigla
-     * @return retorna un boleano si se ecuentra registrado el profesor
-     */
-    @Override
-    public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     * Consultar
-     *
-     * @param posgrado
-     * @return una lista de strings con los nombres de las asignaturas
-     */
-    @Override
-    public List<Asignatura> consultarAsignaturas(String posgrado) throws ExceptionServiciosReporte {
-
-        try {
-            return asignatura.loadAsignaturas(posgrado);
-
-        } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar asignaturas del posgrado" + posgrado, ex);
-        }
-    }
-
-    /**
-     * Consultar Materias de una asignatura
-     *
-     * @param asignatura
-     * @return una lsita de strings con los nombres de las materias
-     */
-    @Override
-    public List<Materia> consultarMaterias(String asignatura) throws ExceptionServiciosReporte {
-        ArrayList<String> mat = new ArrayList<>();
-        try {
-            return materia.loadMateriasXasignatura(asignatura);
-        } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar materias de asignatura" + asignatura, ex);
-        }
-    }
-
-    /**
-     * Consultar
-     *
-     * @return lista de strings con el nombre de los posgrados
-     */
-    @Override
-    public List<Posgrado> consultarPosgrados() throws ExceptionServiciosReporte {
-        try {
-            return posgrado.loadPosgrados();
-        } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
-        }
-    }
-
-    /**
-     * Consultar Los cohortes de una materia
-     *
-     * @param periodo
-     * @param mat
-     * @return lista de strings con el corte de la materia
-     */
-    @Override
-    public List<String> consultarMateriaCohorte(String periodo, String mat) throws ExceptionServiciosReporte {
-        ArrayList<String> pos = new ArrayList<>();
-        try {
-            for (Cohorte c : corte.loadMateriaCohorte(periodo, mat)) {
-                pos.add(String.valueOf(c.getId()));
-            }
-        } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
-        }
-        return pos;
-    }
-
+    
+    
+    
     @Override
     public String registrarPeriodo(String per, Date fini, Date ffin) throws ExceptionServiciosReporte {
         String ms = "Periodo Agregado";
         try {
-            if (!corte.loadPeriodos().contains(per) && fini.compareTo(ffin) < 0) {
+            List<String> pers= corte.loadPeriodos();
+            if (!pers.contains(per) && fini.compareTo(ffin) < 0) {
                 corte.savePeriodo(per, fini, ffin);
             } else {
                 ms = "Error el Periodo esta duplicado - La fecha inicial es mayor que la fecha de terminacion";
@@ -313,8 +300,9 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         String ms = "Posgrago Agregado";
         boolean var = true;
         try {
-            for (int i = 0; i < posgrado.loadPosgrados().size() && var; i++) {
-                if (posgrado.loadPosgrados().get(i).getNombre().equals(nom) || credit <= 0) {
+            List<Posgrado> pos= posgrado.loadPosgrados();
+            for (int i = 0; i < pos.size() && var; i++) {
+                if (pos.get(i).getNombre().equals(nom) || credit <= 0) {
                     var = false;
                     ms = "Error el Posgrado esta duplicado - creditos invalidos";
                 }
@@ -334,8 +322,9 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         String ms = "Asignatura Agregada";
         boolean var = true;
         try {
-            for (int i = 0; i < asignatura.loadAsignaturas().size() && var; i++) {
-                if (asignatura.loadAsignaturas().get(i).getNombre().equals(nom)) {
+            List<Asignatura> asig= asignatura.loadAsignaturas();
+            for (int i = 0; i < asig.size() && var; i++) {
+                if (asig.get(i).getNombre().equals(nom)) {
                     var = false;
                     ms = "Error la asignatura esta duplicada";
                 }
@@ -359,51 +348,13 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     @Override
-    public List<String> consultarNombresPosgrado() throws ExceptionServiciosReporte {
-        try {
-            return posgrado.loadNames();
-        } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar los nombres de los posgrados.", ex);
-        }
-    }
+    public String registrarMateriaCohorte(String profe, int cort, String periodo, String sigla) throws ExceptionServiciosReporte {
+        
+        return null;
+    
+    }   
 
-    @Override
-    public List<String> consultarNombresAsignaturasXposgrado(String posgrado) throws ExceptionServiciosReporte {
-        try {
-            return asignatura.loadNames(posgrado);
-        } catch (ExceptionPersistence ex) {
-            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ExceptionServiciosReporte("Error al cargar los nombres de las asignaturas del posgrado: " + posgrado, ex);
-        }
-    }
+   
 
-    @Override
-    public List<String> consultarNombresMaterias(String asig) throws ExceptionServiciosReporte {
-        try {
-            return materia.loadNames(asig);
-        } catch (ExceptionPersistence ex) {
-            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ExceptionServiciosReporte("Error al cargar los nombres de las materias de la asignatura: " + asig, ex);
-        }
-    }
-
-    @Override
-    public List<String> consultarNombresProfesores() throws ExceptionServiciosReporte {
-        try {
-            return profesor.loadNames();
-        } catch (ExceptionPersistence ex) {
-            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ExceptionServiciosReporte("Error al cargar los nombres de los profesores", ex);
-        }
-    }
-
-    @Override
-    public List<String> consultarNombresAsignaturas() throws ExceptionServiciosReporte {
-        try {
-            return asignatura.loadAllNames();
-        } catch (ExceptionPersistence ex) {
-            Logger.getLogger(ServiciosReporteImpl.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ExceptionServiciosReporte("Error al cargar los nombres de las asignaturas del posgrado: " + posgrado, ex);
-        }
-    }
+   
 }

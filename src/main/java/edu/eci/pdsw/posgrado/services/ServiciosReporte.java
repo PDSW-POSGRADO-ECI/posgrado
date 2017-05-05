@@ -35,24 +35,12 @@ public interface ServiciosReporte {
     /*
     *Sprint2
     */
-    public String registrarClase(int corte, String per, Date fecha, Time horainit, Time horafin,int doc) throws ExceptionServiciosReporte;
+    public String registrarClase(int corte, String mat, Date fecha, Time horainit, Time horafin,String profe) throws ExceptionServiciosReporte;
 
     public String registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte;
 
-    public String registrarMateriaCohorte(int doc, int cort,String periodo, String sigla)throws ExceptionServiciosReporte;
-
-    public boolean consultarMateriaCohorte(int doc, int cor, String sigla) throws ExceptionServiciosReporte;
+    public String registrarMateriaCohorte(String profe, int cort,String periodo, String sigla)throws ExceptionServiciosReporte;
     
-    public List<Materia> consultarMaterias(String asig) throws ExceptionServiciosReporte;
-    
-    public List<String> consultarNombresMaterias(String asig) throws ExceptionServiciosReporte;
-    
-    public List<Asignatura> consultarAsignaturas(String pos) throws ExceptionServiciosReporte;
-
-    public List<Posgrado> consultarPosgrados()throws ExceptionServiciosReporte;
-
-    public List<String> consultarMateriaCohorte(String periodo, String mat)throws ExceptionServiciosReporte;
-
     public String registrarPeriodo(String per,Date fini,Date ffin)throws ExceptionServiciosReporte;
     
     public String registrarPosgrado(String nom,int credit)throws ExceptionServiciosReporte;
@@ -60,6 +48,12 @@ public interface ServiciosReporte {
     public String registrarAsignatura(String nom,String posgrado)throws ExceptionServiciosReporte;
 
     public void registrarMateria(String sigla, String nombre, int creditos, String asignatura_id, String descripcion) throws ExceptionServiciosReporte;
+    
+    public List<String> consultarNombresMaterias(String asig) throws ExceptionServiciosReporte;
+    
+    public List<String> consultarCohorte(String periodo, String mat)throws ExceptionServiciosReporte;
+    
+    public boolean consultarMateriaCohorte(String sigla, String nombre,int cor)throws ExceptionServiciosReporte;
     
     public List<String> consultarNombresPosgrado() throws ExceptionServiciosReporte;
     

@@ -29,25 +29,13 @@ and open the template in the editor.
         join Asignatura as asi on mat.Asignatura_id = asi.id
         join Posgrado as pos on asi.Posgrado_id = pos.id      
     </select>
-    <select parameterType="map" id="consultarMateriasXasignatura" resultMap="MateriaResult">
-        
-        SELECT
-        
-        mat.sigla,
-        mat.nombre,
-        mat.creditos,
-        mat.descripcion
-             
-        FROM materia as mat
-        join asignatura as asi on mat.asignatura_id = asi.id
-        WHERE asi.nombre=#{nomasig}   
-    </select>
+   
     
     <insert parameterType="map" id="registrarMateria">
-        INSERT INTO Materia(sigla,nombre,creditos,Asignatura_id,descripcion)
-        SELECT (#{sigla},#{nombre},#{creditos},asi.id,#{descripcion})
-        FROM asignatura asi
-        WHERE asi.nombre = #{asig_nom}
+         <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT asi.id FROM asignatura as asi WHERE asi.nombre=#{asig_nom};
+        </selectKey>
+        INSERT INTO Materia(sigla,nombre,creditos,Asignatura_id,descripcion) VALUES (#{sigla},#{nombre},#{creditos},#{id},#{descripcion})
     </insert>
     
     <select parameterType="map" id="consultarMateriasXposgrado" resultMap="MateriaResult">
@@ -83,5 +71,7 @@ and open the template in the editor.
         <result property='creditos' column='creditos'/>
         <result property='descripcion' column='descripcion'/>
         <association property="asignatura_id" javaType="Asignatura" columnPrefix='ASI_' resultMap='edu.eci.pdsw.posgrado.dao.mybatis.mappers.AsignaturaMapper.AsignaturaResult' ></association>
-    </resultMap>  
+    </resultMap> 
+    
+      
 </mapper>
