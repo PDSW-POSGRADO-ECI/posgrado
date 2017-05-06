@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="main.css"/>
         <link rel="stylesheet" type="text/css" href="fonts.css"></link>
     </h:head >
-    <h:body class="imageF">
+    <h:body >
         <h:form id="MenuM"> 
             <div class="item">
                 <img src="resources/campus.jpg" class="imagen"/>
@@ -28,9 +28,9 @@
                         <ul> 
                             <li><p:commandLink action="RegistrarMateria?faces-redirect=true">Registrar Materia</p:commandLink>
                                 <ul>    
-                                    <ui:repeat value="#{ReportesBean.posgrado}" var="nombre" >
+                                    <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
                                         <li>         
-                                        <p:commandLink action="Materias?faces-redirect=true" actionListener="#{ReportesBean.prueba(nombre)}" value="#{nombre}" >
+                                        <p:commandLink action="Materias?faces-redirect=true" actionListener="#{RegistroMateriaBean.programName(nombre)}" value="#{nombre}" >
                                         </p:commandLink>     
                                         </li>     
                                     </ui:repeat> 
@@ -43,8 +43,9 @@
                 </ul>
             </nav>
             </header>
- 
-        
+
+            
+   
         </h:form>
    </h:body>
 </html>

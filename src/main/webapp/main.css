@@ -39,7 +39,10 @@ img {
     height: 80px;  
 }
 
-
+.contenido{
+    background: #ffffff;
+    height: 230px;  
+}
 
 /*ESTILOS*/
 
@@ -131,11 +134,4 @@ p{
    font-weight: bold;
    color: red;
    padding: 0 2.5rem;
-}
-
-.prueba{
-    background-image: none;
-    background: #031b54;
-    height: 100%
-        
 }

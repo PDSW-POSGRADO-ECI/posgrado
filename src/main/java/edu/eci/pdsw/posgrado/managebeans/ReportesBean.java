@@ -29,16 +29,7 @@ public class ReportesBean implements Serializable {
 
     ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
     String periodo;
-    String programa;
     String usuario;
-
-    public String getPrograma() {
-        return programa;
-    }
-
-    public void setPrograma(String programa) {
-        this.programa = programa;
-    }
     
     public String getUsuario() {
         return usuario;
@@ -168,10 +159,6 @@ public class ReportesBean implements Serializable {
      */
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
-    }
-    
-    public void prueba(String nom){
-        programa = nom;
     }
     
     public List<String> getPosgrado() throws ExceptionServiciosReporte {
