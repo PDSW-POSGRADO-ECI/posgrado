@@ -133,14 +133,14 @@ INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(1, 'Portatiles',tru
 INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(2, 'libro de economia 1',true,10);
 INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(3, 'Audio',true,5);
 INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(4, 'Libro 2',true,10);
-INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(5, 'Microfono',true,2);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(5, 'audivisual',true,2);
 INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(6, 'libro de proyectos',true,6);
-INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(7, 'Diccionario',true, 20);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(7, 'mira',true, 20);
 INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(8, 'Tamgrams',true,6);
-INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(9, 'Microfono',true, 2);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(9, 'router de alta velocidad',true, 2);
 INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(10, 'grabadora ',true,6);
-INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(11, 'Diccionario',true,20);
-INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(12, 'Tamgrams',true, 6);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(11, 'tiodolito',true,20);
+INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(12, 'estacion total',true, 6);
 
 INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(1,1,10);
 INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(1,2,10);

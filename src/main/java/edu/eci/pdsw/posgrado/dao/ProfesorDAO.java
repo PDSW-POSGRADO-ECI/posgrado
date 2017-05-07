@@ -36,4 +36,6 @@ public interface ProfesorDAO {
     *@param sigla
     **/
     public void saveProfesorCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionPersistence;
+
+    public List<Profesor> loadProfesoresCohorte(int cor, String mat) throws ExceptionPersistence;
 }

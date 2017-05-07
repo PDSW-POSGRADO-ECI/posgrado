@@ -147,8 +147,9 @@ ALTER TABLE MateriaCohorte ADD CONSTRAINT MateriaCohorte_pk PRIMARY KEY (Materia
 -- unique keys
 ALTER TABLE Clase ADD CONSTRAINT uk_clase UNIQUE (id) ;
 ALTER TABLE Profesor ADD CONSTRAINT Profesor_ak_1 UNIQUE (correo) ;
-
-
+ALTER TABLE Posgrado ADD CONSTRAINT Posgrado_ak_1 UNIQUE (nombre) ;
+ALTER TABLE Asignatura ADD CONSTRAINT Asignatura_ak_1 UNIQUE (nombre) ;
+ALTER TABLE recurso ADD CONSTRAINT recurso_ak_1 UNIQUE (recurso) ;
 -- foreign keys
 -- Reference: Asignatura_Posgrado (table: Asignatura)
 ALTER TABLE Asignatura ADD CONSTRAINT Asignatura_Posgrado

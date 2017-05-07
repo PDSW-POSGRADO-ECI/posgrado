@@ -27,9 +27,9 @@ import javax.faces.bean.SessionScoped;
 
 public class ReportesBean implements Serializable {
 
-    ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
-    String periodo;
-    String usuario;
+    private ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    private String periodo;
+    private String usuario;
     
     public String getUsuario() {
         return usuario;

@@ -37,7 +37,7 @@ public interface ServiciosReporte {
     */
     public String registrarClase(int corte, String mat, Date fecha, Time horainit, Time horafin,String profe) throws ExceptionServiciosReporte;
 
-    public String registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte;
+    public String registrarRecurso(int cant, String nombreRecurso) throws ExceptionServiciosReporte;
 
     public String registrarMateriaCohorte(String profe, int cort,String periodo, String sigla)throws ExceptionServiciosReporte;
     
@@ -62,4 +62,10 @@ public interface ServiciosReporte {
     public List<String> consultarNombresAsignaturas() throws ExceptionServiciosReporte;
 
     public List<String> consultarNombresProfesores() throws ExceptionServiciosReporte;
-}
+
+    public List<Recurso> consultarAllRecursos() throws ExceptionServiciosReporte;
+
+    public String registrarRecursoClase(List<Recurso> selectrec) throws ExceptionServiciosReporte ;
+
+    public List<String> consultarProfesoresCohorte(int cor, String mat) throws ExceptionServiciosReporte;
+} 

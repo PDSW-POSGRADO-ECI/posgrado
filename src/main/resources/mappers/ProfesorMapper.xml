@@ -31,6 +31,22 @@ and open the template in the editor.
         FROM profesor as pro;
     </select>
     
+     <select parameterType="map" id="consultarProfesoresCohorte" resultMap="ProfesorResult">
+        SELECT
+
+            pro.documento,
+            pro.nombre,
+            pro.correo,
+            pro.telefono,
+            pro.tipo_documento
+        
+        FROM materiacohorte as matco
+        join profesor as pro on matco.profesor_documento=pro.documento
+        join materia as mat on matco.materia_sigla=mat.sigla
+         
+        WHERE mat.nombre=#{mate} and matco.cohorte_id=#{corte};
+    </select>
+    
     <select parameterType="map" id="consultarProfesor" resultMap="ProfesorResult">
         SELECT
         
@@ -58,6 +74,5 @@ and open the template in the editor.
         <result property='correo' column='correo'/>
         <result property='telefono' column='telefono'/>
         <result property='tipo_documento' column='tipo_documento'/>
-        
     </resultMap>
 </mapper>

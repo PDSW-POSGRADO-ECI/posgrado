@@ -22,19 +22,17 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroMateriaBean implements Serializable {
 
-    ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
-
-    public List<Materia> pre_requisitos;
-    public List<Materia> co_requisitos;
-
-    public String asignatura;
-    public String requisito;
-    public String programa;
-    public String sigla;
-    public String nombre;
-    public String descripcion;
-    public String seleccion;
-    public String prob;
+    private ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    private List<Materia> pre_requisitos;
+    private List<Materia> co_requisitos;
+    private String asignatura;
+    private String requisito;
+    private String programa;
+    private String sigla;
+    private String nombre;
+    private String descripcion;
+    private String seleccion;
+    private String prob;
 
     public String getProb() {
         return prob;

@@ -25,34 +25,33 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class RegistroClaseBean implements Serializable {
 
-    ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
-    String posgrado;
-    String asig;
-    String periodo;
-    String mat;
-    String corte;
-    String nuevoper;
-    String nuevopos;
-    String nuevoasig;
-    String nuevocorte;
-    String selectprofe;
-    static String mensaje;
-    String selectpos;
-    String selectmat;
-    Date fini;
-    Date ffin;
-    int credit;
+    final ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    private String posgrado;
+    private String asig;
+    private String periodo;
+    private String mat;
+    private String corte;
+    private String profesor;
+    private String nuevoper;
+    private String nuevopos;
+    private String nuevoasig;
+    private String nuevocorte;
+    private String selectprofe;
+    private static String mensaje="";
+    private String selectpos;
+    private Date fini;
+    private Date ffin;
+    private int credit;
    
 
     /*Constructor de la clase ReportesBean*/
     public RegistroClaseBean() {
-        posgrado = "";
-        periodo = "";
-        asig = "";
-        mat = "";
-        corte = "";
+        posgrado = " ";periodo = " ";asig = " ";
+        mat = " ";corte = " ";nuevoper="";nuevopos=" ";
+        nuevoasig=" ";nuevocorte=" ";selectprofe=" ";selectpos=" ";
+        credit=0;
     }
-
+    
     /*
     *Obtener todas asignaturas de posgrado
     *@return retorna una lista de los posgrados
@@ -75,6 +74,13 @@ public class RegistroClaseBean implements Serializable {
     **/
     public void registrarPeriodo() throws ExceptionServiciosReporte {
         mensaje = report.registrarPeriodo(nuevoper, fini, ffin);
+        nuevoper=" ";
+    }
+     /*
+    *insertar n nuevo periodo
+    **/
+    public List<String> getProfesoresC() throws ExceptionServiciosReporte {
+        return report.consultarProfesoresCohorte(Integer.valueOf(corte),mat);
     }
 
     /*
@@ -82,18 +88,22 @@ public class RegistroClaseBean implements Serializable {
     **/
     public void registrarPosgrado() throws ExceptionServiciosReporte {
         mensaje = report.registrarPosgrado(nuevopos, credit);
+        nuevopos=" ";credit=0;
     }
 
     /*
     *insertar n nuevo periodo
+    *@throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
     **/
     public void registrarAsignatura() throws ExceptionServiciosReporte {
         mensaje = report.registrarAsignatura(nuevoasig, selectpos);
+        nuevoasig=" ";selectpos=" ";
     }
 
     /*
     *Obtener todos las materias relacionadas a una asignatura en particular
     *@return retorna una lista de las materias de la asignatura
+    *@throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
     **/
     public List<String> getMaterias() throws ExceptionServiciosReporte {
         return report.consultarNombresMaterias(asig);
@@ -102,6 +112,7 @@ public class RegistroClaseBean implements Serializable {
     /*
     *Obtener todos los periodos 
     *@return retorna una lista de strings los periodos de la base de datos
+    *@throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
     **/
     public List<String> getPeriodos() throws ExceptionServiciosReporte {
         return report.obtenerPeriodos();
@@ -110,14 +121,17 @@ public class RegistroClaseBean implements Serializable {
     /*
     *Obtener todos los periodos 
     *@return retorna una lista de strings los periodos de la base de datos
+    *@throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
     **/
     public void registrarMateriaCohorte() throws ExceptionServiciosReporte {
-        mensaje = report.registrarMateriaCohorte(selectprofe, credit,nuevoper,selectmat);
+        mensaje = report.registrarMateriaCohorte(selectprofe, Integer.valueOf(nuevocorte),periodo,mat);
+        selectprofe=" ";nuevocorte=" ";
     }
 
     /*
     *Obtener los cortes de la materia determinada
     *@return retorna una lista de strings con los cortes
+    *@throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
     **/
     public List<String> getCohorte() throws ExceptionServiciosReporte {
         return report.consultarCohorte(periodo, mat);
@@ -126,6 +140,7 @@ public class RegistroClaseBean implements Serializable {
     /*
     *Obtener los cortes de la materia determinada
     *@return retorna una lista de strings con los cortes
+    *@throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
     **/
     public List<String> getProfesores() throws ExceptionServiciosReporte {    
         return report.consultarNombresProfesores();
@@ -137,6 +152,7 @@ public class RegistroClaseBean implements Serializable {
      * @param query el string registrado por el usuario
      * @param num
      * @return Lista de strings con el periodo que dijito el usuario
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public List<String> completeText(String query, int num) throws ExceptionServiciosReporte {
         List<String> s = null;
@@ -158,6 +174,9 @@ public class RegistroClaseBean implements Serializable {
                 break;
             case 5:
                 s = getProfesores();
+                break;
+             case 6:
+                s = getProfesoresC();
                 break;
             default:
                 break;
@@ -184,7 +203,7 @@ public class RegistroClaseBean implements Serializable {
     public String getPeriodo() {
         return periodo;
     }
-
+    
     /**
      * Set the value of Periodo
      *
@@ -193,17 +212,21 @@ public class RegistroClaseBean implements Serializable {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
-
-    public String getSelectmat() {
-        return selectmat;
-    }
-
-    public void setSelectmat(String selectmat) {
-        this.selectmat = selectmat;
-    }
     
+    /**
+     * Set the value of Periodo
+     * @return 
+    */
     public String getPosgrado() {
         return posgrado;
+    }
+
+    public String getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(String profesor) {
+        this.profesor = profesor;
     }
 
     public void setPosgrado(String posgrado) {
@@ -217,7 +240,7 @@ public class RegistroClaseBean implements Serializable {
     public void setAsig(String asig) {
         this.asig = asig;
     }
-
+    
     public String getMat() {
         return mat;
     }
@@ -305,4 +328,5 @@ public class RegistroClaseBean implements Serializable {
     public void setSelectprofe(String profe) {
         this.selectprofe = profe;
     }   
+    
 }

@@ -58,4 +58,13 @@ public class mybatisProfesorDAO implements ProfesorDAO {
             throw new ExceptionPersistence("Error al cargar los nombres de los profesores", ex);
         }
     }
+
+    @Override
+    public List<Profesor> loadProfesoresCohorte(int cor, String mat) throws ExceptionPersistence{
+        try {
+            return profesorMapper.consultarProfesoresCohorte(cor, mat);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new ExceptionPersistence("Error al cargar Recurso ", e);
+        }
+    }    
 }

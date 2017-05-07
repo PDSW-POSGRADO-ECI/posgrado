@@ -35,5 +35,7 @@ public interface RecursoMapper {
     *@nombreRecurso
     *@return asig retorna una lista de asignaturas
     **/
-    public void registrarRecurso(@Param("idcla")int idclase, @Param("nomrec")String nombreRecurso);
+    public void registrarRecurso(@Param("cant")int cant);
+
+    public void registrarRecursosClase(@Param("idrec")int id, @Param("idcla")int idcla, @Param("cant")int cant);
 }

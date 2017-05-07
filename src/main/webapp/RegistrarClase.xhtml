@@ -5,14 +5,16 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui" 
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                    xmlns:p="http://primefaces.org/ui"
+                    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                    xmlns:h="http://xmlns.jcp.org/jsf/html"
+                    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Registrar clases</title>
-        <link rel="stylesheet" type="text/css" href="formatos.css"/>
+        <link rel="stylesheet" type="text/css" href="registros.css"/>
         <link rel="stylesheet" type="text/css" href="fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="formatos.css"/>
     </h:head>
     
     <h:body>
@@ -26,23 +28,58 @@ and open the template in the editor.
                     <p:commandLink class="cmStyle" action="Menu">Regresar </p:commandLink>
                 </h:panelGrid>
             </div>
-             <p:panel id="panelregistroperiodo" header="Agregar clase a Materia: " style="position:absolute ;top: 22%;left: 10%;height: 75%;width: 80%;" >
-                    <h:panelGrid id="panelregper" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 10%; left: 8%;" >
-                     
-                        <p:outputLabel style="font-weight:bold;" value="Fecha:" for="inline" />
-                        <p:calendar id="inline" value="#{ClaseBean.claseFecha}" mode="inline" />
-                        
-                        <h:outputLabel style="font-weight:bold;" for="inicio" value="Hora Inicio Bloque:" />
-                        <p:inputText id="inicio" value="#{ClaseBean.hinicio}" />
-                        
-                        
-                        <h:outputLabel style="font-weight:bold;" for="fin" value="Hora Fin Bloque:" />
-                        <p:inputText id ="fin" value="#{ClaseBean.hfin}" />
-                       
-                    </h:panelGrid> 
-                   
-                </p:panel>
+            <p:panel id="panelregistroperiodo" header="Registrar clase de Materia: " style="position:absolute ;top: 22%;left: 18%;height: 100%;width: 61%;" >
+                <h:panelGrid id="panelselec" columns="1" cellpadding="20" style="margin:10px 0;position:absolute ; top: 10%; left: 10%;" >
+                    <p:separator >
+                        <p:outputLabel  style="font-weight:bold;" value="Periodo seleccionado:" for="per" />
+                        <p:outputLabel  style="margin-right: 10%;" id="per" value="#{ClaseBean.perselect}"  />
+                    </p:separator>
+                     <p:separator>
+                        <p:outputLabel  style="font-weight:bold;" value="Cohorte seleccionado:"  for="cor"/>
+                        <p:outputLabel style="margin-right: 10%;" id="cor" value="#{ClaseBean.corselect}"  />
+                    </p:separator>
+                    <p:separator >
+                        <p:outputLabel  style="font-weight:bold;" value="Profesor seleccionado:"  for="pro"/>
+                        <p:outputLabel  style="margin-right: 10%;" id="pro" value="#{ClaseBean.proselect}"  />
+                    </p:separator>
+                    <p:separator >
+                        <p:outputLabel  style="font-weight:bold;" value="Posgrado seleccionado:"  for="pos"/>
+                        <p:outputLabel  style="margin-right: 10%;" id="pos" value="#{ClaseBean.posselect}"  />
+                    </p:separator>
+                    <p:separator>
+                        <p:outputLabel  style="font-weight:bold;" value="Asignatura seleccionada:" for="asig"/>
+                        <p:outputLabel  style="margin-right: 10%;" id="asig" value="#{ClaseBean.asigselect}" />
+                    </p:separator>
+                    <p:separator>
+                        <p:outputLabel  style="font-weight:bold;" value="Materia seleccionada:"  for="mat"/>
+                        <p:outputLabel style="margin-right: 10%;" id="mat" value="#{ClaseBean.matselect}"  />
+                    </p:separator>
+                </h:panelGrid>
+                
+                <h:panelGrid id="panelregper" columns="2" cellpadding="20" style="margin:10px 0; position:absolute ; top: 10%; left: 50%;" >
+                    <p:outputLabel style="font-weight:bold;" value="Fecha de Clase:" for="inline" />
+                    <p:calendar id="inline" value="#{ClaseBean.claseFecha}" mode="inline" pattern="yyyy-MM-dd" />
+                    <h:outputLabel style="font-weight:bold;" for="timeinit" value="Hora Inicio Bloque:" />
+                    <p:calendar id="timeinit" value="#{ClaseBean.hinicio}" pattern="HH:mm:ss" timeOnly="true"  />
+                    <h:outputLabel style="font-weight:bold;" for="timefin" value="Hora Fin Bloque:" />
+                    <p:calendar id="timefin" value="#{ClaseBean.hfin}" pattern="HH:mm:ss" timeOnly="true"  />
+                </h:panelGrid> 
+                <h:panelGrid  id="panelrec" columns="2" cellpadding="40" style="margin:10px 0;margin-left: 10%;margin-right: 10%; position:absolute ; top: 65%; left: 0%;" >
+                    <p:dataTable scrollable="true" scrollHeight="140" id="TablaRecursos" var="rec" value="#{ClaseBean.recursos}" selection="#{ClaseBean.selectrec}" rowKey="#{rec.id}" style="margin-bottom:0">
+                        <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                        <p:column headerText="Recurso">
+                            <h:outputText value="#{rec.nomRecurso}"/>
+                        </p:column>
+                        <p:column headerText="Cantidad">
+                            <h:outputText value="#{rec.cantidad}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 95%; left:24%;" icon="ui-icon-circle-check" action="#{ClaseBean.saveMessage()}" actionListener="#{ClaseBean.registrarRecursosClase()}" update="ms" value="Registrar Clase y Recursos" />
+                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 95%; left:54%;" icon="ui-icon-circle-close" action="ProgramarClase" value="Cancelar" />
+                <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms" autoUpdate="true" showDetail="true"  closable="true" />
+
+            </p:panel>
         </h:form>
-        
     </h:body>
-</html>
+</ui:composition>

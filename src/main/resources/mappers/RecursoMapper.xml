@@ -41,29 +41,25 @@ and open the template in the editor.
         
 	rec.id,
         rec.recurso,
-        rec.disponible,
+        rec.cantidad,
+        rec.disponible
         
-        cla.fecha as CLA_fecha,
-        cla.hora_inicio as CLA_hora_inicio,
-        cla.hora_fin as  CLA_hora_fin
-        
-	FROM recurso as rec 
-        join recursoclase as reccla on rec.id=reccla.recurso_id
-        join clase as cla on cla.id=reccla.clase_id
-        
-        
+	FROM recurso as rec ;
     </select>
     
     <select parameterType="map" id="registrarRecurso">
-        INSERT INTO recurso (id,recurso,descripcion,clase_id) VALUES(#{idrec},#{recurso},#{disp},#{clase_id});
+        INSERT INTO recurso (recurso,disponible,cantidad) VALUES(#{recurso},true);
     </select>
     
+     <select parameterType="map" id="registrarRecursoClase">
+        INSERT INTO recursoclase (recurso_id,clase_id,cantidad) VALUES(#{idrec},#{idcla},#{cant});
+        UPDATE recurso  SET cantidad=cantidad-1  WHERE id=#{idrec}; 
+    </select>
     <resultMap type='Recurso' id='RecursoResult'>
         <id property='id' column='id'/>
         <result property='nomRecurso' column='recurso'/>
         <result property='disponible' column='disponible'/> 
         <result property='cantidad' column='cantidad'/>
-        <association property="clase_id" javaType="Clase" columnPrefix='CLA_' resultMap='edu.eci.pdsw.posgrado.dao.mybatis.mappers.ClaseMapper.ClaseResult'></association>      
     </resultMap>
     
 </mapper>

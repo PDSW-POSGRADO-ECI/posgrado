@@ -31,9 +31,16 @@ public interface RecursoDAO {
     *Registrar un nuevo recurso
     *@param idclase
     *@nombreRecurso
-    *@return asig retorna una lista de asignaturas
     **/
-    public void saveRecurso(int idclase, String nombreRecurso)throws ExceptionPersistence;
+    public void saveRecurso(String nombreRecurso,int cnatidad)throws ExceptionPersistence;
+    
+     /*
+    *Registrar un nuevo recurso para una clase
+    *@param idclase
+    *@nombreRecurso
+    **/
+    public void saveRecursoClase(int id, int idcla, int i) throws ExceptionPersistence;
+
     
     
 }

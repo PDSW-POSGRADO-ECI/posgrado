@@ -49,10 +49,6 @@ RETURN NEW;
 END;
 $$ language plpgsql;
 
-CREATE TRIGGER id_recurso BEFORE INSERT
-    ON recurso FOR EACH ROW 
-	EXECUTE PROCEDURE 
-	insertarecurso();
 --- constraints 
 ALTER TABLE Profesor ADD CONSTRAINT ck_tipodoc CHECK (tipo_documento IN ('cc','NIT','ce' ) ) ;
 ALTER TABLE profesor ADD CONSTRAINT ck_profevorreo CHECK (correo <> '' );

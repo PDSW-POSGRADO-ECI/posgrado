@@ -14,34 +14,34 @@
             <div class="item">
                 <img src="resources/campus.jpg" class="imagen"/>
             </div>
-           
+            <div class="borde"></div>
             <header>
-            <nav>
-                <ul><li><p:commandLink action="Menu?faces-redirect=true">Inicio</p:commandLink></li>
-                    <li><p:commandLink action="Menu?faces-redirect=true">Reportes</p:commandLink>  
+                <nav>
+                    <ul><li><p:commandLink action="Menu?faces-redirect=true">Inicio</p:commandLink></li>
+                        <li><p:commandLink action="Menu?faces-redirect=true">Reportes</p:commandLink>  
                         <ul> 
                             <li><p:commandLink action="ReporteSemestral?faces-redirect=true">General</p:commandLink></li>
                             <li><p:commandLink action="ReporteRecurso?faces-redirect=true">Recursos</p:commandLink></li>
                         </ul> 
-                    </li>
-                    <li><p:commandLink action="RegistrarMateria?faces-redirect=true">Registros</p:commandLink>
+                        </li>
+                        <li><p:commandLink action="RegistrarMateria?faces-redirect=true">Registros</p:commandLink>
                         <ul> 
                             <li><p:commandLink action="RegistrarMateria?faces-redirect=true">Registrar Materia</p:commandLink>
-                                <ul>    
-                                    <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
-                                        <li>         
-                                        <p:commandLink action="Materias?faces-redirect=true" actionListener="#{RegistroMateriaBean.programName(nombre)}" value="#{nombre}" >
-                                        </p:commandLink>     
-                                        </li>     
-                                    </ui:repeat> 
-                                </ul>
+                            <ul>    
+                                <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
+                                    <li>         
+                                    <p:commandLink action="Materias?faces-redirect=true" actionListener="#{RegistroMateriaBean.programName(nombre)}" value="#{nombre}" >
+                                    </p:commandLink>     
+                                    </li>     
+                                </ui:repeat> 
+                            </ul>
                             </li>
                             <li><p:commandLink action="ProgramarClase?faces-redirect=true">Programar Clases</p:commandLink></li>
                         </ul>
-                    </li>      
-                    <li><p:commandLink action="Inicio?faces-redirect=true"><span><i class="icon icon-exit"></i></span>Salir</p:commandLink></li>
-                </ul>
-            </nav>
+                        </li>      
+                        <li><p:commandLink action="Inicio?faces-redirect=true"><span><i class="icon icon-exit"></i></span>Salir</p:commandLink></li>
+                    </ul>
+                </nav>
             </header>
 
             

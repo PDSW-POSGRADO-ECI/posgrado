@@ -252,12 +252,14 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     /**
      * registrar una nueva clase en la programacion
      *
-     * @param i
-     * @param per
+     * @param cor
+     * @param mat
      * @param fecha
+     * @param profe
      * @param horafin
      * @param horainit
-     * @param doc
+     * @return 
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
     public String registrarClase(int cor, String mat, Date fecha, Time horainit, Time horafin, String profe) throws ExceptionServiciosReporte {
@@ -266,13 +268,13 @@ public class ServiciosReporteImpl implements ServiciosReporte {
 
     /**
      * registrar un recurso a una clase determinada
-     *
-     * @param idclase
+     * @param cant
      * @param nombreRecurso
+     * @return 
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
-    public String registrarRecurso(int idclase, String nombreRecurso) throws ExceptionServiciosReporte {
+    public String registrarRecurso(int cant, String nombreRecurso) throws ExceptionServiciosReporte {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -353,6 +355,47 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         return null;
     
     }   
+
+    @Override
+    public List<Recurso> consultarAllRecursos() throws ExceptionServiciosReporte {
+        try {
+            return recurso.loadRecursos();
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar todos ls recursos", ex);
+        }
+    }
+
+    @Override
+    public String registrarRecursoClase(List<Recurso> rec) throws ExceptionServiciosReporte  {
+        String ms="Recursos registrados satisfactoriamente";
+        try {
+            List<Clase> c=clase.loadClase();
+            int idcla=-1;
+            for(Clase clas: c){
+                idcla=Math.max(idcla,clas.getId());
+            }
+            for(int i=0;i<rec.size();i++){
+                recurso.saveRecursoClase(rec.get(i).getId(),idcla,1);
+            }
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar todos los recursos", ex);
+        }
+        return ms;
+    }
+
+    @Override
+    public List<String> consultarProfesoresCohorte(int cor, String mat) throws ExceptionServiciosReporte {
+        ArrayList<String> s=new ArrayList<>();
+        try {
+            List<Profesor> prof=profesor.loadProfesoresCohorte(cor, mat);
+            for(Profesor p:prof){
+                s.add(p.getNombre());
+            }
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar todos ls profesores", ex);
+        }
+        return s;
+    }
 
    
 

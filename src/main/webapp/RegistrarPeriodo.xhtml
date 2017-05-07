@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                    xmlns:p="http://primefaces.org/ui"
+                    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                    xmlns:h="http://xmlns.jcp.org/jsf/html"
+                    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrar Periodo</title>
+         <link rel="stylesheet" type="text/css" href="registros.css"/>
+        <link rel="stylesheet" type="text/css" href="fonts.css"></link>
+        <link rel="stylesheet" type="text/css" href="formatos.css"/>
+    </h:head>
+     
+    <h:body>
+        <h:form id="nuevoregistro1">
+            <div class="item">
+                <img src="resources/campus.jpg" class="imagen" />
+            </div>
+            <div id="barra2" style="text-align: right; margin:25px 0;  position:relative ; top: 0%; left: 0%; right:10%" >
+                <h:panelGrid columns="3" style="margin-right: auto">
+                    <i class="icon icon-home"></i>
+                    <p:commandLink class="cmStyle" action="Menu">Regresar </p:commandLink>
+                </h:panelGrid>
+            </div>
+            <p:panel id="panelregistroperiodo" header="Registrar Periodo:" style="position:absolute ;top: 22%;left: 24%;height: 60%;width: 50%;" >
+                <h:panelGrid id="panelregper" columns="2" cellpadding="20" style="margin:10px 0; position:absolute ; top: 10%; left: 10%;" >
+                    <p:outputLabel style="font-weight:bold;" value="Periodo:" for="perinput" />
+                    <p:inputMask id="perinput" mask="2099-9" value="#{RegistroClaseBean.nuevoper}" required="false"/>
+                    <p:outputLabel style="font-weight:bold;" value="Fecha de Inicio:" for="perini" />
+                    <p:calendar id="perini" value="#{RegistroClaseBean.fini}" pattern="yyyy-MM-dd" mask="true"  showOn="button"  />
+                    <p:outputLabel style="font-weight:bold;" value="Fecha de Terminacion:" for="perfin" />
+                    <p:calendar id="perfin" value="#{RegistroClaseBean.ffin}" pattern="yyyy-MM-dd" mask="true"  showOn="button" />
+                </h:panelGrid> 
+                
+                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:24%;" icon="ui-icon-circle-check" actionListener="#{RegistroClaseBean.registrarPeriodo()}" action="#{RegistroClaseBean.saveMessage()}" update="ms"  value="Registrar Periodo" />
+                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 75%; left:54%;" icon="ui-icon-circle-close" action="ProgramarClase" value="Cancelar" />
+
+                <p:messages style="position:absolute ; top: 85%; left:10%;" id="ms"  autoUpdate="true" showDetail="true" closable="true" />
+            </p:panel>
+        </h:form>
+     </h:body>  
+</ui:composition>

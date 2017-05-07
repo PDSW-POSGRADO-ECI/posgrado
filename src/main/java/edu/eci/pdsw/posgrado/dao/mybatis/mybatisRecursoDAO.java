@@ -47,8 +47,20 @@ public class mybatisRecursoDAO implements RecursoDAO {
     }
 
     @Override
-    public void saveRecurso(int idclase, String nombreRecurso) {
+    public void saveRecurso(String nombreRecurso, int cantidad) throws ExceptionPersistence{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public void saveRecursoClase(int id, int idcla, int i) throws ExceptionPersistence{
+        try{
+            recursoMapper.registrarRecursosClase(id,idcla,i);
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new ExceptionPersistence("Error al cargar Recurso ",e);
+        } 
+    }
+
+   
+
 }
