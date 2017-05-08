@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.posgrado.dao.mybatis.mappers.HorarioMapper">
+    
+    <select parameterType="map" id="consultarHorarioProfesor" resultMap="HorarioResult">
+        SELECT
+        
+            hor.fecha,
+            hor.hora_inicio,
+            hor.hora_fin
+        
+        FROM profesor as pro
+        join profesorxhorario as phor on phor.profesor_documento=pro.documento
+        join horario as hor on hor.id=phor.horario_id
+        WHERE pro.nombre=#{nomprof} and hor.fecha=#{fe};
+    </select>
+    
+   
+    <resultMap type="Horario" id="HorarioResult">
+        <id property='documento' column='documento'/>
+        <result property='nombre' column='nombre'/>
+        <result property='correo' column='correo'/>
+        <result property='telefono' column='telefono'/>
+    </resultMap>
+</mapper>

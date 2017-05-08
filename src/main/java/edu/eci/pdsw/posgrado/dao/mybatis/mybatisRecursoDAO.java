@@ -10,6 +10,7 @@ import edu.eci.pdsw.posgrado.dao.ExceptionPersistence;
 import edu.eci.pdsw.posgrado.dao.RecursoDAO;
 import edu.eci.pdsw.posgrado.dao.mybatis.mappers.RecursoMapper;
 import edu.eci.pdsw.posgrado.entities.Recurso;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class mybatisRecursoDAO implements RecursoDAO {
     *@see RecursoDAO  loadRecursoXperiodo
     **/
     @Override
-    public List<Recurso> loadRecursoXperiodo(String per) throws ExceptionPersistence {
+    public ArrayList<Recurso> loadRecursoXperiodo(String per) throws ExceptionPersistence {
         try{
             return recursoMapper.consultarRecursoDePeriodo(per);
         }

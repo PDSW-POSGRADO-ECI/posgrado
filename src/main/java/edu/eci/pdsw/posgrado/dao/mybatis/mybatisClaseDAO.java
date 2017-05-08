@@ -61,7 +61,30 @@ public class mybatisClaseDAO implements ClaseDAO {
     }
 
     @Override
-    public void saveClase(int corte, String per, Date fecha, Time horainit, Time horafin, int doc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void saveClase(int corte, String per, Date fecha, Time horainit, Time horafin, int doc)  throws ExceptionPersistence {
+        try {
+            claseMapper.registrarClase(corte, per, fecha, horainit, horafin, doc);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al registrar clase", e);
+        }
+    }
+
+    @Override
+    public List<Clase> loadFechasRecursoClase(int rec)  throws ExceptionPersistence {
+        try {
+            return claseMapper.consultarFechasRecursoClase(rec);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al consultar fechas de recursos", e);
+        }
+    }
+
+    @Override
+    public List<Clase> loadFechasProfesorClase(String periodo, String nom,Date fecha)  throws ExceptionPersistence {
+
+        try {
+            return claseMapper.consultarFechasProfesorClase(periodo, nom,fecha);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al consultar fechas de profesores", e);
+        }
     }
 }

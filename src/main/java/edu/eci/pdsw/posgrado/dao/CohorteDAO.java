@@ -6,6 +6,7 @@
 package edu.eci.pdsw.posgrado.dao;
 
 import edu.eci.pdsw.posgrado.entities.Cohorte;
+import edu.eci.pdsw.posgrado.entities.Periodo;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface CohorteDAO {
     *@param p
     *@return una lista de cohortes
     **/
-    public List<Cohorte> loadPeriodo(String p) throws ExceptionPersistence;
+    public Periodo loadPeriodo(String p) throws ExceptionPersistence;
     
     /*
     *Obtener los cortes de una materia y periodo

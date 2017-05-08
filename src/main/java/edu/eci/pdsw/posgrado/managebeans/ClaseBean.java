@@ -11,7 +11,6 @@ import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
 import edu.eci.pdsw.posgrado.services.ServiciosReporte;
 import edu.eci.pdsw.posgrado.services.ServiciosReporteFactory;
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -30,10 +29,11 @@ import javax.faces.context.FacesContext;
 public class ClaseBean implements Serializable{
     
     private ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
-    private Time hinicio;
-    private Time hfin;
+    private Date hinicio;
+    private Date hfin;
     private Date ClaseFecha;
     private String mensaje;
+    private String mensaje2;
     private String corselect;
     private String posselect;
     private String proselect;
@@ -56,13 +56,17 @@ public class ClaseBean implements Serializable{
     
     */
     public void registrarRecursosClase() throws ExceptionServiciosReporte{
-        mensaje=report.registrarRecursoClase(selectrec);
+        if(selectrec.isEmpty()){mensaje2="!No registro recursos para la clase";}
+        else{mensaje2=report.registrarRecursoClase(selectrec);}
+        
     }
-    public List<Recurso> getRecursosClase()throws ExceptionServiciosReporte {
-        return null;//report.consultarRecursosClase();
-    }
+    
     public void registrarClase() throws ExceptionServiciosReporte{
-        mensaje=report.registrarClase(Integer.valueOf(corselect), matselect, ClaseFecha, hinicio, hfin, " ");
+        if(!"".equals(proselect) && !"".equals(perselect) && !"".equals(corselect) && !"".equals(matselect)){
+            mensaje=report.registrarClase(Integer.valueOf(corselect), matselect, ClaseFecha,new java.sql.Time(hinicio.getTime()), new java.sql.Time(hfin.getTime()), proselect,perselect);
+            registrarRecursosClase();
+        }else{mensaje="!Por Favor seleccione con anterioridad el corte, profesor, materia, posgrado y asignatura.";}
+        
     }
     public void selection(String per,String pos,String asig,String mat,String corte,String prof){
         corselect=corte;
@@ -79,6 +83,7 @@ public class ClaseBean implements Serializable{
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", mensaje));
         } else if(mensaje.contains("!")){
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion: ", mensaje));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion: ", mensaje2));
         }else {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Successful: ", mensaje));
         }
@@ -124,23 +129,23 @@ public class ClaseBean implements Serializable{
     public void setPerselect(String perselect) {
         this.perselect = perselect;
     }
-     
-    public Time getHinicio() {
+
+    public Date getHinicio() {
         return hinicio;
     }
 
-    public void setHinicio(Time hinicio) {
+    public void setHinicio(Date hinicio) {
         this.hinicio = hinicio;
     }
 
-    public Time getHfin() {
+    public Date getHfin() {
         return hfin;
     }
 
-    public void setHfin(Time hfin) {
+    public void setHfin(Date hfin) {
         this.hfin = hfin;
     }
-
+   
     public Date getClaseFecha() {
         return ClaseFecha;
     }

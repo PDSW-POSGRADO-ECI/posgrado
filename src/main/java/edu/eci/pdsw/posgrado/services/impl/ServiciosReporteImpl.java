@@ -10,7 +10,9 @@ import edu.eci.pdsw.posgrado.dao.*;
 import edu.eci.pdsw.posgrado.entities.Asignatura;
 import edu.eci.pdsw.posgrado.entities.Clase;
 import edu.eci.pdsw.posgrado.entities.Cohorte;
+import edu.eci.pdsw.posgrado.entities.Horario;
 import edu.eci.pdsw.posgrado.entities.Materia;
+import edu.eci.pdsw.posgrado.entities.Periodo;
 import edu.eci.pdsw.posgrado.entities.Posgrado;
 import edu.eci.pdsw.posgrado.entities.Profesor;
 import edu.eci.pdsw.posgrado.entities.Recurso;
@@ -44,6 +46,8 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     private AsignaturaDAO asignatura;
     @Inject
     private PosgradoDAO posgrado;
+    @Inject 
+    private HorarioDAO horario;
 
     /**
      * Consultar los recursos por periodo selccionado
@@ -53,7 +57,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
-    public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte {
+    public ArrayList<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte {
         try {
             return recurso.loadRecursoXperiodo(a);
         } catch (ExceptionPersistence ex) {
@@ -73,22 +77,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
             return corte.loadPeriodos();
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al obtener Periodos ", ex);
-        }
-    }
-
-    /**
-     * consultar todos los cohortes de un periodo
-     *
-     * @param a
-     * @return lista de cohortes
-     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
-     */
-    @Override
-    public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte {
-        try {
-            return corte.loadPeriodo(a);
-        } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar Periodo " + a, ex);
         }
     }
 
@@ -258,28 +246,52 @@ public class ServiciosReporteImpl implements ServiciosReporte {
      * @param profe
      * @param horafin
      * @param horainit
+     * @param periodo
      * @return 
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
-    public String registrarClase(int cor, String mat, Date fecha, Time horainit, Time horafin, String profe) throws ExceptionServiciosReporte {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String registrarClase(int cor, String mat, Date fecha, Time horainit, Time horafin, String profe,String periodo) throws ExceptionServiciosReporte {
+        String ms = "Clase Agregada";
+        try {
+            Periodo per = corte.loadPeriodo(periodo);
+            boolean var = true;System.err.println(per.getPeriodo());
+            if (per.getFecha_inicio().compareTo(fecha) <= 0 && per.getFecha_fin().compareTo(fecha) >= 0) {
+                List<Clase> cl = clase.loadFechasProfesorClase(periodo, profe, fecha);
+                for (int i=0;i<cl.size() && var ;i++) {
+                    if (cl.get(i).getHora_inicio().compareTo(horainit) > 0 && cl.get(i).getHora_fin().compareTo(horainit) <= 0 && cl.get(i).getHora_inicio().compareTo(horafin) >= 0 && cl.get(i).getHora_fin().compareTo(horafin) < 0) {
+                        var = false;
+                        ms = "Error el profesor no tiene esa disponibilidad de horario, ya tiene una clase en ese horario";
+                    }
+                }
+            } else {
+                ms = "Error fecha incorrecta, no esta dentro del periodo seleccionado";
+            }
+            if (horainit.compareTo(horafin) < 0 && var) {
+                Horario hor = horario.loadHorarioProfesor(profe, fecha);
+                if (hor.getHora_inicio().compareTo(horainit) <= 0 && hor.getHora_fin().compareTo(horainit) > 0 && hor.getHora_inicio().compareTo(horafin) < 0 && hor.getHora_fin().compareTo(horafin) >= 0) {
+                    List<Profesor> p = profesor.loadProfesoresCohorte(cor, mat);
+                    int docp = -1;
+                    for (Profesor prof : p) {
+                        if (prof.getNombre().equals(profe)) {
+                            docp = prof.getDocumento();
+                            var=false;
+                        }
+                    }
+                    clase.saveClase(cor, ms, fecha, horainit, horafin, docp);
+                } else {
+                    ms = "Error el profesor no tiene esa disponibilidad de horario";
+                }
+            } else {
+                ms = "Error las Horas son incorrectas";
+            }
+
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al registrar el periodo ", ex);
+        }
+        return ms;
     }
 
-    /**
-     * registrar un recurso a una clase determinada
-     * @param cant
-     * @param nombreRecurso
-     * @return 
-     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
-     */
-    @Override
-    public String registrarRecurso(int cant, String nombreRecurso) throws ExceptionServiciosReporte {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    
     
     @Override
     public String registrarPeriodo(String per, Date fini, Date ffin) throws ExceptionServiciosReporte {
@@ -292,7 +304,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
                 ms = "Error el Periodo esta duplicado - La fecha inicial es mayor que la fecha de terminacion";
             }
         } catch (ExceptionPersistence ex) {
-            return new ExceptionServiciosReporte("Error al registrar el periodo " + per, ex).getMessage();
+            throw new ExceptionServiciosReporte("Error al registrar el periodo " + per, ex);
         }
         return ms;
     }
@@ -369,14 +381,18 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     public String registrarRecursoClase(List<Recurso> rec) throws ExceptionServiciosReporte  {
         String ms="Recursos registrados satisfactoriamente";
         try {
-            List<Clase> c=clase.loadClase();
-            int idcla=-1;
-            for(Clase clas: c){
-                idcla=Math.max(idcla,clas.getId());
-            }
-            for(int i=0;i<rec.size();i++){
-                recurso.saveRecursoClase(rec.get(i).getId(),idcla,1);
-            }
+            if (rec.size() > 0) {
+                List<Clase> c = clase.loadClase();
+                int idcla = -1;
+                for (Clase clas : c) {
+                    idcla = Math.max(idcla, clas.getId());
+                } 
+                for (int i = 0; i < rec.size(); i++) {
+                    recurso.saveRecursoClase(rec.get(i).getId(), idcla, 1);
+                    
+                }
+               
+            }else{ms="No a registrado ningun recurso";}
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al cargar todos los recursos", ex);
         }
@@ -395,6 +411,15 @@ public class ServiciosReporteImpl implements ServiciosReporte {
             throw new ExceptionServiciosReporte("Error al cargar todos ls profesores", ex);
         }
         return s;
+    }
+
+    @Override
+    public List<Clase> consultarFechasRecursoClase(int rec) throws ExceptionServiciosReporte {
+        try {
+            return clase.loadFechasRecursoClase(rec);
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar todos ls profesores", ex);
+        }
     }
 
    

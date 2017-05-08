@@ -28,25 +28,37 @@ and open the template in the editor.
             <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 18%; left: 3%; right:5%">
                 <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="idp" />
                 <p:autoComplete id="idp" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
-                <p:commandButton icon="ui-icon-refresh" value="Generar" update=":ReporteRecursos:TablaRecursos"/>
+                <p:commandButton icon="ui-icon-refresh" value="Generar" update="ReporteRecursos:TablaRecursos" />
             </h:panelGrid>
-            <br>
-            
-            </br>
-            <p:dataTable id="TablaRecursos" scrollable="true" scrollHeight="500" style="position:absolute ; top: 32%; left: 5%; right:5%" var="rec" value="#{ReportesBean.recursos}">
-                <p:column headerText="Nombre Recurso">
+            <p:dataTable selection="#{ReportesBean.selectrec}" rowKey="#{rec.id}" id="TablaRecursos" scrollable="true" scrollHeight="500" style="position:absolute ;width: 40%;height:50%; top: 32%; left: 30%; right:15%" var="rec" value="#{ReportesBean.recurso}">
+                <p:column selectionMode="single" style="width:16px;text-align:center"/>
+                <p:column headerText="Nombre">
                     <h:outputText value="#{rec.nomRecurso}"/>
                 </p:column>
-                <p:column headerText="Fecha">
-                    <h:outputText value="#{ReportesBean.getHeader(rec.clase_id.fecha)}"/>
+                <p:column headerText="Cantidad">
+                    <h:outputText value="#{rec.cantidad}"/>
                 </p:column>
-                <p:column headerText="Hora Inicio">
-                    <h:outputText value="#{rec.clase_id.hora_inicio}"/>
-                </p:column>
-                <p:column headerText="Hora Fin">
-                    <h:outputText value="#{rec.clase_id.hora_fin}"/>
-                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton update=":ReporteRecursos:Tablaprograma" oncomplete="PF('rec10').show()" icon="ui-icon-search" value="Ver programacion" />
+                </f:facet>
             </p:dataTable>
+            <p:dialog header="Programacion del recurso: #{ReportesBean.selectrec.nomRecurso}" modal="true" resizable="false" widgetVar="rec10"  width="900" height="500">
+                <p:dataTable rendered="#{not empty ReportesBean.selectrec}" id="Tablaprograma" scrollable="true" scrollHeight="470" var="cla" value="#{ReportesBean.recursosClase}">
+                     <p:column headerText="Materia">
+                        <h:outputText value="#{cla.materia_sigla.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Fecha de clase">
+                        <h:outputText value="#{ReportesBean.getHeader((cla.fecha))}"/>
+                    </p:column>
+                    <p:column headerText="Hora inicio">
+                        <h:outputText value="#{cla.hora_inicio}"/>
+                    </p:column>
+                    <p:column headerText="Hora Final">
+                        <h:outputText value="#{cla.hora_fin}"/>
+                    </p:column>
+                   
+                </p:dataTable>
+            </p:dialog>
         </h:form>
     </h:body>
 

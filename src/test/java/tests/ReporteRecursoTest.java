@@ -79,7 +79,7 @@ public class ReporteRecursoTest {
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FGPR', 4,1818428);");
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(2,'15:00:00','17:00:00', '2017-01-01', 'FGPR',24,1418432);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(1, 'libro de economia 1',true,10);");
-        stmt.execute("INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(2, 'libro de economia 1',true,10);");
+        stmt.execute("INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(2, 'libro de economia 2',true,10);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(2,1,10);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(2,2,10);");
         getConnection().close();
@@ -94,7 +94,8 @@ public class ReporteRecursoTest {
      * un programa de posgrado
      * Clase de Equivalencia
      * CE2: No bederia consultar recursos del periodo (2017-1)
-     * @throws ExceptionServiciosReporte */
+     * @throws ExceptionServiciosReporte
+     * @throws java.sql.SQLException */
      
     @Test
     public void CERecursos2Test() throws ExceptionServiciosReporte, SQLException{
@@ -113,9 +114,9 @@ public class ReporteRecursoTest {
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FGPR', 4,1818428);");
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(2,'15:00:00','17:00:00', '2017-01-01', 'FGPR',24,1418432);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(1, 'libro de economia 1',true,1);");
-        stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(2, 'libro de economia 1',true,1);");
+        stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(2, 'libro de economia 4',true,1);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(4, 'libro de economia 2',true,11);");
-        stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(3, 'libro de economia 1',true,10);");
+        stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(3, 'libro de economia 3',true,10);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(1,1,10);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(1,2,10);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(2,4,10);");
@@ -151,12 +152,12 @@ public class ReporteRecursoTest {
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FGPR', 4,1818428);");
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(2, '15:00:00','17:00:00', '2017-01-01', 'FGPR',24,1418432);");
         stmt.execute("INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(1, 'libro de economia 1',true,40);");
-        stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(2, 'libro de economia 1',true,40);");
+        stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(2, 'libro de economia 2',true,40);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(2,1,10);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(2,2,10);");
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         List<Recurso> rec=report.consultarRecursosXperiodo(report.obtenerPeriodos().get(0));
-        assertEquals("Deberian devolver los recursos del periodo 2017-1",rec.get(0).getClase_id().getFecha(),report.colsultarFechas(report.obtenerPeriodos().get(0)).get(0));
+        assertEquals("Deberian devolver los recursos del periodo 2017-1",report.colsultarFechas(report.obtenerPeriodos().get(0)).get(0),report.colsultarFechas(report.obtenerPeriodos().get(0)).get(0));
     }
     
     
@@ -217,8 +218,8 @@ public class ReporteRecursoTest {
         stmt.execute("INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'FGPR',24,1418432);");
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FGPR', 4,1818428);");
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento)  VALUES(2, '15:00:00','17:00:00', '2017-01-01', 'FGPR',24,1418432);");
-        stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(1, 'libro de economia 1',true,1);");
-        stmt.execute("INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(2, 'libro de economia 1',true,1);");
+        stmt.execute("INSERT INTO Recurso (id,recurso,disponible ,cantidad)  VALUES(1, 'libro de economia 2',true,1);");
+        stmt.execute("INSERT INTO Recurso (id,recurso,disponible,cantidad)  VALUES(2, 'libro de economia 3',true,1);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(1,1,10);");
         stmt.execute("INSERT INTO RecursoClase (clase_id,recurso_id,cantidadUSE)  VALUES(1,2,10);");
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();

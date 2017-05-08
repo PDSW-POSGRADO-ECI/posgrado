@@ -16,18 +16,16 @@ public class Recurso implements Serializable{
     private int id;
     private String nomRecurso;
     private boolean disponible;
-    private Clase clase_id;
     private int cantidad ;
             
     public Recurso(){
         nomRecurso="";
         disponible=true;
     }
-    public Recurso(int id,String nombreRecurso,boolean disp,Clase idc,int cant){
+    public Recurso(int id,String nombreRecurso,boolean disp,int cant){
         this.id=id;
         nomRecurso=nombreRecurso;
         disponible=disp;
-        clase_id=idc;
         cantidad=cant;
     }
 
@@ -53,14 +51,6 @@ public class Recurso implements Serializable{
 
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
-    }
-
-    public Clase getClase_id() {
-        return clase_id;
-    }
-
-    public void setClase_id(Clase clase_id) {
-        this.clase_id = clase_id;
     }
 
     public int getCantidad() {

@@ -6,6 +6,7 @@
 package edu.eci.pdsw.posgrado.dao;
 
 import edu.eci.pdsw.posgrado.entities.Recurso;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public interface RecursoDAO {
     *@param per
     *@return asig retorna una lista de asignaturas
     **/
-    public List<Recurso> loadRecursoXperiodo(String per)throws ExceptionPersistence;
+    public ArrayList<Recurso> loadRecursoXperiodo(String per)throws ExceptionPersistence;
      
     /*
     *Obtener todos los recursos de la base de datos

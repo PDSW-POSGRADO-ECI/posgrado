@@ -16,6 +16,7 @@
         <typeAlias type='edu.eci.pdsw.posgrado.entities.Profesor' alias='Profesor'/>
         <typeAlias type='edu.eci.pdsw.posgrado.entities.Posgrado' alias='Posgrado'/>
         <typeAlias type='edu.eci.pdsw.posgrado.entities.Periodo' alias='Periodo'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Horario' alias='Horario'/>
     </typeAliases>
        
     <environments default="development">
@@ -38,5 +39,6 @@
         <mapper resource="mappers/MateriaMapper.xml"></mapper>  
         <mapper resource="mappers/AsignaturaMapper.xml"></mapper>
         <mapper resource="mappers/PosgradoMapper.xml"></mapper>
+        <mapper resource="mappers/HorarioMapper.xml"></mapper>
     </mappers>
 </configuration>

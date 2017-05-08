@@ -7,6 +7,7 @@ package edu.eci.pdsw.posgrado.services;
 
 import edu.eci.pdsw.posgrado.entities.*;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,11 +17,9 @@ import java.util.List;
  */
 public interface ServiciosReporte {
 
-    public List<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte;
+    public ArrayList<Recurso> consultarRecursosXperiodo(String a) throws ExceptionServiciosReporte;
 
     public List<String> obtenerPeriodos() throws ExceptionServiciosReporte;
-
-    public List<Cohorte> obtenerPeriodo(String a) throws ExceptionServiciosReporte;
 
     public List<Profesor> colsultarProfesores() throws ExceptionServiciosReporte;
 
@@ -35,9 +34,7 @@ public interface ServiciosReporte {
     /*
     *Sprint2
     */
-    public String registrarClase(int corte, String mat, Date fecha, Time horainit, Time horafin,String profe) throws ExceptionServiciosReporte;
-
-    public String registrarRecurso(int cant, String nombreRecurso) throws ExceptionServiciosReporte;
+    public String registrarClase(int corte, String mat, Date fecha, Time horainit, Time horafin,String profe,String periodo) throws ExceptionServiciosReporte;
 
     public String registrarMateriaCohorte(String profe, int cort,String periodo, String sigla)throws ExceptionServiciosReporte;
     
@@ -68,4 +65,8 @@ public interface ServiciosReporte {
     public String registrarRecursoClase(List<Recurso> selectrec) throws ExceptionServiciosReporte ;
 
     public List<String> consultarProfesoresCohorte(int cor, String mat) throws ExceptionServiciosReporte;
+    
+    public List<Clase> consultarFechasRecursoClase( int rec) throws ExceptionServiciosReporte;
+
+
 } 

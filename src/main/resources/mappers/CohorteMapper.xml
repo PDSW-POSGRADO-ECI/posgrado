@@ -31,14 +31,25 @@ and open the template in the editor.
     <select parameterType="map" id="consultarMateriaCohorte" resultMap="CohorteResult">
         
         SELECT
-            co.id
-            
+            co.id,
+            co.periodo_periodo
         FROM materiacohorte as matco
         join cohorte as co on matco.cohorte_id=co.id
         join materia as mat on matco.materia_sigla=mat.sigla
         WHERE co.periodo_periodo=#{periodo} and mat.nombre=#{nombremat}
         GROUP BY co.id;
 
+    </select>
+    
+    <select parameterType="map" id="consultarPeriodo" resultMap="PeriodoResult">
+        
+        SELECT
+            per.periodo,
+            per.fecha_inicio,
+            per.fecha_fin
+        FROM periodo as per
+        WHERE per.periodo=#{periodo};
+        
     </select>
     
     <select parameterType="map" id="registrarCohorte">

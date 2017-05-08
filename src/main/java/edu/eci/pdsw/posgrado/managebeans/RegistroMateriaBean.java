@@ -34,6 +34,9 @@ public class RegistroMateriaBean implements Serializable {
     private String seleccion;
     private String prob;
 
+    public RegistroMateriaBean(){
+    
+    }
     public String getProb() {
         return prob;
     }

@@ -15,26 +15,20 @@ and open the template in the editor.
         
 	rec.id,
         rec.recurso,
-        rec.disponible,
-        
-        cla.id as CLA_id,
-        cla.fecha as CLA_fecha,
-        cla.hora_inicio as CLA_hora_inicio,
-        cla.hora_fin as CLA_hora_fin
+        rec.cantidad,
+        rec.disponible
         
 	FROM recurso as rec 
         join recursoclase as reccla on rec.id=reccla.recurso_id
         join clase as cla on cla.id=reccla.clase_id
-	join materiacohorte as matco on (matco.materia_sigla=cla.materiaCohorte_materia_sigla AND
-        matco.cohorte_id=cla.materiaCohorte_cohorte_id AND
-        matco.profesor_documento=cla.materiaCohorte_profesor_documento )
-        join cohorte as co on matco.cohorte_id=co.id 
+	join cohorte as co on cla.materiacohorte_cohorte_id=co.id 
         join periodo as per on  per.periodo=co.periodo_periodo
-        
         WHERE per.periodo=#{periodo}
-        ORDER BY cla.fecha;
+        GROUP BY rec.id;
         
     </select>
+    
+    
     
     <select parameterType="map" id="consultarRecursos" resultMap="RecursoResult">
         SELECT
@@ -51,9 +45,11 @@ and open the template in the editor.
         INSERT INTO recurso (recurso,disponible,cantidad) VALUES(#{recurso},true);
     </select>
     
-     <select parameterType="map" id="registrarRecursoClase">
-        INSERT INTO recursoclase (recurso_id,clase_id,cantidad) VALUES(#{idrec},#{idcla},#{cant});
-        UPDATE recurso  SET cantidad=cantidad-1  WHERE id=#{idrec}; 
+     <select parameterType="map" id="registrarRecursosClase">
+        INSERT INTO recursoclase (recurso_id,clase_id,cantidaduse) VALUES(#{idrec},#{idcla},#{cant});
+        UPDATE recurso  SET cantidad=cantidad-#{cant}  WHERE id=#{idrec}; 
+        UPDATE recurso  SET cantidad=0  WHERE id=#{idrec} AND 0&gt;cantidad; 
+        UPDATE recurso  SET disponible=false  WHERE id=#{idrec} and cantidad=0; 
     </select>
     <resultMap type='Recurso' id='RecursoResult'>
         <id property='id' column='id'/>

@@ -10,6 +10,7 @@ import com.google.inject.Injector;
 import edu.eci.pdsw.posgrado.dao.AsignaturaDAO;
 import edu.eci.pdsw.posgrado.dao.ClaseDAO;
 import edu.eci.pdsw.posgrado.dao.CohorteDAO;
+import edu.eci.pdsw.posgrado.dao.HorarioDAO;
 import edu.eci.pdsw.posgrado.dao.MateriaDAO;
 import edu.eci.pdsw.posgrado.dao.PosgradoDAO;
 import edu.eci.pdsw.posgrado.dao.ProfesorDAO;
@@ -17,6 +18,7 @@ import edu.eci.pdsw.posgrado.dao.RecursoDAO;
 import edu.eci.pdsw.posgrado.dao.mybatis.mybatisAsignaturaDAO;
 import edu.eci.pdsw.posgrado.dao.mybatis.mybatisClaseDAO;
 import edu.eci.pdsw.posgrado.dao.mybatis.mybatisCohorteDAO;
+import edu.eci.pdsw.posgrado.dao.mybatis.mybatisHorarioDAO;
 import edu.eci.pdsw.posgrado.dao.mybatis.mybatisMateriaDAO;
 import edu.eci.pdsw.posgrado.dao.mybatis.mybatisPosgradoDAO;
 import edu.eci.pdsw.posgrado.dao.mybatis.mybatisProfesorDAO;
@@ -51,6 +53,7 @@ public class ServiciosReporteFactory {
                 bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
                 bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
                 bind(PosgradoDAO.class).to(mybatisPosgradoDAO.class);
+                bind(HorarioDAO.class).to(mybatisHorarioDAO.class);
             }
 
         }
@@ -69,6 +72,7 @@ public class ServiciosReporteFactory {
                 bind(ProfesorDAO.class).to(mybatisProfesorDAO.class);
                 bind(AsignaturaDAO.class).to(mybatisAsignaturaDAO.class);
                 bind(PosgradoDAO.class).to(mybatisPosgradoDAO.class);
+                bind(HorarioDAO.class).to(mybatisHorarioDAO.class);
             }
 
         }

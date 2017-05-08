@@ -10,6 +10,7 @@ import edu.eci.pdsw.posgrado.dao.CohorteDAO;
 import edu.eci.pdsw.posgrado.dao.ExceptionPersistence;
 import edu.eci.pdsw.posgrado.dao.mybatis.mappers.CohorteMapper;
 import edu.eci.pdsw.posgrado.entities.Cohorte;
+import edu.eci.pdsw.posgrado.entities.Periodo;
 import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -39,7 +40,7 @@ public class mybatisCohorteDAO implements CohorteDAO{
     *@see loadPeriodos loadPeriodo
     **/
     @Override
-    public List<Cohorte> loadPeriodo(String p ) {
+    public Periodo loadPeriodo(String p ) {
         try{
             return corteMapper.consultarPeriodo(p);
         }

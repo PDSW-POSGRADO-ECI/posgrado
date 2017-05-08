@@ -43,4 +43,16 @@ public interface ClaseDAO {
     *@doc
     **/
     public void saveClase(int corte, String per,Date fecha, Time horainit,Time horafin,int doc)throws ExceptionPersistence;
+    
+    /*
+    *Obtener todas las clases de un recurso
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Clase> loadFechasRecursoClase( int rec) throws ExceptionPersistence ;
+    
+    /*
+    *Obtener todas las clases de un recurso
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Clase> loadFechasProfesorClase(String periodo,String nom,Date fecha)  throws ExceptionPersistence ;
 }

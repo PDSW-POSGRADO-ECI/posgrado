@@ -65,7 +65,7 @@ and open the template in the editor.
         ORDER BY asi.id, co.id, cla.fecha
     </select>
     
-    <select parameterType="map" id="consultarFechas" resultMap="fecha">
+    <select parameterType="map" id="consultarFechas" resultType="Date">
         SELECT
             cla.fecha
 
@@ -77,9 +77,38 @@ and open the template in the editor.
         GROUP BY cla.fecha
     </select>
     
-    <select parameterType="map" id="registrarClase">
-        INSERT INTO Clase(hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento) VALUES (#{idcor},#{periodo},#{fecha},#{hinit},#{hfin},#{docu});
+    <select parameterType="map" id="consultarFechasProfesorClase" resultMap="ClaseResult">
+        SELECT
+            cla.fecha,
+            cla.hora_inicio,
+            cla.hora_fin
+        FROM clase as cla 
+        join cohorte as co on co.id=cla.materiacohorte_cohorte_id
+        join periodo as per on co.periodo_periodo=per.periodo
+        join profesor as pro on pro.documento=cla.materiacohorte_profesor_documento
+	WHERE per.periodo=#{periodo} and pro.nombre=#{nomprof} and cla.fecha=#{date}
+        ORDER BY cla.fecha;
     </select>
+    
+    <select parameterType="map" id="consultarFechasRecursoClase" resultMap="ClaseResult">
+        SELECT    
+            cla.id ,
+            cla.fecha ,
+            cla.hora_inicio ,
+            cla.hora_fin,
+	    mat.nombre as MAT_nombre
+	FROM recurso as rec 
+        join recursoclase as reccla on rec.id=reccla.recurso_id
+        join clase as cla on cla.id=reccla.clase_id
+	join materia as mat on cla.materiacohorte_materia_sigla=mat.sigla
+        WHERE rec.id=#{idrec}
+        ORDER BY cla.fecha;
+    </select>
+    
+       
+    <insert parameterType="map" id="registrarClase">
+        INSERT INTO Clase(hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento) VALUES (#{idcor},#{periodo},#{fecha},#{hinit},#{hfin},#{docu});
+    </insert>
     <resultMap type='Clase' id='ClaseResult'>
         <id property='id' column='id'/>
         <result property='hora_inicio' column='hora_inicio'/>
@@ -91,8 +120,6 @@ and open the template in the editor.
 
     </resultMap>
     
-    <resultMap id="fecha" type="Date">
-    </resultMap>
     
     
 </mapper>

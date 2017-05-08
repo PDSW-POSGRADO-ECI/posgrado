@@ -28,8 +28,8 @@ and open the template in the editor.
                     <p:commandLink class="cmStyle" action="Menu">Regresar </p:commandLink>
                 </h:panelGrid>
             </div>
-            <p:panel id="panelregistroperiodo" header="Registrar clase de Materia: " style="position:absolute ;top: 22%;left: 18%;height: 100%;width: 61%;" >
-                <h:panelGrid id="panelselec" columns="1" cellpadding="20" style="margin:10px 0;position:absolute ; top: 10%; left: 10%;" >
+            <p:panel  id="panelregistroperiodo" header="Registrar clase de Materia: " style="position:absolute ;top: 22%;left: 18%;height: 90%;width: 61%;" >
+                <h:panelGrid id="panelselec" columns="1" cellpadding="20" style="margin:10px 0;position:absolute ; top: 5%; left: 10%;" >
                     <p:separator >
                         <p:outputLabel  style="font-weight:bold;" value="Periodo seleccionado:" for="per" />
                         <p:outputLabel  style="margin-right: 10%;" id="per" value="#{ClaseBean.perselect}"  />
@@ -60,11 +60,11 @@ and open the template in the editor.
                     <p:outputLabel style="font-weight:bold;" value="Fecha de Clase:" for="inline" />
                     <p:calendar id="inline" value="#{ClaseBean.claseFecha}" mode="inline" pattern="yyyy-MM-dd" />
                     <h:outputLabel style="font-weight:bold;" for="timeinit" value="Hora Inicio Bloque:" />
-                    <p:calendar id="timeinit" value="#{ClaseBean.hinicio}" pattern="HH:mm:ss" timeOnly="true"  />
+                    <p:calendar id="timeinit" value="#{ClaseBean.hinicio}" pattern="HH:mm" timeOnly="true"  />
                     <h:outputLabel style="font-weight:bold;" for="timefin" value="Hora Fin Bloque:" />
-                    <p:calendar id="timefin" value="#{ClaseBean.hfin}" pattern="HH:mm:ss" timeOnly="true"  />
+                    <p:calendar id="timefin" value="#{ClaseBean.hfin}" pattern="HH:mm" timeOnly="true"  />
                 </h:panelGrid> 
-                <h:panelGrid  id="panelrec" columns="2" cellpadding="40" style="margin:10px 0;margin-left: 10%;margin-right: 10%; position:absolute ; top: 65%; left: 0%;" >
+                <h:panelGrid  id="panelrec" columns="2" cellpadding="40" style="margin:10px 0;margin-left: 10%;margin-right: 10%; position:absolute ; top: 58%; left: 0%;" >
                     <p:dataTable scrollable="true" scrollHeight="140" id="TablaRecursos" var="rec" value="#{ClaseBean.recursos}" selection="#{ClaseBean.selectrec}" rowKey="#{rec.id}" style="margin-bottom:0">
                         <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                         <p:column headerText="Recurso">
@@ -75,8 +75,8 @@ and open the template in the editor.
                         </p:column>
                     </p:dataTable>
                 </h:panelGrid>
-                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 95%; left:24%;" icon="ui-icon-circle-check" action="#{ClaseBean.saveMessage()}" actionListener="#{ClaseBean.registrarRecursosClase()}" update="ms" value="Registrar Clase y Recursos" />
-                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 95%; left:54%;" icon="ui-icon-circle-close" action="ProgramarClase" value="Cancelar" />
+                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 85%; left:24%;" icon="ui-icon-circle-check" action="#{ClaseBean.saveMessage()}" actionListener="#{ClaseBean.registrarClase()}" update="ms" value="Registrar Clase y Recursos" />
+                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 85%; left:54%;" icon="ui-icon-circle-close" action="ProgramarClase" value="Cancelar" />
                 <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms" autoUpdate="true" showDetail="true"  closable="true" />
 
             </p:panel>

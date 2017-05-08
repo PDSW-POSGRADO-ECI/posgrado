@@ -6,6 +6,7 @@
 package edu.eci.pdsw.posgrado.dao.mybatis.mappers;
 
 import edu.eci.pdsw.posgrado.entities.Cohorte;
+import edu.eci.pdsw.posgrado.entities.Periodo;
 import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -26,7 +27,7 @@ public interface CohorteMapper {
     *Obtener todas los cortes d eun periodo
     *@return asig retorna una lista de asignaturas
     **/
-    public List<Cohorte> consultarPeriodo(@Param("periodo") String per);
+    public Periodo consultarPeriodo(@Param("periodo") String per);
     
     /*
     *Obtener todas las asignaturas de la base de datos
@@ -34,6 +35,7 @@ public interface CohorteMapper {
     **/
     public List<Cohorte> consultarMateriaCohorte(@Param("periodo")String per,@Param("nombremat") String mat);
     
+   
     /*
     *Obtener todos los periodos
     *@return asig retorna una lista de asignaturas

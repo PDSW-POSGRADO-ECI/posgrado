@@ -46,4 +46,16 @@ public interface ClaseMapper {
     **/
     public void registrarClase(@Param("idcor")int corte, @Param("periodo")String per,
             @Param("fecha")Date fecha, @Param("hinit")Time horainit,@Param("hfin") Time horafin,@Param("docu")int doc);
+    
+    /*
+    *Obtener todas las clases de un recurso
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Clase> consultarFechasRecursoClase(@Param("idrec") int rec);
+    
+    /*
+    *Obtener todas las clases de un recurso
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Clase> consultarFechasProfesorClase(@Param("periodo") String periodo,@Param("nomprof") String nom,@Param("date") Date fec);
 }

@@ -6,7 +6,6 @@
 package edu.eci.pdsw.posgrado.managebeans;
 
 import edu.eci.pdsw.posgrado.entities.Clase;
-import edu.eci.pdsw.posgrado.entities.Cohorte;
 import edu.eci.pdsw.posgrado.entities.Materia;
 import edu.eci.pdsw.posgrado.entities.Recurso;
 import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
@@ -27,26 +26,11 @@ import javax.faces.bean.SessionScoped;
 
 public class ReportesBean implements Serializable {
 
-    private ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    private final ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
     private String periodo;
     private String usuario;
+    private Recurso selectrec;
     
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-    String contrasena;
     
     /*Constructor de la clase ReportesBean*/
     public ReportesBean() {
@@ -57,10 +41,17 @@ public class ReportesBean implements Serializable {
     *Obtener todos los recursos de un periodo especifico
     *@return retorna una lista de los recursos del periodo seleccionado
     **/
-    public List<Recurso> getRecursos() throws ExceptionServiciosReporte {
+    public List<Recurso> getRecurso() throws ExceptionServiciosReporte {
         return report.consultarRecursosXperiodo(periodo);
     }
     
+    /*
+    *Obtener todos los recursos de un periodo especifico
+    *@return retorna una lista de los recursos del periodo seleccionado
+    **/
+    public List<Clase> getRecursosClase() throws ExceptionServiciosReporte {
+        return report.consultarFechasRecursoClase(selectrec.getId());
+    }
     
     /*
     *Obtener todos los periodos 
@@ -79,14 +70,6 @@ public class ReportesBean implements Serializable {
         return report.consultarMaterias();
     }
     
-    /**
-     * Consultar los cohortes de un periodo
-     * @return Lista de cohortes del periodo
-     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
-     */
-    public List<Cohorte> getCohortes() throws ExceptionServiciosReporte {
-        return report.obtenerPeriodo(periodo);
-    }
     
      /**
      * Consultar los cohortes de un periodo
@@ -164,4 +147,29 @@ public class ReportesBean implements Serializable {
     public List<String> getPosgrado() throws ExceptionServiciosReporte {
         return report.consultarNombresPosgrado();
     }
+
+    public Recurso getSelectrec() {
+        return selectrec;
+    }
+
+    public void setSelectrec(Recurso selectrec) {
+        this.selectrec = selectrec;
+    }
+    
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+    String contrasena;
 }

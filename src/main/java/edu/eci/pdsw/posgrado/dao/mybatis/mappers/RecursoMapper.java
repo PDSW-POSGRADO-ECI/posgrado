@@ -7,6 +7,7 @@ package edu.eci.pdsw.posgrado.dao.mybatis.mappers;
 
 
 import edu.eci.pdsw.posgrado.entities.Recurso;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -21,7 +22,7 @@ public interface RecursoMapper {
     *Obtener todas las asignaturas de la base de datos
     *@return asig retorna una lista de asignaturas
     **/
-    public List<Recurso> consultarRecursoDePeriodo(@Param("periodo") String per );
+    public ArrayList<Recurso> consultarRecursoDePeriodo(@Param("periodo") String per );
      
     /*
     *Obtener todas las asignaturas de la base de datos

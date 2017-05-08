@@ -21,6 +21,7 @@ and open the template in the editor.
         <typeAlias type='edu.eci.pdsw.posgrado.entities.Asignatura' alias='Asignatura'/>
         <typeAlias type='edu.eci.pdsw.posgrado.entities.Profesor' alias='Profesor'/>
         <typeAlias type='edu.eci.pdsw.posgrado.entities.Periodo' alias='Periodo'/>
+        <typeAlias type='edu.eci.pdsw.posgrado.entities.Horario' alias='Horario'/>
     </typeAliases>        
     
     
@@ -43,7 +44,8 @@ and open the template in the editor.
         <mapper resource="mappers/ProfesorMapper.xml"></mapper>
         <mapper resource="mappers/MateriaMapper.xml"></mapper>  
         <mapper resource="mappers/AsignaturaMapper.xml"></mapper>
-        <mapper resource="mappers/PosgradoMapper.xml"></mapper>    
+        <mapper resource="mappers/PosgradoMapper.xml"></mapper>   
+        <mapper resource="mappers/HorarioMapper.xml"></mapper> 
     </mappers> 
         
 </configuration>
