@@ -36,7 +36,7 @@ img {
 
 .contenedor{
     background: #ffffff;
-    height: 80px;  
+    height: 20px;  
 }
 
 .contenido{
@@ -57,9 +57,14 @@ nav ul {
     padding: 0;
 }
 
-/*Borde de la barra*/
-nav > ul{
+/*Borde de la barra menu*/
+.menuColor{
     border-top: 10px solid #031b54; 
+}
+
+/*Borde de la barra menu*/
+.registrarMateriaColor{
+    border-top: 10px solid #078393; 
 }
 
 /*Quitar hipervinculos*/
@@ -104,8 +109,12 @@ nav li ul{
 }
 
 /*Fondo submenus*/
-nav li li{
+.MenuInicio{
     background: #031b54;
+}
+
+.registrarMat{
+    background: #078393;
 }
 
 /*Mostrar submenu al pasar el mouse*/

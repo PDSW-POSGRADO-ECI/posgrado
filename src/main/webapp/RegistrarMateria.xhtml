@@ -12,7 +12,7 @@ and open the template in the editor.
                     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Registrar Materia</title>
-        <link rel="stylesheet" type="text/css" href="registros.css"/>
+        <link rel="stylesheet" type="text/css" href="main.css"/>
         <link rel="stylesheet" type="text/css" href="fonts.css"></link>
     </h:head>
     
@@ -21,42 +21,27 @@ and open the template in the editor.
             <div class="item">
                 <img src="resources/campus.jpg" class="imagen"/>
             </div>
-            <div class="borde"></div>
-            <header>
-            <nav>
-                <ul><li><p:commandLink action="Menu?faces-redirect=true">Inicio</p:commandLink></li>
-                    <li><p:commandLink action="Menu?faces-redirect=true">Reportes</p:commandLink>                  
-                        <ul> 
-                            <li><p:commandLink action="ReporteSemestral?faces-redirect=true">General</p:commandLink></li>
-                            <li><p:commandLink action="ReporteRecurso?faces-redirect=true">Recursos</p:commandLink></li>
-                        </ul> 
-                    </li>
-                    <li><p:commandLink action="RegistrarMateria?faces-redirect=true">Registros</p:commandLink>
-                            <ul> 
-                                <li><p:commandLink action="RegistrarMateria?faces-redirect=true">Registrar Materia</p:commandLink></li>
-                                <li><p:commandLink action="ProgramarClase?faces-redirect=true">Programar Clases</p:commandLink></li>
-                            </ul>
-                    </li>      
-                    <li><p:commandLink action="Inicio?faces-redirect=true"><span><i class="icon icon-exit"></i></span>Salir</p:commandLink></li>
-                </ul>
-            </nav>
-            </header>
+            
+           
+            
+            
             <p:panel id="paneles" header="Seleccione la siguientes informacion:"  style="position:absolute ;top: 22%;left: 18%;height: 60%;width: 60%;" >
-                <h:panelGrid columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 5%; left: 10%; " >
-                    <p:outputLabel style="font-weight:bold" value="Programa:" for="per" />
-                    <p:autoComplete id="per" style="left: 15%" dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroClaseBean.completeText(query, 0)}" >
-                        <p:ajax event="itemSelect" update="RegistrarMateria" >  </p:ajax>
-                    </p:autoComplete>
+                <br>#{RegistroMateriaBean.programa}</br>
+                
+                <br>#{RegistroMateriaBean.materia}</br>
+                
+                <h:panelGrid columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 20%; left: 10%; " >
+                    <p:outputLabel style="font-weight:bold" value=" Programa : #{RegistroMateriaBean.programa}" />
                 </h:panelGrid>   
                 
-                <h:panelGrid id="panelpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 17%; left: 10%;">
+                <h:panelGrid id="panelpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 30%; left: 10%;">
                     <p:outputLabel style="font-weight:bold;" value="Asignatura:" for="pos" />
-                    <p:autoComplete  id="pos" style="left:10%" dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroClaseBean.completeText(query, 1)}" >
+                    <p:autoComplete  id="pos" style="left:10%" dropdown="true"  completeMethod="#{RegistroMateriaBean.autoComplete(query, 0)}" >
                         <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setAsig('')}" update=":RegistrarMateria:panelasig" >  </p:ajax>
                     </p:autoComplete>
                 </h:panelGrid>  
                 
-                <h:panelGrid id="panelasig" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 29%; left: 10%; ">
+                <h:panelGrid id="panelasig" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 40%; left: 10%; ">
                     <p:outputLabel style="font-weight:bold;" value="Prerrequisitos:" for="asig" />
                     <p:autoComplete  id="asig" style="left: 4%" dropdown="true" value="#{RegistroMateriaBean.requisito}" completeMethod="#{RegistroClaseBean.completeText(query, 2)}" >
                         <p:ajax event="itemSelect" listener="#{RegistroClaseBean.setMat('')}"  update=":RegistrarMateria" >  </p:ajax>
@@ -66,7 +51,36 @@ and open the template in the editor.
                 <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 68%; left:54%;" action="Menu?faces-redirect=true" value="Cancelar"  />
                 <p:commandButton  type="submit" style="margin:10px 0; position:absolute ; top: 68%; left:15%; "  icon="ui-icon-check" value="Registrar Materia" />
 
-            </p:panel >
+            </p:panel>
+            <div class="contenedor"></div>
+            <header>
+                <nav>
+                    <ul class="registrarMateriaColor"><li><p:commandLink action="Menu?faces-redirect=true">Inicio</p:commandLink></li>
+                        <li><p:commandLink>Reportes</p:commandLink>  
+                        <ul> 
+                            <li class="registrarMat"><p:commandLink action="ReporteSemestral?faces-redirect=true">General</p:commandLink></li>
+                            <li class="registrarMat"><p:commandLink action="ReporteRecurso?faces-redirect=true">Recursos</p:commandLink></li>
+                        </ul> 
+                        </li>
+                        <li><p:commandLink>Registros</p:commandLink>
+                        <ul> 
+                            <li class="registrarMat"><p:commandLink >Registrar Materia</p:commandLink>
+                            <ul>    
+                                <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
+                                    <li class="registrarMat">         
+                                    <p:commandLink action="RegistrarMateria?faces-redirect=true" actionListener="#{RegistroMateriaBean.setPrograma(nombre)}" value="#{nombre}" >
+                                    </p:commandLink>     
+                                    </li>     
+                                </ui:repeat> 
+                            </ul>
+                            </li>
+                            <li class="registrarMat"><p:commandLink action="ProgramarClase?faces-redirect=true">Programar Clases</p:commandLink></li>
+                        </ul>
+                        </li>      
+                        <li><p:commandLink action="Inicio?faces-redirect=true"><span><i class="icon icon-exit"></i></span>Salir</p:commandLink></li>
+                    </ul>
+                </nav>
+            </header>
         </h:form>
     </h:body>
 </ui:composition>

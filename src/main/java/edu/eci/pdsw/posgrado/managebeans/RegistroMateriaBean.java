@@ -152,7 +152,7 @@ public class RegistroMateriaBean implements Serializable {
         List<String> s = null;
         switch (type) {
             case 0:
-                s = getPosgrados();
+                s = getMateria();
                 break;
             case 1:
                 s = getAsignaturas();
