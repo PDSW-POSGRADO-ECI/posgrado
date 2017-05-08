@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -32,18 +34,21 @@ public class RegistroMateriaBean implements Serializable {
     private String nombre;
     private String descripcion;
     private String seleccion;
-    private String prob;
+    private String mat;
+
+    public String getMat() {
+        return mat;
+    }
+
+    public void setMat(String mat) {
+        this.mat = mat;
+    }
+
 
     public RegistroMateriaBean(){
     
     }
-    public String getProb() {
-        return prob;
-    }
-
-    public void setProb(String prob) {
-        this.prob = prob;
-    }
+    
     public int creditos;
 
     public String getSeleccion() {
@@ -140,8 +145,8 @@ public class RegistroMateriaBean implements Serializable {
         return report.consultarNombresAsignaturas();
     }
 
-    public List<String> getRequisitosMateria() throws ExceptionServiciosReporte {
-        return null;
+    public List<Materia> getRequisitosMateria() throws ExceptionServiciosReporte {
+        return report.loadCorrequisitosMateria(sigla);
     }
 
     public List<String> getRequisitosDisponibles() throws ExceptionServiciosReporte{
@@ -150,6 +155,7 @@ public class RegistroMateriaBean implements Serializable {
     
     public List<String> autoComplete(String query, int type) throws ExceptionServiciosReporte {
         List<String> s = null;
+        /*System.out.println("HOla"+ asignatura + query + programa);*/
         switch (type) {
             case 0:
                 s = getMateria();
@@ -158,7 +164,8 @@ public class RegistroMateriaBean implements Serializable {
                 s = getAsignaturas();
                 break;
             case 2:
-                s = getRequisitosDisponibles();
+                s = getName();
+         
                 break;
             default:
                 break;
@@ -169,10 +176,7 @@ public class RegistroMateriaBean implements Serializable {
     /* 
     Se usa para obtener el nombre de la materia seleccionada
     */
-    public void programName(String nombre){
-        programa = nombre;
-    }
-    
+  
     /**
      * Obtener los nombres de los posgrados
      * @return una lista con el nombre de los posgrados
@@ -194,15 +198,13 @@ public class RegistroMateriaBean implements Serializable {
     
     /**
      * Consultar las materias asociadas a una asignatura
-     * @param asignature  nombre de la asignatura
+
      * @return Retorna una lista con las materias asociadas a una asignatura
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
-    public List<String> getName(String asignature) throws ExceptionServiciosReporte{
-        return report.consultarNombresMaterias(asignature); 
+    public List<String> getName() throws ExceptionServiciosReporte{
+        return report.consultarNombresMaterias(asignatura); 
     }
     
-    public void prueba(){
-        prob = seleccion;
-    }
+   
 }

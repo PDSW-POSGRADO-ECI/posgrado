@@ -4,38 +4,45 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                     xmlns:p="http://primefaces.org/ui"
                     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                     xmlns:h="http://xmlns.jcp.org/jsf/html"
                     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Registrar Materia</title>
+        <title>Programar Clases</title>
         <link rel="stylesheet" type="text/css" href="main.css"/>
-        <link rel="stylesheet" type="text/css" href="fonts.css"></link>
+        <link rel="stylesheet" type="text/css" href="fonts.css"/>
     </h:head>
     
     <h:body>
-        <h:form id="RegistrarMateria">
+        <h:form id="NuevaMateria">
             <div class="item">
                 <img src="resources/campus.jpg" class="imagen"/>
             </div>
             <p:panel id="paneles" style="position:absolute ;top: 30%;left: 18%;height: 60%;width: 60%;" >
-                <p>Programa : #{RegistroMateriaBean.programa}</p>
-                <h:panelGrid id="panelpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 30%; left: 10%;">
-                    <p:outputLabel style="font-weight:bold;" value="Asignatura:" for="pos" />
-                    <p:autoComplete id="pos" style="left:10%" dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 0)}" >
-                        <p:ajax event="itemSelect"  listener="#{RegistroMateriaBean.setMat('')}" update=":RegistrarMateria:panelmat" >  </p:ajax>
-                    </p:autoComplete>
+                
+                <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
+                                    <li class="MenuInicio">         
+                                    <p:commandLink action="RegistrarMateria?faces-redirect=true" actionListener="#{RegistroMateriaBean.setPrograma(nombre)}" value="#{nombre}" >
+                                    </p:commandLink>     
+                                    </li>     
+                                </ui:repeat> 
+                <h:panelGrid id="panelpos" columns="2" style="margin:10px 0; position:absolute ; top: 15%; left: 10%;">
+                    <p:row>
+                    <p:column>
+                        <p:outputLabel style="font-weight:bold;" value="Asignatura:" for="pos" />
+                        <p:autoComplete id="pos"  dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 0)}" >
+                            <p:ajax event="itemSelect"  listener="#{RegistroMateriaBean.setMat('')}" update="NuevaMateria" >  </p:ajax>
+                        </p:autoComplete>
+                    </p:column>
+                    <p:column>
+                        <p:commandButton style="left: 20%;"  type="submit"  action="RegistrarAsignatura?faces-redirect=true" value="Crear nueva asignatura" />
+                    </p:column>
+                        </p:row>
                 </h:panelGrid>  
-                <h:panelGrid id="panelmat" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 41%; left: 10%; ">
-                    <p:outputLabel style="font-weight:bold;" value="Seleccione la Materia:" for="mat" />
-                    <p:autoComplete   id="mat" style="left: 14%; " dropdown="true" value="#{RegistroMateriaBean.mat}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 2)}" >
-                         <p:ajax event="itemSelect"   update=":RegistrarMateria">  </p:ajax>
-                    </p:autoComplete>
-                </h:panelGrid>
-                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 65%; left:54%;" action="NuevaMateria?faces-redirect=true" value="Registrar Nueva Materia"  />
+                
+        
                 <p:commandButton  type="submit" style="margin:10px 0; position:absolute ; top: 65%; left:15%; "  icon="ui-icon-check" value="Modificar materia " />
             </p:panel>
             <div class="contenedor"></div>
@@ -67,6 +74,8 @@ and open the template in the editor.
                     </ul>
                 </nav>
             </header>
+            
         </h:form>
+       
     </h:body>
 </ui:composition>

@@ -67,6 +67,10 @@ public interface ServiciosReporte {
     public List<String> consultarProfesoresCohorte(int cor, String mat) throws ExceptionServiciosReporte;
     
     public List<Clase> consultarFechasRecursoClase( int rec) throws ExceptionServiciosReporte;
+    
+    public List<Materia> loadPrerrequisitosMateria(String sigla) throws ExceptionServiciosReporte;
+    
+    public List<Materia> loadCorrequisitosMateria(String sigla) throws ExceptionServiciosReporte;
 
 
 } 

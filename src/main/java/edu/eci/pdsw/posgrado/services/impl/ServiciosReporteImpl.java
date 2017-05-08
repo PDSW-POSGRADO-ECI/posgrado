@@ -422,7 +422,24 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
-   
+    @Override
+    public List<Materia> loadPrerrequisitosMateria(String sigla) throws ExceptionServiciosReporte {
+        try{
+              return materia.loadPrerrequisitosMateria(sigla);
+        } catch (ExceptionPersistence ex){
+              throw new ExceptionServiciosReporte("Error al cargar todos ls profesores", ex);
 
-   
+        }
+    }
+
+    @Override
+    public List<Materia> loadCorrequisitosMateria(String sigla) throws ExceptionServiciosReporte {
+        try{
+              return materia.loadCorrequisitosMateria(sigla);
+        } catch (ExceptionPersistence ex){
+              throw new ExceptionServiciosReporte("Error al cargar todos ls profesores", ex);
+
+        }
+    }
+    
 }
