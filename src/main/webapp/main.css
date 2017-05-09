@@ -159,3 +159,9 @@ p{
     border: none;
 }
 
+.bloquef{
+    background-image: url("/resources/f1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
