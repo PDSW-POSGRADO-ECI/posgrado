@@ -44,7 +44,7 @@ public interface ClaseMapper {
     *@param horafin
     *@doc
     **/
-    public void registrarClase(@Param("idcor")int corte, @Param("periodo")String per,
+    public void registrarClase(@Param("idcor")int corte, @Param("mat")String mat,
             @Param("fecha")Date fecha, @Param("hinit")Time horainit,@Param("hfin") Time horafin,@Param("docu")int doc);
     
     /*
@@ -58,4 +58,11 @@ public interface ClaseMapper {
     *@return asig retorna una lista de asignaturas
     **/
     public List<Clase> consultarFechasProfesorClase(@Param("periodo") String periodo,@Param("nomprof") String nom,@Param("date") Date fec);
+    
+    /*
+    *Obtener todas las clases de un profesor
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Clase> consultarClaseProfesor(@Param("id")int cor,@Param("mat") String mat,@Param("profe") String profe);
+    
 }

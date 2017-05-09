@@ -6,6 +6,7 @@
 
 package edu.eci.pdsw.posgrado.managebeans;
 
+import edu.eci.pdsw.posgrado.entities.Clase;
 import edu.eci.pdsw.posgrado.entities.Recurso;
 import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
 import edu.eci.pdsw.posgrado.services.ServiciosReporte;
@@ -45,9 +46,11 @@ public class ClaseBean implements Serializable{
     public ClaseBean() {
 
     }
-    /*
     
-    */
+    public List<Clase> getClaseProfesor() throws ExceptionServiciosReporte {
+        return report.consultarClaseProfesor(Integer.valueOf(corselect), matselect, proselect);
+    }
+    
     
     public List<Recurso> getRecursos()throws ExceptionServiciosReporte {
         return report.consultarAllRecursos();

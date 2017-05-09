@@ -99,7 +99,9 @@ public class RegistroClaseBean implements Serializable {
         mensaje = report.registrarAsignatura(nuevoasig, selectpos);
         nuevoasig=" ";selectpos=" ";
     }
-
+    
+   
+    
     /*
     *Obtener todos las materias relacionadas a una asignatura en particular
     *@return retorna una lista de las materias de la asignatura

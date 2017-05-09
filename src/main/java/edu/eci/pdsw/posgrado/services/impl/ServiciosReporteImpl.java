@@ -189,13 +189,9 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     @Override
     public List<String> consultarCohorte(String periodo, String mat) throws ExceptionServiciosReporte {
         ArrayList<String> pos = new ArrayList<>();
-        try {
-            List<Cohorte> cor= corte.loadMateriaCohorte(periodo, mat);
-            for (Cohorte c : cor ) {
-                pos.add(String.valueOf(c.getId()));
-            }
-        } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar Posgrados ", ex);
+        List<Cohorte> cor= corte.loadMateriaCohorte(periodo, mat);
+        for (Cohorte c : cor ) {
+            pos.add(String.valueOf(c.getId()));
         }
         return pos;
     }
@@ -255,9 +251,10 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         String ms = "Clase Agregada";
         try {
             Periodo per = corte.loadPeriodo(periodo);
-            boolean var = true;System.err.println(per.getPeriodo());
+            boolean var = true;
             if (per.getFecha_inicio().compareTo(fecha) <= 0 && per.getFecha_fin().compareTo(fecha) >= 0) {
                 List<Clase> cl = clase.loadFechasProfesorClase(periodo, profe, fecha);
+                System.out.println(cl.size());
                 for (int i=0;i<cl.size() && var ;i++) {
                     if (cl.get(i).getHora_inicio().compareTo(horainit) > 0 && cl.get(i).getHora_fin().compareTo(horainit) <= 0 && cl.get(i).getHora_inicio().compareTo(horafin) >= 0 && cl.get(i).getHora_fin().compareTo(horafin) < 0) {
                         var = false;
@@ -265,20 +262,22 @@ public class ServiciosReporteImpl implements ServiciosReporte {
                     }
                 }
             } else {
+                var=false;
                 ms = "Error fecha incorrecta, no esta dentro del periodo seleccionado";
             }
             if (horainit.compareTo(horafin) < 0 && var) {
                 Horario hor = horario.loadHorarioProfesor(profe, fecha);
-                if (hor.getHora_inicio().compareTo(horainit) <= 0 && hor.getHora_fin().compareTo(horainit) > 0 && hor.getHora_inicio().compareTo(horafin) < 0 && hor.getHora_fin().compareTo(horafin) >= 0) {
+                System.out.println(hor!=null);
+                if (hor!=null && hor.getHora_inicio().compareTo(horainit) <= 0 && hor.getHora_fin().compareTo(horainit) > 0 && hor.getHora_inicio().compareTo(horafin) < 0 && hor.getHora_fin().compareTo(horafin) >= 0) {
                     List<Profesor> p = profesor.loadProfesoresCohorte(cor, mat);
-                    int docp = -1;
+                    System.out.println(p.size());int docp = -1;
                     for (Profesor prof : p) {
                         if (prof.getNombre().equals(profe)) {
                             docp = prof.getDocumento();
                             var=false;
                         }
                     }
-                    clase.saveClase(cor, ms, fecha, horainit, horafin, docp);
+                    clase.saveClase(cor, mat, fecha, horainit, horafin, docp);
                 } else {
                     ms = "Error el profesor no tiene esa disponibilidad de horario";
                 }
@@ -362,10 +361,31 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     @Override
-    public String registrarMateriaCohorte(String profe, int cort, String periodo, String sigla) throws ExceptionServiciosReporte {
-        
-        return null;
-    
+    public String registrarMateriaCohorte(String profe, int cort, String periodo, String materia) throws ExceptionServiciosReporte {
+        String ms="Cohorte Agregado";
+        try {
+            List<Materia> mat=this.materia.loadMaterias();
+            for(int i=0;i<mat.size();i++){
+                if(mat.get(i).getNombre().equals(materia)){
+                    materia=mat.get(i).getSigla();
+                    break;
+                };
+            }
+            
+            if(corte.loadMateriaCohorteExistente(profe, materia, cort)) {
+                if (corte.loadCohorte(cort) == null) {
+                    corte.saveCohorte(cort, periodo);
+                    corte.saveMateriaCohorte(cort, materia, profe);
+                } else {
+                    corte.saveMateriaCohorte(cort, materia, profe);
+                }
+            }else{
+                ms="Error ya se ecuentra registrado este cohorte para la materia y profesor seleccionados";
+            }
+        } catch (ExceptionPersistence ex) {
+            throw new ExceptionServiciosReporte("Error al cargar todos ls recursos", ex);
+        }
+        return ms;
     }   
 
     @Override
@@ -437,7 +457,17 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         try{
               return materia.loadCorrequisitosMateria(sigla);
         } catch (ExceptionPersistence ex){
-              throw new ExceptionServiciosReporte("Error al cargar todos ls profesores", ex);
+              throw new ExceptionServiciosReporte("", ex);
+
+        }
+    }
+
+    @Override
+    public List<Clase> consultarClaseProfesor(int cor, String mat, String profe) throws ExceptionServiciosReporte {
+        try{
+              return clase.loadClaseProfesor(cor, mat, profe);
+        } catch (ExceptionPersistence ex){
+              throw new ExceptionServiciosReporte("Error al cargar las clases del profesor", ex);
 
         }
     }

@@ -105,9 +105,24 @@ and open the template in the editor.
         ORDER BY cla.fecha;
     </select>
     
-       
+    <select parameterType="map" id="consultarClaseProfesor" resultMap="ClaseResult">
+        SELECT    
+                cla.id ,
+                cla.fecha ,
+                cla.hora_inicio ,
+                cla.hora_fin
+
+            FROM clase as cla
+            join materia as mat on cla.materiacohorte_materia_sigla=mat.sigla
+            join profesor as pro on pro.documento=cla.materiacohorte_profesor_documento
+            WHERE cla.materiacohorte_cohorte_id=#{id} and mat.nombre=#{mat} and pro.nombre=#{profe}
+            ORDER BY cla.fecha;
+    </select>
     <insert parameterType="map" id="registrarClase">
-        INSERT INTO Clase(hora_inicio,hora_fin,fecha,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento) VALUES (#{idcor},#{periodo},#{fecha},#{hinit},#{hfin},#{docu});
+        <selectKey keyProperty="idmat" resultType="String" order="BEFORE">
+            SELECT mat.sigla FROM materia as mat WHERE mat.nombre=#{mat};
+        </selectKey>
+        INSERT INTO Clase(fecha,hora_inicio,hora_fin,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento) VALUES (#{fecha},#{hinit},#{hfin},#{idmat},#{idcor},#{docu});
     </insert>
     <resultMap type='Clase' id='ClaseResult'>
         <id property='id' column='id'/>

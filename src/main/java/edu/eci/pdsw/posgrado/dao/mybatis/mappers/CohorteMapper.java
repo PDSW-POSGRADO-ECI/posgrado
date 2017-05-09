@@ -19,7 +19,6 @@ public interface CohorteMapper {
      
     /*
     *Obtener todos los periodos
-    *@return asig retorna una lista de asignaturas
     **/
     public List<String> consultarPeriodos();
      
@@ -33,12 +32,27 @@ public interface CohorteMapper {
     *Obtener todas las asignaturas de la base de datos
     *@return asig retorna una lista de asignaturas
     **/
-    public List<Cohorte> consultarMateriaCohorte(@Param("periodo")String per,@Param("nombremat") String mat);
+    public int consultarMateriaCohorteExistente(@Param("profe")String profe,@Param("mat") String mat,@Param("cor") int cor);
+    
+    /*
+    *registrar un nuevo cohorte
+    **/
+    public void registrarCohorte(@Param("id") int id,@Param("periodo")String per);
+    
+    /*
+    *registrar una materiaCohorte
+    **/
+    public void registrarMateriaCohorte(@Param("cor") int id,@Param("mat")String mat,@Param("profe")String profe);
     
    
     /*
-    *Obtener todos los periodos
-    *@return asig retorna una lista de asignaturas
+    *registrar un nuevo periodo
     **/
     public void registrarPeriodo(@Param("periodo")String periodo,@Param("fecha_inicio") Date fini,@Param("fecha_fin") Date ffin);
+
+    public Cohorte consultarCohorteExistente(@Param("cort")int cort);
+
+    public List<Cohorte> consultarMateriaCohorte(@Param("periodo")String periodo, @Param("nombremat")String mat);
+    
+    
 }

@@ -42,7 +42,7 @@ public interface ClaseDAO {
     *@param horafin
     *@doc
     **/
-    public void saveClase(int corte, String per,Date fecha, Time horainit,Time horafin,int doc)throws ExceptionPersistence;
+    public void saveClase(int corte, String mat,Date fecha, Time horainit,Time horafin,int doc)throws ExceptionPersistence;
     
     /*
     *Obtener todas las clases de un recurso
@@ -55,4 +55,10 @@ public interface ClaseDAO {
     *@return asig retorna una lista de asignaturas
     **/
     public List<Clase> loadFechasProfesorClase(String periodo,String nom,Date fecha)  throws ExceptionPersistence ;
+    
+    /*
+    *Obtener todas las clases de un profesor
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Clase> loadClaseProfesor(int cor,String mat, String profe) throws ExceptionPersistence;
 }

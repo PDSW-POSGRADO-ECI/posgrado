@@ -61,9 +61,9 @@ public class mybatisClaseDAO implements ClaseDAO {
     }
 
     @Override
-    public void saveClase(int corte, String per, Date fecha, Time horainit, Time horafin, int doc)  throws ExceptionPersistence {
+    public void saveClase(int corte, String mat, Date fecha, Time horainit, Time horafin, int doc)  throws ExceptionPersistence {
         try {
-            claseMapper.registrarClase(corte, per, fecha, horainit, horafin, doc);
+            claseMapper.registrarClase(corte, mat, fecha, horainit, horafin, doc);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al registrar clase", e);
         }
@@ -83,6 +83,15 @@ public class mybatisClaseDAO implements ClaseDAO {
 
         try {
             return claseMapper.consultarFechasProfesorClase(periodo, nom,fecha);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al consultar fechas de profesores", e);
+        }
+    }
+
+    @Override
+    public List<Clase> loadClaseProfesor(int cor, String mat, String profe) throws ExceptionPersistence{
+        try {
+            return claseMapper.consultarClaseProfesor(cor, mat, profe);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar fechas de profesores", e);
         }

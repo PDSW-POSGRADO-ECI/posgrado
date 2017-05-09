@@ -35,6 +35,8 @@ public interface ServiciosReporte {
     *Sprint2
     */
     public String registrarClase(int corte, String mat, Date fecha, Time horainit, Time horafin,String profe,String periodo) throws ExceptionServiciosReporte;
+    
+    public String registrarRecursoClase(List<Recurso> selectrec) throws ExceptionServiciosReporte ;
 
     public String registrarMateriaCohorte(String profe, int cort,String periodo, String sigla)throws ExceptionServiciosReporte;
     
@@ -62,11 +64,11 @@ public interface ServiciosReporte {
 
     public List<Recurso> consultarAllRecursos() throws ExceptionServiciosReporte;
 
-    public String registrarRecursoClase(List<Recurso> selectrec) throws ExceptionServiciosReporte ;
-
     public List<String> consultarProfesoresCohorte(int cor, String mat) throws ExceptionServiciosReporte;
     
     public List<Clase> consultarFechasRecursoClase( int rec) throws ExceptionServiciosReporte;
+    
+    public List<Clase> consultarClaseProfesor(int cor, String mat,String profe) throws ExceptionServiciosReporte;
     
     public List<Materia> loadPrerrequisitosMateria(String sigla) throws ExceptionServiciosReporte;
     

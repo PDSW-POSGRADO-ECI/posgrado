@@ -81,14 +81,15 @@ INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES
 INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (2118434, 'Claudia Cely', 'ergio@correo.com',8125134,'cc' );
 INSERT INTO Profesor (documento, nombre,correo,telefono,tipo_documento )  VALUES (2218435, 'Wilmer Garzon', 'sergio@correo.co',8115134,'cc' );
 
-INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(1,'10:00:00','12:00:00','2017-04-03');
-INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(2,'10:00:00','22:00:00','2017-05-03');
-INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(3,'10:00:00','12:00:00','2017-04-04');
-INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(4,'10:00:00','15:00:00','2017-05-01');
-INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(5,'10:00:00','15:00:00','2017-05-11');
-INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(6,'10:00:00','12:00:00','2017-04-10');
-INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(7,'10:00:00','13:00:00','2017-04-11');
-INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(8,'10:00:00','15:00:00','2017-04-20');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(1,'07:00:00','12:00:00','2017-04-03');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(2,'07:00:00','22:00:00','2017-05-03');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(3,'07:00:00','12:00:00','2017-04-04');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(4,'07:00:00','15:00:00','2017-05-01');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(5,'07:00:00','15:00:00','2017-05-11');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(6,'07:00:00','12:00:00','2017-04-10');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(7,'07:00:00','13:00:00','2017-04-11');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(8,'07:00:00','15:00:00','2017-04-20');
+INSERT INTO Horario (id,hora_inicio,hora_fin,fecha)VALUES(9,'07:00:00','15:00:00','2016-11-20');
 
 INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1118435,1);
 INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1118435,2);
@@ -98,6 +99,53 @@ INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1118435,5);
 INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1118435,6);
 INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1118435,7);
 INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1118435,8);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1118435,9);
+
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1718429,1);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1718429,2);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1718429,3);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1718429,4);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1718429,5);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1718429,6);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1718429,7);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1718429,8);
+
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1323433,1);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1323433,2);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1323433,3);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1323433,4);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1323433,5);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1323433,6);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1323433,7);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1323433,8);
+
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1818428,1);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1818428,2);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1818428,3);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1818428,4);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1818428,5);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1818428,6);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1818428,7);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1818428,8);
+
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1418432,1);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1418432,2);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1418432,3);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1418432,4);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1418432,5);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1418432,6);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1418432,7);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(1418432,8);
+
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(2218435,1);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(2218435,2);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(2218435,3);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(2218435,4);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(2218435,5);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(2218435,6);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(2218435,7);
+INSERT INTO Profesorxhorario (profesor_documento,horario_id)VALUES(2218435,8);
+
 
 INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ('INN', 5,1818428);
 INSERT INTO MateriaCohorte (materia_sigla, cohorte_id,profesor_documento) VALUES ( 'TTDG',24,1418432);
