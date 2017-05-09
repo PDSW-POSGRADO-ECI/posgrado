@@ -49,20 +49,74 @@ public class mybatisCohorteDAO implements CohorteDAO{
         }        
     }
 
+    /**
+     * Consulta materias por cohorte
+     * @param periodo
+     * @param mat
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
-    public List<Cohorte> loadMateriaCohorte(String periodo, String mat) throws ExceptionPersistence {
+    public boolean loadMateriaCohorteExistente(String profe, String mat,int cort) throws ExceptionPersistence {
         try{
-            return corteMapper.consultarMateriaCohorte(periodo,mat);
+            return corteMapper.consultarMateriaCohorteExistente(profe, mat, cort)==0;
         }
         catch(PersistenceException e){
-            throw new PersistenceException("Error al cargar materiacorte del periodo"+periodo+"de la materia"+mat,e);
+            throw new PersistenceException("Error al cargar materiacorte del cohorte"+profe+"de la materia"+mat,e);
         }   
     }
 
+    /**
+     * Registra periodo
+     * @param per
+     * @param fini
+     * @param ffin 
+     */
     @Override
     public void savePeriodo(String per,Date fini,Date ffin) {
         try{
             corteMapper.registrarPeriodo(per, fini, ffin);
+        }
+        catch(PersistenceException e){
+            throw new PersistenceException("Error al cargar Periodo ",e);
+        }  
+        
+    }
+
+    @Override
+    public void saveCohorte(int id, String per) throws ExceptionPersistence {
+        try{
+            corteMapper.registrarCohorte(id, per);
+        }
+        catch(PersistenceException e){
+            throw new PersistenceException("Error al cargar Periodo ",e);
+        }  
+    }
+
+    @Override
+    public void saveMateriaCohorte(int id, String mat, String profe) throws ExceptionPersistence {
+        try{
+            corteMapper.registrarMateriaCohorte(id, mat, profe);
+        }
+        catch(PersistenceException e){
+            throw new PersistenceException("Error al cargar Periodo ",e);
+        }  
+    }
+
+    @Override
+    public Cohorte loadCohorte(int cort) throws ExceptionPersistence {
+       try{
+            return corteMapper.consultarCohorteExistente(cort);
+        }
+        catch(PersistenceException e){
+            throw new PersistenceException("Error al cargar Periodo ",e);
+        }  
+    }
+
+    @Override
+    public List<Cohorte> loadMateriaCohorte(String periodo, String mat) {
+        try{
+            return corteMapper.consultarMateriaCohorte(periodo, mat);
         }
         catch(PersistenceException e){
             throw new PersistenceException("Error al cargar Periodo ",e);

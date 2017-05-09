@@ -60,15 +60,31 @@ public class mybatisClaseDAO implements ClaseDAO {
         }
     }
 
+    /**
+     * Registra clase
+     * @param corte
+     * @param per
+     * @param fecha
+     * @param horainit
+     * @param horafin
+     * @param doc
+     * @throws ExceptionPersistence 
+     */
     @Override
-    public void saveClase(int corte, String per, Date fecha, Time horainit, Time horafin, int doc)  throws ExceptionPersistence {
+    public void saveClase(int corte, String mat, Date fecha, Time horainit, Time horafin, int doc)  throws ExceptionPersistence {
         try {
-            claseMapper.registrarClase(corte, per, fecha, horainit, horafin, doc);
+            claseMapper.registrarClase(corte, mat, fecha, horainit, horafin, doc);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al registrar clase", e);
         }
     }
 
+    /**
+     * Consulta las fechas del recurso por clase
+     * @param rec
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Clase> loadFechasRecursoClase(int rec)  throws ExceptionPersistence {
         try {
@@ -78,11 +94,28 @@ public class mybatisClaseDAO implements ClaseDAO {
         }
     }
 
+    /**
+     * Consulta las fechas del profesor por clase
+     * @param periodo
+     * @param nom
+     * @param fecha
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Clase> loadFechasProfesorClase(String periodo, String nom,Date fecha)  throws ExceptionPersistence {
 
         try {
             return claseMapper.consultarFechasProfesorClase(periodo, nom,fecha);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al consultar fechas de profesores", e);
+        }
+    }
+
+    @Override
+    public List<Clase> loadClaseProfesor(int cor, String mat, String profe) throws ExceptionPersistence{
+        try {
+            return claseMapper.consultarClaseProfesor(cor, mat, profe);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar fechas de profesores", e);
         }

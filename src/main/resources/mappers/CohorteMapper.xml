@@ -41,24 +41,53 @@ and open the template in the editor.
 
     </select>
     
+    <select parameterType="map" id="consultarMateriaCohorteExistente" resultType="int">
+        
+        SELECT
+            count(matco.cohorte_id)
+        FROM materiacohorte as matco
+        join profesor as pro on matco.profesor_documento=pro.documento
+        join materia as mat on matco.materia_sigla=mat.sigla
+        WHERE mat.sigla=#{mat} and matco.cohorte_id=#{cor} and pro.nombre=#{profe}
+
+    </select>
+    
     <select parameterType="map" id="consultarPeriodo" resultMap="PeriodoResult">
         
         SELECT
             per.periodo,
             per.fecha_inicio,
             per.fecha_fin
+        
         FROM periodo as per
         WHERE per.periodo=#{periodo};
         
     </select>
     
-    <select parameterType="map" id="registrarCohorte">
-        INSERT INTO Cohorte(id,Periodo_periodo) VALUES (#{id},#{periodo});
+    <select parameterType="map" id="consultarCohorteExistente" resultMap="CohorteResult">
+        
+        SELECT
+            co.id,
+            co.periodo_periodo
+        FROM cohorte as co
+        WHERE co.id=#{cort};
+
     </select>
     
-     <select parameterType="map" id="registrarPeriodo">
+    <insert parameterType="map" id="registrarCohorte">
+        INSERT INTO Cohorte(id,Periodo_periodo) VALUES (#{id},#{periodo});
+    </insert>
+    
+    <insert parameterType="map" id="registrarMateriaCohorte">
+        <selectKey keyProperty="idpro"  resultType="int" order="BEFORE">
+            SELECT pro.documento FROM profesor as pro WHERE pro.nombre=#{profe};
+        </selectKey>
+        INSERT INTO materiacohorte(cohorte_id,materia_sigla,profesor_documento) VALUES (#{cor},#{mat},#{idpro});
+    </insert>
+    
+     <insert parameterType="map" id="registrarPeriodo">
         INSERT INTO Periodo(periodo,fecha_inicio,fecha_fin) VALUES (#{periodo},#{fecha_inicio},#{fecha_fin});
-    </select>
+    </insert>
     
     <resultMap type='Cohorte' id='CohorteResult'>
         <id property='id' column='id'/>

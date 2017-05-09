@@ -42,7 +42,7 @@ and open the template in the editor.
                     <p:commandButton update=":ReporteRecursos:Tablaprograma" oncomplete="PF('rec10').show()" icon="ui-icon-search" value="Ver programacion" />
                 </f:facet>
             </p:dataTable>
-            <p:dialog header="Programacion del recurso: #{ReportesBean.selectrec.nomRecurso}" modal="true" resizable="false" widgetVar="rec10"  width="900" height="500">
+            <p:dialog header="Programacion del recurso: #{ReportesBean.selectrec.nomRecurso}" modal="true" resizable="false" widgetVar="rec10" >
                 <p:dataTable rendered="#{not empty ReportesBean.selectrec}" id="Tablaprograma" scrollable="true" scrollHeight="470" var="cla" value="#{ReportesBean.recursosClase}">
                      <p:column headerText="Materia">
                         <h:outputText value="#{cla.materia_sigla.nombre}"/>

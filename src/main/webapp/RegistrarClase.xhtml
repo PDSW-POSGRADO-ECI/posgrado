@@ -77,9 +77,27 @@ and open the template in the editor.
                 </h:panelGrid>
                 <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 85%; left:24%;" icon="ui-icon-circle-check" action="#{ClaseBean.saveMessage()}" actionListener="#{ClaseBean.registrarClase()}" update="ms" value="Registrar Clase y Recursos" />
                 <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 85%; left:54%;" icon="ui-icon-circle-close" action="ProgramarClase" value="Cancelar" />
-                <p:messages style="position:absolute ; top: 90%; left:50%;" id="ms" autoUpdate="true" showDetail="true"  closable="true" />
-
+                <p:commandButton update=":RegistroClase:Tablaprograma" oncomplete="PF('rec10').show()" icon="ui-icon-search" value="Ver programacion de las clases" />
+                <p:messages style="position:absolute ; top: 95%; left:20%;" id="ms" autoUpdate="true" showDetail="true"  closable="true" />
             </p:panel>
+            
+            <p:dialog header="Programacion de clases de la materia: #{ClaseBean.matselect}" modal="true" resizable="false" widgetVar="rec10" >
+                <p:dataTable id="Tablaprograma" scrollable="true" scrollHeight="470" var="cla" value="#{ClaseBean.claseProfesor}">
+                    <p:column headerText="Materia">
+                        <h:outputText value="#{cla.materia_sigla.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Fecha de clase">
+                        <h:outputText value="#{ReportesBean.getHeader((cla.fecha))}"/>
+                    </p:column>
+                    <p:column headerText="Hora inicio">
+                        <h:outputText value="#{cla.hora_inicio}"/>
+                    </p:column>
+                    <p:column headerText="Hora Final">
+                        <h:outputText value="#{cla.hora_fin}"/>
+                    </p:column>
+                   
+                </p:dataTable>
+            </p:dialog>
         </h:form>
     </h:body>
 </ui:composition>
