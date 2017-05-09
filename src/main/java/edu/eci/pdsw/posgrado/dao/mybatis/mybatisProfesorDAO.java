@@ -50,6 +50,11 @@ public class mybatisProfesorDAO implements ProfesorDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Consulta los nombres de los profesores
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<String> loadNames() throws ExceptionPersistence {
         try {
@@ -59,6 +64,13 @@ public class mybatisProfesorDAO implements ProfesorDAO {
         }
     }
 
+    /**
+     * Consulta los profesores por cohorte
+     * @param cor
+     * @param mat
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Profesor> loadProfesoresCohorte(int cor, String mat) throws ExceptionPersistence{
         try {

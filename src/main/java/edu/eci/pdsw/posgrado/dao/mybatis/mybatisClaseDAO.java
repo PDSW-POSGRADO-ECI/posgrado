@@ -60,6 +60,16 @@ public class mybatisClaseDAO implements ClaseDAO {
         }
     }
 
+    /**
+     * Registra clase
+     * @param corte
+     * @param per
+     * @param fecha
+     * @param horainit
+     * @param horafin
+     * @param doc
+     * @throws ExceptionPersistence 
+     */
     @Override
     public void saveClase(int corte, String mat, Date fecha, Time horainit, Time horafin, int doc)  throws ExceptionPersistence {
         try {
@@ -69,6 +79,12 @@ public class mybatisClaseDAO implements ClaseDAO {
         }
     }
 
+    /**
+     * Consulta las fechas del recurso por clase
+     * @param rec
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Clase> loadFechasRecursoClase(int rec)  throws ExceptionPersistence {
         try {
@@ -78,6 +94,14 @@ public class mybatisClaseDAO implements ClaseDAO {
         }
     }
 
+    /**
+     * Consulta las fechas del profesor por clase
+     * @param periodo
+     * @param nom
+     * @param fecha
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Clase> loadFechasProfesorClase(String periodo, String nom,Date fecha)  throws ExceptionPersistence {
 

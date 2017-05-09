@@ -22,6 +22,11 @@ public class mybatisPosgradoDAO implements PosgradoDAO {
     @Inject
     private PosgradoMapper posgradoMapper;
 
+    /**
+     * Consulta los posgrados
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Posgrado> loadPosgrados() throws ExceptionPersistence {
         try {
@@ -31,6 +36,12 @@ public class mybatisPosgradoDAO implements PosgradoDAO {
         }
     }
 
+    /**
+     * Registra los posgrados
+     * @param nom
+     * @param credit
+     * @throws ExceptionPersistence 
+     */
     @Override
     public void savePosgrado(String nom, int credit) throws ExceptionPersistence {
         try {
@@ -40,6 +51,11 @@ public class mybatisPosgradoDAO implements PosgradoDAO {
         }
     }
 
+    /**
+     * Consulta los nombres del posgrado
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<String> loadNames() throws ExceptionPersistence {
         try {

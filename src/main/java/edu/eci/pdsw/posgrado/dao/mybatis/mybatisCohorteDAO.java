@@ -49,6 +49,13 @@ public class mybatisCohorteDAO implements CohorteDAO{
         }        
     }
 
+    /**
+     * Consulta materias por cohorte
+     * @param periodo
+     * @param mat
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public boolean loadMateriaCohorteExistente(String profe, String mat,int cort) throws ExceptionPersistence {
         try{
@@ -59,6 +66,12 @@ public class mybatisCohorteDAO implements CohorteDAO{
         }   
     }
 
+    /**
+     * Registra periodo
+     * @param per
+     * @param fini
+     * @param ffin 
+     */
     @Override
     public void savePeriodo(String per,Date fini,Date ffin) {
         try{

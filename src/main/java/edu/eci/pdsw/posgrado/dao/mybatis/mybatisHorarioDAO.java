@@ -20,6 +20,12 @@ public class mybatisHorarioDAO implements HorarioDAO{
     
     @Inject private HorarioMapper horarioMapper;
     
+    /**
+     * Consulta el horario de profesor
+     * @param nom
+     * @param fecha
+     * @return 
+     */
     @Override
     public Horario loadHorarioProfesor(String nom,Date fecha) {
         

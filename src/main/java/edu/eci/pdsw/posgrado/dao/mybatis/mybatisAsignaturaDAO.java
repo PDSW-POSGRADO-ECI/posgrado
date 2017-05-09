@@ -34,6 +34,12 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO {
         }
     }
 
+    /**
+     * Carga las asignaturas
+     * @param posgrado
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Asignatura> loadAsignaturas(String posgrado) throws ExceptionPersistence {
         try {
@@ -43,6 +49,13 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO {
         }
     }
 
+    /**
+     * Registra las asignaturas
+     * @param nom
+     * @param posgrado
+     * @throws ExceptionPersistence 
+     */
+    
     @Override
     public void saveAsignatura(String nom, String posgrado) throws ExceptionPersistence {
         try {
@@ -52,6 +65,12 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO {
         }
     }
 
+    /**
+     * Consulta los nombres de la asignatura por posgrado
+     * @param posgrado
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<String> loadNames(String posgrado) throws ExceptionPersistence {
         try {
@@ -61,6 +80,11 @@ public class mybatisAsignaturaDAO implements AsignaturaDAO {
         }
     }
 
+    /**
+     * Consulta los nombres de las asignaturas
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<String> loadAllNames() throws ExceptionPersistence {
         try {

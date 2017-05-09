@@ -88,6 +88,7 @@ and open the template in the editor.
         FROM materia as mat
         join asignatura as asi on mat.asignatura_id = asi.id
         WHERE asi.nombre=#{asig}
+        
     </select>
     
     <select parameterType="map" id="consultarPrerrequisitosDeMateria" resultMap="MateriaResult">
@@ -147,7 +148,7 @@ and open the template in the editor.
         FROM Materia as mat 
         JOIN PrerequisitoMateria as preq ON mat.sigla=preq.prerrequisito_sigla 
          
-        WHERE preq.materia_sigla=#{materia_sigla} and preq.correquisito=f;
+        WHERE preq.materia_sigla=#{materia_sigla} and preq.correquisito=FALSE;
         
     </select>
     
@@ -158,7 +159,7 @@ and open the template in the editor.
         FROM Materia as mat 
         JOIN PrerequisitoMateria as preq ON mat.sigla=preq.prerrequisito_sigla 
          
-        WHERE preq.materia_sigla=#{materia_sigla} and preq.correquisito=t;
+        WHERE preq.materia_sigla=#{materia_sigla} and preq.correquisito=TRUE;
         
     </select>
    

@@ -18,12 +18,10 @@ public class Materia implements Serializable{
     private int creditos;
     private Asignatura asignatura_id;
     private String descripcion;
-    //private ArrayList<Cohorte> cortes;
-    //private ArrayList<Clase> clases;
+    
     
     public Materia(){
-        //this.cortes = new ArrayList<>();
-        //this.clases= new ArrayList<>();
+        
     }
     
     public Materia(String sigla ,String nombre, int creditos, Asignatura Asignatura_id, String descripcion) {
