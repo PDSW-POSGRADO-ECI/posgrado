@@ -112,7 +112,7 @@ and open the template in the editor.
         JOIN Asignatura as asi on mat.Asignatura_id = asi.id
         JOIN Posgrado as pos on asi.Posgrado_id = pos.id
          
-        WHERE preq.materia_sigla=#{materia_sigla} and preq.correquisito=f;
+        WHERE preq.materia_sigla=#{materia_sigla} and preq.correquisito=FALSE;
 
     </select>
     
@@ -137,14 +137,14 @@ and open the template in the editor.
         JOIN Asignatura as asi on mat.Asignatura_id = asi.id
         JOIN Posgrado as pos on asi.Posgrado_id = pos.id
          
-        WHERE preq.materia_sigla=#{materia_sigla} and preq.correquisito=t;
+        WHERE preq.materia_sigla=#{materia_sigla} and preq.correquisito=TRUE;
 
     </select>
     
     <select parameterType="map" id="consultarNombresRequisitos" resultType="string">
         
         SELECT
-        mat.nombre,
+        mat.nombre
         FROM Materia as mat 
         JOIN PrerequisitoMateria as preq ON mat.sigla=preq.prerrequisito_sigla 
          
@@ -155,7 +155,7 @@ and open the template in the editor.
     <select parameterType="map" id="consultarNombresCorrequisitos" resultType="string">
         
         SELECT
-        mat.nombre,
+        mat.nombre
         FROM Materia as mat 
         JOIN PrerequisitoMateria as preq ON mat.sigla=preq.prerrequisito_sigla 
          

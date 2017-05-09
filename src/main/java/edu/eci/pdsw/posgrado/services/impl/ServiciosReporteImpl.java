@@ -447,7 +447,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         try{
               return materia.loadPrerrequisitosMateria(sigla);
         } catch (ExceptionPersistence ex){
-              throw new ExceptionServiciosReporte("Error al cargar todos ls profesores", ex);
+              throw new ExceptionServiciosReporte("Error al cargar todos los prerrequisitos", ex);
 
         }
     }

@@ -44,10 +44,12 @@ public class RegistrarMateriaTest {
         stmt.execute("delete from MateriaCohorte");
         stmt.execute("delete from Profesor");
         stmt.execute("delete from Cohorte");
+        stmt.execute("delete from PrerequisitoMateria");
         stmt.execute("delete from Materia");
         stmt.execute("delete from Asignatura");
         stmt.execute("delete from Posgrado");
         stmt.execute("delete from Periodo");
+        
         getConnection().commit();
         getConnection().close();
     }
@@ -111,11 +113,11 @@ public class RegistrarMateriaTest {
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiaCohorte_materia_sigla,materiaCohorte_cohorte_id ,materiaCohorte_profesor_documento)  VALUES(1,'7:00:00','10:00:00', '2017-01-02', 'FDF', 4,1818428);");
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiaCohorte_materia_sigla,materiaCohorte_cohorte_id ,materiaCohorte_profesor_documento)  VALUES(2, '15:00:00','17:00:00', '2017-01-01', 'CONC',24,1818428);");
         
-        //stmt.execute("INSERT INTO PrerequisitoMateria (materia_sigla, prerrequisito_sigla,correquisito) VALUES ('CONC','FDF',false)");
+        stmt.execute("INSERT INTO PrerequisitoMateria (materia_sigla, prerrequisito_sigla,correquisito) VALUES ('CONC','FDF',FALSE)");
         
         ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
-        List<Materia> res=null;
-        assertTrue("No deberia tener prerrequisito",res==null);  
+        List<Materia> res=report.loadPrerrequisitosMateria("CONC");
+        assertTrue("No deberia tener prerrequisito",res.size()==1);  
     }
     
     
