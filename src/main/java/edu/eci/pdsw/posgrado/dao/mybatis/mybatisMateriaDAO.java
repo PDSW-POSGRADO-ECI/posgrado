@@ -33,11 +33,24 @@ public class mybatisMateriaDAO implements MateriaDAO {
         }
     }
 
+    /**
+     * 
+     * @param doc
+     * @param cor
+     * @param sigla
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public boolean loadMateriaCohorte(int doc, int cor, String sigla) throws ExceptionPersistence {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * 
+     * @param posgrado
+     * @return 
+     */
     @Override
     public List<Materia> loadMateriasXposgrado(String posgrado) {
          try {
@@ -47,6 +60,14 @@ public class mybatisMateriaDAO implements MateriaDAO {
         }
     }
 
+    /**
+     * 
+     * @param sigla
+     * @param nombre
+     * @param creditos
+     * @param asignatura_nombre
+     * @param descripcion 
+     */
     @Override
     public void addMateria(String sigla, String nombre, int creditos, String asignatura_nombre, String descripcion) {
          try {
@@ -56,6 +77,12 @@ public class mybatisMateriaDAO implements MateriaDAO {
         }
     }
 
+    /**
+     * 
+     * @param asignatura_id
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<String> loadNames(String asignatura_id) throws ExceptionPersistence {
         try{
@@ -65,6 +92,12 @@ public class mybatisMateriaDAO implements MateriaDAO {
         }
     }
 
+    /**
+     * 
+     * @param sigla
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Materia> loadPrerrequisitosMateria(String sigla) throws ExceptionPersistence {
          try{
@@ -74,6 +107,12 @@ public class mybatisMateriaDAO implements MateriaDAO {
         }
     }
 
+    /**
+     * 
+     * @param sigla
+     * @return
+     * @throws ExceptionPersistence 
+     */
     @Override
     public List<Materia> loadCorrequisitosMateria(String sigla) throws ExceptionPersistence {
          try{
