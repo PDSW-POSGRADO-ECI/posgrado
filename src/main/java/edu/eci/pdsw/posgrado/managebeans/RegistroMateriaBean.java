@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -35,6 +36,31 @@ public class RegistroMateriaBean implements Serializable {
     private String descripcion;
     private String seleccion;
     private String mat;
+    private String radio;
+    private String request;
+
+    public String getRequest() {
+        return request;
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
+    }
+    public void changeRequest(ValueChangeEvent event){
+        request = (String) event.getNewValue();
+    }
+    
+    public void changeRadio(ValueChangeEvent event){
+        radio = (String) event.getNewValue();
+    }
+
+    public String getRadio() {
+        return radio;
+    }
+
+    public void setRadio(String radio) {
+        this.radio = radio;
+    }
 
     public String getMat() {
         return mat;
@@ -46,7 +72,7 @@ public class RegistroMateriaBean implements Serializable {
 
 
     public RegistroMateriaBean(){
-    
+        
     }
     
     public int creditos;
@@ -153,9 +179,14 @@ public class RegistroMateriaBean implements Serializable {
         return null;
     }
     
+    public void prueba(){
+         System.out.println("Sigla : "+ sigla + " Nombre : " + nombre 
+                 + " Creditos : " + creditos + " Asignatura : " + asignatura + " Descripcion : " + descripcion 
+                 + "RequesT :" + request );
+    }
     public List<String> autoComplete(String query, int type) throws ExceptionServiciosReporte {
         List<String> s = null;
-        /*System.out.println("HOla"+ asignatura + query + programa);*/
+        
         switch (type) {
             case 0:
                 s = getMateria();
@@ -165,7 +196,12 @@ public class RegistroMateriaBean implements Serializable {
                 break;
             case 2:
                 s = getName();
-         
+                break;
+            case 3:
+                s = getNuevor();
+                break;
+            case 4:
+                s = getRequisitos();
                 break;
             default:
                 break;
@@ -196,6 +232,23 @@ public class RegistroMateriaBean implements Serializable {
         return report.consultarNombresAsignaturasXposgrado(programa);
     }
     
+    /**
+     * Obtener las asginaturas asociadas a un posgrado
+     * @return una lista con las asignaturas asociadas a un posgrado
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
+     */
+    public List<String> getRequisitos() throws ExceptionServiciosReporte {
+        return report.consultarNombresMaterias(asignatura);
+    }
+    
+    /**
+     * Obtener las asginaturas asociadas a un posgrado
+     * @return una lista con las asignaturas asociadas a un posgrado
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
+     */
+    public List<String> getNuevor() throws ExceptionServiciosReporte {
+        return report.consultarNombresAsignaturasXposgrado(radio);
+    }
     /**
      * Consultar las materias asociadas a una asignatura
 

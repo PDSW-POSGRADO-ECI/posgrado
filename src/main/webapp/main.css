@@ -145,3 +145,17 @@ p{
    padding: 0 2.5rem;
 }
 
+.nmStyle{
+   font-family: "Comic Sans MS", cursive, sans-serif;
+   font-size: 20px;  
+   font-weight: bold;
+   color: #4f4e4e;
+
+   display: block;
+}
+
+.companyHeaderGrid.ui-panelgrid>*>tr,
+.companyHeaderGrid.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+

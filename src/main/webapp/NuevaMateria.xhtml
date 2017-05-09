@@ -10,41 +10,75 @@ and open the template in the editor.
                     xmlns:h="http://xmlns.jcp.org/jsf/html"
                     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Programar Clases</title>
+        <title>Nueva Materia</title>
         <link rel="stylesheet" type="text/css" href="main.css"/>
         <link rel="stylesheet" type="text/css" href="fonts.css"/>
     </h:head>
     
     <h:body>
+        <script>
+            function myFunction() {
+                confirm("Materia Registrada");
+            }
+        </script> 
         <h:form id="NuevaMateria">
             <div class="item">
                 <img src="resources/campus.jpg" class="imagen"/>
             </div>
-            <p:panel id="paneles" style="position:absolute ;top: 30%;left: 18%;height: 60%;width: 60%;" >
+            <p:panel id="paneles" style="position:absolute ;top: 30%;left: 18%;height: 80%;width: 60%;" >
                 
-                <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
-                                    <li class="MenuInicio">         
-                                    <p:commandLink action="RegistrarMateria?faces-redirect=true" actionListener="#{RegistroMateriaBean.setPrograma(nombre)}" value="#{nombre}" >
-                                    </p:commandLink>     
-                                    </li>     
-                                </ui:repeat> 
-                <h:panelGrid id="panelpos" columns="2" style="margin:10px 0; position:absolute ; top: 15%; left: 10%;">
-                    <p:row>
-                    <p:column>
-                        <p:outputLabel style="font-weight:bold;" value="Asignatura:" for="pos" />
-                        <p:autoComplete id="pos"  dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 0)}" >
-                            <p:ajax event="itemSelect"  listener="#{RegistroMateriaBean.setMat('')}" update="NuevaMateria" >  </p:ajax>
-                        </p:autoComplete>
-                    </p:column>
-                    <p:column>
-                        <p:commandButton style="left: 20%;"  type="submit"  action="RegistrarAsignatura?faces-redirect=true" value="Crear nueva asignatura" />
-                    </p:column>
-                        </p:row>
-                </h:panelGrid>  
+                <p:panelGrid columns="1" style="left: 9%;top: 10%; position: absolute" class="companyHeaderGrid" >
+                    <span class="nmStyle"> Programas </span>
+                    <h:selectOneRadio  layout="lineDirection" valueChangeListener="#{RegistroMateriaBean.changeRadio}">
+                       <f:selectItems value="#{RegistroMateriaBean.posgrado}" var="pos" itemValue="#{pos}" itemLabel="#{pos}" />
+                       <f:ajax render="texto" />
+                    </h:selectOneRadio>
+                </p:panelGrid>
+               
+                <p:panelGrid id="panelpos"  columns="3" style="margin:10px 0; position:absolute ; top: 23%; left: 9%;" class="companyHeaderGrid">
+                        <p:outputLabel class="nmStyle" value="Asignatura" for="pos" />
+                            <p:autoComplete id="pos"  dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 3)}" >
+                                <p:ajax event="itemSelect"  listener="#{RegistroMateriaBean.setMat('')}" update=":NuevaMateria" >  </p:ajax>
+                            </p:autoComplete>      
+                        <p:commandButton style="left: 20%;"  type="submit"  action="RegistrarAsignatura?faces-redirect=true" value="Crear nueva asignatura" /> 
+                </p:panelGrid>  
+                                      
+                <p:panelGrid  columns="3" style="left: 9%;top: 37%; position: absolute" class="companyHeaderGrid" >                 
+                    <p:outputLabel class="nmStyle" for="onemenu" value="Pre-requisitos"/>
+                        <p:selectOneMenu id="onemenu" valueChangeListener="#{RegistroMateriaBean.changeRequest}">
+                            <f:selectItem itemValue="Sin Requisito" itemLabel="Sin Requisito" />
+                            <f:selectItem itemValue="Co-Requisito" itemLabel="Co-Requisito" />
+                            <f:selectItem itemValue="Requisito completo" itemLabel="Requisito completo" />                    
+                            <f:ajax render="texto" />
+                        </p:selectOneMenu>
+                    <p:autoComplete   id="mat" style="left: 14%; " dropdown="true" value="#{RegistroMateriaBean.mat}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 4)}" >
+                         <p:ajax event="itemSelect"   update=":NuevaMateria">  </p:ajax>
+                    </p:autoComplete>            
+                </p:panelGrid>
+                           
+                <p:panelGrid  columns="4" style="left: 9%;top: 47%; position: absolute" class="companyHeaderGrid" >
+                    <p:outputLabel class="nmStyle" for="input" value="Nombre materia"/>
+                        <p:inputText id="input" value="#{RegistroMateriaBean.nombre}"  />
+                    <p:outputLabel class="nmStyle" for="inputC" value="Creditos"/>
+                        <p:inputText id="inputC" value="#{RegistroMateriaBean.creditos}"  />
+                </p:panelGrid>
                 
-        
-                <p:commandButton  type="submit" style="margin:10px 0; position:absolute ; top: 65%; left:15%; "  icon="ui-icon-check" value="Modificar materia " />
+                <p:panelGrid  columns="2" style="left: 9%;top: 56%; position: absolute"  class="companyHeaderGrid" >
+                    <p:outputLabel class="nmStyle" for="inputS" value="Código (mnemónico)"/>
+                        <p:inputText id="inputS" value="#{RegistroMateriaBean.sigla}"  />
+                </p:panelGrid>
+                      
+                <p:panelGrid  columns="2" style="left: 9%;top: 66%; position: absolute"  class="companyHeaderGrid" >
+                    <p:outputLabel class="nmStyle" for="inputD" value="Descripción"/>
+                        <p:inputTextarea id="inputD" value="#{RegistroMateriaBean.descripcion}"  />
+                </p:panelGrid>
+                
+                <p:panelGrid  columns="2" style="left: 30%;top: 90%; position: absolute"  class="companyHeaderGrid" >
+                    <p:commandButton onclick="myFunction()" icon="ui-icon-disk" value="Registar" action="#{RegistroMateriaBean.registrarMateria()}" />
+                    <p:commandButton value="Cancelar" />
+                </p:panelGrid>              
             </p:panel>
+            
             <div class="contenedor"></div>
             <header>
                 <nav>
@@ -58,7 +92,8 @@ and open the template in the editor.
                         <li><p:commandLink>Registros</p:commandLink>
                         <ul> 
                             <li class="registrarMat"><p:commandLink >Registrar Materia</p:commandLink>
-                            <ul>    
+                            <ul>
+                                <li class="registrarMat"><p:commandLink action="NuevaMateria?faces-redirect=true" value="Nueva Materia"></p:commandLink> </li>
                                 <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
                                     <li class="registrarMat">         
                                     <p:commandLink action="RegistrarMateria?faces-redirect=true" actionListener="#{RegistroMateriaBean.setPrograma(nombre)}" value="#{nombre}" >
