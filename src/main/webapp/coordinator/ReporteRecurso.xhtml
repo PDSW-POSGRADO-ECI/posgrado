@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE xhtml>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Reporte de Recursos</title>
+        <link rel="stylesheet" type="text/css" href="formatos.css"/>
+        <link rel="stylesheet" type="text/css" href="fonts.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="ReporteRecursos">
+            <div class="item">
+                <img src="resources/campus.jpg" class="imagen" />
+            </div>
+            <div id="barra3" style="text-align: right; margin:25px 0;  position:relative ; top: 0%; left: 0%; right:10%" >
+                <h:panelGrid columns="3" style="margin-right: auto">
+                    <i class="icon icon-home"></i>
+                    <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Regresar</p:commandLink>
+                </h:panelGrid>
+            </div>
+            <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 18%; left: 3%; right:5%">
+                <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="idp" />
+                <p:autoComplete id="idp" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
+                <p:commandButton icon="ui-icon-refresh" value="Generar" update="ReporteRecursos:TablaRecursos" />
+            </h:panelGrid>
+            <p:dataTable selection="#{ReportesBean.selectrec}" rowKey="#{rec.id}" id="TablaRecursos" scrollable="true" scrollHeight="500" style="position:absolute ;width: 40%;height:50%; top: 32%; left: 30%; right:15%" var="rec" value="#{ReportesBean.recurso}">
+                <p:column selectionMode="single" style="width:16px;text-align:center"/>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{rec.nomRecurso}"/>
+                </p:column>
+                <p:column headerText="Cantidad">
+                    <h:outputText value="#{rec.cantidad}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton update=":ReporteRecursos:Tablaprograma" oncomplete="PF('rec10').show()" icon="ui-icon-search" value="Ver programacion" />
+                </f:facet>
+            </p:dataTable>
+            <p:dialog header="Programacion del recurso: #{ReportesBean.selectrec.nomRecurso}" modal="true" resizable="false" widgetVar="rec10" >
+                <p:dataTable rendered="#{not empty ReportesBean.selectrec}" id="Tablaprograma" scrollable="true" scrollHeight="470" var="cla" value="#{ReportesBean.recursosClase}">
+                     <p:column headerText="Materia">
+                        <h:outputText value="#{cla.materia_sigla.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Fecha de clase">
+                        <h:outputText value="#{ReportesBean.getHeader((cla.fecha))}"/>
+                    </p:column>
+                    <p:column headerText="Hora inicio">
+                        <h:outputText value="#{cla.hora_inicio}"/>
+                    </p:column>
+                    <p:column headerText="Hora Final">
+                        <h:outputText value="#{cla.hora_fin}"/>
+                    </p:column>
+                   
+                </p:dataTable>
+            </p:dialog>
+        </h:form>
+    </h:body>
+
+</html>

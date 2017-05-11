@@ -28,7 +28,6 @@ public class ReportesBean implements Serializable {
 
     private final ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
     private String periodo;
-    private String usuario;
     private Recurso selectrec;
     
     
@@ -155,21 +154,4 @@ public class ReportesBean implements Serializable {
     public void setSelectrec(Recurso selectrec) {
         this.selectrec = selectrec;
     }
-    
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-    String contrasena;
 }
