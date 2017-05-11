@@ -7,8 +7,6 @@ package edu.eci.pdsw.posgrado.managebeans;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
@@ -21,7 +19,6 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name = "LoginBean")
 @ViewScoped
 public class LoginBean implements Serializable {
-    private static final Logger log = LoggerFactory.getLogger(LoginBean.class);
     private String username;
     private String password;
     private boolean rememberMe;
@@ -59,19 +56,15 @@ public class LoginBean implements Serializable {
         }
         catch (UnknownAccountException ex) {
             facesError("Unknown account");
-            log.error(ex.getMessage(), ex);
         }
         catch (IncorrectCredentialsException ex) {
             facesError("Wrong password");
-            log.error(ex.getMessage(), ex);
         }
         catch (LockedAccountException ex) {
             facesError("Locked account");
-            log.error(ex.getMessage(), ex);
         }
         catch (AuthenticationException | IOException ex) {
             facesError("Unknown error: " + ex.getMessage());
-            log.error(ex.getMessage(), ex);
         }
         finally {
             token.clear();
