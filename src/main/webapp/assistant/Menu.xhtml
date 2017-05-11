@@ -18,25 +18,8 @@
             <header>
                 <nav>
                     <ul class="menuColor"><li><p:commandLink action="Menu?faces-redirect=true">Inicio</p:commandLink></li>
-                        <li><p:commandLink>Reportes</p:commandLink>  
-                        <ul> 
-                            <li class="MenuInicio"><p:commandLink action="ReporteSemestral?faces-redirect=true">General</p:commandLink></li>
-                            <li class="MenuInicio"><p:commandLink action="ReporteRecurso?faces-redirect=true">Recursos</p:commandLink></li>
-                        </ul> 
-                        </li>
                         <li><p:commandLink>Registros</p:commandLink>
                         <ul> 
-                            <li class="MenuInicio"><p:commandLink >Registrar Materia</p:commandLink>
-                            <ul>    
-                                <li class="MenuInicio"><p:commandLink action="NuevaMateria?faces-redirect=true" value="Nueva Materia"></p:commandLink> </li>
-                                <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
-                                    <li class="MenuInicio">         
-                                    <p:commandLink action="RegistrarMateria?faces-redirect=true" actionListener="#{RegistroMateriaBean.setPrograma(nombre)}" value="#{nombre}" >
-                                    </p:commandLink>     
-                                    </li>     
-                                </ui:repeat> 
-                            </ul>
-                            </li>
                             <li class="MenuInicio"><p:commandLink action="ProgramarClase?faces-redirect=true">Programar Clases</p:commandLink></li>
                         </ul>
                         </li>      
