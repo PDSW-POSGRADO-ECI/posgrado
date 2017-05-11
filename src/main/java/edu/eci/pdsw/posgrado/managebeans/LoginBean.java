@@ -22,7 +22,6 @@ import javax.faces.bean.ManagedBean;
 @ViewScoped
 public class LoginBean implements Serializable {
     private static final Logger log = LoggerFactory.getLogger(LoginBean.class);
-    private final Subject subject = SecurityUtils.getSubject();
     private String username;
     private String password;
     private boolean rememberMe;
@@ -32,13 +31,14 @@ public class LoginBean implements Serializable {
     }
 
     public Subject getSubject() {
-        return subject;
+        return SecurityUtils.getSubject();
     }
     
     /**
      * Try and authenticate the user
      */
     public void doLogin() {
+        Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
 
         try {
