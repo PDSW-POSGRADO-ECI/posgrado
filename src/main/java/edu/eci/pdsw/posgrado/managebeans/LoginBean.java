@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.posgrado.managebeans;
 
+import java.io.IOException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -12,11 +13,16 @@ import org.apache.shiro.subject.Subject;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @ManagedBean(name = "LoginBean")
 @ViewScoped
 public class LoginBean implements Serializable {
+
+    private static final Logger log = LoggerFactory.getLogger(LoginBean.class);
 
     private String username;
     private String password;
@@ -32,24 +38,52 @@ public class LoginBean implements Serializable {
 
     /**
      * Try and authenticate the user
+     *
      * @throws java.lang.Exception
      */
     public void doLogin() throws Exception {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
+        try {
+            subject.login(token);
 
-        subject.login(token);
+            if (subject.hasRole("admin")) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("admin/Menu.xhtml");
+            } else if (subject.hasRole("assistant")) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("assistant/Menu.xhtml");
+            } else if (subject.hasRole("coordinator")) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("coordinator/Menu.xhtml");
+            } else {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("Inicio.xhtml");
+            }
+        } catch (UnknownAccountException ex) {
+            facesError("Unknown account");
+            log.error(ex.getMessage(), ex);
+        } catch (IncorrectCredentialsException ex) {
+            facesError("Wrong password");
+            log.error(ex.getMessage(), ex);
+        } catch (LockedAccountException ex) {
+            facesError("Locked account");
+            log.error(ex.getMessage(), ex);
+        } catch (AuthenticationException ex) {
+            facesError("Unknown error: " + ex.getMessage());
+            log.error(ex.getMessage(), ex);
+        } catch (IOException ex) {
+            facesError("Unknown error: " + ex.getMessage());
+            log.error(ex.getMessage(), ex);
 
-        if (subject.hasRole("admin")) {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("admin/Menu.xhtml");
-        } else if (subject.hasRole("assistant")) {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("assistant/Menu.xhtml");
-        } else if (subject.hasRole("coordinator")) {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("coordinator/Menu.xhtml");
-        } else {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("Inicio.xhtml");
+        } finally {
+            token.clear();
         }
-        token.clear();
+    }
+
+    /**
+     * Adds a new SEVERITY_ERROR FacesMessage for the ui
+     *
+     * @param message Error Message
+     */
+    private void facesError(String message) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
     }
 
     public String getUsername() {
