@@ -1,16 +1,9 @@
----TRIGGER clase
-CREATE OR REPLACE FUNCTION insertclase()
-RETURNS TRIGGER AS $$
-BEGIN
-NEW.id:=(select max(clase.id)+1 FROM clase);
+
+CREATE OR REPLACE FUNCTION insertclase() RETURNS TRIGGER AS $$ BEGIN NEW.id:=(select max(clase.id)+1 FROM clase);
 RETURN NEW;
 END;
 $$ language plpgsql;
-
-CREATE TRIGGER id_clase BEFORE INSERT
-    ON Clase FOR EACH ROW 
-	EXECUTE PROCEDURE 
-	insertclase();
+CREATE TRIGGER id_clase BEFORE INSERT ON Clase FOR EACH ROW  EXECUTE PROCEDURE insertclase();
 
 ---TRIGGER posgrado
 CREATE OR REPLACE FUNCTION insertposgrado()

@@ -63,7 +63,7 @@ public class mybatisClaseDAO implements ClaseDAO {
     /**
      * Registra clase
      * @param corte
-     * @param per
+     * @param mat
      * @param fecha
      * @param horainit
      * @param horafin

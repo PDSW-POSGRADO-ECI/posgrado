@@ -254,7 +254,6 @@ public class ServiciosReporteImpl implements ServiciosReporte {
             boolean var = true;
             if (per.getFecha_inicio().compareTo(fecha) <= 0 && per.getFecha_fin().compareTo(fecha) >= 0) {
                 List<Clase> cl = clase.loadFechasProfesorClase(periodo, profe, fecha);
-                System.out.println(cl.size());
                 for (int i=0;i<cl.size() && var ;i++) {
                     if (cl.get(i).getHora_inicio().compareTo(horainit) > 0 && cl.get(i).getHora_fin().compareTo(horainit) <= 0 && cl.get(i).getHora_inicio().compareTo(horafin) >= 0 && cl.get(i).getHora_fin().compareTo(horafin) < 0) {
                         var = false;
@@ -267,14 +266,13 @@ public class ServiciosReporteImpl implements ServiciosReporte {
             }
             if (horainit.compareTo(horafin) < 0 && var) {
                 Horario hor = horario.loadHorarioProfesor(profe, fecha);
-                System.out.println(hor!=null);
                 if (hor!=null && hor.getHora_inicio().compareTo(horainit) <= 0 && hor.getHora_fin().compareTo(horainit) > 0 && hor.getHora_inicio().compareTo(horafin) < 0 && hor.getHora_fin().compareTo(horafin) >= 0) {
                     List<Profesor> p = profesor.loadProfesoresCohorte(cor, mat);
-                    System.out.println(p.size());int docp = -1;
+                    int docp = -1;
                     for (Profesor prof : p) {
                         if (prof.getNombre().equals(profe)) {
                             docp = prof.getDocumento();
-                            var=false;
+                            break;
                         }
                     }
                     clase.saveClase(cor, mat, fecha, horainit, horafin, docp);
@@ -297,10 +295,12 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         String ms = "Periodo Agregado";
         try {
             List<String> pers= corte.loadPeriodos();
-            if (!pers.contains(per) && fini.compareTo(ffin) < 0) {
-                corte.savePeriodo(per, fini, ffin);
+            if (!pers.contains(per)) {
+                if(fini.compareTo(ffin) < 0){
+                corte.savePeriodo(per, fini, ffin);}
+                else{ms="Error La fecha inicial es mayor que la fecha de terminacion";}
             } else {
-                ms = "Error el Periodo esta duplicado - La fecha inicial es mayor que la fecha de terminacion";
+                ms = "Error el Periodo esta duplicado";
             }
         } catch (ExceptionPersistence ex) {
             throw new ExceptionServiciosReporte("Error al registrar el periodo " + per, ex);
@@ -471,5 +471,16 @@ public class ServiciosReporteImpl implements ServiciosReporte {
 
         }
     }
+
+    @Override
+    public Horario consultarHorarioProfesor(String nom, Date fecha) throws ExceptionServiciosReporte {
+        try{
+              return horario.loadHorarioProfesor(nom, fecha);
+        } catch (ExceptionPersistence ex){
+              throw new ExceptionServiciosReporte("Error al cargar las clases del profesor", ex);
+
+        }
+    }
+    
     
 }

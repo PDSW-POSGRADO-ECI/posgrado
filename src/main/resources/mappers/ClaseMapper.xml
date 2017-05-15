@@ -119,10 +119,10 @@ and open the template in the editor.
             ORDER BY cla.fecha;
     </select>
     <insert parameterType="map" id="registrarClase">
-        <selectKey keyProperty="idmat" resultType="String" order="BEFORE">
-            SELECT mat.sigla FROM materia as mat WHERE mat.nombre=#{mat};
+        <selectKey keyProperty="sigla" resultType="string" order="BEFORE">
+            SELECT sigla FROM materia  WHERE nombre=#{mat};
         </selectKey>
-        INSERT INTO Clase(fecha,hora_inicio,hora_fin,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento) VALUES (#{fecha},#{hinit},#{hfin},#{idmat},#{idcor},#{docu});
+        INSERT INTO Clase(id,fecha,hora_inicio,hora_fin,materiacohorte_materia_sigla,materiacohorte_cohorte_id ,materiacohorte_profesor_documento) VALUES (1,#{fecha},#{hinit},#{hfin},#{sigla},#{idcor},#{docu});
     </insert>
     <resultMap type='Clase' id='ClaseResult'>
         <id property='id' column='id'/>

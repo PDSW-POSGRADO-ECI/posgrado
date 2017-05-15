@@ -16,6 +16,7 @@ public interface HorarioDAO {
     /**
      * Retorna una lista de horarios del profesor 
      * @param nom
+     * @param fecha
      * @return 
      * @throws edu.eci.pdsw.posgrado.dao.ExceptionPersistence 
      **/

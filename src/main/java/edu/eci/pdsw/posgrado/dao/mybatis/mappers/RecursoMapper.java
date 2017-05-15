@@ -39,4 +39,7 @@ public interface RecursoMapper {
     public void registrarRecurso(@Param("cant")int cant);
 
     public void registrarRecursosClase(@Param("idrec")int id, @Param("idcla")int idcla, @Param("cant")int cant);
+    public void cantidadRecursos(@Param("idrec")int id, @Param("idcla")int idcla, @Param("cant")int cant);
+    public void disponibleRecursos(@Param("idrec")int id, @Param("idcla")int idcla, @Param("cant")int cant);
 }
+

@@ -34,7 +34,6 @@ public class ClaseBean implements Serializable{
     private Date hfin;
     private Date ClaseFecha;
     private String mensaje;
-    private String mensaje2;
     private String corselect;
     private String posselect;
     private String proselect;
@@ -59,15 +58,17 @@ public class ClaseBean implements Serializable{
     
     */
     public void registrarRecursosClase() throws ExceptionServiciosReporte{
-        if(selectrec.isEmpty()){mensaje2="!No registro recursos para la clase";}
-        else{mensaje2=report.registrarRecursoClase(selectrec);}
+        if(selectrec.isEmpty()){mensaje="!No registro recursos para la clase";}
+        else{mensaje=report.registrarRecursoClase(selectrec);}
         
     }
     
     public void registrarClase() throws ExceptionServiciosReporte{
         if(!"".equals(proselect) && !"".equals(perselect) && !"".equals(corselect) && !"".equals(matselect)){
+            if(ClaseFecha!=null && hinicio!=null && hfin!=null){
             mensaje=report.registrarClase(Integer.valueOf(corselect), matselect, ClaseFecha,new java.sql.Time(hinicio.getTime()), new java.sql.Time(hfin.getTime()), proselect,perselect);
             registrarRecursosClase();
+            }else{mensaje="!Por Favor seleccione con anterioridad la fecha y las horas de inicio y fin";}
         }else{mensaje="!Por Favor seleccione con anterioridad el corte, profesor, materia, posgrado y asignatura.";}
         
     }
@@ -86,7 +87,6 @@ public class ClaseBean implements Serializable{
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", mensaje));
         } else if(mensaje.contains("!")){
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion: ", mensaje));
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion: ", mensaje2));
         }else {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Successful: ", mensaje));
         }

@@ -5,11 +5,13 @@
  */
 package edu.eci.pdsw.posgrado.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniel Rodriguez
  */
-public class PrerrequisitoMateria {
+public class PrerrequisitoMateria implements Serializable{
     
     private Materia materia_sigla;
     private Materia prerrequisito_sigla;

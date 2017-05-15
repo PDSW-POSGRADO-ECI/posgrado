@@ -56,6 +56,8 @@ public class mybatisRecursoDAO implements RecursoDAO {
     public void saveRecursoClase(int id, int idcla, int i) throws ExceptionPersistence{
         try{
             recursoMapper.registrarRecursosClase(id,idcla,i);
+            recursoMapper.cantidadRecursos(id, idcla, i);
+            recursoMapper.disponibleRecursos(id, idcla, i);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new ExceptionPersistence("Error al cargar Recurso ",e);

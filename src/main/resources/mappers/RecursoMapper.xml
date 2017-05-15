@@ -47,9 +47,13 @@ and open the template in the editor.
     
      <select parameterType="map" id="registrarRecursosClase">
         INSERT INTO recursoclase (recurso_id,clase_id,cantidaduse) VALUES(#{idrec},#{idcla},#{cant});
+         
+    </select>
+    <select parameterType="map" id="cantidadRecursos">
         UPDATE recurso  SET cantidad=cantidad-#{cant}  WHERE id=#{idrec}; 
-        UPDATE recurso  SET cantidad=0  WHERE id=#{idrec} AND 0&gt;cantidad; 
-        UPDATE recurso  SET disponible=false  WHERE id=#{idrec} and cantidad=0; 
+    </select>
+    <select parameterType="map" id="disponibleRecursos">
+        UPDATE recurso  SET cantidad=0 ,disponible=false WHERE id=#{idrec} AND 0&gt;cantidad; 
     </select>
     <resultMap type='Recurso' id='RecursoResult'>
         <id property='id' column='id'/>

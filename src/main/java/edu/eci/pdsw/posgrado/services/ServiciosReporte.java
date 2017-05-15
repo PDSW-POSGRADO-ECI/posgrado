@@ -73,6 +73,7 @@ public interface ServiciosReporte {
     public List<Materia> loadPrerrequisitosMateria(String sigla) throws ExceptionServiciosReporte;
     
     public List<Materia> loadCorrequisitosMateria(String sigla) throws ExceptionServiciosReporte;
-
+    
+    public Horario consultarHorarioProfesor(String nom,Date fecha)throws ExceptionServiciosReporte;
 
 } 

@@ -39,26 +39,9 @@ and open the template in the editor.
                     <h:outputText value="#{rec.cantidad}"/>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton update=":ReporteRecursos:Tablaprograma" oncomplete="PF('rec10').show()" icon="ui-icon-search" value="Ver programacion" />
+                    <p:commandButton type="submit" action="ReporteRecurso2" icon="ui-icon-search" value="Ver programacion" />
                 </f:facet>
             </p:dataTable>
-            <p:dialog header="Programacion del recurso: #{ReportesBean.selectrec.nomRecurso}" modal="true" resizable="false" widgetVar="rec10" >
-                <p:dataTable rendered="#{not empty ReportesBean.selectrec}" id="Tablaprograma" scrollable="true" scrollHeight="470" var="cla" value="#{ReportesBean.recursosClase}">
-                     <p:column headerText="Materia">
-                        <h:outputText value="#{cla.materia_sigla.nombre}"/>
-                    </p:column>
-                    <p:column headerText="Fecha de clase">
-                        <h:outputText value="#{ReportesBean.getHeader((cla.fecha))}"/>
-                    </p:column>
-                    <p:column headerText="Hora inicio">
-                        <h:outputText value="#{cla.hora_inicio}"/>
-                    </p:column>
-                    <p:column headerText="Hora Final">
-                        <h:outputText value="#{cla.hora_fin}"/>
-                    </p:column>
-                   
-                </p:dataTable>
-            </p:dialog>
         </h:form>
     </h:body>
 

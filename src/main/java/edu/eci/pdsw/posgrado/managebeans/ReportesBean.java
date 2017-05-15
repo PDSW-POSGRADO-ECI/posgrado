@@ -59,6 +59,14 @@ public class ReportesBean implements Serializable {
     public List<String> getPeriodos() throws ExceptionServiciosReporte {
         return report.obtenerPeriodos();
     }
+    
+    /*
+    *Obtener todos los periodos 
+    *@return retorna una lista de strings los periodos de la base de datos
+    **/
+    public boolean getRender() throws ExceptionServiciosReporte {
+        return selectrec!=null;
+    }
      
     /**
      * Get the value of Materias
