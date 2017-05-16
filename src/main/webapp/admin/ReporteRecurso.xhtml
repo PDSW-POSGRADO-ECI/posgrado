@@ -30,8 +30,8 @@ and open the template in the editor.
                 <p:autoComplete id="idp" dropdown="true" value="#{ReportesBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
                 <p:commandButton icon="ui-icon-refresh" value="Generar" update="ReporteRecursos:TablaRecursos" />
             </h:panelGrid>
-            <p:dataTable selection="#{ReportesBean.selectrec}" rowKey="#{rec.id}" id="TablaRecursos" scrollable="true" scrollHeight="500" style="position:absolute ;width: 40%;height:50%; top: 32%; left: 30%; right:15%" var="rec" value="#{ReportesBean.recurso}">
-                <p:column selectionMode="single" style="width:16px;text-align:center"/>
+            <p:dataTable selectionMode="single"  selection="#{ReportesBean.selectrec}" rowKey="#{rec.id}" id="TablaRecursos" scrollable="true" scrollHeight="500" style="position:absolute ;width: 40%;height:50%; top: 32%; left: 30%; right:15%" var="rec" value="#{ReportesBean.recurso}">
+                
                 <p:column headerText="Nombre">
                     <h:outputText value="#{rec.nomRecurso}"/>
                 </p:column>
