@@ -5,5 +5,7 @@
 	Oscar Alba
 	Brandon Nicolai Prieto
 	Laura Milena Ramos
-	Daniel Rodriguez
+	Daniel Felipe Rodriguez Trujillo
 	Camilo Torres
+	
+	
