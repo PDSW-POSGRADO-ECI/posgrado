@@ -34,7 +34,7 @@ Hector Fabio Cadavid Rengifo: Product owner
 #Artefactos utilizados
 
 #Base de datos
-![](BaseDeDatos.png)
+![](BaseDeDatos.PNG)
 
 #Diagrama de clases
 
