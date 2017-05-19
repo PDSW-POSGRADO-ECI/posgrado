@@ -121,9 +121,9 @@ CREATE TABLE rol (
 );
 
 -- Table: usrXrol
---CREATE TABLE usrXrol (
---    rol_rol varchar(30)  NOT NULL,
---    usr_usuario int  NOT NULL );
+CREATE TABLE usrXrol (
+    rol_rol varchar(30)  NOT NULL,
+    usr_usuario int  NOT NULL );
 
 
 -- primary keys unique keys
@@ -138,7 +138,7 @@ ALTER TABLE Salon ADD CONSTRAINT Salon_pk PRIMARY KEY (Clase_id);
 ALTER TABLE rol ADD CONSTRAINT rol_pk PRIMARY KEY (rol);
 ALTER TABLE usr ADD CONSTRAINT usr_pk PRIMARY KEY (usuario);
 ALTER TABLE RecursoClase ADD CONSTRAINT RecursoClase_pk PRIMARY KEY (Clase_id,Recurso_id);
---ALTER TABLE usrXrol ADD CONSTRAINT usrXrol_pk PRIMARY KEY (rol_rol,usr_usuario);
+ALTER TABLE usrXrol ADD CONSTRAINT usrXrol_pk PRIMARY KEY (rol_rol,usr_usuario);
 ALTER TABLE Periodo ADD CONSTRAINT Periodo_pk PRIMARY KEY (periodo);
 ALTER TABLE PrerequisitoMateria ADD CONSTRAINT PrerequisitoMateria_pk PRIMARY KEY (materia_sigla,prerrequisito_sigla);
 ALTER TABLE ProfesorXHorario ADD CONSTRAINT ProfesorXHorario_pk PRIMARY KEY (Profesor_documento,Horario_id);
@@ -242,13 +242,13 @@ ALTER TABLE Usr ADD CONSTRAINT usr_rol
 ;
 
 -- Reference: usrXrol_rol (table: usrXrol)
----ALTER TABLE usrXrol ADD CONSTRAINT usrXrol_rol
-    --FOREIGN KEY (rol_rol)
-    --REFERENCES rol (rol)  ;
+ALTER TABLE usrXrol ADD CONSTRAINT usrXrol_rol
+    FOREIGN KEY (rol_rol)
+    REFERENCES rol (rol)  ;
 
--- Reference: usrXrol_usr (table: usrXrol)
---ALTER TABLE usrXrol ADD CONSTRAINT usrXrol_usr
---    FOREIGN KEY (usr_usuario)
---   REFERENCES usr (usuario)  ;
+--Reference: usrXrol_usr (table: usrXrol)
+ALTER TABLE usrXrol ADD CONSTRAINT usrXrol_usr
+    FOREIGN KEY (usr_usuario)
+    REFERENCES usr (usuario)  ;
 
 -- End of file
