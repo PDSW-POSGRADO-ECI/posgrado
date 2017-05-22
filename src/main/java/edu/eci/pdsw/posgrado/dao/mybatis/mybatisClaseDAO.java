@@ -120,4 +120,18 @@ public class mybatisClaseDAO implements ClaseDAO {
             throw new PersistenceException("Error al consultar fechas de profesores", e);
         }
     }
+
+    /**
+     * Consulta el horario de clases del profesor
+     * @param nom
+     * @return 
+     */
+    @Override
+    public List<Clase> loadHorarioProfesor(String nom) {
+        try {
+            return claseMapper.consultarHorarioClaseDeProfesor(nom);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al consultar el horario de clases del profesor", e);
+        }
+    }
 }

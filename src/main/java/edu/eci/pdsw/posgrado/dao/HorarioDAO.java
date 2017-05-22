@@ -7,6 +7,7 @@ package edu.eci.pdsw.posgrado.dao;
 
 import edu.eci.pdsw.posgrado.entities.Horario;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -14,11 +15,19 @@ import java.util.Date;
  */
 public interface HorarioDAO {
     /**
-     * Retorna una lista de horarios del profesor 
+     * 
      * @param nom
      * @param fecha
      * @return 
      * @throws edu.eci.pdsw.posgrado.dao.ExceptionPersistence 
      **/
     public Horario loadHorarioProfesor(String nom,Date fecha) throws ExceptionPersistence;
+    
+    /**
+     * Retorna una lista de horarios del profesor 
+     * @param nom
+     * @return
+     * @throws ExceptionPersistence 
+     */
+    public List<Horario> loadHorariosProfesor(String nom) throws ExceptionPersistence;
 }

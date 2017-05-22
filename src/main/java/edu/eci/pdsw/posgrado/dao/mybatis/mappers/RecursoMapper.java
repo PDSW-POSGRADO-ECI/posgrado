@@ -28,7 +28,7 @@ public interface RecursoMapper {
     *Obtener todas las asignaturas de la base de datos
     *@return asig retorna una lista de asignaturas
     **/
-    public List<Recurso> consultarRecursos();
+    public  List<Recurso> consultarRecursos();
     
     /*
     *Registrar un nuevo recurso
@@ -37,9 +37,27 @@ public interface RecursoMapper {
     *@return asig retorna una lista de asignaturas
     **/
     public void registrarRecurso(@Param("cant")int cant);
-
+    
+    /*
+    *Registrar un nuevo recurso
+    *@param idclase
+    *@nombreRecurso
+    *@return asig retorna una lista de asignaturas
+    **/
     public void registrarRecursosClase(@Param("idrec")int id, @Param("idcla")int idcla, @Param("cant")int cant);
+    /*
+    *Registrar un nuevo recurso
+    *@param idclase
+    *@nombreRecurso
+    *@return asig retorna una lista de asignaturas
+    **/
     public void cantidadRecursos(@Param("idrec")int id, @Param("idcla")int idcla, @Param("cant")int cant);
+    /*
+    *Registrar un nuevo recurso
+    *@param idclase
+    *@nombreRecurso
+    *@return asig retorna una lista de asignaturas
+    **/
     public void disponibleRecursos(@Param("idrec")int id, @Param("idcla")int idcla, @Param("cant")int cant);
 }
 

@@ -137,16 +137,17 @@ nav ul ul ul{
 }
 
 /*Registrar materias*/
-p{
+.p1{
    font-family: "Comic Sans MS", cursive, sans-serif;
    font-size: 30px;  
    font-weight: bold;
    color: red;
    padding: 0 2.5rem;
+   margin-bottom: 0.2em;
 }
 
 .nmStyle{
-   font-family: "Comic Sans MS", cursive, sans-serif;
+   font-family: "Arial", cursive, sans-serif;
    font-size: 20px;  
    font-weight: bold;
    color: #4f4e4e;
@@ -160,8 +161,20 @@ p{
 }
 
 .bloquef{
-    background-image: url("/resources/f1.png");
+    background-image: url("/resources/f2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #343638;
+  color: #ffffff;
+  text-align: center;
+  font: 14px Verdana, sans-serif !important;
 }

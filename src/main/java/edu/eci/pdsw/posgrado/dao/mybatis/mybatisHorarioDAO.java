@@ -6,10 +6,12 @@
 package edu.eci.pdsw.posgrado.dao.mybatis;
 
 import com.google.inject.Inject;
+import edu.eci.pdsw.posgrado.dao.ExceptionPersistence;
 import edu.eci.pdsw.posgrado.dao.HorarioDAO;
 import edu.eci.pdsw.posgrado.dao.mybatis.mappers.HorarioMapper;
 import edu.eci.pdsw.posgrado.entities.Horario;
 import java.util.Date;
+import java.util.List;
 import org.apache.ibatis.exceptions.PersistenceException;
 
 /**
@@ -31,6 +33,22 @@ public class mybatisHorarioDAO implements HorarioDAO{
         
         try {
             return horarioMapper.consultarHorarioProfesor(nom,fecha);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al consultar horario de profesores", e);
+        }
+    }
+
+    
+    /**
+     * Consulta los horarios de un profesor
+     * @param nom
+     * @return
+     * @throws ExceptionPersistence 
+     */
+    @Override
+    public List<Horario> loadHorariosProfesor(String nom) throws ExceptionPersistence {
+        try {
+            return horarioMapper.consultarHorariosDeProfesor(nom);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar horario de profesores", e);
         }

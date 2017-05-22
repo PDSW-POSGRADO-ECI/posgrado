@@ -39,28 +39,36 @@ Esta plataforma usa las siguientes dependencias:
 * Org.primefaces: para utilizar un conjunto de etiquetas que soporta primefaces.
 * Com.sun.faces:para utilizar un conjunto de etiquetas que soporta primefaces.  
 * ###Arquitectura 
-	* ####Arquitectura de alto nivel:
+	* ###Modelo E-R  
+		* ####Vertabelo:
+		![](imagenes/BaseDeDatos.PNG)
+		* ####Astah:
+		![](imagenes/ModeloE-R.png)
+	* ####Arquitectura:
 	![](imagenes/Arquitectura.PNG)
-    * ####Capa Presentacion:
-	![](imagenes/
-    * ####Capa Logica:
-	![](imagenes/Logica.png)
-    * ####Capa Persistencia:
-	![](imagenes/)
-* ###Modelo E-R  
-	* ####Vertabelo:
-	![](imagenes/BaseDeDatos.PNG)
-	* ####Astah:
-	![](imagenes/ModeloE-R.png)
-* ###Diagrama de clases  
+    	* ####Capa Presentacion:
+		![](imagenes/Presentacion.png)
+    	* ####Capa Logica:
+		![](imagenes/Logica.png)
+    	* ####Capa Persistencia:
+		![](imagenes/Persistencia.png)
+    * ####Diagrama conceptual:
+	![](imagenes/Entities.png)
+    
+
 
 ##Descripción del proceso  
 Descripción del proceso de desarrollo utilizado, y de las prácticas consideradas para el mismo Para el proceso de desarrollo se utilizó el framework de SCRUM, junto con las prácticas que este implica.
-  * ###Backlogs y Burndown-charts de los Sprints  
-  * ###Release-Burndown-chart  
+  * ###Backlogs y Burndown-charts de los Sprints 
   	* ####Sprint 1
+  	![](imagenes/backlog1.png)
+    ![](imagenes/sprint1.png)
   	* ####Sprint 2
+  	![](imagenes/backlog2.png)
+  	![](imagenes/sprint2.png)
   	* ####Sprint 3
+  	![](imagenes/backlog3.png)
+  	![](imagenes/sprint3.png)
   * ####Métricas por desarrollador  
   	*	####Oscar Alba
   	*	####Brandon Prieto

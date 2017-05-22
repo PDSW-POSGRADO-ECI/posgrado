@@ -7,6 +7,7 @@ package edu.eci.pdsw.posgrado.dao.mybatis.mappers;
 
 import edu.eci.pdsw.posgrado.entities.Horario;
 import java.util.Date;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -15,10 +16,17 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface HorarioMapper {
     /**
-     * Retorna una lista de horarios del profesor 
+     * 
      * @param nom
      * @param fecha
      * @return 
      **/
     public Horario consultarHorarioProfesor(@Param("nomprof")String nom,@Param("fe")Date fecha);
+    
+    /**
+     * Retorna una lista de horarios del profesor 
+     * @param nom
+     * @return 
+     */
+    public List<Horario>consultarHorariosDeProfesor(@Param("nomprof")String nom);
 }

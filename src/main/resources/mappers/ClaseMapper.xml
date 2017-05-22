@@ -118,6 +118,29 @@ and open the template in the editor.
             WHERE cla.materiacohorte_cohorte_id=#{id} and mat.nombre=#{mat} and pro.nombre=#{profe}
             ORDER BY cla.fecha;
     </select>
+    
+    <select parameterType="map" id="consultarHorarioClaseDeProfesor" resultMap="ClaseResult">
+        SELECT
+        
+        cla.id,
+        cla.hora_inicio,
+        cla.hora_fin,
+        cla.fecha,        
+        
+        mat.nombre as MAT_nombre
+        
+	FROM clase as cla 
+	join materia as mat on mat.sigla=cla.materiacohorte_materia_sigla
+	join materiaCohorte as matco on cla.MateriaCohorte_Profesor_documento=matco.Profesor_documento
+	join Profesor as pro on matco.Profesor_documento=pro.documento
+        join cohorte as co on co.id=cla.materiacohorte_cohorte_id 
+	join periodo as per on co.periodo_periodo=per.periodo
+	
+        
+        WHERE pro.nombre=#{nomProf}
+    </select>
+    
+    
     <insert parameterType="map" id="registrarClase">
         <selectKey keyProperty="sigla" resultType="string" order="BEFORE">
             SELECT sigla FROM materia  WHERE nombre=#{mat};

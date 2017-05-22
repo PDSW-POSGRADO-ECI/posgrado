@@ -14,6 +14,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ValueChangeEvent;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -36,6 +37,28 @@ public class RegistroMateriaBean implements Serializable {
     private String mat;
     private String radio;
     private String request;
+    private String mate;
+    private boolean disabled = true;
+    public int creditos;
+    
+    public RegistroMateriaBean(){
+        
+    }
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public String getMate() {
+        return mate;
+    }
+
+    public void setMate(String mate) {
+        this.mate = mate;
+    }
 
     public String getRequest() {
         return request;
@@ -67,13 +90,7 @@ public class RegistroMateriaBean implements Serializable {
     public void setMat(String mat) {
         this.mat = mat;
     }
-
-
-    public RegistroMateriaBean(){
-        
-    }
     
-    public int creditos;
 
     public String getSeleccion() {
         return seleccion;
@@ -182,6 +199,7 @@ public class RegistroMateriaBean implements Serializable {
                  + " Creditos : " + creditos + " Asignatura : " + asignatura + " Descripcion : " + descripcion 
                  + "RequesT :" + request );
     }
+    
     public List<String> autoComplete(String query, int type) throws ExceptionServiciosReporte {
         List<String> s = null;
         
@@ -201,6 +219,10 @@ public class RegistroMateriaBean implements Serializable {
             case 4:
                 s = getRequisitos();
                 break;
+            case 5:
+                s = getNomb();
+                break;   
+             
             default:
                 break;
         }
@@ -245,7 +267,7 @@ public class RegistroMateriaBean implements Serializable {
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public List<String> getNuevor() throws ExceptionServiciosReporte {
-        return report.consultarNombresAsignaturasXposgrado(radio);
+        return report.consultarNombresAsignaturasXposgrado(programa);
     }
     /**
      * Consultar las materias asociadas a una asignatura
@@ -256,6 +278,20 @@ public class RegistroMateriaBean implements Serializable {
     public List<String> getName() throws ExceptionServiciosReporte{
         return report.consultarNombresMaterias(asignatura); 
     }
+    
+    public List<String> getNomb() throws ExceptionServiciosReporte{
+        return report.consultarNombresMaterias(seleccion); 
+    }
+    
+    /**
+     * Activa y desactiva el boton en la seleccion de una asignatura
+     * @param event 
+     */
+    public void onRowSelect(SelectEvent event) {
+        disabled = false;
+    }
+    
+  
     
    
 }
