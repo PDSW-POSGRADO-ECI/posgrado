@@ -18,13 +18,13 @@
 * ###Historias de usuario  
    Las historias de usuario consideradas fueron:
 	* ####Reporte general.
-	![](ReporteGeneral.PNG)
+	![](img/ReporteGeneral.PNG)
 	* ####Reporte de recursos.
-	![](ReporteRecursos.PNG)
+	![](img/ReporteRecursos.PNG)
 	* ####Registrar Materia.
-	![](RegistrarMateria.PNG)
+	![](img/RegistrarMateria.PNG)
 	* ####Programar una Clase.
-	![](ProgramarClase.PNG)
+	![](img/ProgramarClase.PNG)
 
 ##Arquitectura y diseño  
 Esta plataforma usa las siguientes dependencias:
@@ -41,14 +41,20 @@ Esta plataforma usa las siguientes dependencias:
 * ###Arquitectura  
 * ###Modelo E-R  
 	* ####Vertabelo:
-	![](BaseDeDatos.PNG)
+	![](img/BaseDeDatos.PNG)
 	* ####Astah:
-	![](ModeloE-R.png)
+	![](img/ModeloE-R.png)
 * ###Diagrama de clases  
 
 ##Descripción del proceso  
 Descripción del proceso de desarrollo utilizado, y de las prácticas consideradas para el mismo Para el proceso de desarrollo se utilizó el framework de SCRUM, junto con las prácticas que este implica.
-  * ###Backlogs y Burndown-charts de los Sprints  
+  * ###Enlace Trello https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
+  * ###Backlogs y Burndown-charts de los Sprints 
+  	* ####Sprint 1
+	![](img/Sprint1Backlog.png)
+	* ####Sprint 2
+	![](img/Sprint2Backlog.png)
+	* ####Sprint 3
   * ###Release-Burndown-chart  
   	* ####Sprint 1
   	* ####Sprint 2
