@@ -64,6 +64,11 @@ public interface ClaseMapper {
     *@return asig retorna una lista de asignaturas
     **/
     public List<Clase> consultarClaseProfesor(@Param("id")int cor,@Param("mat") String mat,@Param("profe") String profe);
-    
-    public List<Clase> consultarHorarioClaseDeProfesor(@Param("nomProf") String nom);
+     
+     /*
+    *Obtener todas las clases de un profesor
+    *@return asig retorna una lista de asignaturas
+    **/
+    public List<Clase> consultarHorarioClaseDeProfesor(@Param("nombre")String nombre, @Param("per")String per);
+
 }

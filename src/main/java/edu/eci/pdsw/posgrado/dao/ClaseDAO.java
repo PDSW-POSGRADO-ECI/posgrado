@@ -65,7 +65,12 @@ public interface ClaseDAO {
     /**
      * Carga el horario de clases del profesor
      * @param nom
+     * @param per
      * @return 
+     * @throws edu.eci.pdsw.posgrado.dao.ExceptionPersistence 
      */
-    public List<Clase> loadHorarioProfesor(String nom);
+    public List<Clase> loadHorarioClaseDeProfesor(String nom,String per) throws ExceptionPersistence;
+
+    
+    
 }

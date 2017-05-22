@@ -124,14 +124,17 @@ public class mybatisClaseDAO implements ClaseDAO {
     /**
      * Consulta el horario de clases del profesor
      * @param nom
+     * @param per
      * @return 
+     * @throws edu.eci.pdsw.posgrado.dao.ExceptionPersistence 
      */
     @Override
-    public List<Clase> loadHorarioProfesor(String nom) {
+    public List<Clase> loadHorarioClaseDeProfesor(String nom,String per)throws ExceptionPersistence {
         try {
-            return claseMapper.consultarHorarioClaseDeProfesor(nom);
+            return claseMapper.consultarHorarioClaseDeProfesor(nom,per);
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar el horario de clases del profesor", e);
         }
     }
+    
 }

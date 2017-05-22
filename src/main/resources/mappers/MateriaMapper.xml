@@ -75,7 +75,7 @@ and open the template in the editor.
         FROM materia as mat
         join asignatura as asi on mat.asignatura_id = asi.id
         join posgrado as pos on pos.id=asi.posgrado_id
-        WHERE pos.nombre='#{nomposgrado}
+        WHERE pos.nombre=#{nomposgrado}
         
     </select>
     

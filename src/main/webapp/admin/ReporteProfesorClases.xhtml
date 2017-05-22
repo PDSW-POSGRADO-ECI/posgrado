@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE xhtml>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Reporte de Recursos</title>
+        <link rel="stylesheet" type="text/css" href="../formatos.css"/>
+        <link rel="stylesheet" type="text/css" href="../fonts.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="ReporteProfesorClases">
+            <div class="item">
+                <img src="../resources/campus.jpg" class="imagen" />
+            </div>
+            <div id="barra3" style="text-align: right; margin:25px 0;  position:relative ; top: 0%; left: 0%; right:10%" >
+                <h:panelGrid columns="3" style="margin-right: auto">
+                    <i class="icon icon-home"></i>
+                    <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Regresar</p:commandLink>
+                </h:panelGrid>
+            </div>
+            <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 18%; left: 3%; right:5%">
+                <p:outputLabel style="font-weight:bold" value="Seleccione el Periodo:" for="idper" />
+                <p:autoComplete id="idper" dropdown="true" value="#{ReporteProfesorBean.periodo}" completeMethod="#{ReportesBean.completeText}" />
+                <p:commandButton icon="ui-icon-refresh" value="Generar" update="ReporteProfesorClases:TablaProfesores" />
+            </h:panelGrid>
+            <p:dataTable selectionMode="single"  selection="#{ReporteProfesorBean.profe}" rowKey="#{prof.documento}" id="TablaProfesores" scrollable="true" scrollHeight="450" 
+                         style="position:absolute ;width: 40%;height:50%; top: 32%; left: 30%; right:15%" var="prof" value="#{ReporteProfesorBean.profePeriodo}">
+                <p:column headerText="Documento">
+                    <h:outputText value="#{prof.documento}"/>
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{prof.nombre}"/>
+                </p:column>
+                <p:column headerText="Correo">
+                    <h:outputText value="#{prof.correo}"/>
+                </p:column>
+                <p:column headerText="Telefono">
+                    <h:outputText value="#{prof.telefono}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
+                        <p:selectOneRadio id="console" value="#{ReporteProfesorBean.mode}" layout="grid" columns="1">
+                            <f:selectItem itemLabel="Reporte semestral" itemValue="true" />
+                            <f:selectItem itemLabel="Reporte de semana actual" itemValue="false" />
+                        </p:selectOneRadio>
+                        <p:commandButton type="submit" action="ReporteProfesorClases2" icon="ui-icon-search" value="Ver programacion" />
+                    </h:panelGrid>
+                </f:facet>
+            </p:dataTable>
+            
+            
+        </h:form>
+    </h:body>
+</html>

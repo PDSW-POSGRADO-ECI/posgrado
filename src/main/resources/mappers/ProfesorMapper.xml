@@ -30,6 +30,21 @@ and open the template in the editor.
         
         FROM profesor as pro;
     </select>
+     <select parameterType="map" id="consultarProfesoresPeriodo" resultMap="ProfesorResult">
+        SELECT
+            distinct(pro.documento),
+            pro.nombre,
+            pro.correo,
+            pro.telefono,
+            pro.tipo_documento
+        
+        FROM materiacohorte as matco
+        join profesor as pro on matco.profesor_documento=pro.documento
+        join materia as mat on matco.materia_sigla=mat.sigla
+        join cohorte as co on co.id=matco.cohorte_id
+         
+        WHERE co.periodo_periodo=#{per};
+    </select>
     
      <select parameterType="map" id="consultarProfesoresCohorte" resultMap="ProfesorResult">
         SELECT

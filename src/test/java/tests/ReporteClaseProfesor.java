@@ -74,7 +74,7 @@ public class ReporteClaseProfesor {
         stmt.execute("INSERT INTO Clase (id,hora_inicio,hora_fin,fecha,materiaCohorte_materia_sigla,materiaCohorte_cohorte_id ,materiaCohorte_profesor_documento)  VALUES(2, '15:00:00','17:00:00', '2017-01-01', 'CONC',24,1818428);");
 
         ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
-        report.consultarClaseProfesor(report.colsultarProfesores().get(0).getNombre(),report.obtenerPeriodos().get(0));
+        report.consultarHorarioClaseProfesor(report.colsultarProfesores().get(0).getNombre(),report.obtenerPeriodos().get(0));
         
     }
     /**
@@ -106,7 +106,7 @@ public class ReporteClaseProfesor {
 
         ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         DateFormat ff = new SimpleDateFormat("yyyy-MM-dd");Date date = ff.parse("2017-08-21");
-        report.consultarClaseProfesorSemana(report.colsultarProfesores().get(0).getNombre(),report.obtenerPeriodos().get(0),date);
+        report.consultarHorarioClaseProfesorSemana(report.colsultarProfesores().get(0).getNombre(),report.obtenerPeriodos().get(0),date);
     }
     
     /**
@@ -138,7 +138,7 @@ public class ReporteClaseProfesor {
 
         ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         DateFormat ff = new SimpleDateFormat("yyyy-MM-dd");Date date = ff.parse("2017-08-21");
-        report.consultarClaseProfesorSemana(report.colsultarProfesores().get(0).getNombre(),report.obtenerPeriodos().get(0),date);
+        report.consultarHorarioClaseProfesorSemana(report.colsultarProfesores().get(0).getNombre(),report.obtenerPeriodos().get(0),date);
     }
     /**
      *
@@ -169,6 +169,6 @@ public class ReporteClaseProfesor {
 
         ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
         DateFormat ff = new SimpleDateFormat("yyyy-MM-dd");Date date = ff.parse("2017-08-21");
-        report.consultarClaseProfesorSemana(report.colsultarProfesores().get(0).getNombre(),report.obtenerPeriodos().get(0),date);
+        report.consultarHorarioClaseProfesorSemana(report.colsultarProfesores().get(0).getNombre(),report.obtenerPeriodos().get(0),date);
     }
 }

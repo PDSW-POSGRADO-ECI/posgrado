@@ -22,27 +22,24 @@ and open the template in the editor.
             <div id="barra3" style="text-align: right; margin:25px 0;  position:relative ; top: 0%; left: 0%; right:10%" >
                 <h:panelGrid columns="3" style="margin-right: auto">
                     <i class="icon icon-home"></i>
-                    <p:commandLink class="cmStyle" action="ReporteRecurso?faces-redirect=true">Regresar</p:commandLink>
+                    <p:commandLink class="cmStyle" action="ReporteProfesorClases?faces-redirect=true">Regresar</p:commandLink>
                 </h:panelGrid>
             </div>
             <h:panelGrid columns="3" cellpadding="30" style="margin:10px 0; position:absolute ; top: 18%; left: 20%; right:5%">
-                <p:outputLabel style="font-weight:bold" value="Recurso seleccionado: #{ReportesBean.selectrec.nomRecurso}" />
+                <p:outputLabel style="font-weight:bold" value="Profesor seleccionado: #{ReporteProfesorBean.profe.nombre}" />
             </h:panelGrid>
-            <p:dataTable id="Tablaprograma"  rendered="#{ReportesBean.render}"  var="clas" value="#{ReportesBean.recursosClase}" scrollable="true" scrollHeight="500" style="position:absolute ;width: 50%;height:50%; top: 30%; left: 25%; right:15%"  >
+            <p:dataTable id="TablaReporte"  rendered="#{ReporteProfesorBean.render}"  var="clas" value="#{ReporteProfesorBean.generarReporteClases}" 
+                         scrollable="true" scrollWidth="91%" scrollHeight="500" style="position:absolute ; top: 30%; left: 5%;"  >
                 <p:column headerText="Materia">
                     <h:outputText value="#{clas.materia_sigla.nombre}" />
                 </p:column>
-                <p:column headerText="Fecha de clase">
-                    <h:outputText value="#{ReportesBean.getHeader((clas.fecha))}" />
-                </p:column>
-                <p:column headerText="Hora inicio">
-                    <h:outputText value="#{clas.hora_inicio}" />
-                </p:column>
-                <p:column headerText="Hora Final">
-                    <h:outputText value="#{clas.hora_fin}" />
-                </p:column>
+                <p:columns value="#{ReporteProfesorBean.generarReporteClases}" var="clase">
+                    <f:facet name="header">
+                        <h:outputText value="#{ReportesBean.getHeader(clase.fecha)}" />
+                    </f:facet>
+                </p:columns>
                 <f:facet name="footer">
-                    <p:commandButton   type="submit" action="ReporteRecurso" value="Regresar" />
+                    <p:commandButton   type="submit" action="ReporteProfesorClases" value="Regresar" />
                 </f:facet>
             </p:dataTable>
         </h:form>

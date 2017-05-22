@@ -20,6 +20,7 @@ import edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte;
 import edu.eci.pdsw.posgrado.services.ServiciosReporte;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -483,13 +484,41 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     @Override
-    public void consultarClaseProfesor(String nombre, String get) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Clase> consultarHorarioClaseProfesor(String nombre, String per)throws ExceptionServiciosReporte {
+        try{
+              return clase.loadHorarioClaseDeProfesor(nombre, per);
+        } catch (ExceptionPersistence ex){
+              throw new ExceptionServiciosReporte("Error al cargar las horario de  clases del profesor", ex);
+
+        }
     }
 
     @Override
-    public void consultarClaseProfesorSemana(String nombre, String get, Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Clase> consultarHorarioClaseProfesorSemana(String nombre, String per, Date date) throws ExceptionServiciosReporte{
+        List<Clase> clases=null;List<Clase> cla=null;
+        try{
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);cal.add(Calendar.DATE, 7);
+            cla=clase.loadHorarioClaseDeProfesor(nombre, per);
+            for(Clase c: cla){
+                if(c.getFecha().compareTo(date)>=0 && c.getFecha().compareTo(cal.getTime())<=0){
+                    clases.add(c);
+                }
+            }
+        } catch (ExceptionPersistence ex){
+              throw new ExceptionServiciosReporte("Error al cargar horario clase de profesor por semana", ex);
+        }
+        return clases;
+    }
+
+    @Override
+    public List<Profesor> ProfesorPeriodo(String periodo) throws ExceptionServiciosReporte {
+        try{
+              return profesor.loadProfesorPeriodo(periodo);
+        } catch (ExceptionPersistence ex){
+              throw new ExceptionServiciosReporte("Error al cargar profesor por periodo", ex);
+
+        }
     }
     
     

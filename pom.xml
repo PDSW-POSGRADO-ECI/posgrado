@@ -132,12 +132,7 @@
     <build>
         <finalName>Postgrado-ECI</finalName>
         <plugins>
-            
-             <plugin> 
-                 <artifactId>maven-site-plugin</artifactId> 
-                 <version>3.5.1</version> 
-             </plugin> 
-            
+                      
             <!-- clean project (also local H2 database)-->
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -220,7 +215,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-			
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>

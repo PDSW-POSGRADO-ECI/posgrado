@@ -39,13 +39,12 @@ Esta plataforma usa las siguientes dependencias:
 * Com.sun.faces:para utilizar un conjunto de etiquetas que soporta primefaces.  
 
 * ###Arquitectura 
+![](img/Arquitectura.png)
 	* ###Modelo E-R  
 		* ####Vertabelo:
 		![](img/BaseDeDatos.PNG)
 		* ####Astah:
 		![](img/ModeloE-R.png)
-	* ####Arquitectura:
-	![](img/Arquitectura.PNG)
     	* ####Capa Presentacion:
 		![](img/Presentacion.png)
     	* ####Capa Logica:
@@ -84,11 +83,8 @@ Descripción del proceso de desarrollo utilizado, y de las prácticas considerad
   	*	####Daniel Rodriguez
   	*	####Camilo Torres
 
-##Reporte de pruebas  
-* ###Reporte general  
-* ###Reporte de recursos  
-* ###Registrar Materia  
-* ###Programar una Clase  
+##Reporte de pruebas
+![](img/ReportePruebas.png)
 
 #####Url Circleci:  https://circleci.com/gh/PDSW-POSGRADO-ECI/posgrado
 #####Url Heroku:  https://posgrado-eci.herokuapp.com/

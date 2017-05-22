@@ -39,5 +39,7 @@ public interface ProfesorMapper {
     public List<String> consultarNombresProfesores();
 
     public List<Profesor> consultarProfesoresCohorte(@Param("corte")int cor, @Param("mate")String mat);
+
+    public List<Profesor> consultarProfesoresPeriodo(@Param("per")String periodo);
     
 }

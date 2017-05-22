@@ -76,8 +76,10 @@ public interface ServiciosReporte {
     
     public Horario consultarHorarioProfesor(String nom,Date fecha)throws ExceptionServiciosReporte;
 
-    public void consultarClaseProfesor(String nombre, String get);
+    public List<Clase> consultarHorarioClaseProfesor(String nombre, String get)throws ExceptionServiciosReporte;
 
-    public void consultarClaseProfesorSemana(String nombre, String get, Date date);
+    public List<Clase> consultarHorarioClaseProfesorSemana(String nombre, String get, Date date)throws ExceptionServiciosReporte;
+
+    public List<Profesor> ProfesorPeriodo(String periodo) throws ExceptionServiciosReporte;
 
 } 

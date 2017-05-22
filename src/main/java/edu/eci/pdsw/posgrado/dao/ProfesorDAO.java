@@ -28,14 +28,10 @@ public interface ProfesorDAO {
     **/
     public Profesor loadProfesor(int claseid, String materia) throws ExceptionPersistence;
     
-    /*
-    *registrar un profesor a un corte de un periodo
-    *@param doc
-    *@param cort
-    *@param periodo
-    *@param sigla
-    **/
-    public void saveProfesorCohorte(int doc, int cort, String periodo, String sigla) throws ExceptionPersistence;
 
     public List<Profesor> loadProfesoresCohorte(int cor, String mat) throws ExceptionPersistence;
+
+    public List<Profesor> loadProfesorPeriodo(String periodo) throws ExceptionPersistence;
+
+
 }

@@ -45,10 +45,6 @@ public class mybatisProfesorDAO implements ProfesorDAO {
         }
     }
 
-    @Override
-    public void saveProfesorCohorte(int doc, int cort, String periodo, String sigla) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * Consulta los nombres de los profesores
@@ -76,7 +72,19 @@ public class mybatisProfesorDAO implements ProfesorDAO {
         try {
             return profesorMapper.consultarProfesoresCohorte(cor, mat);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new ExceptionPersistence("Error al cargar Recurso ", e);
+            throw new ExceptionPersistence("Error al Profesor del cohorte "+cor, e);
         }
     }    
+
+    @Override
+    public List<Profesor> loadProfesorPeriodo(String periodo) throws ExceptionPersistence {
+        try {
+            return profesorMapper.consultarProfesoresPeriodo(periodo);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new ExceptionPersistence("Error al Profesor or periodo "+periodo, e);
+        }
+    }
+
+    
+
 }
