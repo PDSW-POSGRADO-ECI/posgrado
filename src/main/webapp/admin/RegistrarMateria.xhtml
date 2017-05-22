@@ -19,6 +19,7 @@ and open the template in the editor.
 
     <h:body>
         <h:form id="RegistrarMateria">
+            
             <div class="item">
                 <img src="../resources/campus.jpg" class="imagen"/>
             </div>
@@ -28,23 +29,18 @@ and open the template in the editor.
                     <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Regresar</p:commandLink>
                 </h:panelGrid>
             </div>
-            <p:panel id="paneles" style="position:absolute ;top: 30%;left: 18%;height: 60%;width: 60%;" >
-                <p>Programa : #{RegistroMateriaBean.programa}</p>
-                <h:panelGrid id="panelpos" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 30%; left: 10%;">
-                    <p:outputLabel style="font-weight:bold;" value="Asignatura:" for="pos" />
-                    <p:autoComplete id="pos" style="left:10%" dropdown="true" value="#{RegistroMateriaBean.asignatura}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 0)}" >
-                        <p:ajax event="itemSelect"  listener="#{RegistroMateriaBean.setMat('')}" update=":RegistrarMateria:panelmat" >  </p:ajax>
-                    </p:autoComplete>
-                </h:panelGrid>  
-                <h:panelGrid id="panelmat" columns="2" cellpadding="40" style="margin:10px 0; position:absolute ; top: 41%; left: 10%; ">
-                    <p:outputLabel style="font-weight:bold;" value="Seleccione la Materia:" for="mat" />
-                    <p:autoComplete   id="mat" style="left: 14%; " dropdown="true" value="#{RegistroMateriaBean.mat}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 2)}" >
-                        <p:ajax event="itemSelect"   update=":RegistrarMateria">  </p:ajax>
-                    </p:autoComplete>
-                </h:panelGrid>
-                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 65%; left:54%;" action="NuevaMateria?faces-redirect=true" value="Registrar Nueva Materia"  />
-                <p:commandButton  type="submit" style="margin:10px 0; position:absolute ; top: 65%; left:15%; "  icon="ui-icon-check" value="Modificar materia " />
-            </p:panel>
+            
+            <p:panel id="paneles" style="position:absolute ;top: 30%;left: 18%;height: 60%;width: 60%;" >   
+                <p class="p1">Programa : #{RegistroMateriaBean.programa}</p>
+                <p:dataTable style="width:50%; position:absolute ; top: 30%; left: 25%;" var="posag" value="#{RegistroMateriaBean.materia}" selectionMode="single" selection="#{RegistroMateriaBean.seleccion}" rowKey="#{posag}" >
+                    <p:ajax event="rowSelect" update=":RegistrarMateria:dis" listener="#{RegistroMateriaBean.onRowSelect}" />
+                    <p:column headerText="Asignaturas">
+                        <h:outputText value="#{posag}" />
+                    </p:column> 
+                </p:dataTable>
+                <p:commandButton type="submit" style="margin:10px 0; position:absolute ; top: 65%; left:54%;"  action="RegistrarAsignatura?faces-redirect=true" value="Nueva Asigntura"  />
+                <p:commandButton  type="submit" style="margin:10px 0; position:absolute ; top: 65%; left:15%; " id="dis" disabled="#{RegistroMateriaBean.disabled}"  action="ModificarMateria?faces-redirect=true"  icon="ui-icon-check" value="Modificar materia" />            
+            </p:panel>         
         </h:form>
     </h:body>
 </ui:composition>
