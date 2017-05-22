@@ -481,6 +481,16 @@ public class ServiciosReporteImpl implements ServiciosReporte {
 
         }
     }
+
+    @Override
+    public void consultarClaseProfesor(String nombre, String get) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void consultarClaseProfesorSemana(String nombre, String get, Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
