@@ -88,7 +88,6 @@ body{
     font: bold 14px Verdana, sans-serif;
     height: 0.50cm;  
     margin-top: 2.2cm;
-    position: absolute;
     left: 0px;
     top: 0px;
 }
@@ -294,6 +293,14 @@ nav > ul>li>a{
     
 }
 
+.p1{
+   font-family: "Comic Sans MS", cursive, sans-serif;
+   font-size: 30px;  
+   font-weight: bold;
+   color: red;
+   padding: 0 2.5rem;
+   margin-bottom: 0.2em;
+}
 
 
 nav > ul > li > a{

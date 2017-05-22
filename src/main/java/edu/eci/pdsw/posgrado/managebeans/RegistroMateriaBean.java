@@ -256,6 +256,10 @@ public class RegistroMateriaBean implements Serializable {
         return report.consultarNombresAsignaturasXposgrado(programa);
     }
     
+    public List<String> getMateri(String programa) throws ExceptionServiciosReporte {
+        return report.consultarNombresAsignaturasXposgrado(programa);
+    }
+    
     /**
      * Obtener las asginaturas asociadas a un posgrado
      * @return una lista con las asignaturas asociadas a un posgrado
@@ -275,11 +279,15 @@ public class RegistroMateriaBean implements Serializable {
     }
     /**
      * Consultar las materias asociadas a una asignatura
-
+     * @param asignatura
      * @return Retorna una lista con las materias asociadas a una asignatura
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     public List<String> getName() throws ExceptionServiciosReporte{
+        return report.consultarNombresMaterias(asignatura); 
+    }
+    
+    public List<String> getNam(String asignatura) throws ExceptionServiciosReporte{
         return report.consultarNombresMaterias(asignatura); 
     }
     

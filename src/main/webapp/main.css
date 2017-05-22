@@ -14,9 +14,7 @@ and open the template in the editor.
 }
 
 header{
-    width: 100%;
-    position: absolute;
-    
+    width: 100%;  
 }
 /*Imagen de inicio*/
 img {
@@ -59,12 +57,7 @@ nav ul {
 
 /*Borde de la barra menu*/
 .menuColor{
-    border-top: 10px solid #031b54; 
-}
-
-/*Borde de la barra menu*/
-.registrarMateriaColor{
-    border-top: 10px solid #078393; 
+    border-top: 10px solid #820000; 
 }
 
 /*Quitar hipervinculos*/
@@ -96,7 +89,7 @@ nav > ul > li {
 
 /*Mouse sobre la barra*/
 nav a:hover {
-    background: rgba(0, 185, 252,0.5);
+    background: rgba(252, 17, 17, 0.5);
 }
 
 /*SUBMENU*/
@@ -110,7 +103,7 @@ nav li ul{
 
 /*Fondo submenus*/
 .MenuInicio{
-    background: #031b54;
+    background: #820000;
 }
 
 .registrarMat{
@@ -161,7 +154,7 @@ nav ul ul ul{
 }
 
 .bloquef{
-    background-image: url("/resources/f2.jpg");
+    background-image: url("/resources/escuela.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -170,11 +163,162 @@ nav ul ul ul{
 footer {
   position: absolute;
   right: 0;
-  bottom: 0;
   left: 0;
   padding: 1rem;
   background-color: #343638;
   color: #ffffff;
   text-align: center;
   font: 14px Verdana, sans-serif !important;
+}
+
+
+table  tr >  td > ul li b {
+    font: 14px Verdana, sans-serif !important;
+    color: #ffffff;
+    font-weight: bold !important;
+    margin: 10px;
+    margin-top: 10px;
+    vertical-align: top;
+}
+
+/*Transparencias tabla*/
+
+.leftF{
+    background-color: rgba(0, 0, 0,.5);
+    width: 20%;
+    margin: 0;
+   
+}
+
+.centerF{
+    background-color: rgba(0, 0, 0,.5);
+    height: 600px;
+    width: 60%; 
+}
+
+.rightF{
+    background-color: rgba(0, 0, 0,.5);
+    width: 20%;
+   
+}
+
+table tr td{
+    vertical-align: top;
+    padding: 2rem 1rem;
+}
+
+table  tr >  td > ul li ul {
+    font: 14px Verdana, sans-serif !important;
+    color: #ffffff;
+    margin: 30px;
+    margin-top: 10px;
+    vertical-align: top;
+}
+
+table ul {
+    list-style-type: none;
+}
+
+table  tr >  td > ul li ul li:hover{
+   color: #c60505;
+   cursor: pointer;
+}
+
+table{
+    width: 100%;
+    border: 0;
+}
+
+
+.espeT{
+    font: 40px 'Helvetica Neue', sans-serif !important;
+    font-weight: bold !important; 
+    color: #990000;
+    margin-left: 2rem;
+    border-bottom: double #555;
+}
+
+article {
+    margin-left: 3em;
+    padding: 1em;
+    overflow: hidden;
+}
+
+h1{
+    font-family: tahoma;
+    color: #ff0000;
+    border-bottom: double #555;
+}
+
+h2{
+    font: 16px verdana, sans-serif !important;
+    font-weight: bold !important;
+    color: #cecece;
+    border-bottom: double #555;
+}
+
+h3{
+    font: 13px verdana, sans-serif !important;
+    color: #ff0000;
+    font-weight: bold !important;
+    margin-left: 4rem;
+}
+
+p.text{
+    margin: 1rem 0;
+    color: #f2f2f2; 
+    font-family: verdana; 
+    font-size: 15px; 
+    font-weight: 400; 
+    line-height: 24px;
+    text-align: justify;
+}
+
+article{
+    color: blue;
+    list-style-type: none;
+}
+
+article > li{
+    color: #ffffff;
+    font-size: 13px;
+    font-family: verdana; 
+    font-weight: bold !important;
+    margin-left: 2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.materias{
+    color: #ffffff;
+    font-family: verdana;
+    font-size: 13px;
+    margin-left: 5rem;
+
+}
+
+#bar{
+    background: #a00909;
+    position: absolute;
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding: 20px;
+}
+
+.command{
+    color: #ffffff;
+    text-decoration: none;
+    font: 14px Verdana, sans-serif !important;
+}
+
+.command:hover{
+    color: #aaaaaa;
+}
+
+.p2{
+    font: 14px Verdana, sans-serif !important;
+    color: #cecece;
+    margin-left: 2rem;
 }
