@@ -17,13 +17,13 @@ Procesos de Desarrollo de Software 2017-1
 * ###Historias de usuario  
    Las historias de usuario consideradas fueron:
 	* ####Reporte general.
-	![](img/ReporteGeneral.png)
+	![](img/ReporteGeneral.PNG)
 	* ####Reporte de recursos.
-	![](img/ReporteRecursos.png)
+	![](img/ReporteRecursos.PNG)
 	* ####Registrar Materia.
-	![](img/RegistrarMateria.png)
+	![](img/RegistrarMateria.PNG)
 	* ####Programar una Clase.
-	![](img/ProgramarClase.png)
+	![](img/ProgramarClase.PNG)
 
 ##Arquitectura y diseño  
 Esta plataforma usa las siguientes dependencias:
@@ -41,11 +41,11 @@ Esta plataforma usa las siguientes dependencias:
 * ###Arquitectura 
 	* ###Modelo E-R  
 		* ####Vertabelo:
-		![](imagenes/BaseDeDatos.PNG)
+		![](img/BaseDeDatos.PNG)
 		* ####Astah:
-		![](imagenes/ModeloE-R.png)
+		![](img/ModeloE-R.png)
 	* ####Arquitectura:
-	![](imagenes/Arquitectura.PNG)
+	![](img/Arquitectura.PNG)
     	* ####Capa Presentacion:
 		![](img/Presentacion.png)
     	* ####Capa Logica:
@@ -53,29 +53,29 @@ Esta plataforma usa las siguientes dependencias:
     	* ####Capa Persistencia:
 		![](img/Persistencia.png)
     * ####Diagrama conceptual:
-	![](imagenes/Entities.png)
+	![](img/Entities.png)
 ##Descripción del proceso  
 Descripción del proceso de desarrollo utilizado, y de las prácticas consideradas para el mismo Para el proceso de desarrollo se utilizó el framework de SCRUM, junto con las prácticas que este implica.
 * ###Url Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
   * ###Backlogs y Burndown-charts de los Sprints
   	* ####Sprint 1
   		* #####Observaciones:
-	![](img/reporte1.png)
-    ![](img/backlog1.png)
+	![](img/reporte1.PNG)
+    ![](img/backlog1.PNG)
     ![](img/Sprint1Backlog.png)
-    ![](img/sprint1.png)
+    ![](img/sprint1.PNG)
 	* ####Sprint 2
 		* #####Observaciones:
-	![](img/reporte2.png)
-    ![](img/backlog2.png)
+	![](img/reporte2.PNG)
+    ![](img/backlog2.PNG)
 	![](img/Sprint2Backlog.png)
-  	![](img/sprint2.png)
+  	![](img/sprint2.PNG)
 	* ####Sprint 3
 		* #####Observaciones:
-	![](img/reporte3.png)
-	![](img/backlog3.png)
+	![](img/reporte3.PNG)
+	![](img/backlog3.PNG)
 	![](img/Sprint3Backlog.png)
-  	![](img/sprint3.png)
+  	![](img/sprint3.PNG)
   * ####Métricas por desarrollador  
   ![](img/metricas.png)
   	*	####Oscar Alba
