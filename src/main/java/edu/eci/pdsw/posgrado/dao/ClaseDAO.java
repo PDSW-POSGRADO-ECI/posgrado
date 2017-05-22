@@ -61,4 +61,11 @@ public interface ClaseDAO {
     *@return asig retorna una lista de asignaturas
     **/
     public List<Clase> loadClaseProfesor(int cor,String mat, String profe) throws ExceptionPersistence;
+    
+    /**
+     * Carga el horario de clases del profesor
+     * @param nom
+     * @return 
+     */
+    public List<Clase> loadHorarioProfesor(String nom);
 }

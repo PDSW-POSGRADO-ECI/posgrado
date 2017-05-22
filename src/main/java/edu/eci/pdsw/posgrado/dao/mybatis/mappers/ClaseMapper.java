@@ -65,4 +65,5 @@ public interface ClaseMapper {
     **/
     public List<Clase> consultarClaseProfesor(@Param("id")int cor,@Param("mat") String mat,@Param("profe") String profe);
     
+    public List<Clase> consultarHorarioClaseDeProfesor(@Param("nomProf") String nom);
 }
