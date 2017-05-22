@@ -1,15 +1,14 @@
 #POSGRADO-ECI  
-	Procesos de Desarrollo de Software 2017-1  
-        Scrum master:  
-            Laura Milena Ramos   
-        Team:  
-            Oscar Alba  
-            Brandon Nicolai Prieto  
-            Daniel Felipe Rodriguez Trujillo  
-            Camilo Torres  
-        Profesor/Asesor:  
-            Hector Fabio Cadavid Rengifo  
-        Product owner:  
+Procesos de Desarrollo de Software 2017-1  
+* #####Scrum master:  
+	* ######Laura Milena Ramos   
+* #####Team:  
+	* ######Oscar Alba  
+	* ######Brandon Nicolai Prieto  
+    * ######Daniel Felipe Rodriguez Trujillo  
+    * ######Camilo Torres  
+* #####Product owner:  
+	* ######Hector Fabio Cadavid Rengifo
 
 ##Descripción del producto  
 * ###Descripción general  
@@ -18,13 +17,13 @@
 * ###Historias de usuario  
    Las historias de usuario consideradas fueron:
 	* ####Reporte general.
-	![](img/ReporteGeneral.PNG)
+	![](img/ReporteGeneral.png)
 	* ####Reporte de recursos.
-	![](img/ReporteRecursos.PNG)
+	![](img/ReporteRecursos.png)
 	* ####Registrar Materia.
-	![](img/RegistrarMateria.PNG)
+	![](img/RegistrarMateria.png)
 	* ####Programar una Clase.
-	![](img/ProgramarClase.PNG)
+	![](img/ProgramarClase.png)
 
 ##Arquitectura y diseño  
 Esta plataforma usa las siguientes dependencias:
@@ -78,6 +77,7 @@ Descripción del proceso de desarrollo utilizado, y de las prácticas considerad
 	![](img/Sprint3Backlog.png)
   	![](img/sprint3.png)
   * ####Métricas por desarrollador  
+  ![](img/metricas.png)
   	*	####Oscar Alba
   	*	####Brandon Prieto
   	*	####Laura Milena Ramos
