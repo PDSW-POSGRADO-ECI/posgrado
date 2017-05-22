@@ -24,11 +24,29 @@ and open the template in the editor.
         WHERE pro.nombre=#{nomprof} and hor.fecha=#{fe};
     </select>
     
+     <select parameterType="map" id="consultarHorariosDeProfesor" resultMap="HorarioResult2">
+        SELECT
+        hor.fecha,
+        hor.hora_inicio,
+        hor.hora_fin
+        FROM profesor as pro
+        JOIN profesorxhorario as phor on phor.profesor_documento=pro.documento
+        JOIN horario as hor on hor.id=phor.horario_id
+        WHERE pro.nombre=#{nomprof};
+    </select>
+    
    
     <resultMap type="Horario" id="HorarioResult">
         <id property='documento' column='documento'/>
         <result property='nombre' column='nombre'/>
         <result property='correo' column='correo'/>
         <result property='telefono' column='telefono'/>
+    </resultMap>
+    
+    <resultMap type="Horario" id="HorarioResult2">
+        <id property='id' column='id'/>
+        <result property='hora_inicio' column='hora_inicio'/>
+        <result property='hora_fin' column='hora_fin'/>
+        <result property='fecha' column='fecha'/>
     </resultMap>
 </mapper>
