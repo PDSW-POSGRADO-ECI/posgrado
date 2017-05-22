@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE html [ 
+<!ENTITY copy "&#169;"> 
+ ]>
 <html xmlns="http://www.w3c.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui" 
@@ -7,7 +9,8 @@
 
     <h:head>  
         <link rel="stylesheet" type="text/css" href="../main.css"/>
-        <link rel="stylesheet" type="text/css" href="../fonts.css"></link>
+        <link rel="stylesheet" type="text/css" href="../fonts.css" />
+        <link rel="stylesheet" type="text/css" href="../style.css" />
     </h:head >
     <h:body class="bloquef">
         <h:form id="MenuM"> 
@@ -30,6 +33,116 @@
                     </ul>
                 </nav>
             </header>
+            <table>
+                <tr>
+                    <td class="leftF">
+                        <ul>
+                            <li><b><h:outputText value="Maestrías" /> </b>
+                                <ul>
+                                    <li> Ingeniería Civil </li>
+                                    <li> Ingeniería Industrial </li>
+                                    <li> Ingeniería Eléctrica </li>
+                                    <li> Ingeniería Electrónica </li>
+                                    <li> Ingeniería de Sistemas </li>
+                                    <li> Unidad de Proyectos </li>                        
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li><b><h:outputText value="Especializaciones" /></b>
+                                <ul>
+                                    <ui:repeat value="#{RegistroMateriaBean.posgrado}" var="nombre" >
+                                    <li> #{nombre} </li>     
+                                    </ui:repeat> 
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="centerF">
+                       
+                        <h:outputText class="espeT" value="Especializaciones" /> 
+                        
+                        <article>
+                        <h1> Desarrollo y gerencia de proyectos </h1>
+                            <p class="text"> 
+                                En la Escuela se considera que los proyectos constituyen un instrumento clave y efectivo 
+                                para la materialización de planes y programas de desarrollo económico, social, humano, 
+                                empresarial y organizacional. Por su parte, la gerencia de proyectos dentro de su moderna 
+                                concepción, constituye una herramienta clave para el exitoso desarrollo de los proyectos 
+                                y el cumplimiento de sus objetivos e impactos convenidos y esperables.
+                            </p>
+                            <p><h2> Asignaturas </h2></p>      
+                            <ui:repeat value="#{RegistroMateriaBean.getMateri('Desarrollo y gerencia de proyectos')}" var="asign" >
+                               <li> #{asign} </li>
+                               <h3> Materias </h3>
+                               <ui:repeat value="#{RegistroMateriaBean.getNam(asign)}" var="materias" >
+                                   <h:outputText class="materias" value="° #{materias}" /><br />
+                               </ui:repeat>
+                            </ui:repeat>                 
+                        </article>
+                        
+                        <article>
+                        <h1> Gerencia de Produccion Industrial </h1>
+                            <p class="text"> 
+                                Los cambios de estrategia en las operaciones y en la visión de la cadena de valor de las
+                                organizaciones, así como las tendencias de internacionalización, han generado unos sectores
+                                industriales cada día más competitivos y exigentes. Colombia, como país en vías de desarrollo, 
+                                con los retos, oportunidades y amenazas que los tratados de libre comercio generan, está 
+                                llamada a competir activamente impulsando la productividad de sus procesos y operaciones de producción 
+                                y manufactura. Sólo el conocimiento y su aplicación pueden originar oportunidades reales para 
+                                enfrentarse a los nuevos competidores con mejores propuestas en calidad, costos y competitividad.
+                            </p>
+                            <p><h2> Asignaturas </h2></p>      
+                            <ui:repeat value="#{RegistroMateriaBean.getMateri('Gerencia de Produccion Industrial')}" var="asign" >
+                               <li> #{asign} </li>
+                               <h3> Materias </h3>
+                               <ui:repeat value="#{RegistroMateriaBean.getNam(asign)}" var="materias" >
+                                   <h:outputText class="materias" value="° #{materias}" /><br />
+                               </ui:repeat>
+                            </ui:repeat>                 
+                        </article>
+                        
+                        <article>
+                        <h1> Estructuras </h1>
+                            <p class="text"> 
+                                La Escuela Colombiana de Ingeniería Julio Garavito inició sus labores como centro de educación superior en 
+                                el año de 1973, con la misión de formar profesionales integrales, con base en una alta preparación científica 
+                                y tecnológica, armonizada con un profundo sentido de solidaridad social y compromiso ético, en consecuencia 
+                                con la Declaración de Principios propuesta en el preámbulo de sus estatutos.
+                            </p>
+                            <p class="text"> 
+                                Dentro de este marco se desarrollan los programas académicos de ingeniería civil, eléctrica, de sistemas, 
+                                industrial, electrónica, mecánica, economía, matemáticas y administración de empresas, tendientes 
+                                a satisfacer las necesidades de la sociedad por medio de sus egresados.
+                            </p>
+                            <p><h2> Asignaturas </h2></p>      
+                            <ui:repeat value="#{RegistroMateriaBean.getMateri('Estructuras')}" var="asign" >
+                               <li> #{asign} </li>
+                               <h3> Materias </h3>
+                               <ui:repeat value="#{RegistroMateriaBean.getNam(asign)}" var="materias" >
+                                   <h:outputText class="materias" value="° #{materias}" /><br />
+                               </ui:repeat>
+                            </ui:repeat>                 
+                        </article>
+                        
+                    </td>
+                    
+                    <td class="rightF">
+                        <p>
+                        <span class="p2"> Bienvenido: Coordinator</span>
+                        </p>
+                    </td>
+                 </tr>
+                 
+            </table>
+            
+            <footer>
+                Copyright &copy; POSGRADO-ECI
+                <span class="icon-brand" />
+                <span class="icon-brand2" />
+                <span class="icon-brand3" />
+                <span class="icon-brand4" />
+            </footer>
         </h:form>
     </h:body>
 </html>

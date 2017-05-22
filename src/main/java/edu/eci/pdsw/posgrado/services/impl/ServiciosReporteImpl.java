@@ -161,7 +161,11 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     
-
+    /**
+     * Consultar los nombres de los diferentes posgrados para la vista
+     * @return la lista de los nombres
+     * @throws ExceptionServiciosReporte Si hay algún error en la consulta
+     */
     @Override
     public List<String> consultarNombresPosgrado() throws ExceptionServiciosReporte {
         try {
@@ -197,6 +201,12 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         return pos;
     }
 
+    /**
+     * Consulta los nombres de las asignaturas pertenecientes a un posgrado especifico
+     * @param posgrado el posgrado que se quiere consultar
+     * @return La lista de los nombres de las asignaturas
+     * @throws ExceptionServiciosReporte Si hay algún error en la consulta a la base de datos
+     */
     @Override
     public List<String> consultarNombresAsignaturasXposgrado(String posgrado) throws ExceptionServiciosReporte {
         try {
@@ -206,6 +216,12 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Consulta las materias de una asignatura especificada
+     * @param asig Asignatura a la cual se le van a consultar las materias
+     * @return Lista de materias por asignatura
+     * @throws ExceptionServiciosReporte Si hay algun error en la consulta a la base de datos
+     */
     @Override
     public List<String> consultarNombresMaterias(String asig) throws ExceptionServiciosReporte {
         try {
@@ -215,6 +231,11 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Consulta todos los profesores en la base de datos
+     * @return La lista de los nombres de todos los prifesores
+     * @throws ExceptionServiciosReporte 
+     */
     @Override
     public List<String> consultarNombresProfesores() throws ExceptionServiciosReporte {
         try {
@@ -224,6 +245,11 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Consulta los nombres de todas las
+     * @return
+     * @throws ExceptionServiciosReporte 
+     */
     @Override
     public List<String> consultarNombresAsignaturas() throws ExceptionServiciosReporte {
         try {
@@ -237,14 +263,14 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     /**
      * registrar una nueva clase en la programacion
      *
-     * @param cor
-     * @param mat
-     * @param fecha
-     * @param profe
-     * @param horafin
-     * @param horainit
-     * @param periodo
-     * @return 
+     * @param cor Cohorte
+     * @param mat Nombre de la materia
+     * @param fecha Fecha de la clase
+     * @param profe Profesor asignado
+     * @param horafin Hora de finalización de la clase
+     * @param horainit Hora de inicio de la clase
+     * @param periodo Periodo académico
+     * @return Una cadena que especifica el resultado de la operación. Si fue exitosa, o un mensaje de error correspondiente.
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
     @Override
@@ -290,7 +316,14 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         return ms;
     }
 
-    
+    /**
+     * Registra un nuevo periodo académico a la base de datos
+     * @param per Periodo.
+     * @param fini Fecha de inicio
+     * @param ffin Fecha final
+     * @return Mensaje de aprobación, o de error dependiendo de la operación
+     * @throws ExceptionServiciosReporte Si hay algún error en la inserción a la base de datos
+     */
     @Override
     public String registrarPeriodo(String per, Date fini, Date ffin) throws ExceptionServiciosReporte {
         String ms = "Periodo Agregado";
@@ -309,6 +342,13 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         return ms;
     }
 
+    /**
+     * Registra un nuevo programa de posgrados al sistema.
+     * @param nom Nombre del posgrado
+     * @param credit Creditos totales que requiere el posgrado.
+     * @return Un mensaje de indicando el resultado de la operación. Agregado o solicitud inválida.
+     * @throws ExceptionServiciosReporte Si hay un error en la inserción a la base de datos
+     */
     @Override
     public String registrarPosgrado(String nom, int credit) throws ExceptionServiciosReporte {
         String ms = "Posgrago Agregado";
@@ -331,6 +371,13 @@ public class ServiciosReporteImpl implements ServiciosReporte {
 
     }
 
+    /**
+     * Registra una nueva asignatura a un posgrado especifico.
+     * @param nom Nombre de la nueva asignatura
+     * @param posgrado Nombre del posgrado al que se le va a agregar la asignatura
+     * @return Mensaje indicando el resultado de la operación.
+     * @throws ExceptionServiciosReporte Si hay un error en la inserción a la base de datos
+     */
     @Override
     public String registrarAsignatura(String nom, String posgrado) throws ExceptionServiciosReporte {
         String ms = "Asignatura Agregada";
@@ -352,6 +399,15 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         return ms;
     }
 
+    /**
+     * Registra una nueva materia a una asignatura especifica
+     * @param sigla Identificador de la materia
+     * @param nombre Nombre de la materia
+     * @param creditos Número de créditos que requiere la materia
+     * @param asignatura_nombre Nombre de la asignatura a la cual se registrará la materia
+     * @param descripcion Descripción breve de la nueva materia
+     * @throws ExceptionServiciosReporte Si hay un error en la inserción en la base de datos
+     */
     @Override
     public void registrarMateria(String sigla, String nombre, int creditos, String asignatura_nombre, String descripcion) throws ExceptionServiciosReporte {
         try {
@@ -361,6 +417,15 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Asocia una materia a un profesor en un cohorte y periodo determinados
+     * @param profe Nombre del profesor
+     * @param cort Cohorte especificado
+     * @param periodo Periodo académico
+     * @param materia Nombre de la materia
+     * @return Un mensaje especificando el resultado de la operación
+     * @throws ExceptionServiciosReporte Si hay un error en la inserción a la base de datos
+     */
     @Override
     public String registrarMateriaCohorte(String profe, int cort, String periodo, String materia) throws ExceptionServiciosReporte {
         String ms="Cohorte Agregado";
@@ -389,6 +454,11 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         return ms;
     }   
 
+    /**
+     * Consulta todos los recursos disponibles en la base de datos
+     * @return Una lista con todos los recursos (Como entidad Recurso).
+     * @throws ExceptionServiciosReporte Si hay un error en realizar la consulta a la base de datos
+     */
     @Override
     public List<Recurso> consultarAllRecursos() throws ExceptionServiciosReporte {
         try {
@@ -398,6 +468,12 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Registra una lista de recursos a la clase con mayor prioridad
+     * @param rec Lista con los recursos a registrar
+     * @return Un mensaje indicando el resultado de la operación
+     * @throws ExceptionServiciosReporte Si hay un error en registrar los recursos a la clase.
+     */
     @Override
     public String registrarRecursoClase(List<Recurso> rec) throws ExceptionServiciosReporte  {
         String ms="Recursos registrados satisfactoriamente";
@@ -415,11 +491,18 @@ public class ServiciosReporteImpl implements ServiciosReporte {
                
             }else{ms="No a registrado ningun recurso";}
         } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("Error al cargar todos los recursos", ex);
+            throw new ExceptionServiciosReporte("Error al registrar todos los recursos", ex);
         }
         return ms;
     }
 
+    /**
+     * Consulta los profesores asociados a una materia en un cohorte determinado
+     * @param cor Cohorte
+     * @param mat Materia
+     * @return Una lista de los nombres de los profesores asociados.
+     * @throws ExceptionServiciosReporte SI hay un error en realizar la consulta a la base de datos
+     */
     @Override
     public List<String> consultarProfesoresCohorte(int cor, String mat) throws ExceptionServiciosReporte {
         ArrayList<String> s=new ArrayList<>();
@@ -434,6 +517,12 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         return s;
     }
 
+    /**
+     * Consultar las clases a las cuales se les ha asignado un recurso específico
+     * @param rec Recurso
+     * @return Una lista de las clases asociadas al recurso
+     * @throws ExceptionServiciosReporte Si hay un error en realizar la consulta a la base de datos
+     */
     @Override
     public List<Clase> consultarFechasRecursoClase(int rec) throws ExceptionServiciosReporte {
         try {
@@ -443,6 +532,12 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Consulta a la base de datos para obtener los requisitos completos asociados a una materia específica
+     * @param sigla Identificador de la materia
+     * @return Lista de materias que son requisitos completos de la materia
+     * @throws ExceptionServiciosReporte Si hay un error en relizar la consulta a la base de datos
+     */
     @Override
     public List<Materia> loadPrerrequisitosMateria(String sigla) throws ExceptionServiciosReporte {
         try{
@@ -453,6 +548,12 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Consulta a la base de datos para obtener los correquisitos asociados a una materia específica
+     * @param sigla Identificador de la materia
+     * @return Lista de materias que son correquisitos de la materia
+     * @throws ExceptionServiciosReporte Si hay un error en realizar la consulta a la base de datos
+     */
     @Override
     public List<Materia> loadCorrequisitosMateria(String sigla) throws ExceptionServiciosReporte {
         try{
@@ -463,6 +564,14 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Consulta las clases que tiene un profesor de una materia específica en un cohorte determinado
+     * @param cor Cohorte
+     * @param mat Nombre de la materia
+     * @param profe Nombre del profesor
+     * @return Lista de las clases asociadas al profesor de la materia en el cohorte
+     * @throws ExceptionServiciosReporte 
+     */
     @Override
     public List<Clase> consultarClaseProfesor(int cor, String mat, String profe) throws ExceptionServiciosReporte {
         try{
@@ -473,12 +582,19 @@ public class ServiciosReporteImpl implements ServiciosReporte {
         }
     }
 
+    /**
+     * Consulta el horario de un profesor en una fecha determinada
+     * @param nom Nombre del profesor
+     * @param fecha Fecha de interés
+     * @return El horario de disponibilidad del profesor
+     * @throws ExceptionServiciosReporte Si hay un error en realizar la consulta a la base de datos
+     */
     @Override
     public Horario consultarHorarioProfesor(String nom, Date fecha) throws ExceptionServiciosReporte {
         try{
               return horario.loadHorarioProfesor(nom, fecha);
         } catch (ExceptionPersistence ex){
-              throw new ExceptionServiciosReporte("Error al cargar las clases del profesor", ex);
+              throw new ExceptionServiciosReporte("Error al cargar el horario del profesor", ex);
 
         }
     }
