@@ -194,11 +194,6 @@ public class RegistroMateriaBean implements Serializable {
         return null;
     }
     
-    public void prueba(){
-         System.out.println("Sigla : "+ sigla + " Nombre : " + nombre 
-                 + " Creditos : " + creditos + " Asignatura : " + asignatura + " Descripcion : " + descripcion 
-                 + "RequesT :" + request );
-    }
     
     public List<String> autoComplete(String query, int type) throws ExceptionServiciosReporte {
         List<String> s = null;
@@ -243,7 +238,7 @@ public class RegistroMateriaBean implements Serializable {
     }
     
     /**
-     * Obtener las asginaturas asociadas a un posgrado
+     * Obtener las asignaturas asociadas a un posgrado
      * Se uso el nombre de getMateria ya que con getAsignatura generaba errores
      * @return una lista con las asignaturas asociadas a un posgrado
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
@@ -252,6 +247,12 @@ public class RegistroMateriaBean implements Serializable {
         return report.consultarNombresAsignaturasXposgrado(programa);
     }
     
+    /**
+     * Obtener las asignaturas asociadas a un posgrado
+     * @param programa
+     * @return una lista con las asignaturas asociadas a un posgrado
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
+     */
     public List<String> getMateri(String programa) throws ExceptionServiciosReporte {
         return report.consultarNombresAsignaturasXposgrado(programa);
     }
@@ -275,7 +276,6 @@ public class RegistroMateriaBean implements Serializable {
     }
     /**
      * Consultar las materias asociadas a una asignatura
-     * @param asignatura
      * @return Retorna una lista con las materias asociadas a una asignatura
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      */
@@ -283,10 +283,21 @@ public class RegistroMateriaBean implements Serializable {
         return report.consultarNombresMaterias(asignatura); 
     }
     
+    /**
+     * Consultar las materias asociadas a una asignatura
+     * @param asignatura
+     * @return Retorna una lista con las materias asociadas a una asignatura
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
+     */
     public List<String> getNam(String asignatura) throws ExceptionServiciosReporte{
         return report.consultarNombresMaterias(asignatura); 
     }
     
+    /**
+     * Consultar las materias asociadas a una asignatura pero en este caso es en base a una seleccionada por el usuario
+     * @return Retorna una lista con las materias asociadas a una asignatura
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
+     */
     public List<String> getNomb() throws ExceptionServiciosReporte{
         return report.consultarNombresMaterias(seleccion); 
     }
