@@ -18,13 +18,13 @@
 * ###Historias de usuario  
    Las historias de usuario consideradas fueron:
 	* ####Reporte general.
-	![](imagenes/ReporteGeneral.PNG)
+	![](img/ReporteGeneral.PNG)
 	* ####Reporte de recursos.
-	![](imagenes/ReporteRecursos.PNG)
+	![](img/ReporteRecursos.PNG)
 	* ####Registrar Materia.
-	![](imagenes/RegistrarMateria.PNG)
+	![](img/RegistrarMateria.PNG)
 	* ####Programar una Clase.
-	![](imagenes/ProgramarClase.PNG)
+	![](img/ProgramarClase.PNG)
 
 ##Arquitectura y diseño  
 Esta plataforma usa las siguientes dependencias:
@@ -38,6 +38,7 @@ Esta plataforma usa las siguientes dependencias:
 * Org.apache.shiro: para ejecutar la seguridad, manejo de perfiles.
 * Org.primefaces: para utilizar un conjunto de etiquetas que soporta primefaces.
 * Com.sun.faces:para utilizar un conjunto de etiquetas que soporta primefaces.  
+
 * ###Arquitectura 
 	* ###Modelo E-R  
 		* ####Vertabelo:
@@ -47,28 +48,35 @@ Esta plataforma usa las siguientes dependencias:
 	* ####Arquitectura:
 	![](imagenes/Arquitectura.PNG)
     	* ####Capa Presentacion:
-		![](imagenes/Presentacion.png)
+		![](img/Presentacion.png)
     	* ####Capa Logica:
-		![](imagenes/Logica.png)
+		![](img/Logica.png)
     	* ####Capa Persistencia:
-		![](imagenes/Persistencia.png)
+		![](img/Persistencia.png)
     * ####Diagrama conceptual:
 	![](imagenes/Entities.png)
-    
-
-
 ##Descripción del proceso  
 Descripción del proceso de desarrollo utilizado, y de las prácticas consideradas para el mismo Para el proceso de desarrollo se utilizó el framework de SCRUM, junto con las prácticas que este implica.
-  * ###Backlogs y Burndown-charts de los Sprints 
+* ###Url Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
+  * ###Backlogs y Burndown-charts de los Sprints
   	* ####Sprint 1
-  	![](imagenes/backlog1.png)
-    ![](imagenes/sprint1.png)
-  	* ####Sprint 2
-  	![](imagenes/backlog2.png)
-  	![](imagenes/sprint2.png)
-  	* ####Sprint 3
-  	![](imagenes/backlog3.png)
-  	![](imagenes/sprint3.png)
+  		* #####Observaciones:
+	![](img/reporte1.png)
+    ![](img/backlog1.png)
+    ![](img/Sprint1Backlog.png)
+    ![](img/sprint1.png)
+	* ####Sprint 2
+		* #####Observaciones:
+	![](img/reporte2.png)
+    ![](img/backlog2.png)
+	![](img/Sprint2Backlog.png)
+  	![](img/sprint2.png)
+	* ####Sprint 3
+		* #####Observaciones:
+	![](img/reporte3.png)
+	![](img/backlog3.png)
+	![](img/Sprint3Backlog.png)
+  	![](img/sprint3.png)
   * ####Métricas por desarrollador  
   	*	####Oscar Alba
   	*	####Brandon Prieto
@@ -82,5 +90,5 @@ Descripción del proceso de desarrollo utilizado, y de las prácticas considerad
 * ###Registrar Materia  
 * ###Programar una Clase  
 
-#####Url Circleci  https://circleci.com/gh/PDSW-POSGRADO-ECI/posgrado
-#####Url Heroku  https://posgrado-eci.herokuapp.com/
+#####Url Circleci:  https://circleci.com/gh/PDSW-POSGRADO-ECI/posgrado
+#####Url Heroku:  https://posgrado-eci.herokuapp.com/

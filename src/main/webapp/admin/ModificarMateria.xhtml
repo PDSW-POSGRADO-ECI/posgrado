@@ -14,7 +14,7 @@ and open the template in the editor.
         <title>Registrar Materia</title>
         <link rel="stylesheet" type="text/css" href="../main.css"/>
         <link rel="stylesheet" type="text/css" href="../fonts.css"></link>
-        <link rel="stylesheet" type="text/css" href="../formatos.css"/>
+
     </h:head>
 
     <h:body>
@@ -29,11 +29,11 @@ and open the template in the editor.
                 <img src="../resources/campus.jpg" class="imagen"/>
             </div>
             
-            <div id="barra3" style="text-align: right; margin:25px 0;  position:relative ; top: 0%; left: 0%; right:10%" >
-                <h:panelGrid columns="3" style="margin-right: auto">
-                    <i class="icon icon-home"></i>
-                    <p:commandLink class="cmStyle" action="Menu?faces-redirect=true">Regresar</p:commandLink>
-                </h:panelGrid>
+            <div id="bar" >
+                <div>
+                <i class="icon icon-home"></i>
+                <p:commandLink class="command" action="Menu?faces-redirect=true">Regresar</p:commandLink>
+                </div>
             </div>
             
             <p:panel id="paneles" style="position:absolute ;top: 30%;left: 19%;height: 60%;width: 60%;" >
@@ -48,12 +48,11 @@ and open the template in the editor.
                     <p><h:outputText class="nmStyle" value="Asignatura : #{RegistroMateriaBean.seleccion}" /></p>
                 </p:panelGrid>
                 
-                <p:panelGrid id="panelpos"  columns="3" style="margin:10px 0; position:absolute ; top: 25%; left: 9%;" class="companyHeaderGrid">
+                <p:panelGrid id="panelpos"  columns="2" style="margin:10px 0; position:absolute ; top: 25%; left: 9%;" class="companyHeaderGrid">
                     <p:outputLabel class="nmStyle" value="Materia" for="pos" />
                     <p:autoComplete id="pos"  dropdown="true" value="#{RegistroMateriaBean.mate}" completeMethod="#{RegistroMateriaBean.autoComplete(query, 5)}" >
                         <p:ajax event="itemSelect"  listener="#{RegistroMateriaBean.setMat('')}" update=":ModMateria" >  </p:ajax>
                     </p:autoComplete>      
-                    <p:commandButton style="left: 20%;"  type="submit"  action="NuevaMateria?faces-redirect=true" value="Nueva Materia" /> 
                 </p:panelGrid>
                 
                 <p:panelGrid  columns="3" style="left: 9%;top: 37%; position: absolute" class="companyHeaderGrid" >                 
