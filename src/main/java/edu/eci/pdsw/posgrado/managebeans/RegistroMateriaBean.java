@@ -14,8 +14,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ValueChangeEvent;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -25,7 +23,7 @@ import javax.swing.JPanel;
 @SessionScoped
 public class RegistroMateriaBean implements Serializable {
 
-    private ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    private final ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
     private List<Materia> pre_requisitos;
     private List<Materia> co_requisitos;
     private String asignatura;

@@ -29,7 +29,7 @@ import javax.faces.context.FacesContext;
 
 public class ClaseBean implements Serializable{
     
-    private ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
+    private final ServiciosReporte report = ServiciosReporteFactory.getInstance().getServiciosReporte();
     private Date hinicio;
     private Date hfin;
     private Date ClaseFecha;

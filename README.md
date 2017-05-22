@@ -18,13 +18,13 @@
 * ###Historias de usuario  
    Las historias de usuario consideradas fueron:
 	* ####Reporte general.
-	![](ReporteGeneral.PNG)
+	![](imagenes/ReporteGeneral.PNG)
 	* ####Reporte de recursos.
-	![](ReporteRecursos.PNG)
+	![](imagenes/ReporteRecursos.PNG)
 	* ####Registrar Materia.
-	![](RegistrarMateria.PNG)
+	![](imagenes/RegistrarMateria.PNG)
 	* ####Programar una Clase.
-	![](ProgramarClase.PNG)
+	![](imagenes/ProgramarClase.PNG)
 
 ##Arquitectura y diseño  
 Esta plataforma usa las siguientes dependencias:
@@ -38,12 +38,20 @@ Esta plataforma usa las siguientes dependencias:
 * Org.apache.shiro: para ejecutar la seguridad, manejo de perfiles.
 * Org.primefaces: para utilizar un conjunto de etiquetas que soporta primefaces.
 * Com.sun.faces:para utilizar un conjunto de etiquetas que soporta primefaces.  
-* ###Arquitectura  
+* ###Arquitectura 
+	* ####Arquitectura de alto nivel:
+	![](imagenes/Arquitectura.PNG)
+    * ####Capa Presentacion:
+	![](imagenes/
+    * ####Capa Logica:
+	![](imagenes/Logica.png)
+    * ####Capa Persistencia:
+	![](imagenes/)
 * ###Modelo E-R  
 	* ####Vertabelo:
-	![](BaseDeDatos.PNG)
+	![](imagenes/BaseDeDatos.PNG)
 	* ####Astah:
-	![](ModeloE-R.png)
+	![](imagenes/ModeloE-R.png)
 * ###Diagrama de clases  
 
 ##Descripción del proceso  

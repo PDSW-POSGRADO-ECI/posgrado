@@ -6,15 +6,14 @@
 package edu.eci.pdsw.posgrado.managebeans;
 
 import java.io.IOException;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.*;
-import org.apache.shiro.subject.Subject;
-
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,13 +64,9 @@ public class LoginBean implements Serializable {
         } catch (LockedAccountException ex) {
             facesError("Locked account");
             log.error(ex.getMessage(), ex);
-        } catch (AuthenticationException ex) {
+        } catch (AuthenticationException | IOException ex) {
             facesError("Unknown error: " + ex.getMessage());
             log.error(ex.getMessage(), ex);
-        } catch (IOException ex) {
-            facesError("Unknown error: " + ex.getMessage());
-            log.error(ex.getMessage(), ex);
-
         } finally {
             token.clear();
         }
