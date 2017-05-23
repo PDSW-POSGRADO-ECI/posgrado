@@ -16,6 +16,8 @@ Procesos de Desarrollo de Software 2017-1
 
 * ###Historias de usuario  
    Las historias de usuario consideradas fueron:
+	* ####Autenticación
+	![](img/Autenticacion.PNG)
 	* ####Reporte general.
 	![](img/ReporteGeneral.PNG)
 	* ####Reporte de recursos.
@@ -24,6 +26,8 @@ Procesos de Desarrollo de Software 2017-1
 	![](img/RegistrarMateria.PNG)
 	* ####Programar una Clase.
 	![](img/ProgramarClase.PNG)
+	* ####Reporte de horario del profesor
+	![](img/ReporteHorarioProfesor.PNG)
 
 ##Arquitectura y diseño  
 Esta plataforma usa las siguientes dependencias:
