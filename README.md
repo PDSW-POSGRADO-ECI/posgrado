@@ -71,8 +71,8 @@ URL Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
     ![](img/sprint1.PNG)
 	* ####Sprint 2
 		* #####Observaciones:
-		En el segundo sprint se trabajo constantemente y se evidecio una mejora ecuanto a el trabajo constante del equipo y se completaron las historias de usuario correspondientes a este sprint sin embargo en el sprint review se identificaron  nuevas caracteristicas a revisar las cuales se pretenden completar para el tercer Sprint.
-	![](img/reporte2.PNG)
+		En el segundo sprint se trabajo constantemente y se evidecio una mejora ecuanto a el trabajo constante del equipo y se completaron las historias de usuario correspondientes a este sprint sin embargo en el sprint review se identificaron  nuevas caracteristicas a revisar las cuales se pretenden completar para el tercer Sprint.  
+    ![](img/reporte2.PNG)
     ![](img/backlog2.PNG)
 	![](img/Sprint2Backlog.png)
   	![](img/sprint2.PNG)
@@ -84,20 +84,20 @@ URL Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
   	![](img/sprint3.png)
   * ####Métricas por desarrollador
   ![](img/metricas.png)
-  	*	####Oscar Alba
-  	![](img/oscar.png)
-  	*	####Brandon Prieto
-  	![](img/brandon.png)
-  	*	####Laura Milena Ramos
-  	![](img/laura.png)
-  	*	####Daniel Rodriguez
-  	![](img/daniel.png)
-  	*	####Camilo Torres
-  	![](img/camilo.png)
+  	*	####Oscar Alba  
+  	![](img/oscar.png)  
+  	*	####Brandon Prieto  
+  	![](img/brandon.png)  
+  	*	####Laura Milena Ramos  
+  	![](img/laura.png)  
+  	*	####Daniel Rodriguez  
+  	![](img/daniel.png)  
+  	*	####Camilo Torres  
+  	![](img/camilo.png)  
 
 ##Reporte de pruebas
 ![](img/ReportePruebas.png)
 
-#####Url Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
-#####Url Circleci:  https://circleci.com/gh/PDSW-POSGRADO-ECI/posgrado
-#####Url Heroku:  https://posgrado-eci.herokuapp.com/
+#####Url Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci  
+#####Url Circleci:  https://circleci.com/gh/PDSW-POSGRADO-ECI/posgrado  
+#####Url Heroku:  https://posgrado-eci.herokuapp.com/  
