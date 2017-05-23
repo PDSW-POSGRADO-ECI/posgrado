@@ -40,11 +40,11 @@ public class ReporteProfesorBean implements Serializable{
     }
     
     public List<Clase> getGenerarReporteClases()throws ExceptionServiciosReporte {
-        List<Clase> cl=null;
+        List<Clase> cl;
         if(mode){
-            cl=report.consultarHorarioClaseProfesor(profe.getNombre(), periodo);}
+            cl=report.consultarHorarioClaseProfesor(profe!=null?profe.getNombre():"", periodo);}
         else{
-            cl=report.consultarHorarioClaseProfesorSemana(profe.getNombre(), periodo,new Date());}
+            cl=report.consultarHorarioClaseProfesorSemana(profe!=null?profe.getNombre():"", periodo,new Date());}
         return cl;
     }
     

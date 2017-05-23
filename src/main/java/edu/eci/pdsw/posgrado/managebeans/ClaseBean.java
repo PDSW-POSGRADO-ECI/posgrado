@@ -42,27 +42,49 @@ public class ClaseBean implements Serializable{
     private String matselect;
     private List<Recurso> selectrec;
     
+    /**
+     * Bean que maneja las operaciones relacionadas a las clases
+     */
     public ClaseBean() {
 
     }
     
+    /**
+     *
+     * @return
+     * @throws ExceptionServiciosReporte
+     */
     public List<Clase> getClaseProfesor() throws ExceptionServiciosReporte {
         return report.consultarClaseProfesor(Integer.valueOf(corselect), matselect, proselect);
     }
     
-    
+    /**
+     *
+     * @return
+     * @throws ExceptionServiciosReporte
+     */
     public List<Recurso> getRecursos()throws ExceptionServiciosReporte {
         return report.consultarAllRecursos();
     }
     /*
     
     */
+
+    /**
+     *
+     * @throws ExceptionServiciosReporte
+     */
+
     public void registrarRecursosClase() throws ExceptionServiciosReporte{
         if(selectrec.isEmpty()){mensaje="!No registro recursos para la clase";}
         else{mensaje=report.registrarRecursoClase(selectrec);}
         
     }
     
+    /**
+     *
+     * @throws ExceptionServiciosReporte
+     */
     public void registrarClase() throws ExceptionServiciosReporte{
         if(!"".equals(proselect) && !"".equals(perselect) && !"".equals(corselect) && !"".equals(matselect)){
             if(ClaseFecha!=null && hinicio!=null && hfin!=null){
@@ -72,6 +94,16 @@ public class ClaseBean implements Serializable{
         }else{mensaje="!Por Favor seleccione con anterioridad el corte, profesor, materia, posgrado y asignatura.";}
         
     }
+
+    /**
+     *
+     * @param per
+     * @param pos
+     * @param asig
+     * @param mat
+     * @param corte
+     * @param prof
+     */
     public void selection(String per,String pos,String asig,String mat,String corte,String prof){
         corselect=corte;
         posselect=pos;
@@ -81,7 +113,10 @@ public class ClaseBean implements Serializable{
         proselect=prof;
     }
     
-     public void saveMessage() {
+    /**
+     *
+     */
+    public void saveMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
         if (mensaje.contains("Error")) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", mensaje));
@@ -92,86 +127,163 @@ public class ClaseBean implements Serializable{
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Recurso> getSelectrec() {
         return selectrec;
     }
 
+    /**
+     *
+     * @param selectrec
+     */
     public void setSelectrec(List<Recurso> selectrec) {
         this.selectrec = selectrec;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String getPosselect() {
         return posselect;
     }
 
+    /**
+     *
+     * @param posselect
+     */
     public void setPosselect(String posselect) {
         this.posselect = posselect;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAsigselect() {
         return asigselect;
     }
 
+    /**
+     *
+     * @param asigselect
+     */
     public void setAsigselect(String asigselect) {
         this.asigselect = asigselect;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getProselect() {
         return proselect;
     }
 
+    /**
+     *
+     * @param proselect
+     */
     public void setProselect(String proselect) {
         this.proselect = proselect;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPerselect() {
         return perselect;
     }
 
+    /**
+     *
+     * @param perselect
+     */
     public void setPerselect(String perselect) {
         this.perselect = perselect;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getHinicio() {
         return hinicio;
     }
 
+    /**
+     *
+     * @param hinicio
+     */
     public void setHinicio(Date hinicio) {
         this.hinicio = hinicio;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getHfin() {
         return hfin;
     }
 
+    /**
+     *
+     * @param hfin
+     */
     public void setHfin(Date hfin) {
         this.hfin = hfin;
     }
    
+    /**
+     *
+     * @return
+     */
     public Date getClaseFecha() {
         return ClaseFecha;
     }
 
+    /**
+     *
+     * @param ClaseFecha
+     */
     public void setClaseFecha(Date ClaseFecha) {
         this.ClaseFecha = ClaseFecha;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCorselect() {
         return corselect;
     }
 
+    /**
+     *
+     * @param corselect
+     */
     public void setCorselect(String corselect) {
         this.corselect = corselect;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMatselect() {
         return matselect;
     }
 
+    /**
+     *
+     * @param matselect
+     */
     public void setMatselect(String matselect) {
         this.matselect = matselect;
     }
-     
-
 }

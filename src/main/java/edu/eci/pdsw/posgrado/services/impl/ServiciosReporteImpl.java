@@ -611,7 +611,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
 
     @Override
     public List<Clase> consultarHorarioClaseProfesorSemana(String nombre, String per, Date date) throws ExceptionServiciosReporte{
-        List<Clase> clases=null;List<Clase> cla=null;
+        List<Clase> clases=null;List<Clase> cla;
         try{
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);cal.add(Calendar.DATE, 7);

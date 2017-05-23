@@ -17,6 +17,10 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ *
+ * @author Camilo Torres
+ */
 @ManagedBean(name = "LoginBean")
 @ViewScoped
 public class LoginBean implements Serializable {
@@ -27,10 +31,17 @@ public class LoginBean implements Serializable {
     private String password;
     private boolean rememberMe;
 
+    /**
+     * Managed bean que se encarga de la validar la autenticación de usuarios
+     */
     public LoginBean() {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public Subject getSubject() {
         return SecurityUtils.getSubject();
     }
@@ -81,27 +92,51 @@ public class LoginBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
     }
 
+    /**
+     * 
+     * @return El usuario de ingreso
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * 
+     * @param login Usuario
+     */
     public void setUsername(String login) {
         this.username = login;
     }
 
+    /**
+     *
+     * @return la contraseña usada para el login
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param senha Contraseña del login
+     */
     public void setPassword(String senha) {
         this.password = senha;
     }
 
+    /**
+     *
+     * @return Opción de recordar las credenciales
+     */
     public boolean getRememberMe() {
         return rememberMe;
     }
 
-    public void setRememberMe(boolean lembrar) {
-        this.rememberMe = lembrar;
+    /**
+     *
+     * @param remember Si se quiere o no recordar las credenciales
+     */
+    public void setRememberMe(boolean remember) {
+        this.rememberMe = remember;
     }
 }

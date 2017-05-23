@@ -151,14 +151,27 @@ public class ReportesBean implements Serializable {
         this.periodo = periodo;
     }
     
+    /**
+     * Consulta de los nombres de los posgrados en el servicio
+     * @return Lista de posgrados
+     * @throws ExceptionServiciosReporte  Si hay un error en el servicio
+     */
     public List<String> getPosgrado() throws ExceptionServiciosReporte {
         return report.consultarNombresPosgrado();
     }
 
+    /**
+     * El recurso seleccionado
+     * @return el recurso
+     */
     public Recurso getSelectrec() {
         return selectrec;
     }
 
+    /**
+     * Define el recurso seleccionado
+     * @param selectrec Recurso
+     */
     public void setSelectrec(Recurso selectrec) {
         this.selectrec = selectrec;
     }
