@@ -94,7 +94,7 @@ public class ProgramarMateriaTest {
     /**
      * Clases no registradas
      * Clase Equivalencia
-     * CE1: No debe registrar la clase porque el profesor no esta disponible en esas horas especificas.
+     * CE2: No debe registrar la clase porque el profesor no esta disponible en esas horas especificas.
      * @throws java.sql.SQLException
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      * @throws java.text.ParseException */
@@ -121,8 +121,10 @@ public class ProgramarMateriaTest {
     
      /**
      * Clase Equivalencia
-     * CE1: registrar recursos para una clase creada
-     * @throws java.sql.SQLException */
+     * CE3: registrar recursos para una clase creada
+     * @throws java.sql.SQLException
+     * @throws java.text.ParseException
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte */
     @Test
     public void CF3TestProgramarMateria() throws SQLException, ParseException, ExceptionServiciosReporte{
         Statement stmt=getConnection().createStatement();  
@@ -149,8 +151,10 @@ public class ProgramarMateriaTest {
     /**
      * recursos no registrados
      * Clase Equivalencia
-     * CE1: registrar recursos todos los recursos seleccionados para una clase creada
-     * @throws java.sql.SQLException */
+     * CE4: registrar recursos todos los recursos seleccionados para una clase creada
+     * @throws java.sql.SQLException
+     * @throws java.text.ParseException
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte */
     @Test
     public void CF4TestProgramarMateria() throws SQLException, ParseException, ExceptionServiciosReporte{
         Statement stmt=getConnection().createStatement();  
@@ -175,7 +179,7 @@ public class ProgramarMateriaTest {
     
      /**
      * Clase Equivalencia
-     * CE1: Deben registrar una nueva materiaCohorte
+     * CE5: Deben registrar una nueva materiaCohorte
      * @throws java.sql.SQLException
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte
      * @throws java.text.ParseException */
@@ -203,7 +207,7 @@ public class ProgramarMateriaTest {
     /**
      * Profesor registrado en cohorte
      * Clase Equivalencia
-     * CE1: no Debe egistrar una nueva MateriaCohorte que ya existe
+     * CE6: no Debe egistrar una nueva MateriaCohorte que ya existe
      * @throws java.sql.SQLException
      * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte */
      
@@ -231,7 +235,7 @@ public class ProgramarMateriaTest {
     /**
      * nuevo periodo
      * Clase Equivalencia
-     * CE1: Deberia registrar un nuevo periodo academico
+     * CE7: Deberia registrar un nuevo periodo academico
      * @throws java.sql.SQLException */
 
     @Test
@@ -258,8 +262,10 @@ public class ProgramarMateriaTest {
     /**
      * nuevo periodo
      * Clase Equivalencia
-     * CE1: No Deberia registrar un nuevo periodo academico si ya existe
-     * @throws java.sql.SQLException */
+     * CE8: No Deberia registrar un nuevo periodo academico si ya existe
+     * @throws java.sql.SQLException
+     * @throws java.text.ParseException
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte */
 
     @Test
     public void CF8TestProgramarMateria() throws SQLException, ParseException, ExceptionServiciosReporte{
@@ -282,13 +288,13 @@ public class ProgramarMateriaTest {
     /**
      * nuevo periodo
      * Clase Equivalencia
-     * CE1: No Deberia registrar un nuevo periodo academico si las fechas son inconcistentes
+     * CE9: No Deberia registrar un nuevo periodo academico si las fechas son inconcistentes
      * @throws java.sql.SQLException */
 
     @Test
     public void CF9TestProgramarMateria() throws SQLException, ParseException, ExceptionServiciosReporte{
         Statement stmt=getConnection().createStatement();  
-       stmt.execute("INSERT INTO Posgrado(id, nombre,creditos )  VALUES(1, 'Economias',100 );");
+        stmt.execute("INSERT INTO Posgrado(id, nombre,creditos )  VALUES(1, 'Economias',100 );");
         stmt.execute("INSERT INTO Asignatura (id, nombre,posgrado_id )  VALUES(1, 'Propuesta Elementales',1 );");
         stmt.execute("INSERT INTO Periodo (fecha_inicio,fecha_fin,periodo )  VALUES ('2017-08-08', '2017-12-17' ,'2017-2' );");
         stmt.execute("INSERT INTO Cohorte (id, periodo_periodo )  VALUES (4,'2017-2');");
@@ -301,5 +307,55 @@ public class ProgramarMateriaTest {
         Date datee=ff.parse("2017-01-20");
         assertEquals("Deberian haber registrado un nuevo periodo",report.registrarPeriodo("2017-1", date, datee),"Error La fecha inicial es mayor que la fecha de terminacion");
         assertEquals("Deberian haber registrado un nuevo periodo",report.obtenerPeriodos().size(),1);
+    }
+    
+    /**
+     * nuevo psogrado
+     * Clase Equivalencia
+     * CE1: Deberia registrar un nuevo posgrado
+     * @throws java.sql.SQLException
+     * @throws java.text.ParseException
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte */
+
+    @Test
+    public void CF10TestProgramarMateria() throws SQLException, ParseException, ExceptionServiciosReporte{
+        Statement stmt=getConnection().createStatement();  
+        stmt.execute("INSERT INTO Posgrado(id, nombre,creditos )  VALUES(2, 'Economias',100 );");
+        ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
+        report.registrarPosgrado("Nuevo Posgrado",56);
+        assertEquals("Deberian haber registrado un nuevo posgrado",report.consultarNombresPosgrado().get(0),"Nuevo Posgrado");
+    }
+    
+    /**
+     * nuevo psogrado
+     * Clase Equivalencia
+     * CE1: No Deberia registrar un posgrado si ya existe
+     * @throws java.sql.SQLException */
+
+    @Test
+    public void CF11TestProgramarMateria() throws SQLException, ParseException, ExceptionServiciosReporte{
+        Statement stmt=getConnection().createStatement();  
+        stmt.execute("INSERT INTO Posgrado(id, nombre,creditos )  VALUES(2, 'Economias',100 );");
+        ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
+        report.registrarPosgrado("Economias",56);
+        assertEquals("No Deberian haber registrado un posgrado existente",report.consultarNombresPosgrado().size(),1);
+    }
+    
+    /**
+     * nueva asignatura
+     * Clase Equivalencia
+     * CE1: No Deberia registrar una asignatura existente
+     * @throws java.sql.SQLException
+     * @throws java.text.ParseException
+     * @throws edu.eci.pdsw.posgrado.services.ExceptionServiciosReporte */
+
+    @Test
+    public void CF12TestProgramarMateria() throws SQLException, ParseException, ExceptionServiciosReporte{
+        Statement stmt=getConnection().createStatement();  
+        stmt.execute("INSERT INTO Posgrado(id, nombre,creditos )  VALUES(1, 'Economias',100 );");
+        stmt.execute("INSERT INTO Asignatura (id, nombre,posgrado_id )  VALUES(1, 'Propuesta Elementales',1 );");
+        ServiciosReporte report=ServiciosReporteFactory.getInstance().getServiciosReporteForTesting();
+        report.registrarAsignatura("Propuesta Elementales", "Economias");
+        assertEquals("Deberian haber registrado una asignatura nueva",report.consultarNombresAsignaturas().size(),1);
     }
 }

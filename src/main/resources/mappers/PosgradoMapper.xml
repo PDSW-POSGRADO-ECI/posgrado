@@ -27,7 +27,7 @@ and open the template in the editor.
     </select>
     
      <insert parameterType="map" id="registrarPosgrado">
-        INSERT INTO Posgrado(nombre,creditos) VALUES (#{nompos},#{credit});
+        INSERT INTO Posgrado(id,nombre,creditos) VALUES (1,#{nompos},#{credit});
     </insert>
     
     <resultMap type="Posgrado" id="PosgradoResult" >

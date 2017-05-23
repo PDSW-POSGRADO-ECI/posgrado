@@ -78,7 +78,7 @@ public interface ServiciosReporte {
 
     public List<Clase> consultarHorarioClaseProfesor(String nombre, String get)throws ExceptionServiciosReporte;
 
-    public List<Clase> consultarHorarioClaseProfesorSemana(String nombre, String get, Date date)throws ExceptionServiciosReporte;
+    public ArrayList<Clase> consultarHorarioClaseProfesorSemana(String nombre, String get, Date date)throws ExceptionServiciosReporte;
 
     public List<Profesor> ProfesorPeriodo(String periodo) throws ExceptionServiciosReporte;
 

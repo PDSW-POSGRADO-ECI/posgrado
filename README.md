@@ -16,7 +16,7 @@ Procesos de Desarrollo de Software 2017-1
 
 * ###Historias de usuario  
    Las historias de usuario consideradas fueron:
-	* ####Autenticación
+	* ####Autenticación.
 	![](img/Autenticacion.PNG)
 	* ####Reporte general.
 	![](img/ReporteGeneral.PNG)
@@ -57,38 +57,47 @@ Esta plataforma usa las siguientes dependencias:
 		![](img/Persistencia.png)
     * ####Diagrama conceptual:
 	![](img/Entities.png)
-##Descripción del proceso  
+##Descripción del proceso
 Descripción del proceso de desarrollo utilizado, y de las prácticas consideradas para el mismo Para el proceso de desarrollo se utilizó el framework de SCRUM, junto con las prácticas que este implica.
-* ###Url Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
-  * ###Backlogs y Burndown-charts de los Sprints
+URL Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
+
+	* ###Backlogs y Burndown-charts de los Sprints
   	* ####Sprint 1
   		* #####Observaciones:
+  		En este Tercer Sprint se completaron todas las historias del Sprint backlog corresponidnetes,el trabajo se realizo mayoritariamente depues de semana santa por esta razon el bornout esta por ecima de lo estimado, se trabajo mas para completar el Sprint en los utimos dias antes de la entrega, no se dejaron historias sin terminar para este sprint.
 	![](img/reporte1.PNG)
     ![](img/backlog1.PNG)
     ![](img/Sprint1Backlog.png)
     ![](img/sprint1.PNG)
 	* ####Sprint 2
 		* #####Observaciones:
+		En el segundo sprint se trabajo constantemente y se evidecio una mejora ecuanto a el trabajo constante del equipo y se completaron las historias de usuario correspondientes a este sprint sin embargo en el sprint review se identificaron  nuevas caracteristicas a revisar las cuales se pretenden completar para el tercer Sprint.
 	![](img/reporte2.PNG)
     ![](img/backlog2.PNG)
 	![](img/Sprint2Backlog.png)
   	![](img/sprint2.PNG)
 	* ####Sprint 3
 		* #####Observaciones:
-	![](img/reporte3.PNG)
+		Se completaron las historias de usuario del sprint backlog correspondientes al tercer sprint teniendoo ecuenta las cosideraciones que se mencionaron en el segundo sprint.El trabajo del equipo no fue constante por la semana de parciales por lo cual se acomulo trabajo en los dias proximos al sprint review.
 	![](img/backlog3.PNG)
 	![](img/Sprint3Backlog.png)
-  	![](img/sprint3.PNG)
-  * ####Métricas por desarrollador  
+  	![](img/sprint3.png)
+  * ####Métricas por desarrollador
   ![](img/metricas.png)
   	*	####Oscar Alba
+  	![](img/oscar.png)
   	*	####Brandon Prieto
+  	![](img/brandon.png)
   	*	####Laura Milena Ramos
+  	![](img/laura.png)
   	*	####Daniel Rodriguez
+  	![](img/daniel.png)
   	*	####Camilo Torres
+  	![](img/camilo.png)
 
 ##Reporte de pruebas
 ![](img/ReportePruebas.png)
 
+#####Url Trello: https://trello.com/b/3VXePyc4/2017-1-proypdsw-postgrado-eci
 #####Url Circleci:  https://circleci.com/gh/PDSW-POSGRADO-ECI/posgrado
 #####Url Heroku:  https://posgrado-eci.herokuapp.com/

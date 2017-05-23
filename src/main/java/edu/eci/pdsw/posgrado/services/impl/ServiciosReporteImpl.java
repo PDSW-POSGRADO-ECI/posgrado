@@ -365,7 +365,7 @@ public class ServiciosReporteImpl implements ServiciosReporte {
                 posgrado.savePosgrado(nom, credit);
             }
         } catch (ExceptionPersistence ex) {
-            throw new ExceptionServiciosReporte("El posgrado " + nom + " ya existe" + ex, ex);
+            throw new ExceptionServiciosReporte("Error al cargar posgrados" + ex, ex);
         }
         return ms;
 
@@ -610,11 +610,11 @@ public class ServiciosReporteImpl implements ServiciosReporte {
     }
 
     @Override
-    public List<Clase> consultarHorarioClaseProfesorSemana(String nombre, String per, Date date) throws ExceptionServiciosReporte{
-        List<Clase> clases=null;List<Clase> cla;
+    public ArrayList<Clase> consultarHorarioClaseProfesorSemana(String nombre, String per, Date date) throws ExceptionServiciosReporte{
+        ArrayList<Clase> clases=new ArrayList<>();List<Clase> cla;
         try{
             Calendar cal = Calendar.getInstance();
-            cal.setTime(date);cal.add(Calendar.DATE, 7);
+            cal.setTime(date);cal.add(Calendar.DATE, 6);
             cla=clase.loadHorarioClaseDeProfesor(nombre, per);
             for(Clase c: cla){
                 if(c.getFecha().compareTo(date)>=0 && c.getFecha().compareTo(cal.getTime())<=0){
